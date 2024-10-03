@@ -1,0 +1,6479 @@
+openapi: 3.0.0
+info:
+  title: MetalSoft REST API
+  description: MetalSoft REST API documentation
+  contact:
+    name: MetalSoft
+    url: https://www.metalsoft.io/contact
+    email: support@metalsoft.io
+  version: "2.0"
+externalDocs:
+  description: MetalSoft Documentation
+  url: https://docs.metalsoft.io/
+servers:
+- url: ""
+  description: This server
+tags:
+- name: Security
+  description: Security configuration and control.
+- name: System
+  description: System operations.
+- name: Configuration
+  description: System configuration operations.
+- name: Accounts
+  description: Account management operations.
+- name: Users
+  description: User management operations.
+- name: Server
+  description: Server management.
+- name: Storage
+  description: Storage management.
+- name: Network Devices
+  description: Network device management.
+- name: Resource Pools
+  description: Resource pool management.
+- name: Infrastructure
+  description: Infrastructures group tenant resources.
+- name: Network
+  description: Networks management operations.
+- name: VM Pools
+  description: A cluster or system that acts as a pool for creating VMs.
+- name: VM Types
+  description: VM types management operations.
+- name: VMs
+  description: VM management operations.
+- name: VM Instance
+  description: Virtual compute instances part of an infrastructure.
+- name: VM Instance Group
+  description: A group of virtual compute instances part of an infrastructure.
+- name: File Share
+  description: File shares that can be attached to one or more servers.
+- name: AI
+  description: Eli AI assistant operations.
+paths:
+  /api/v2/accounts:
+    get:
+      tags:
+      - Accounts
+      summary: Get all accounts
+      description: Returns all accounts
+      operationId: AccountsController_getAccounts
+      parameters: []
+      responses:
+        "200":
+          description: Returns all accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountDto'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - Accounts
+      summary: Create account
+      description: Creates an account
+      operationId: AccountsController_createAccount
+      parameters: []
+      requestBody:
+        description: The account to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountDto'
+        required: true
+      responses:
+        "201":
+          description: Account successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/accounts/{accountId}:
+    get:
+      tags:
+      - Accounts
+      summary: Get account by id
+      description: Returns an account by id
+      operationId: AccountsController_getAccount
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: recursion
+        in: query
+        description: The recursion level of the displayed details. Default is 0.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns an account by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - Accounts
+      summary: Update account
+      description: Updates an account
+      operationId: AccountsController_updateAccount
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The account updates
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccountDto'
+        required: true
+      responses:
+        "200":
+          description: Account successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/accounts/{accountId}/actions/archive:
+    post:
+      tags:
+      - Accounts
+      summary: Archive account
+      description: Archives an account
+      operationId: AccountsController_archiveAccount
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Account successfully archived
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/accounts/{accountId}/actions/unarchive:
+    post:
+      tags:
+      - Accounts
+      summary: Unarchive account
+      description: Unarchives an account
+      operationId: AccountsController_unarchiveAccount
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Account successfully unarchived
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/accounts/{accountId}/limits:
+    get:
+      tags:
+      - Accounts
+      summary: Get account limits
+      description: Returns the limits of an account
+      operationId: AccountsController_getAccountLimits
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns the limits of an account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountLimitsDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - Accounts
+      summary: Update account limits
+      description: Updates the limits of an account
+      operationId: AccountsController_updateAccountLimits
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The account limits updates
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountLimitsDto'
+        required: true
+      responses:
+        "200":
+          description: Account limits successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountLimitsDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/accounts/{accountId}/users:
+    get:
+      tags:
+      - Accounts
+      summary: Get users for account
+      description: Returns users for an account
+      operationId: AccountsController_getUsersForAccount
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns users for an account
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/users:
+    get:
+      tags:
+      - Users
+      summary: Get users
+      description: Returns a list of users
+      operationId: UsersController_getUsers
+      parameters: []
+      responses:
+        "200":
+          description: Returns a list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - Users
+      summary: Creates a user
+      description: Creates a user
+      operationId: UsersController_createUser
+      parameters: []
+      requestBody:
+        description: The user to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserDto'
+        required: true
+      responses:
+        "201":
+          description: User successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/users/{userId}:
+    get:
+      tags:
+      - Users
+      summary: Get user
+      description: Returns a user
+      operationId: UsersController_getUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: recursion
+        in: query
+        description: The recursion level of the displayed details. Default is 0.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns a user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - Users
+      summary: Update user
+      description: Updates a user
+      operationId: UsersController_updateUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The user updates
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDto'
+        required: true
+      responses:
+        "200":
+          description: User successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/users/{userId}/actions/change-account:
+    post:
+      tags:
+      - Users
+      summary: Change account for user
+      description: Changes account for user
+      operationId: UsersController_changeUserAccount
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The new account id
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeUserAccountDto'
+        required: true
+      responses:
+        "200":
+          description: Account successfully changed for user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/users/{userId}/actions/archive:
+    post:
+      tags:
+      - Users
+      summary: Archive user
+      description: Archives a user
+      operationId: UsersController_archiveUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: User successfully archived
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/users/{userId}/actions/unarchive:
+    post:
+      tags:
+      - Users
+      summary: Unarchive user
+      description: Unarchives a user
+      operationId: UsersController_unarchiveUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: User successfully unarchived
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/users/{userId}/limits:
+    get:
+      tags:
+      - Users
+      summary: Get user limits
+      description: Returns the limits of a user
+      operationId: UsersController_getUserLimits
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns the limits of a user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLimitsDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - Users
+      summary: Update user limits
+      description: Updates the limits of a user
+      operationId: UsersController_updateUserLimits
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The new limits
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLimitsDto'
+        required: true
+      responses:
+        "200":
+          description: User limits successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLimitsDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/authentication/providers:
+    get:
+      tags:
+      - Security
+      summary: Get available authentication providers
+      description: Returns the available authentication providers
+      operationId: AuthenticationController_listProviders
+      parameters: []
+      responses:
+        "200":
+          description: Returns the available authentication providers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthenticationProvider'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/authentication/providers/{name}:
+    patch:
+      tags:
+      - Security
+      summary: Updates authentication provider
+      description: Updates authentication provider
+      operationId: AuthenticationController_updateProvider
+      parameters:
+      - name: name
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: The provider updates
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationProviderUpdate'
+        required: true
+      responses:
+        "200":
+          description: Authentication provider successfully updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthenticationProvider'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools:
+    get:
+      tags:
+      - Resource Pools
+      summary: Get all Resource Pools
+      description: Returns list of all Resource Pools
+      operationId: InventoryController_1_getResourcePools
+      parameters: []
+      responses:
+        "200":
+          description: Returns list of all Resource Pools
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourcePoolWithStatsDto'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - Resource Pools
+      summary: Creates a Resource Pool
+      description: Creates a Resource Pool
+      operationId: InventoryController_1_createResourcePool
+      parameters: []
+      requestBody:
+        description: The Resource Pool create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateResourcePoolDto'
+        required: true
+      responses:
+        "200":
+          description: The Resource Pool successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourcePoolDto'
+        "401":
+          description: Unauthorized
+        "409":
+          description: Duplicate resource pool
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools/{resourcePoolId}:
+    get:
+      tags:
+      - Resource Pools
+      summary: Get Resource Pool information
+      description: Returns Resource Pool information
+      operationId: InventoryController_1_getResourcePool
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns Resource Pool information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourcePoolDto'
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    put:
+      tags:
+      - Resource Pools
+      summary: Updates Resource Pool information
+      description: Updates Resource Pool information
+      operationId: InventoryController_1_updateResourcePool
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The Resource Pool update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateResourcePoolDto'
+        required: true
+      responses:
+        "200":
+          description: The Resource Pool was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourcePoolDto'
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - Resource Pools
+      summary: Deletes a Resource Pool
+      description: Deletes a Resource Pool
+      operationId: InventoryController_1_deleteResourcePool
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The Resource Pool was successfully deleted
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools/{resourcePoolId}/servers:
+    get:
+      tags:
+      - Resource Pools
+      summary: Get all servers that are part of a Resource Pool
+      description: Returns list of all servers that are part of a Resource Pool
+      operationId: InventoryController_1_getResourcePoolServers
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all servers that are part of a Resource Pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools/{resourcePoolId}/server/{serverId}:
+    put:
+      tags:
+      - Resource Pools
+      summary: Add a server to a Resource Pool
+      description: Add a server to a Resource Pool
+      operationId: InventoryController_1_addServerToResourcePool
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The server was successfully added to the Resource Pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - Resource Pools
+      summary: Remove a server from a Resource Pool
+      description: Remove a server from a Resource Pool
+      operationId: InventoryController_1_removeServerFromResourcePool
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The server was successfully removed from the Resource Pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools/{resourcePoolId}/subnet-pools:
+    get:
+      tags:
+      - Resource Pools
+      summary: Get all subnet pools that are part of a resource pool
+      description: Returns list of all subnet pools that are part of a resource pool
+      operationId: InventoryController_1_getResourcePoolSubnetPools
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all subnet pools that are part of a resource
+            pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools/{resourcePoolId}/subnet-pool/{subnetPoolId}:
+    put:
+      tags:
+      - Resource Pools
+      summary: Add a subnet pool to a resource pool
+      description: Add a subnet pool to a resource pool
+      operationId: InventoryController_1_addSubnetPoolToResourcePool
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: subnetPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The subnet was successfully added to the resource pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - Resource Pools
+      summary: Remove a subnet from a resource pool
+      description: Remove a subnet from a resource pool
+      operationId: InventoryController_1_removeSubnetPoolFromResourcePool
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: subnetPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The subnet pool was successfully removed from the resource
+            pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools/{resourcePoolId}/users:
+    get:
+      tags:
+      - Resource Pools
+      summary: Get all users that have access to a Resource Pool
+      description: Returns list of all users that have access to a Resource Pool
+      operationId: InventoryController_1_getResourcePoolUsers
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all users that have access to a Resource Pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools/user/{userId}:
+    get:
+      tags:
+      - Resource Pools
+      summary: Get all Resource Pools that a user has access to
+      description: Returns list of all Resource Pools that a user has access to
+      operationId: InventoryController_1_getUserResourcePools
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all Resource Pools that a user has access to
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/resource-pools/user/{userId}/pool/{resourcePoolId}:
+    post:
+      tags:
+      - Resource Pools
+      summary: Add a user to a Resource Pool
+      description: Add a user to a Resource Pool
+      operationId: InventoryController_1_addResourcePoolUser
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The user was successfully added to the Resource Pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - Resource Pools
+      summary: Remove a user from a Resource Pool
+      description: Remove a user from a Resource Pool
+      operationId: InventoryController_1_removeResourcePoolUser
+      parameters:
+      - name: resourcePoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The user was successfully removed from the Resource Pool
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vms/{vmId}:
+    get:
+      tags:
+      - VMs
+      summary: Retrieves the VM information
+      description: Retrieves the VM information
+      operationId: VMMicroserviceController_getVM
+      parameters:
+      - name: vmId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM information was successfully retrieved
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - VMs
+      summary: Updates VM information
+      description: Updates VM information
+      operationId: InventoryController_1_updateVM
+      parameters:
+      - name: vmId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVMDto'
+        required: true
+      responses:
+        "200":
+          description: The VM information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-pools:
+    get:
+      tags:
+      - VM Pools
+      summary: Get all VM Pools
+      description: Returns list of all VM Pools
+      operationId: InventoryController_1_getVMPools
+      parameters: []
+      responses:
+        "200":
+          description: Returns list of all VM Pools
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMPoolDto'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - VM Pools
+      summary: Creates a VM Pool
+      description: Creates a VM Pool
+      operationId: InventoryController_1_createVMPool
+      parameters: []
+      requestBody:
+        description: The VM Pool create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVMPoolDto'
+        required: true
+      responses:
+        "200":
+          description: The VM Pool successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMPoolDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-pools/{vmPoolId}:
+    get:
+      tags:
+      - VM Pools
+      summary: Get VM Pool information
+      description: Returns VM Pool information
+      operationId: InventoryController_1_getVMPool
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns VM Pool information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMPoolDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - VM Pools
+      summary: Deletes a VM Pool
+      description: Deletes a VM Pool
+      operationId: InventoryController_1_deleteVMPool
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM Pool successfully deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - VM Pools
+      summary: Updates VM Pool information
+      description: Updates VM Pool information
+      operationId: InventoryController_1_updateVMPool
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM Pool update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVMPoolDto'
+        required: true
+      responses:
+        "200":
+          description: The VM Pool information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMPoolDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-pools/{vmPoolId}/vms:
+    get:
+      tags:
+      - VM Pools
+      summary: Returns all VMs linked to the VM Pool
+      description: Returns all VMs linked to the VM Pool
+      operationId: InventoryController_1_getVMPoolVMs
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returned all VMs linked to the VM Pool
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-pools/{vmPoolId}/cluster-hosts:
+    get:
+      tags:
+      - VM Pools
+      summary: Get list of VM Cluster Hosts linked to the VM Pool
+      description: Returns list of VM Cluster Hosts linked to the VM Pool
+      operationId: InventoryController_1_getVMPoolClusterHosts
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of VM Cluster Hosts linked to the VM Pool
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMPoolHostsDto'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}:
+    get:
+      tags:
+      - VM Pools
+      summary: Retrieves a VM Cluster Host
+      description: Returns a VM Cluster Host
+      operationId: InventoryController_1_getVMPoolClusterHost
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmPoolClusterHostId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns a VM Cluster Host
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMPoolHostsDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/interfaces:
+    get:
+      tags:
+      - VM Pools
+      summary: Retrieves a list of VM Cluster Host Interfaces
+      description: Returns a list of VM Cluster Host Interfaces
+      operationId: InventoryController_1_getVMPoolClusterHostInterfaces
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmPoolClusterHostId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns a list of VM Cluster Host Interfaces
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMPoolHostInterfacesDto'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/interfaces/{vmPoolClusterHostInterfaceId}:
+    get:
+      tags:
+      - VM Pools
+      summary: Retrieves a VM Cluster Host Interface
+      description: Returns a VM Cluster Host Interface
+      operationId: InventoryController_1_getVMPoolClusterHostInterface
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmPoolClusterHostId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmPoolClusterHostInterfaceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns a VM Cluster Host Interface
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMPoolHostInterfacesDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - VM Pools
+      summary: Updates a VM Cluster Host Interface
+      description: Updates a VM Cluster Host Interface
+      operationId: InventoryController_1_patchVMPoolClusterHostInterface
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmPoolClusterHostId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmPoolClusterHostInterfaceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM Pool Cluster Host Interface update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVMPoolClusterHostInterfaceDto'
+        required: true
+      responses:
+        "200":
+          description: Returns a VM Cluster Host Interface
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMPoolHostInterfacesDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/vms:
+    get:
+      tags:
+      - VM Pools
+      summary: Retrieves a list of VM Cluster Host VMs
+      description: Returns a list of VM Cluster Host VMs
+      operationId: InventoryController_1_getVMPoolClusterHostVMs
+      parameters:
+      - name: vmPoolId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmPoolClusterHostId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns a list of VM Cluster Host VMs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMDto'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-types:
+    get:
+      tags:
+      - VM Types
+      summary: Get all VM Types
+      description: Returns list of all VM Types
+      operationId: InventoryController_1_getVMTypes
+      parameters: []
+      responses:
+        "200":
+          description: Returns list of all VM Types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMTypeDto'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - VM Types
+      summary: Creates a VM Type
+      description: Creates a VM Type
+      operationId: InventoryController_1_createVMType
+      parameters: []
+      requestBody:
+        description: The VM Type create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVMTypeDto'
+        required: true
+      responses:
+        "200":
+          description: The VM Type successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMTypeDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-types/{vmTypeId}:
+    get:
+      tags:
+      - VM Types
+      summary: Get VM Type information
+      description: Returns VM Type information
+      operationId: InventoryController_1_getVMType
+      parameters:
+      - name: vmTypeId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns VM Type information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMTypeDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - VM Types
+      summary: Deletes a VM Type
+      description: Deletes a VM Type
+      operationId: InventoryController_1_deleteVMType
+      parameters:
+      - name: vmTypeId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM Type successfully deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - VM Types
+      summary: Updates VM Type information
+      description: Updates VM Type information
+      operationId: InventoryController_1_updateVMType
+      parameters:
+      - name: vmTypeId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM Type update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVMTypeDto'
+        required: true
+      responses:
+        "200":
+          description: The VM Type information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMTypeDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vm-types/{vmTypeId}/vms:
+    get:
+      tags:
+      - VM Types
+      summary: Returns all VMs linked to the VM Type
+      description: Returns all VMs linked to the VM Type
+      operationId: InventoryController_1_getVMsByVMType
+      parameters:
+      - name: vmTypeId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returned all VMs linked to the VM Type
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/actions/deploy:
+    post:
+      tags:
+      - Infrastructure
+      summary: Deploys the specified infrastructure
+      description: Deploys the specified infrastructure
+      operationId: InventoryController_1_deployInfrastructure
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The infrastructure deploy options
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InfrastructureDeployOptions'
+        required: true
+      responses:
+        "202":
+          description: Deploys the specified infrastructure
+          content:
+            application/json:
+              schema:
+                type: object
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/actions/revert:
+    post:
+      tags:
+      - Infrastructure
+      summary: Reverts the specified infrastructure
+      description: Reverts the specified infrastructure
+      operationId: InventoryController_1_revertInfrastructure
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "202":
+          description: Reverts the specified infrastructure
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures:
+    get:
+      tags:
+      - Infrastructure
+      summary: Get all infrastructures
+      description: Returns list of all infrastructures
+      operationId: InventoryController_1_getInfrastructures
+      parameters:
+      - name: accountId
+        in: query
+        description: The account ID to filter user infrastructures by
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all infrastructures
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InfrastructureDto'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}:
+    get:
+      tags:
+      - Infrastructure
+      summary: Retrieves the specified infrastructure
+      description: Retrieves the specified infrastructure
+      operationId: InventoryController_1_getInfrastructure
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Retrieved the specified infrastructure
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers:
+    post:
+      tags:
+      - Server
+      summary: Initialize server registration
+      description: Initializes server registration process
+      operationId: InventoryController_1_registerServer
+      parameters: []
+      requestBody:
+        description: The server registration information
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServerRegistrationDto'
+        required: true
+      responses:
+        "200":
+          description: Server registration initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerRegistrationResponseDto'
+        "202":
+          description: Server registration accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerRegistrationResponseDto'
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "409":
+          description: Conflict
+        "422":
+          description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers/{serverId}:
+    get:
+      tags:
+      - Server
+      summary: Get Server information
+      description: Returns Server information
+      operationId: InventoryController_1_getServerInfo
+      parameters:
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns Server information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Server'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/storages:
+    post:
+      tags:
+      - Storage
+      summary: Creates a Storage
+      description: Creates a Storage
+      operationId: InventoryController_1_createStorage
+      parameters: []
+      requestBody:
+        description: The Storage create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStorage'
+        required: true
+      responses:
+        "200":
+          description: The Storage successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageRegistrationResponse'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instance-groups:
+    get:
+      tags:
+      - VM Instance Group
+      summary: Get all VM Instance Groups
+      description: Returns list of all VM Instance Groups
+      operationId: BlueprintController_getVMInstanceGroups
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all VM Instance Groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMInstanceGroupDto'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - VM Instance Group
+      summary: Creates a VM Instance Group
+      description: Creates a VM Instance Group
+      operationId: BlueprintController_createVMInstanceGroup
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM Instance Group create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVMInstanceGroupDto'
+        required: true
+      responses:
+        "200":
+          description: The VM Instance Group successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceGroupDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}:
+    get:
+      tags:
+      - VM Instance Group
+      summary: Get VM Instance Group information
+      description: Returns VM Instance Group information
+      operationId: BlueprintController_getVMInstanceGroup
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceGroupId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns VM Instance Group information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceGroupDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - VM Instance Group
+      summary: Deletes a VM Instance Group
+      description: Deletes a VM Instance Group
+      operationId: BlueprintController_deleteVMInstanceGroup
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceGroupId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM Instance Group successfully deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - VM Instance Group
+      summary: Updates VM Instance Group information
+      description: Updates VM Instance Group information
+      operationId: BlueprintController_updateVMInstanceGroup
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceGroupId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM Instance Group update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVMInstanceGroupDto'
+        required: true
+      responses:
+        "200":
+          description: The VM Instance Group information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceGroupDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/vm-instances:
+    get:
+      tags:
+      - VM Instance Group
+      summary: Get the VM Instances of VM Instance Group
+      description: Returns the VM Instances of VM Instance Group
+      operationId: BlueprintController_getVMInstanceGroupVMInstances
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceGroupId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns the VM Instances of VM Instance Group
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMInstanceDto'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/actions/apply-type/{vmTypeId}:
+    post:
+      tags:
+      - VM Instance Group
+      summary: Applies a VM Type to a VM Instance Group
+      description: Applies a VM Type to a VM Instance Group
+      operationId: BlueprintController_applyVMTypeOnVMInstanceGroup
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceGroupId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmTypeId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: VM Type applied on VM Instance Group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceGroupDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/interfaces:
+    post:
+      tags:
+      - VM Instance Group
+      summary: Creates a new Virtual Interface for the VM Instance Group
+      description: Creates a new Virtual Interface for the VM Instance Group
+      operationId: BlueprintController_createVMInterfaceOnVMInstanceGroup
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceGroupId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVMInstanceGroupInterfaceDto'
+        required: true
+      responses:
+        "200":
+          description: Virtual Interface created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceGroupInterfaceDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/network/{networkId}:
+    patch:
+      tags:
+      - VM Instance Group
+      summary: Applies the given Network Profile to the specified VM Instance Group
+        Network
+      description: Applies the given Network Profile to the specified VM Instance
+        Group Network
+      operationId: BlueprintController_patchNetworkProfileOnVMInstanceGroupNetwork
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceGroupId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: networkId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM Instance Group Network update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVMInstanceGroupNetworkDto'
+        required: true
+      responses:
+        "200":
+          description: Network profile successfully applied to the given VM Instance
+            Group Network.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceGroupDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instances:
+    post:
+      tags:
+      - VM Instance
+      summary: Creates a VM Instance
+      description: Creates a VM Instance
+      operationId: BlueprintController_createVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM Instance create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVMInstanceDto'
+        required: true
+      responses:
+        "200":
+          description: The VM Instance successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}:
+    get:
+      tags:
+      - VM Instance
+      summary: Get VM Instance information
+      description: Returns VM Instance information
+      operationId: BlueprintController_getVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns VM Instance information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - VM Instance
+      summary: Deletes a VM Instance
+      description: Deletes a VM Instance
+      operationId: BlueprintController_deleteVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM Instance successfully deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - VM Instance
+      summary: Updates VM Instance information
+      description: Updates VM Instance information
+      operationId: BlueprintController_updateVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The VM Instance update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVMInstanceDto'
+        required: true
+      responses:
+        "200":
+          description: The VM Instance information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/actions/apply-type/{vmTypeId}:
+    post:
+      tags:
+      - VM Instance
+      summary: Applies a VM Type to a VM Instance
+      description: Applies a VM Type to a VM Instance
+      operationId: BlueprintController_applyVMTypeOnVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmTypeId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: VM Type applied on VM Instance.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInstanceDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/power-status:
+    get:
+      tags:
+      - VM Instance
+      summary: Retrieves the power status of the VM Instance
+      description: Retrieves the power status of the VM Instance
+      operationId: BlueprintController_powerStatusVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM Instance power status was successfully retrieved
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/start:
+    post:
+      tags:
+      - VM Instance
+      summary: Starts the VM Instance
+      description: Starts the VM Instance
+      operationId: BlueprintController_startVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM Instance was successfully started
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/shutdown:
+    post:
+      tags:
+      - VM Instance
+      summary: Shuts down the VM Instance
+      description: Shuts down the VM Instance
+      operationId: BlueprintController_shutdownVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM Instance was successfully shut down
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/reboot:
+    post:
+      tags:
+      - VM Instance
+      summary: Reboots the VM Instance
+      description: Reboots the VM Instance
+      operationId: BlueprintController_rebootVMInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: vmInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM Instance was successfully rebooted
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/networks:
+    get:
+      tags:
+      - Network
+      summary: Retrieves all networks on the infrastructure
+      description: Retrieves all networks on the infrastructure
+      operationId: BlueprintController_getNetworks
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Networks successfully retrieved.
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - Network
+      summary: Creates a new LAN network on the infrastructure
+      description: Creates a new LAN network on the infrastructure
+      operationId: BlueprintController_createNetwork
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The Network create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNetworkDto'
+        required: true
+      responses:
+        "200":
+          description: The Network successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/networks/{networkId}:
+    get:
+      tags:
+      - Network
+      summary: Gets the specified network from the infrastructure
+      description: Gets the specified network from the infrastructure
+      operationId: BlueprintController_getNetwork
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: networkId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Network information successfully retrieved.
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - Network
+      summary: Deletes a network from the infrastructure
+      description: Deletes a network from the infrastructure
+      operationId: BlueprintController_deleteNetwork
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: networkId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Network successfully deleted.
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/file-shares:
+    get:
+      tags:
+      - File Share
+      summary: Get all File Shares
+      description: Returns list of all File Shares
+      operationId: BlueprintController_getFileShares
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all File Shares
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FileShare'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - File Share
+      summary: Creates a File Share
+      description: Creates a File Share
+      operationId: BlueprintController_createFileShare
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The File Share create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFileShare'
+        required: true
+      responses:
+        "200":
+          description: The File Share successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileShare'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}:
+    get:
+      tags:
+      - File Share
+      summary: Get File Share information
+      description: Returns File Share information
+      operationId: BlueprintController_getFileShare
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns File Share information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileShare'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - File Share
+      summary: Deletes a File Share
+      description: Deletes a File Share
+      operationId: BlueprintController_deleteFileShare
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The File Share successfully deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - File Share
+      summary: Updates File Share information
+      description: Updates File Share information
+      operationId: BlueprintController_updateFileShare
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The File Share update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFileShare'
+        required: true
+      responses:
+        "200":
+          description: The File Share information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileShare'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/start:
+    post:
+      tags:
+      - File Share
+      summary: Starts a File Share
+      description: Starts a File Share
+      operationId: BlueprintController_startFileShare
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The File Share successfully scheduled to start
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/stop:
+    post:
+      tags:
+      - File Share
+      summary: Stops a File Share
+      description: Stops a File Share
+      operationId: BlueprintController_stopFileShare
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The File Share successfully scheduled to stop
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/hosts:
+    get:
+      tags:
+      - File Share
+      summary: Get the Hosts of File Share
+      description: Returns the Hosts of File Share
+      operationId: BlueprintController_getFileShareHosts
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns the Hosts of File Share
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileShareHosts'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/modify-instance-array-hosts-bulk:
+    post:
+      tags:
+      - File Share
+      summary: Updates Instance Array Hosts on the File Share
+      description: Updates Instance Array Hosts on the File Share
+      operationId: BlueprintController_updateFileShareInstanceArrayHostsBulk
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The File Share Instance Array Hosts update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileShareHostsModifyBulk'
+        required: true
+      responses:
+        "200":
+          description: The File Share information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileShareHosts'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vms/{vmId}/power-status:
+    get:
+      tags:
+      - VMs
+      summary: Retrieves the power status of the VM
+      description: Retrieves the power status of the VM
+      operationId: VMMicroserviceController_powerStatusVMInstance
+      parameters:
+      - name: vmId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM power status was successfully retrieved
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vms/{vmId}/start:
+    post:
+      tags:
+      - VMs
+      summary: Starts the VM
+      description: Starts the VM
+      operationId: VMMicroserviceController_startVM
+      parameters:
+      - name: vmId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM was successfully started
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vms/{vmId}/shutdown:
+    post:
+      tags:
+      - VMs
+      summary: Shuts down the VM
+      description: Shuts down the VM
+      operationId: VMMicroserviceController_shutdownVM
+      parameters:
+      - name: vmId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM was successfully shut down
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vms/{vmId}/reboot:
+    post:
+      tags:
+      - VMs
+      summary: Reboots the VM
+      description: Reboots the VM
+      operationId: VMMicroserviceController_rebootVM
+      parameters:
+      - name: vmId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The VM was successfully rebooted
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/vms/{vmId}/remote-console-info:
+    get:
+      tags:
+      - VMs
+      summary: Get Remote Console information
+      description: Returns Remote Console information
+      operationId: VMMicroserviceController_getRemoteConsoleInfo
+      parameters:
+      - name: vmId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns Remote Console information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RemoteConsoleInfoDto'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/ai/generate:
+    post:
+      tags:
+      - AI
+      summary: Request from AI a response for the given input
+      description: Returns response with potential actions to execute
+      operationId: EliController_generateEliResponse
+      parameters: []
+      requestBody:
+        description: The AI generate request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIGenerateRequestDto'
+        required: true
+      responses:
+        "200":
+          description: Returns response for the AI
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIGenerateResponseDto'
+        "401":
+          description: Unauthorized
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers/{serverId}/vnc-info:
+    get:
+      tags:
+      - Server
+      summary: Get VNC information
+      description: Returns VNC information
+      operationId: ServersController_1_getVNCInfo
+      parameters:
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns VNC information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServerVNCInfoDto'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers/{serverId}/remote-console-info:
+    get:
+      tags:
+      - Server
+      summary: Get Remote Console information
+      description: Returns Remote Console information
+      operationId: ServersController_1_getRemoteConsoleInfo
+      parameters:
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns Remote Console information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RemoteConsoleInfoDto'
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers/{serverId}/actions/factory-reset:
+    post:
+      tags:
+      - Server
+      summary: Resets a server to factory defaults
+      description: Resets a server to factory defaults
+      operationId: ServersController_1_resetServerToFactoryDefaults
+      parameters:
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "202":
+          description: Resets a server to factory defaults
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers/{serverId}/actions/syslog-subscribe:
+    post:
+      tags:
+      - Server
+      summary: Enables remote syslog for a server
+      description: Enables remote syslog for a server
+      operationId: ServersController_1_enableSyslog
+      parameters:
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "204":
+          description: Enables remote syslog for a server
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers/{serverId}/actions/get-power:
+    post:
+      tags:
+      - Server
+      summary: Gets the power state of a server
+      description: Gets the power state of a server
+      operationId: ServersController_1_getPowerState
+      parameters:
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Gets the power state of a server
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers/{serverId}/actions/set-power:
+    post:
+      tags:
+      - Server
+      summary: Sets the power state of a server
+      description: Sets the power state of a server
+      operationId: ServersController_1_setPowerState
+      parameters:
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServerPowerSetDto'
+        required: true
+      responses:
+        "204":
+          description: Sets the power state of a server
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/network-devices/{networkDeviceId}/ports:
+    get:
+      tags:
+      - Network Devices
+      summary: Get all ports for network device
+      operationId: SwitchController_getPorts
+      parameters:
+      - name: networkDeviceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Ports found
+        "401":
+          description: Unauthorized
+        "404":
+          description: No ports found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/network-devices/{networkDeviceId}/actions/set-port-status:
+    post:
+      tags:
+      - Network Devices
+      summary: Set port status
+      operationId: SwitchController_setPortStatus
+      parameters:
+      - name: networkDeviceId
+        in: path
+        description: Network device ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: Port status
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkDevicePortStatusDto'
+        required: true
+      responses:
+        "200":
+          description: Port status updated
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/network-devices/{networkDeviceId}/actions/reset:
+    post:
+      tags:
+      - Network Devices
+      summary: Resets a network device to default state
+      description: Resets a network device to default state and destroy all configurations
+      operationId: SwitchController_resetNetworkDevice
+      parameters:
+      - name: networkDeviceId
+        in: path
+        description: Network device ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "204":
+          description: Network device reset to default state
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/network-devices/{networkDeviceId}/actions/syslog-subscribe:
+    post:
+      tags:
+      - Network Devices
+      summary: Enables remote syslog for a network device
+      description: Enables remote syslog for a network device
+      operationId: SwitchController_enableSyslog
+      parameters:
+      - name: networkDeviceId
+        in: path
+        description: Network device ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "204":
+          description: Enables remote syslog for a network device
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/network-devices/{networkDeviceId}/actions/change-status:
+    patch:
+      tags:
+      - Network Devices
+      summary: Change status of a network device
+      description: Change status of a network device
+      operationId: SwitchController_changeStatus
+      parameters:
+      - name: networkDeviceId
+        in: path
+        description: Network device ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: Network device status
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/'
+        required: true
+      responses:
+        "200":
+          description: Network device status updated
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/network-devices/{networkDeviceId}/discover:
+    post:
+      tags:
+      - Network Devices
+      summary: "Discover network device interfaces, hardware and software configuration"
+      description: "Discover network device interfaces, hardware and software configuration\
+        \ and return them and/or persist them"
+      operationId: SwitchController_discover
+      parameters:
+      - name: networkDeviceId
+        in: path
+        description: Network device identifier
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscoveryQueryDto'
+        required: true
+      responses:
+        "200":
+          description: Network device discovered and the data
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/config:
+    get:
+      tags:
+      - Configuration
+      summary: Get configuration
+      description: Returns a configuration object
+      operationId: ConfigController_1_getConfiguration
+      parameters:
+      - name: filter
+        in: query
+        description: Filter to be applied.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Returns a configuration object
+          content:
+            application/json:
+              schema:
+                type: object
+                x-content-type: application/json
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/version:
+    get:
+      tags:
+      - System
+      summary: Get MetalSoft system version
+      description: Returns the MetalSoft system version
+      operationId: SystemController_getVersion
+      parameters: []
+      responses:
+        "200":
+          description: Returns the MetalSoft system version
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+        "401":
+          description: Unauthorized
+      security:
+      - JWT: []
+      - apiKey: []
+components:
+  schemas:
+    AccountAddressDto:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+          description: The first line of the account address
+        addressLine2:
+          type: string
+          description: The second line of the account address
+        postalCode:
+          type: string
+          description: The postal code of the account address
+        state:
+          type: string
+          description: The state of the account address
+        country:
+          type: string
+          description: The country of the account address
+    AccountLimits:
+      type: object
+      properties: {}
+    AccountDto:
+      required:
+      - id
+      - limits
+      - name
+      type: object
+      properties:
+        id:
+          type: number
+          description: Account ID
+          example: 1
+        parentAccountId:
+          type: number
+          description: The ID of the parent account
+        name:
+          type: string
+          description: The name of the account
+        code:
+          type: string
+          description: The code of the account
+        fiscalNumber:
+          type: string
+          description: The fiscal number of the account
+        address:
+          description: The address of the account
+          allOf:
+          - $ref: '#/components/schemas/AccountAddressDto'
+        primaryContactId:
+          type: number
+          description: The user ID of the primary contact
+        secondaryContactId:
+          type: number
+          description: The user ID of the secondary contact
+        archived:
+          type: number
+          description: Whether the account is archived
+        limits:
+          description: The limits the user
+          allOf:
+          - $ref: '#/components/schemas/AccountLimits'
+      example:
+        parentAccountId: 0.8008281904610115
+        archived: 5.962133916683182
+        code: code
+        address: ""
+        secondaryContactId: 1.4658129805029452
+        name: name
+        id: 1
+        fiscalNumber: fiscalNumber
+        limits: ""
+        primaryContactId: 6.027456183070403
+    CreateAccountDto:
+      type: object
+      properties:
+        parentAccountId:
+          type: number
+          description: The ID of the parent account
+        name:
+          type: string
+          description: The name of the account
+        code:
+          type: string
+          description: The code of the account
+        fiscalNumber:
+          type: string
+          description: The fiscal number of the account
+        address:
+          description: The address of the account
+          allOf:
+          - $ref: '#/components/schemas/AccountAddressDto'
+    UpdateAccountDto:
+      type: object
+      properties:
+        parentAccountId:
+          type: number
+          description: The ID of the parent account
+        name:
+          type: string
+          description: The name of the account
+        code:
+          type: string
+          description: The code of the account
+        fiscalNumber:
+          type: string
+          description: The fiscal number of the account
+        address:
+          description: The address of the account
+          allOf:
+          - $ref: '#/components/schemas/AccountAddressDto'
+        primaryContactId:
+          type: number
+          description: The user ID of the primary contact
+        secondaryContactId:
+          type: number
+          description: The user ID of the secondary contact
+    AccountLimitsDto:
+      type: object
+      properties:
+        userResourceServerTypeNameToMaxCount:
+          type: object
+        wanSubnetPrefixSizeToMaxCount:
+          type: object
+      example:
+        wanSubnetPrefixSizeToMaxCount: {}
+        userResourceServerTypeNameToMaxCount: {}
+    UserLimits:
+      type: object
+      properties: {}
+    UserDto:
+      required:
+      - accessLevel
+      - accountId
+      - archived
+      - authenticatorCreatedTimestamp
+      - authenticatorMustChange
+      - blocked
+      - brand
+      - createdTimestamp
+      - customPrices
+      - displayName
+      - email
+      - emailStatus
+      - excludeFromReports
+      - experimentalTags
+      - externalIds
+      - franchise
+      - guiSettings
+      - id
+      - isBillable
+      - isBrandManager
+      - isDatastorePublisher
+      - isSuspended
+      - isTestAccount
+      - isTestingMode
+      - language
+      - lastLoginTimestamp
+      - lastLoginType
+      - limits
+      - passwordChangeRequired
+      - permissions
+      - planType
+      - promotionTags
+      - provider
+      type: object
+      properties:
+        id:
+          type: number
+          description: User ID
+        franchise:
+          type: string
+          description: The franchise of the user
+        displayName:
+          type: string
+          description: The display name of the user
+        email:
+          type: string
+          description: The email address of the user
+        authenticatorMustChange:
+          type: number
+          description: Whether the user must change authenticator
+        authenticatorCreatedTimestamp:
+          type: string
+          description: The timestamp when the authenticator was created
+        createdTimestamp:
+          type: string
+          description: The timestamp when the user was created
+        lastLoginTimestamp:
+          type: string
+          description: The timestamp when the user logged in last
+        lastLoginType:
+          type: string
+          description: The last login type of the user
+        blocked:
+          type: number
+          description: Whether the user is blocked
+        emailStatus:
+          type: string
+          description: The email status of the user
+        passwordChangeRequired:
+          type: number
+          description: Whether the user must change password
+        accessLevel:
+          type: string
+          description: The access level of the user
+        isBillable:
+          type: number
+          description: Whether the user is billable
+        isTestingMode:
+          type: number
+          description: Whether the user is in testing mode
+        isSuspended:
+          type: number
+          description: Whether the user is suspended
+        language:
+          type: string
+          description: The language of the user
+        infrastructureIdDefault:
+          type: number
+          description: The default infrastructure ID of the user
+        guiSettings:
+          type: object
+          description: The GUI settings of the user
+        promotionTags:
+          type: object
+          description: The promotion tags of the user
+        experimentalTags:
+          type: object
+          description: The experimental tags of the user
+        customPrices:
+          type: object
+          description: The custom prices for the user
+        permissions:
+          type: object
+          description: The permissions of the user
+        externalIds:
+          type: object
+          description: The external IDs of the user
+        limits:
+          description: The limits of the user
+          allOf:
+          - $ref: '#/components/schemas/UserLimits'
+        excludeFromReports:
+          type: number
+          description: Whether the user is excluded from reports
+        isTestAccount:
+          type: number
+          description: Whether the user is a test account
+        planType:
+          type: string
+          description: The plan type of the user
+          default: vanilla
+        brand:
+          type: string
+          description: The brand of the user
+          default: default
+        isBrandManager:
+          type: number
+          description: Whether the user is a brand manager
+        isDatastorePublisher:
+          type: number
+          description: Whether the user is a datastore publisher
+        provider:
+          type: string
+          description: The provider of the user
+          default: default
+        archived:
+          type: number
+          description: Whether the user is a archived
+        accountId:
+          type: number
+          description: The account ID of the user
+      example:
+        authenticatorCreatedTimestamp: authenticatorCreatedTimestamp
+        isTestingMode: 2.3021358869347655
+        franchise: franchise
+        passwordChangeRequired: 5.962133916683182
+        promotionTags: {}
+        displayName: displayName
+        customPrices: {}
+        language: language
+        infrastructureIdDefault: 9.301444243932576
+        authenticatorMustChange: 6.027456183070403
+        isTestAccount: 2.027123023002322
+        archived: 1.2315135367772556
+        blocked: 1.4658129805029452
+        provider: default
+        permissions: {}
+        isBrandManager: 4.145608029883936
+        id: 0.8008281904610115
+        isDatastorePublisher: 7.386281948385884
+        brand: default
+        email: email
+        limits: ""
+        lastLoginType: lastLoginType
+        experimentalTags: {}
+        isSuspended: 7.061401241503109
+        planType: vanilla
+        accessLevel: accessLevel
+        createdTimestamp: createdTimestamp
+        externalIds: {}
+        isBillable: 5.637376656633329
+        lastLoginTimestamp: lastLoginTimestamp
+        excludeFromReports: 3.616076749251911
+        accountId: 1.0246457001441578
+        emailStatus: emailStatus
+        guiSettings: {}
+    CreateUserDto:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: The display name of the user
+        email:
+          type: string
+          description: The email address of the user
+        accessLevel:
+          type: string
+          description: The access level of the user
+        password:
+          type: string
+          description: The password of the user
+        redirectUrl:
+          type: string
+          description: The redirect URL for the user
+        AESKey:
+          type: string
+          description: The AES key for the user
+        emailVerified:
+          type: boolean
+          description: Whether the user has verified their email address
+          default: false
+        createWithAccount:
+          type: boolean
+          description: Whether an account should be created with the user
+          default: false
+        accountId:
+          type: number
+          description: The account ID of the user
+    UserUpdatePasswordDto:
+      required:
+      - newPassword
+      - oldPassword
+      type: object
+      properties:
+        newPassword:
+          type: string
+          description: The new password of the user
+        oldPassword:
+          type: string
+          description: The old password of the user
+    UserDelegateDto:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The user delegate e-mail
+        createIfNotExists:
+          type: boolean
+          description: Whether to create the delegate if it does not exist. Can only
+            be used when creating a new delegate.
+          default: false
+        removeDelegate:
+          type: boolean
+          description: Whether to remove the delegate. Cannot be used when creating
+            a new delegate.
+          default: false
+    UserSuspendDto:
+      type: object
+      properties:
+        suspendReason:
+          type: string
+          description: The suspend reason of the user
+        suspendReasonPublicComment:
+          type: string
+          description: The public comment for the suspension
+        suspendReasonPrivateComment:
+          type: string
+          description: The private comment for the suspension
+        removeSuspension:
+          type: boolean
+          description: Whether to remove the suspension
+          default: false
+    UserPromotionDto:
+      type: object
+      properties:
+        promotion:
+          type: string
+          description: The promotion for the user
+        removePromotion:
+          type: boolean
+          description: Whether to remove the promotion
+          default: false
+    UserExperimentalTagDto:
+      type: object
+      properties:
+        experimentalTag:
+          type: string
+          description: The experimental tag for the user
+        removeExperimentalTag:
+          type: boolean
+          description: Whether to remove the experimental tag
+          default: false
+    UserResourcePermissionDto:
+      type: object
+      properties:
+        resourcePermission:
+          type: string
+          description: The resource permission for the user
+        enablePermission:
+          type: boolean
+          description: Whether to enable the permission
+    UserResourcePermissionsDto:
+      type: object
+      properties:
+        specialPermissions:
+          type: array
+          description: The new special permissions of the user.
+          items:
+            $ref: '#/components/schemas/UserResourcePermissionDto'
+        passwordRevealPermissions:
+          type: array
+          description: The new password reveal permissions of the user.
+          items:
+            $ref: '#/components/schemas/UserResourcePermissionDto'
+    UpdateUserDto:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: The new display name of the user
+        password:
+          description: The new password of the user
+          allOf:
+          - $ref: '#/components/schemas/UserUpdatePasswordDto'
+        email:
+          type: string
+          description: The new login e-mail of the user
+        redirectUrl:
+          type: string
+          description: The redirect URL for the user
+        AESKey:
+          type: string
+          description: The AES key for the user
+        emailStatus:
+          type: string
+          description: The new e-mail status of the user
+        language:
+          type: string
+          description: The new language of the user
+        brand:
+          type: string
+          description: The new brand of the user
+        isBrandManager:
+          type: boolean
+          description: The new brand manager status of the user
+        delegates:
+          type: array
+          description: The new user delegates of the user.
+          items:
+            $ref: '#/components/schemas/UserDelegateDto'
+        isBlocked:
+          type: boolean
+          description: The new blocked status of the user
+        suspension:
+          description: The new suspension status of the user
+          allOf:
+          - $ref: '#/components/schemas/UserSuspendDto'
+        accessLevel:
+          type: string
+          description: The new access level of the user
+        promotions:
+          type: array
+          description: The new promotions of the user.
+          items:
+            $ref: '#/components/schemas/UserPromotionDto'
+        experimentalTags:
+          type: array
+          description: The new experimental tags of the user.
+          items:
+            $ref: '#/components/schemas/UserExperimentalTagDto'
+        customPrices:
+          type: object
+          description: The new custom prices of the user
+        permissions:
+          description: The new permissions of the user.
+          allOf:
+          - $ref: '#/components/schemas/UserResourcePermissionsDto'
+        isTestAccount:
+          type: boolean
+          description: Whether the user account is a test one.
+        isBillable:
+          type: boolean
+          description: Whether the user account is billable.
+    ChangeUserAccountDto:
+      required:
+      - newAccountId
+      type: object
+      properties:
+        newAccountId:
+          type: number
+          description: The ID of the parent account
+    UserLimitsDto:
+      type: object
+      properties:
+        containerArrayContainersMaxCount:
+          type: number
+        containerArrayContainersMinCount:
+          type: number
+        containerArrayDriveArraysMaxCount:
+          type: number
+        containerArrayDriveArraysMinCount:
+          type: number
+        containerArraySecretsMaxCount:
+          type: number
+        containerPlatformContainerArrayMaxCount:
+          type: number
+        driveArrayDrivesMaxCount:
+          type: number
+        driveArrayDrivesMinCount:
+          type: number
+        driveMaxSizeMbytes:
+          type: number
+        driveMinSizeMbytes:
+          type: number
+        infrastructureActiveMaxCount:
+          type: number
+        infrastructureClusterMaxCount:
+          type: number
+        infrastructureClusterMysqlAllowed:
+          type: boolean
+        infrastructureContainerClusterKafkaAllowed:
+          type: boolean
+        infrastructureContainerClusterMaxCount:
+          type: number
+        infrastructureContainerClusterPostgresqlAllowed:
+          type: boolean
+        infrastructureContainerClusterSparkArrayAllowed:
+          type: boolean
+        infrastructureContainerClusterSparksqlAllowed:
+          type: boolean
+        infrastructureContainerClusterStreamsetsAllowed:
+          type: boolean
+        infrastructureContainerClusterZookeeperAllowed:
+          type: boolean
+        infrastructureContainerClusterZoomdataAllowed:
+          type: boolean
+        infrastructureContainerPlatformMaxCount:
+          type: number
+        infrastructureDataLakeEnabled:
+          type: boolean
+        infrastructureDataLakeMaxCount:
+          type: number
+        infrastructureDeletedMaxCount:
+          type: number
+        infrastructureDriveArrayMaxCount:
+          type: number
+        infrastructureInactiveMaxCount:
+          type: number
+        infrastructureInstanceArrayMaxCount:
+          type: number
+        infrastructureLanMaxCount:
+          type: number
+        infrastructureSanMaxCount:
+          type: number
+        infrastructureSharedDriveMaxCount:
+          type: number
+        infrastructureVolumeTemplateExperimentalAllowed:
+          type: boolean
+        infrastructureWanMaxCount:
+          type: number
+        instanceArrayInstancesMaxCount:
+          type: number
+        instanceArrayInstancesMinCount:
+          type: number
+        infrastructureVmInstanceGroupMaxCount:
+          type: number
+        vmInstanceGroupVmInstancesMaxCount:
+          type: number
+        vmInstanceMaxDiskSizeMbytes:
+          type: number
+        ownerIsBillable:
+          type: boolean
+        serverTypeReservationMaxCount:
+          type: number
+        serverTypeReservationMaxQuantity:
+          type: number
+        sharedDriveMaxSizeMbytes:
+          type: number
+        sharedDriveMinSizeMbytes:
+          type: number
+        allowVlanOverrides:
+          type: boolean
+        allowNetworkProfiles:
+          type: boolean
+        showOperatingSystemImagesTab:
+          type: boolean
+        showTemplateAssetsView:
+          type: boolean
+        storageTypes:
+          type: array
+          items:
+            type: string
+        thresholdMaxCount:
+          type: number
+        userResourceIscsiStorageSpaceMaxGbytes:
+          type: number
+        userResourceServersMaxCount:
+          type: number
+        userResourceServerTypeNameToMaxCount:
+          type: object
+        userSshKeysCountMax:
+          type: number
+        wanSubnetIpv4MaxCount:
+          type: number
+        wanSubnetIpv6MaxCount:
+          type: number
+        wanSubnetPrefixSizeToMaxCount:
+          type: object
+        showLegacyPages:
+          type: boolean
+        showExperimentalPages:
+          type: boolean
+        showDiagramAppsGlobal:
+          type: boolean
+        showDiagramAppClusterTypeCloudera:
+          type: boolean
+        showDiagramAppClusterTypeCouchbase:
+          type: boolean
+        showDiagramAppClusterTypeDatameer:
+          type: boolean
+        showDiagramAppClusterTypeDatastax:
+          type: boolean
+        showDiagramAppClusterTypeElasticsearch:
+          type: boolean
+        showDiagramAppClusterTypeExasol:
+          type: boolean
+        showDiagramAppClusterTypeHortonworks:
+          type: boolean
+        showDiagramAppClusterTypeKubernetes:
+          type: boolean
+        showDiagramAppClusterTypeMapr:
+          type: boolean
+        showDiagramAppClusterTypeMesos:
+          type: boolean
+        showDiagramAppClusterTypeMysqlPercona:
+          type: boolean
+        showDiagramAppClusterTypeSplunk:
+          type: boolean
+        showDiagramAppClusterTypeVmwareVsphere:
+          type: boolean
+        showDiagramAppClusterTypeVmwareVcf:
+          type: boolean
+        showDiagramAppClusterTypeKubernetesEksa:
+          type: boolean
+        showDiagramVmInstanceGroups:
+          type: boolean
+        showEliChatBot:
+          type: boolean
+        enableCustomRaidConfiguration:
+          type: boolean
+        enableCustomSubnets:
+          type: boolean
+        showStackTrace:
+          type: boolean
+        allowedNetworkProfiles:
+          type: object
+      example:
+        driveArrayDrivesMaxCount: 7.061401241503109
+        infrastructureLanMaxCount: 5.025004791520295
+        sharedDriveMaxSizeMbytes: 6.778324963048013
+        vmInstanceMaxDiskSizeMbytes: 6.965117697638846
+        showDiagramAppClusterTypeKubernetesEksa: true
+        containerArraySecretsMaxCount: 5.637376656633329
+        showDiagramVmInstanceGroups: true
+        infrastructureSanMaxCount: 9.965781217890562
+        showDiagramAppClusterTypeMysqlPercona: true
+        vmInstanceGroupVmInstancesMaxCount: 3.5571952270680973
+        userSshKeysCountMax: 3.0937452626664474
+        infrastructureContainerClusterZookeeperAllowed: true
+        showDiagramAppClusterTypeDatastax: true
+        driveMaxSizeMbytes: 3.616076749251911
+        showDiagramAppClusterTypeSplunk: true
+        enableCustomRaidConfiguration: true
+        infrastructureContainerClusterSparksqlAllowed: true
+        infrastructureWanMaxCount: 6.683562403749608
+        allowVlanOverrides: true
+        showDiagramAppClusterTypeVmwareVcf: true
+        infrastructureClusterMaxCount: 7.386281948385884
+        infrastructureVolumeTemplateExperimentalAllowed: true
+        infrastructureContainerClusterMaxCount: 1.2315135367772556
+        showDiagramAppClusterTypeMapr: true
+        infrastructureContainerClusterZoomdataAllowed: true
+        infrastructureVmInstanceGroupMaxCount: 6.438423552598547
+        showDiagramAppClusterTypeCouchbase: true
+        driveMinSizeMbytes: 2.027123023002322
+        infrastructureActiveMaxCount: 4.145608029883936
+        containerArrayContainersMinCount: 6.027456183070403
+        showDiagramAppClusterTypeCloudera: true
+        showStackTrace: true
+        containerArrayContainersMaxCount: 0.8008281904610115
+        ownerIsBillable: true
+        infrastructureDataLakeEnabled: true
+        sharedDriveMinSizeMbytes: 6.878052220127876
+        userResourceServersMaxCount: 3.353193347011243
+        wanSubnetIpv4MaxCount: 7.143538047012306
+        showDiagramAppClusterTypeExasol: true
+        driveArrayDrivesMinCount: 9.301444243932576
+        allowNetworkProfiles: true
+        showOperatingSystemImagesTab: true
+        wanSubnetIpv6MaxCount: 0.8851374739011653
+        showDiagramAppsGlobal: true
+        infrastructureInstanceArrayMaxCount: 4.965218492984954
+        infrastructureDriveArrayMaxCount: 7.457744773683766
+        wanSubnetPrefixSizeToMaxCount: {}
+        containerPlatformContainerArrayMaxCount: 2.3021358869347655
+        infrastructureContainerClusterKafkaAllowed: true
+        infrastructureContainerClusterSparkArrayAllowed: true
+        userResourceIscsiStorageSpaceMaxGbytes: 6.704019297950036
+        infrastructureContainerClusterStreamsetsAllowed: true
+        instanceArrayInstancesMinCount: 9.018348186070783
+        infrastructureSharedDriveMaxCount: 9.369310271410669
+        showDiagramAppClusterTypeMesos: true
+        infrastructureDataLakeMaxCount: 1.4894159098541704
+        showExperimentalPages: true
+        infrastructureContainerClusterPostgresqlAllowed: true
+        showEliChatBot: true
+        showDiagramAppClusterTypeHortonworks: true
+        storageTypes:
+        - storageTypes
+        - storageTypes
+        showDiagramAppClusterTypeKubernetes: true
+        userResourceServerTypeNameToMaxCount: {}
+        enableCustomSubnets: true
+        instanceArrayInstancesMaxCount: 8.762042012749001
+        showLegacyPages: true
+        infrastructureContainerPlatformMaxCount: 1.0246457001441578
+        showDiagramAppClusterTypeVmwareVsphere: true
+        infrastructureClusterMysqlAllowed: true
+        containerArrayDriveArraysMinCount: 5.962133916683182
+        showTemplateAssetsView: true
+        showDiagramAppClusterTypeDatameer: true
+        thresholdMaxCount: 5.944895607614016
+        serverTypeReservationMaxQuantity: 2.8841621266687802
+        containerArrayDriveArraysMaxCount: 1.4658129805029452
+        infrastructureInactiveMaxCount: 1.1730742509559433
+        showDiagramAppClusterTypeElasticsearch: true
+        serverTypeReservationMaxCount: 1.284659006116532
+        infrastructureDeletedMaxCount: 6.84685269835264
+        allowedNetworkProfiles: {}
+    AuthenticationProvider:
+      required:
+      - domains
+      - enabled
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: Authentication provider name
+          example: ldap
+        enabled:
+          type: boolean
+          description: True if the provider is enabled
+        domains:
+          type: array
+          description: Permitted domains
+          items:
+            type: string
+      example:
+        name: ldap
+        domains:
+        - domains
+        - domains
+        enabled: true
+    AuthenticationProviderUpdate:
+      required:
+      - domains
+      - enabled
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: True if the provider is enabled
+        domains:
+          type: array
+          description: Permitted domains
+          items:
+            type: string
+    Link:
+      required:
+      - href
+      - rel
+      type: object
+      properties:
+        rel:
+          type: string
+          description: The relation
+          example: self
+        href:
+          type: string
+          description: The link URI
+          example: /api/v2/path/to/resource
+      example:
+        rel: self
+        href: /api/v2/path/to/resource
+    ResourcePoolStatistics:
+      type: object
+      properties: {}
+    ResourcePoolWithStatsDto:
+      required:
+      - resource_pool_created_timestamp
+      - resource_pool_description
+      - resource_pool_id
+      - resource_pool_label
+      - resource_pool_updated_timestamp
+      - statistics
+      type: object
+      properties:
+        resource_pool_id:
+          type: number
+          description: Resource Pool ID
+        resource_pool_label:
+          type: string
+          description: Label of the Resource Pool
+        resource_pool_description:
+          type: string
+          description: Description of the Resource Pool
+        resource_pool_created_timestamp:
+          type: string
+          description: Resource Pool Created Timestamp
+        resource_pool_updated_timestamp:
+          type: string
+          description: Resource Pool Updated Timestamp
+        statistics:
+          description: "Resource Pool statistics for users, servers, and subnet pools"
+          allOf:
+          - $ref: '#/components/schemas/ResourcePoolStatistics'
+      example:
+        resource_pool_updated_timestamp: resource_pool_updated_timestamp
+        resource_pool_created_timestamp: resource_pool_created_timestamp
+        resource_pool_id: 0.8008281904610115
+        resource_pool_description: resource_pool_description
+        resource_pool_label: resource_pool_label
+        statistics: ""
+    ResourcePoolDto:
+      required:
+      - resource_pool_description
+      - resource_pool_id
+      - resource_pool_label
+      type: object
+      properties:
+        resource_pool_id:
+          type: number
+          description: Resource Pool ID
+        resource_pool_label:
+          type: string
+          description: Label of the Resource Pool
+        resource_pool_description:
+          type: string
+          description: Description of the Resource Pool
+      example:
+        resource_pool_id: 0.8008281904610115
+        resource_pool_description: resource_pool_description
+        resource_pool_label: resource_pool_label
+    CreateResourcePoolDto:
+      required:
+      - resource_pool_description
+      - resource_pool_label
+      type: object
+      properties:
+        resource_pool_label:
+          type: string
+          description: Label of the Resource Pool
+        resource_pool_description:
+          type: string
+          description: Description of the Resource Pool
+    UpdateResourcePoolDto:
+      required:
+      - resource_pool_description
+      - resource_pool_label
+      type: object
+      properties:
+        resource_pool_label:
+          type: string
+          description: Label of the Resource Pool
+        resource_pool_description:
+          type: string
+          description: Description of the Resource Pool
+    UpdateVMDto:
+      type: object
+      properties:
+        comments:
+          type: number
+          description: VM comments.
+        tags:
+          type: array
+          description: Tags for the VM. This is a JSON object.
+          items:
+            type: string
+    VMDto:
+      required:
+      - administrationState
+      - allocationTimestamp
+      - comments
+      - cpuCores
+      - createdTimestamp
+      - datacenterName
+      - diskSizeGB
+      - disks
+      - host
+      - hosts
+      - id
+      - infrastructureId
+      - instanceId
+      - name
+      - poolId
+      - powerState
+      - powerStateLastUpdatedTimestamp
+      - ramGB
+      - siteId
+      - tags
+      - typeId
+      - userEmail
+      - userId
+      - vmInstanceId
+      - vncPassword
+      - vncPort
+      type: object
+      properties:
+        id:
+          type: number
+          description: VM ID
+          example: 1
+        name:
+          type: string
+          description: Name of the VM
+        siteId:
+          type: number
+          description: Id of the site for the VM
+        datacenterName:
+          type: string
+          description: Datacenter of the VM
+        infrastructureId:
+          type: number
+          description: ID of the infrastructure where this VM is deployed
+        userId:
+          type: number
+          description: ID of the user that owns this VM
+        userEmail:
+          type: string
+          description: Email of the user that owns this VM
+        instanceId:
+          type: number
+          description: ID of the instance where this VM is deployed
+        vmInstanceId:
+          type: number
+          description: ID of the VM instance where this VM is deployed
+        host:
+          type: string
+          description: Name of the host
+        hosts:
+          type: array
+          description: List of hosts
+          items:
+            type: string
+        cpuCores:
+          type: number
+          description: Number of CPU cores for the VM
+          example: 2
+        ramGB:
+          type: number
+          description: RAM in GB for the VM
+          example: 2
+        diskSizeGB:
+          type: number
+          description: Disk size in GB for the VM
+          example: 2
+        typeId:
+          type: number
+          description: The id of the VM Type. This is a number.
+          example: 1
+        poolId:
+          type: number
+          description: The id of the VM Pool. This is a number.
+          example: 1
+        administrationState:
+          type: object
+          description: The administration state of the VM.
+        comments:
+          type: number
+          description: VM comments.
+        powerState:
+          type: object
+          description: The power state of the VM.
+        powerStateLastUpdatedTimestamp:
+          type: string
+          description: Timestamp when the VM power state was last updated.
+        createdTimestamp:
+          type: string
+          description: Timestamp when the VM was created
+        allocationTimestamp:
+          type: string
+          description: Timestamp when the VM was allocated
+        tags:
+          type: array
+          description: Tags for the VM.
+          items:
+            type: string
+        vncPort:
+          type: number
+          description: The port number for the VNC server.
+          example: 5900
+        vncPassword:
+          type: string
+          description: The password for the VNC server.
+        disks:
+          type: array
+          description: The disks of the VM.
+          items:
+            $ref: '#/components/schemas/VMDiskDto'
+      example:
+        allocationTimestamp: allocationTimestamp
+        datacenterName: datacenterName
+        disks:
+        - sizeGB: 100
+          vmId: 1
+          datastore: local
+          id: 1
+        - sizeGB: 100
+          vmId: 1
+          datastore: local
+          id: 1
+        ramGB: 2
+        powerStateLastUpdatedTimestamp: powerStateLastUpdatedTimestamp
+        instanceId: 5.962133916683182
+        powerState: {}
+        host: host
+        userEmail: userEmail
+        id: 1
+        diskSizeGB: 2
+        vncPort: 5900
+        comments: 2.3021358869347655
+        hosts:
+        - hosts
+        - hosts
+        createdTimestamp: createdTimestamp
+        userId: 1.4658129805029452
+        tags:
+        - tags
+        - tags
+        vmInstanceId: 5.637376656633329
+        vncPassword: vncPassword
+        infrastructureId: 6.027456183070403
+        cpuCores: 2
+        administrationState: {}
+        name: name
+        poolId: 1
+        siteId: 0.8008281904610115
+        typeId: 1
+    VMPoolDto:
+      required:
+      - certificate
+      - createdTimestamp
+      - datacenterName
+      - description
+      - externalIdentifier
+      - freeRamGB
+      - freeSpaceGB
+      - id
+      - inMaintenance
+      - isExperimental
+      - managementHost
+      - name
+      - siteId
+      - status
+      - tags
+      - totalRamGB
+      - totalSpaceGB
+      - type
+      - updatedTimestamp
+      - usedRamGB
+      - usedSpaceGB
+      type: object
+      properties:
+        id:
+          type: number
+          description: VM Pool ID
+          example: 1
+        siteId:
+          type: number
+          description: Id of the site for the VM
+        datacenterName:
+          type: string
+          description: Datacenter of the VM
+        managementHost:
+          type: string
+          description: Host of the VM Pool
+        name:
+          type: string
+          description: Name of the VM Pool
+        description:
+          type: string
+          description: Description of the VM Pool
+        type:
+          type: string
+          description: Type of the VM Pool
+        certificate:
+          type: string
+          description: Certificate of the VM Pool
+        status:
+          type: string
+          description: Status of the VM Pool
+        externalIdentifier:
+          type: string
+          description: External identifier of the VM Pool
+        totalRamGB:
+          type: number
+          description: Number of total RAM GB in the VM Pool
+        usedRamGB:
+          type: number
+          description: Number of used RAM GB in the VM Pool
+        freeRamGB:
+          type: number
+          description: Number of free RAM GB in the VM Pool
+        totalSpaceGB:
+          type: number
+          description: Number of total disk space GB in the VM Pool
+        usedSpaceGB:
+          type: number
+          description: Number of used disk space GB in the VM Pool
+        freeSpaceGB:
+          type: number
+          description: Number of free disk space GB in the VM Pool
+        inMaintenance:
+          type: number
+          description: "Flag to indicate if the VM Pool is in maintenance mode. 1\
+            \ for true, 0 for false. Default is 0."
+          example: 1
+        isExperimental:
+          type: number
+          description: "Flag to indicate if the VM Pool is experimental. 1 for true,\
+            \ 0 for false. Default is 0."
+          example: 1
+        createdTimestamp:
+          type: string
+          description: Timestamp when the VM Pool was created
+        updatedTimestamp:
+          type: string
+          description: Timestamp when the VM Pool was updated
+        tags:
+          type: array
+          description: Tags for the VM Pool.
+          items:
+            type: string
+      example:
+        totalRamGB: 6.027456183070403
+        datacenterName: datacenterName
+        usedRamGB: 1.4658129805029452
+        inMaintenance: 1
+        managementHost: managementHost
+        usedSpaceGB: 2.3021358869347655
+        freeSpaceGB: 7.061401241503109
+        freeRamGB: 5.962133916683182
+        createdTimestamp: createdTimestamp
+        certificate: certificate
+        description: description
+        type: type
+        updatedTimestamp: updatedTimestamp
+        tags:
+        - tags
+        - tags
+        isExperimental: 1
+        name: name
+        siteId: 0.8008281904610115
+        externalIdentifier: externalIdentifier
+        id: 1
+        totalSpaceGB: 5.637376656633329
+        status: status
+    CreateVMPoolDto:
+      type: object
+      properties:
+        siteId:
+          type: number
+          description: Id of the site for the VM Pool
+        managementHost:
+          type: string
+          description: Host of the VM Pool
+        managementPort:
+          type: number
+          description: Port of the VM Pool
+        name:
+          type: string
+          description: Name of the VM Pool
+        description:
+          type: string
+          description: Description of the VM Pool
+        type:
+          type: string
+          description: Type of the VM Pool
+          example: incus
+        certificate:
+          type: string
+          description: Certificate of the VM Pool
+        privateKey:
+          type: string
+          description: Private key of the VM Pool
+    UpdateVMPoolDto:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Datacenter of the VM Pool
+        managementHost:
+          type: string
+          description: Host of the VM Pool
+        managementPort:
+          type: number
+          description: Port of the VM Pool
+        certificate:
+          type: string
+          description: Certificate of the VM Pool
+        privateKey:
+          type: string
+          description: Private key of the VM Pool
+        status:
+          type: string
+          description: Status of the VM Pool
+        inMaintenance:
+          type: number
+          description: "Flag to indicate if the VM Pool is in maintenance mode. 1\
+            \ for true, 0 for false. Default is 0."
+          example: 0
+        isExperimental:
+          type: number
+          description: "Flag to indicate if the VM Pool is experimental. 1 for true,\
+            \ 0 for false. Default is 0."
+          example: 0
+        tags:
+          type: array
+          description: Tags for the VM Pool.
+          items:
+            type: string
+    VMPoolHostsDto:
+      required:
+      - address
+      - architecture
+      - database
+      - failureDomain
+      - freeRamGB
+      - freeSpaceGB
+      - id
+      - name
+      - poolId
+      - port
+      - roles
+      - status
+      - totalRamGB
+      - totalSpaceGB
+      - updatedTimestamp
+      - usedRamGB
+      - usedSpaceGB
+      type: object
+      properties:
+        id:
+          type: number
+          description: VM Pool Host ID
+          example: 1
+        name:
+          type: string
+          description: Name of the VM Pool Host
+        address:
+          type: string
+          description: Address of the VM Pool Host
+        port:
+          type: number
+          description: Port of the VM Pool Host
+          example: 1
+        poolId:
+          type: number
+          description: VM Pool ID
+          example: 1
+        roles:
+          type: array
+          description: Roles of the VM Pool Host
+          items:
+            type: string
+        failureDomain:
+          type: string
+          description: Failure domain of the VM Pool Host
+        architecture:
+          type: string
+          description: Architecture of the VM Pool Host
+        database:
+          type: number
+          description: Flag specifying if the VM Pool Host is database
+        status:
+          type: string
+          description: Status of the VM Pool Host
+        description:
+          type: string
+          description: Description of the VM Pool Host
+        totalRamGB:
+          type: number
+          description: Total RAM GB of the VM Pool Host
+        freeRamGB:
+          type: number
+          description: Free RAM GB of the VM Pool Host
+        usedRamGB:
+          type: number
+          description: Used RAM GB of the VM Pool Host
+        totalSpaceGB:
+          type: number
+          description: Total Space GB of the VM Pool Host
+        usedSpaceGB:
+          type: number
+          description: Used Space GB of the VM Pool Host
+        freeSpaceGB:
+          type: number
+          description: Free Space GB of the VM Pool Host
+        updatedTimestamp:
+          type: string
+          description: Timestamp when the VM Pool Host was updated
+      example:
+        totalRamGB: 6.027456183070403
+        address: address
+        usedRamGB: 5.962133916683182
+        failureDomain: failureDomain
+        usedSpaceGB: 2.3021358869347655
+        freeSpaceGB: 7.061401241503109
+        roles:
+        - roles
+        - roles
+        freeRamGB: 1.4658129805029452
+        description: description
+        updatedTimestamp: updatedTimestamp
+        database: 0.8008281904610115
+        port: 1
+        name: name
+        poolId: 1
+        id: 1
+        totalSpaceGB: 5.637376656633329
+        architecture: architecture
+        status: status
+    VMPoolHostInterfacesDto:
+      required:
+      - fabric
+      - hostId
+      - id
+      - macAddress
+      - name
+      type: object
+      properties:
+        id:
+          type: number
+          description: VM Pool Host Interface ID
+          example: 1
+        hostId:
+          type: number
+          description: VM Pool Host ID
+          example: 1
+        name:
+          type: string
+          description: Name of the VM Pool Host Interface
+        macAddress:
+          type: string
+          description: MAC Address of the VM Pool Host Interface
+        fabric:
+          type: string
+          description: Fabric of the VM Pool Host Interface
+          enum:
+          - wan
+          - san
+      example:
+        macAddress: macAddress
+        fabric: wan
+        name: name
+        hostId: 1
+        id: 1
+    UpdateVMPoolClusterHostInterfaceDto:
+      type: object
+      properties:
+        fabric:
+          type: string
+          description: Fabric of the switch interface
+        switchId:
+          type: number
+          description: Id of the switch
+        switchInterfaceName:
+          type: number
+          description: Name of the switch interface
+    VMDiskDto:
+      required:
+      - datastore
+      - id
+      - sizeGB
+      - vmId
+      type: object
+      properties:
+        id:
+          type: number
+          description: VM ID
+          example: 1
+        vmId:
+          type: number
+          description: VM ID
+          example: 1
+        datastore:
+          type: string
+          description: Name of the VM Disk datastore
+          example: local
+        sizeGB:
+          type: number
+          description: Size of the VM Disk in GB
+          example: 100
+      example:
+        sizeGB: 100
+        vmId: 1
+        datastore: local
+        id: 1
+    VMTypeDto:
+      required:
+      - cpuCores
+      - displayName
+      - forUnmanagedVMsOnly
+      - id
+      - isExperimental
+      - label
+      - name
+      - ramGB
+      - tags
+      type: object
+      properties:
+        id:
+          type: number
+          description: VM Type ID
+          example: 1
+        name:
+          type: string
+          description: Name of the VM Pool type
+        displayName:
+          type: string
+          description: Display name of the VM Pool type
+        label:
+          type: string
+          description: Label of the VM Pool type
+        cpuCores:
+          type: number
+          description: Number of CPU cores for the VM Pool type
+          example: 2
+        ramGB:
+          type: number
+          description: RAM in GB for the VM Pool type
+          example: 2
+        isExperimental:
+          type: number
+          description: "Flag to indicate if the VM Pool is experimental. 1 for true,\
+            \ 0 for false. Default is 0."
+          example: 1
+        tags:
+          type: array
+          description: Tags for the VM Type.
+          items:
+            type: string
+        forUnmanagedVMsOnly:
+          type: number
+          description: "Flag to indicate if the VM Pool is for unmanaged VMs only.\
+            \ 1 for true, 0 for false. Default is 0."
+          example: 0
+      example:
+        forUnmanagedVMsOnly: 0
+        isExperimental: 1
+        cpuCores: 2
+        displayName: displayName
+        name: name
+        id: 1
+        label: label
+        ramGB: 2
+        tags:
+        - tags
+        - tags
+    CreateVMTypeDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the VM type
+        displayName:
+          type: string
+          description: Display name of the VM type
+        label:
+          type: string
+          description: Label of the VM type
+        cpuCores:
+          type: number
+          description: Number of CPU cores for the VM type
+          example: 2
+        ramGB:
+          type: number
+          description: RAM in GB for the VM type
+          example: 2
+        isExperimental:
+          type: number
+          description: "Flag to indicate if the VM Type is experimental. 1 for true,\
+            \ 0 for false. Default is 0."
+          example: 0
+        tags:
+          type: array
+          description: Tags for the VM Type. This is a JSON object.
+          items:
+            type: string
+        forUnmanagedVMsOnly:
+          type: number
+          description: "Flag to indicate if the VM Type is for unmanaged VMs only.\
+            \ 1 for true, 0 for false. Default is 0."
+          example: 0
+    UpdateVMTypeDto:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: Display name of the VM type
+        label:
+          type: string
+          description: Label of the VM type
+        tags:
+          type: array
+          description: Tags for the VM Type. This is a JSON object.
+          items:
+            type: string
+        isExperimental:
+          type: number
+          description: "Flag to indicate if the VM Type is experimental. 1 for true,\
+            \ 0 for false. Default is 0."
+          example: 0
+        forUnmanagedVMsOnly:
+          type: number
+          description: "Flag to indicate if the VM Type is for unmanaged VMs only.\
+            \ 1 for true, 0 for false. Default is 0."
+          example: 0
+    InfrastructureDeployShutdownOptions:
+      required:
+      - attemptSoftShutdown
+      - forceShutdown
+      - softShutdownTimeout
+      type: object
+      properties:
+        attemptSoftShutdown:
+          type: boolean
+          description: Attempt soft shutdown
+        softShutdownTimeout:
+          type: number
+          description: Soft shutdown timeout in seconds
+        forceShutdown:
+          type: boolean
+          description: Force shutdown
+    InfrastructureDeployOptions:
+      required:
+      - allowDataLoss
+      - shutdownOptions
+      type: object
+      properties:
+        allowDataLoss:
+          type: boolean
+          description: Allow data loss
+        shutdownOptions:
+          description: Shutdown options
+          allOf:
+          - $ref: '#/components/schemas/InfrastructureDeployShutdownOptions'
+    InfrastructureDto:
+      required:
+      - datacenterName
+      - infrastructureChangeId
+      - infrastructureId
+      - infrastructureServiceStatus
+      - operation
+      - userIdOwner
+      type: object
+      properties:
+        infrastructureId:
+          type: number
+          description: Infrastructure Id
+          example: 1
+        infrastructureChangeId:
+          type: number
+          description: Infrastructure Change ID
+          example: 1
+        datacenterName:
+          type: string
+          description: Name of the datacenter
+        userIdOwner:
+          type: number
+          description: Owner of the infrastructure
+          example: 100
+        infrastructureServiceStatus:
+          type: string
+          description: Status of the infrastructure
+          example: active
+          enum:
+          - ordered
+          - active
+          - suspended
+          - stopped
+          - deleted
+        operation:
+          type: object
+          description: Operation object of the infrastructure
+      example:
+        infrastructureChangeId: 1
+        infrastructureId: 1
+        datacenterName: datacenterName
+        infrastructureServiceStatus: active
+        userIdOwner: 100
+        operation: {}
+    ServerRegistrationDto:
+      required:
+      - bmcHostname
+      - siteId
+      type: object
+      properties:
+        bmcHostname:
+          type: string
+          description: The BMC hostname of the server.
+        siteId:
+          type: number
+          description: The site id where the server is located.
+        bmcUser:
+          type: string
+          description: The BMC username to use.
+        bmcPassword:
+          type: string
+          description: The BMC password to use.
+        vendor:
+          type: string
+          description: The vendor of the server.
+          enum:
+          - Unknown
+          - Dell
+          - Lenovo
+          - HP
+          - HPE
+        model:
+          type: string
+          description: The model of the server.
+        macAddress:
+          type: string
+          description: The MAC address of the server.
+        uuid:
+          type: string
+          description: The UUID of the server.
+        serialNumber:
+          type: string
+          description: The Serial Number of the server.
+    AfcJobInfo:
+      required:
+      - afcGroupId
+      - afcId
+      type: object
+      properties:
+        afcId:
+          type: number
+          description: The id of the afc job.
+        afcGroupId:
+          type: number
+          description: The id of the afc job group.
+    ServerRegistrationResponseDto:
+      required:
+      - id
+      - serialNumber
+      - uuid
+      type: object
+      properties:
+        id:
+          type: number
+          description: The id of the server.
+        serialNumber:
+          type: string
+          description: The Serial Number of the server.
+        uuid:
+          type: string
+          description: The UUID of the server.
+        jobInfo:
+          description: The job info of the server.
+          allOf:
+          - $ref: '#/components/schemas/AfcJobInfo'
+        links:
+          type: array
+          description: Reference links
+          items:
+            $ref: '#/components/schemas/Link'
+      example:
+        serialNumber: serialNumber
+        links:
+        - rel: self
+          href: /api/v2/path/to/resource
+        - rel: self
+          href: /api/v2/path/to/resource
+        id: 0.8008281904610115
+        uuid: uuid
+        jobInfo: ""
+    Server:
+      type: object
+      properties: {}
+      example: {}
+    CreateStorage:
+      type: object
+      properties: {}
+    StorageRegistrationResponse:
+      type: object
+      properties: {}
+      example: {}
+    CreateVMInstanceGroupDto:
+      required:
+      - diskSizeGB
+      - instanceCount
+      - typeId
+      - volumeTemplateId
+      type: object
+      properties:
+        instanceCount:
+          type: number
+          description: Number of VM instances in the VM Instance Group.
+          example: 1
+        typeId:
+          type: number
+          description: Id of the VM Type.
+        diskSizeGB:
+          type: number
+          description: Disk size in GB for each VM Instance in the VM Instance Group.
+        volumeTemplateId:
+          type: number
+          description: Id of the VM Volume Template.
+        tags:
+          type: array
+          description: Tags for the VM Instance Group.
+          items:
+            type: string
+    VMInstanceGroupGUISettingsDto:
+      required:
+      - columnIndex
+      - randomInstanceID
+      - rowIndex
+      - showWidgetChildren
+      - userAgent
+      type: object
+      properties:
+        rowIndex:
+          type: number
+          description: Row index of the VM Instance Group.
+        columnIndex:
+          type: number
+          description: Column index of the VM Instance Group.
+        showWidgetChildren:
+          type: boolean
+          description: Whether to show the VM Instance Group children in the GUI.
+        randomInstanceID:
+          type: string
+          description: Random instance ID.
+        userAgent:
+          type: string
+          description: User agent.
+    VMInstanceGroupDto:
+      required:
+      - changeId
+      - createdTimestamp
+      - diskSizeGB
+      - id
+      - infrastructureId
+      - instanceCount
+      - label
+      - operation
+      - serviceStatus
+      - tags
+      - updatedTimestamp
+      - vmInstance
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the VM Instance Group.
+        infrastructureId:
+          type: number
+          description: Id of the Infrastructure.
+        serviceStatus:
+          type: string
+          description: Status of the VM Instance Group.
+        changeId:
+          type: number
+          description: Id of the VM Instance Group change object.
+        label:
+          type: string
+          description: Name of the VM Instance Group.
+        instanceCount:
+          type: number
+          description: Number of VM instances in the VM Instance Group.
+          example: 1
+        createdTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group update.
+        operation:
+          type: object
+          description: Operation object for the VM Instance Group.
+        vmInstance:
+          type: array
+          description: Array of VM instances in the VM Instance Group.
+          items:
+            type: string
+        tags:
+          type: array
+          description: Tags for the VM Instance Group.
+          items:
+            type: string
+        diskSizeGB:
+          type: number
+          description: Disk size in GB for each VM Instance in the VM Instance Group.
+        volumeTemplateId:
+          type: number
+          description: Id of the template used by the VM Instance Group.
+        networkIdToNetworkProfileId:
+          type: object
+          description: Network Id to Network Profile Id for the VM Instance Group.
+            This is a JSON object.
+        guiSettings:
+          description: GUI settings for the VM Instance Group. This is a JSON object.
+          allOf:
+          - $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
+      example:
+        vmInstance:
+        - vmInstance
+        - vmInstance
+        createdTimestamp: createdTimestamp
+        changeId: 1.4658129805029452
+        label: label
+        updatedTimestamp: updatedTimestamp
+        tags:
+        - tags
+        - tags
+        infrastructureId: 6.027456183070403
+        volumeTemplateId: 5.637376656633329
+        serviceStatus: serviceStatus
+        instanceCount: 1
+        id: 0.8008281904610115
+        operation: {}
+        guiSettings: ""
+        diskSizeGB: 5.962133916683182
+        networkIdToNetworkProfileId: {}
+    VMInstanceDto:
+      required:
+      - changeId
+      - createdTimestamp
+      - diskSizeGB
+      - groupId
+      - id
+      - infrastructureId
+      - label
+      - operation
+      - serviceStatus
+      - typeId
+      - updatedTimestamp
+      - vmId
+      type: object
+      properties:
+        id:
+          type: number
+          description: VM Instance ID
+        groupId:
+          type: number
+          description: Id of the VM Instance Group.
+        infrastructureId:
+          type: number
+          description: Id of the Infrastructure.
+        label:
+          type: string
+          description: Name of the VM Instance.
+        vmId:
+          type: number
+          description: Id of the VM.
+        typeId:
+          type: number
+          description: Id of the VM Type.
+        tags:
+          type: array
+          description: Tags for the VM Instance.
+          items:
+            type: string
+        serviceStatus:
+          type: string
+          description: Service status of the VM Instance.
+        changeId:
+          type: number
+          description: Id of the VM Instance change object.
+        createdTimestamp:
+          type: string
+          description: Timestamp of the VM Instance creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the VM Instance last update.
+        operation:
+          type: object
+          description: VM Instance change object.
+        customVariables:
+          type: object
+          description: Custom variables for the VM Instance.
+        diskSizeGB:
+          type: number
+          description: Disk size in GB of the VM Instance.
+        templateIdOrigin:
+          type: number
+          description: Id of the template used by the VM Instance.
+        vmPoolId:
+          type: number
+          description: Id of the VM Pool.
+      example:
+        vmId: 5.962133916683182
+        groupId: 6.027456183070403
+        createdTimestamp: createdTimestamp
+        label: label
+        changeId: 2.3021358869347655
+        vmPoolId: 3.616076749251911
+        templateIdOrigin: 9.301444243932576
+        updatedTimestamp: updatedTimestamp
+        customVariables: {}
+        tags:
+        - tags
+        - tags
+        infrastructureId: 1.4658129805029452
+        serviceStatus: serviceStatus
+        typeId: 5.637376656633329
+        id: 0.8008281904610115
+        operation: {}
+        diskSizeGB: 7.061401241503109
+    UpdateVMInstanceGroupInterfaceDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: number
+          description: Interface ID
+        networkId:
+          type: number
+          description: Network ID
+    UpdateVMInstanceGroupDto:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label for the VM Instance Group.
+        tags:
+          type: array
+          description: Tags for the VM Instance Group.
+          items:
+            type: string
+        guiSettings:
+          description: GUI settings for the VM Instance Group. This is a JSON object.
+          allOf:
+          - $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
+        vmInstanceGroupInterfaces:
+          type: array
+          description: Interfaces for the VM Instance Group
+          items:
+            $ref: '#/components/schemas/UpdateVMInstanceGroupInterfaceDto'
+        customVariables:
+          type: object
+          description: Custom variables for the VM Instance.
+    CreateVMInstanceGroupInterfaceDto:
+      type: object
+      properties:
+        networkId:
+          type: number
+          description: Network ID for the interface. Can be null if the interface
+            is not connected to any network
+    VMInstanceGroupInterfaceDto:
+      required:
+      - changeId
+      - createdTimestamp
+      - groupId
+      - id
+      - infrastructureId
+      - interfaceIndex
+      - label
+      - networkId
+      - operation
+      - serviceStatus
+      - updatedTimestamp
+      type: object
+      properties:
+        id:
+          type: number
+          description: Interface ID
+        networkId:
+          type: number
+          description: Network ID
+        interfaceIndex:
+          type: number
+          description: Interface index
+        serviceStatus:
+          type: string
+          description: Service status of the VM Instance Group Interface.
+        groupId:
+          type: number
+          description: VM Instance Group ID
+        infrastructureId:
+          type: number
+          description: Infrastructure ID
+        changeId:
+          type: number
+          description: Operation ID
+        label:
+          type: number
+          description: Interface label
+        createdTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group Interface creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group Interface update.
+        operation:
+          type: object
+          description: Operation object for the VM Instance Group.
+      example:
+        infrastructureId: 5.637376656633329
+        serviceStatus: serviceStatus
+        groupId: 5.962133916683182
+        createdTimestamp: createdTimestamp
+        networkId: 6.027456183070403
+        interfaceIndex: 1.4658129805029452
+        id: 0.8008281904610115
+        changeId: 2.3021358869347655
+        label: 7.061401241503109
+        updatedTimestamp: updatedTimestamp
+        operation: {}
+    UpdateVMInstanceGroupNetworkDto:
+      type: object
+      properties:
+        networkProfileId:
+          type: number
+          description: Network Profile ID
+    CreateVMInstanceDto:
+      required:
+      - groupId
+      - typeId
+      type: object
+      properties:
+        groupId:
+          type: number
+          description: Id of the VM Instance Group.
+        typeId:
+          type: number
+          description: Id of the VM Type.
+        tags:
+          type: array
+          description: Tags for the VM Instance.
+          items:
+            type: string
+    UpdateVMInstanceDto:
+      type: object
+      properties:
+        tags:
+          type: array
+          description: Tags for the VM Instance.
+          items:
+            type: string
+        diskSizeGB:
+          type: number
+          description: Disk size in GB for the VM Instance.
+        customVariables:
+          type: object
+          description: Custom variables for the VM Instance.
+    CreateNetworkDto:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the Network.
+    NetworkDto:
+      required:
+      - createdTimestamp
+      - infrastructureId
+      - label
+      - networkId
+      - networkType
+      - serviceStatus
+      - subdomain
+      - subdomainPermanent
+      - updatedTimestamp
+      type: object
+      properties:
+        networkId:
+          type: number
+          description: Id of the Network.
+        networkType:
+          type: string
+          description: Type of the Network.
+          enum:
+          - lan
+          - wan
+          - san
+        infrastructureId:
+          type: number
+          description: Id of the Infrastructure.
+        serviceStatus:
+          type: string
+          description: Network Service status.
+          enum:
+          - active
+          - ordered
+          - suspended
+          - stopped
+          - deleted
+        label:
+          type: string
+          description: Name of the Network.
+        subdomain:
+          type: string
+          description: Subdomain of the Network.
+        subdomainPermanent:
+          type: string
+          description: Permanent subdomain of the Network.
+        createdTimestamp:
+          type: string
+          description: Timestamp of the Network creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the Network update.
+      example:
+        infrastructureId: 6.027456183070403
+        serviceStatus: active
+        createdTimestamp: createdTimestamp
+        subdomain: subdomain
+        networkId: 0.8008281904610115
+        label: label
+        subdomainPermanent: subdomainPermanent
+        networkType: lan
+        updatedTimestamp: updatedTimestamp
+    CreateFileShare:
+      required:
+      - sizeGB
+      - storageType
+      type: object
+      properties:
+        label:
+          type: string
+          description: Display name of the File Share.
+        sizeGB:
+          type: number
+          description: Disk size in GB for File Share
+        storageType:
+          type: string
+          description: Storage type for File Share
+          enum:
+          - ssd
+    GenericGUISettings:
+      required:
+      - columnIndex
+      - randomInstanceID
+      - rowIndex
+      - showWidgetChildren
+      - userAgent
+      type: object
+      properties:
+        rowIndex:
+          type: number
+          description: Row index of the object.
+        columnIndex:
+          type: number
+          description: Column index of the object.
+        showWidgetChildren:
+          type: boolean
+          description: Whether to show the object children in the GUI.
+        randomInstanceID:
+          type: string
+          description: Random instance ID.
+        userAgent:
+          type: string
+          description: User agent.
+    FileShare:
+      required:
+      - changeId
+      - createdTimestamp
+      - id
+      - infrastructureId
+      - label
+      - serviceStatus
+      - sizeGB
+      - storageType
+      - updatedTimestamp
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the File Share
+        changeId:
+          type: number
+          description: Change id of the File Share
+        infrastructureId:
+          type: number
+          description: Infrastructure id of the File Share
+        sizeGB:
+          type: number
+          description: Disk size in GB for File Share
+        createdTimestamp:
+          type: string
+          description: Timestamp of the File Share creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the File Share last update.
+        storageType:
+          type: string
+          description: Storage type for File Share
+          enum:
+          - ssd
+        storagePoolId:
+          type: number
+          description: Id of the storage pool the File Share is assigned to
+        serviceStatus:
+          type: string
+          description: Service status of the File Share
+          enum:
+          - ordered
+          - active
+          - deleted
+          - stopped
+          - suspended
+        label:
+          type: string
+          description: Label of the File Share.
+        subdomain:
+          type: string
+          description: Subdomain of the File Share.
+        subdomainPermanent:
+          type: string
+          description: Subdomain permanent of the File Share.
+        dnsSubdomainId:
+          type: number
+          description: Id of the DNS subdomain for the File Share.
+        networkVlanId:
+          type: number
+          description: Id of the VLAN for the File Share.
+        guiSettings:
+          description: GUI settings for the File Share. This is a JSON object.
+          allOf:
+          - $ref: '#/components/schemas/GenericGUISettings'
+        endpoint:
+          type: string
+          description: Endpoint of the File Share.
+        operation:
+          type: string
+          description: Operation object of the File Share.
+      example:
+        sizeGB: 5.962133916683182
+        dnsSubdomainId: 2.3021358869347655
+        createdTimestamp: createdTimestamp
+        changeId: 6.027456183070403
+        label: label
+        subdomainPermanent: subdomainPermanent
+        updatedTimestamp: updatedTimestamp
+        endpoint: endpoint
+        infrastructureId: 1.4658129805029452
+        serviceStatus: ordered
+        networkVlanId: 7.061401241503109
+        storageType: ssd
+        subdomain: subdomain
+        id: 0.8008281904610115
+        storagePoolId: 5.637376656633329
+        guiSettings: ""
+        operation: operation
+    UpdateFileShare:
+      type: object
+      properties:
+        sizeGB:
+          type: number
+          description: Disk size in GB for File Share
+        displayName:
+          type: string
+          description: Display name of the File Share.
+        label:
+          type: string
+          description: Label of the File Share.
+        guiSettings:
+          description: Settings for GUI. In JSON format
+          allOf:
+          - $ref: '#/components/schemas/GenericGUISettings'
+    FileShareHosts:
+      required:
+      - instanceArray
+      type: object
+      properties:
+        instanceArray:
+          type: object
+          description: File Share Hosts.
+      example:
+        instanceArray: {}
+    FileShareHostsModifyBulk:
+      required:
+      - fileShareHostBulkOperations
+      type: object
+      properties:
+        fileShareHostBulkOperations:
+          type: array
+          description: List of operations to be performed on the File Share Hosts
+          items:
+            $ref: '#/components/schemas/FileShareHostBulkOperation'
+    FileShareHostBulkOperation:
+      required:
+      - instanceArrayId
+      - operationType
+      type: object
+      properties:
+        instanceArrayId:
+          type: number
+          description: Id of the Instance Array Host that will be modified
+        operationType:
+          type: string
+          description: Operation type for the Instance Array Host
+          enum:
+          - add
+          - remove
+    RemoteConsoleInfoDto:
+      required:
+      - activeConnections
+      type: object
+      properties:
+        activeConnections:
+          type: number
+          description: Active Remote Console connections
+          example: 1
+      example:
+        activeConnections: 1
+    AIGenerateRequestDto:
+      required:
+      - datacenter
+      - prompt
+      type: object
+      properties:
+        datacenter:
+          type: string
+          description: Datacenter that is being filtered
+        prompt:
+          type: string
+          description: String input sent to the AI
+    AIGenerateResponseDto:
+      required:
+      - result
+      - steps
+      type: object
+      properties:
+        result:
+          type: string
+          description: Response to the question asked by the user
+        steps:
+          type: string
+          description: Steps to be taken to achieve the result
+      example:
+        result: result
+        steps: steps
+    ServerVNCInfoDto:
+      required:
+      - activeSessions
+      - enable
+      - maxSessions
+      - port
+      - timeout
+      type: object
+      properties:
+        activeSessions:
+          type: number
+          description: Active VNC sessions
+          example: 1
+        maxSessions:
+          type: number
+          description: Max active VNC sessions
+          example: 2
+        port:
+          type: number
+          description: VNC port
+          example: 5900
+        timeout:
+          type: number
+          description: VNC timeout
+          example: 0
+        enable:
+          type: string
+          description: VNC enabled
+          example: Enabled
+      example:
+        maxSessions: 2
+        port: 5900
+        activeSessions: 1
+        enable: Enabled
+        timeout: 0
+    ServerPowerSetDto:
+      required:
+      - powerCommand
+      type: object
+      properties:
+        powerCommand:
+          type: string
+          description: The power state of the server
+          enum:
+          - "on"
+          - reset
+          - soft
+          - "off"
+    NetworkDevicePortStatusDto:
+      required:
+      - ports
+      - status
+      type: object
+      properties:
+        ports:
+          type: array
+          description: The ports of the network device that will have their status
+            changed
+          example:
+          - Eth0/0
+          - Eth0/1
+          items:
+            type: string
+        status:
+          type: boolean
+          description: The new status of the ports
+          example: true
+    DiscoveryQueryDto:
+      type: object
+      properties: {}
+    Version:
+      required:
+      - version
+      type: object
+      properties:
+        version:
+          type: string
+          description: The version of the installed MetalSoft software
+          example: 1.0.0
+        versionDate:
+          type: string
+          description: The release date of the version
+          format: date-time
+        versionBuild:
+          type: string
+          description: The build number of the version
+      example:
+        versionBuild: versionBuild
+        version: 1.0.0
+        versionDate: 2000-01-23T04:56:07.000+00:00
+  securitySchemes:
+    apiKey:
+      type: http
+      description: API Key Authorization
+      scheme: bearer
+      bearerFormat: ApiKey
+    JWT:
+      type: http
+      description: JWT Authorization
+      scheme: bearer
+      bearerFormat: JWT
