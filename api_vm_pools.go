@@ -771,15 +771,15 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolVMs(ctx context.Context
 VMPoolsApiService Get all VM Pools
 Returns list of all VM Pools
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return []VmPoolDto
+@return VmPoolListDto
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPools(ctx context.Context) ([]VmPoolDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryController1GetVMPools(ctx context.Context) (VmPoolListDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []VmPoolDto
+		localVarReturnValue VmPoolListDto
 	)
 
 	// create path and map variables
@@ -836,7 +836,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPools(ctx context.Context) 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []VmPoolDto
+			var v VmPoolListDto
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

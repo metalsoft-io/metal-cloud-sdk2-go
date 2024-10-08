@@ -33,6 +33,12 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**AccountsControllerUpdateAccount**](docs/AccountsApi.md#accountscontrollerupdateaccount) | **Patch** /api/v2/accounts/{accountId} | Update account
 *AccountsApi* | [**AccountsControllerUpdateAccountLimits**](docs/AccountsApi.md#accountscontrollerupdateaccountlimits) | **Patch** /api/v2/accounts/{accountId}/limits | Update account limits
 *ConfigurationApi* | [**ConfigController1GetConfiguration**](docs/ConfigurationApi.md#configcontroller1getconfiguration) | **Get** /api/v2/config | Get configuration
+*ExtensionApi* | [**ExtensionsControllerArchiveExtension**](docs/ExtensionApi.md#extensionscontrollerarchiveextension) | **Post** /api/v2/extensions/{extensionId}/actions/archive | Archive published extension
+*ExtensionApi* | [**ExtensionsControllerCreateExtension**](docs/ExtensionApi.md#extensionscontrollercreateextension) | **Post** /api/v2/extensions | Create extension
+*ExtensionApi* | [**ExtensionsControllerGetExtension**](docs/ExtensionApi.md#extensionscontrollergetextension) | **Get** /api/v2/extensions/{extensionId} | Get details for an extension
+*ExtensionApi* | [**ExtensionsControllerListExtensions**](docs/ExtensionApi.md#extensionscontrollerlistextensions) | **Get** /api/v2/extensions | List available extensions
+*ExtensionApi* | [**ExtensionsControllerPublishExtension**](docs/ExtensionApi.md#extensionscontrollerpublishextension) | **Post** /api/v2/extensions/{extensionId}/actions/publish | Publish draft extension
+*ExtensionApi* | [**ExtensionsControllerUpdateExtension**](docs/ExtensionApi.md#extensionscontrollerupdateextension) | **Patch** /api/v2/extensions/{extensionId} | Update extension
 *FileShareApi* | [**BlueprintControllerCreateFileShare**](docs/FileShareApi.md#blueprintcontrollercreatefileshare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares | Creates a File Share
 *FileShareApi* | [**BlueprintControllerDeleteFileShare**](docs/FileShareApi.md#blueprintcontrollerdeletefileshare) | **Delete** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Deletes a File Share
 *FileShareApi* | [**BlueprintControllerGetFileShare**](docs/FileShareApi.md#blueprintcontrollergetfileshare) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Get File Share information
@@ -82,6 +88,7 @@ Class | Method | HTTP request | Description
 *ServerApi* | [**ServersController1ResetServerToFactoryDefaults**](docs/ServerApi.md#serverscontroller1resetservertofactorydefaults) | **Post** /api/v2/servers/{serverId}/actions/factory-reset | Resets a server to factory defaults
 *ServerApi* | [**ServersController1SetPowerState**](docs/ServerApi.md#serverscontroller1setpowerstate) | **Post** /api/v2/servers/{serverId}/actions/set-power | Sets the power state of a server
 *StorageApi* | [**InventoryController1CreateStorage**](docs/StorageApi.md#inventorycontroller1createstorage) | **Post** /api/v2/storages | Creates a Storage
+*StorageApi* | [**InventoryController1GetStorage**](docs/StorageApi.md#inventorycontroller1getstorage) | **Get** /api/v2/storages/{storageId} | Retrieves a Storage
 *SystemApi* | [**SystemControllerGetVersion**](docs/SystemApi.md#systemcontrollergetversion) | **Get** /api/v2/version | Get MetalSoft system version
 *UsersApi* | [**UsersControllerArchiveUser**](docs/UsersApi.md#userscontrollerarchiveuser) | **Post** /api/v2/users/{userId}/actions/archive | Archive user
 *UsersApi* | [**UsersControllerChangeUserAccount**](docs/UsersApi.md#userscontrollerchangeuseraccount) | **Post** /api/v2/users/{userId}/actions/change-account | Change account for user
@@ -164,6 +171,7 @@ Class | Method | HTTP request | Description
  - [AuthenticationProviderUpdate](docs/AuthenticationProviderUpdate.md)
  - [ChangeUserAccountDto](docs/ChangeUserAccountDto.md)
  - [CreateAccountDto](docs/CreateAccountDto.md)
+ - [CreateExtensionDto](docs/CreateExtensionDto.md)
  - [CreateFileShare](docs/CreateFileShare.md)
  - [CreateNetworkDto](docs/CreateNetworkDto.md)
  - [CreateResourcePoolDto](docs/CreateResourcePoolDto.md)
@@ -175,6 +183,9 @@ Class | Method | HTTP request | Description
  - [CreateVmPoolDto](docs/CreateVmPoolDto.md)
  - [CreateVmTypeDto](docs/CreateVmTypeDto.md)
  - [DiscoveryQueryDto](docs/DiscoveryQueryDto.md)
+ - [ExtensionDto](docs/ExtensionDto.md)
+ - [ExtensionInfoDto](docs/ExtensionInfoDto.md)
+ - [ExtensionListDto](docs/ExtensionListDto.md)
  - [FileShare](docs/FileShare.md)
  - [FileShareHostBulkOperation](docs/FileShareHostBulkOperation.md)
  - [FileShareHosts](docs/FileShareHosts.md)
@@ -197,6 +208,7 @@ Class | Method | HTTP request | Description
  - [ServerVncInfoDto](docs/ServerVncInfoDto.md)
  - [StorageRegistrationResponse](docs/StorageRegistrationResponse.md)
  - [UpdateAccountDto](docs/UpdateAccountDto.md)
+ - [UpdateExtensionDto](docs/UpdateExtensionDto.md)
  - [UpdateFileShare](docs/UpdateFileShare.md)
  - [UpdateResourcePoolDto](docs/UpdateResourcePoolDto.md)
  - [UpdateUserDto](docs/UpdateUserDto.md)
@@ -228,6 +240,7 @@ Class | Method | HTTP request | Description
  - [VmPoolDto](docs/VmPoolDto.md)
  - [VmPoolHostInterfacesDto](docs/VmPoolHostInterfacesDto.md)
  - [VmPoolHostsDto](docs/VmPoolHostsDto.md)
+ - [VmPoolListDto](docs/VmPoolListDto.md)
  - [VmTypeDto](docs/VmTypeDto.md)
 
 ## Documentation For Authorization

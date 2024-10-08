@@ -51,6 +51,8 @@ type APIClient struct {
 
 	ConfigurationApi *ConfigurationApiService
 
+	ExtensionApi *ExtensionApiService
+
 	FileShareApi *FileShareApiService
 
 	InfrastructureApi *InfrastructureApiService
@@ -101,6 +103,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AIApi = (*AIApiService)(&c.common)
 	c.AccountsApi = (*AccountsApiService)(&c.common)
 	c.ConfigurationApi = (*ConfigurationApiService)(&c.common)
+	c.ExtensionApi = (*ExtensionApiService)(&c.common)
 	c.FileShareApi = (*FileShareApiService)(&c.common)
 	c.InfrastructureApi = (*InfrastructureApiService)(&c.common)
 	c.NetworkApi = (*NetworkApiService)(&c.common)

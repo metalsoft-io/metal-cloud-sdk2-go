@@ -48,6 +48,9 @@ tags:
   description: A group of virtual compute instances part of an infrastructure.
 - name: File Share
   description: File shares that can be attached to one or more servers.
+- name: Extension
+  description: Extensions are used to add extended functionality like deploying clustered
+    application.
 - name: AI
   description: Eli AI assistant operations.
 paths:
@@ -1249,10 +1252,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VMPoolDto'
-                x-content-type: application/json
+                $ref: '#/components/schemas/VMPoolListDto'
         "400":
           description: Bad request
         "401":
@@ -2096,6 +2096,41 @@ paths:
           description: Forbidden
         "404":
           description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/storages/{storageId}:
+    get:
+      tags:
+      - Storage
+      summary: Retrieves a Storage
+      description: Retrieves a Storage
+      operationId: InventoryController_1_getStorage
+      parameters:
+      - name: storageId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The Storage successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageRegistrationResponse'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
       security:
       - JWT: []
       - apiKey: []
@@ -3964,6 +3999,186 @@ paths:
       security:
       - JWT: []
       - apiKey: []
+  /api/v2/extensions:
+    get:
+      tags:
+      - Extension
+      summary: List available extensions
+      description: Returns list of the available extensions
+      operationId: ExtensionsController_listExtensions
+      parameters:
+      - name: filter
+        in: query
+        description: Filter by extension status
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: The list of the available extensions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionListDto'
+        "401":
+          description: Unauthorized
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - Extension
+      summary: Create extension
+      description: Returns details of the new extension
+      operationId: ExtensionsController_createExtension
+      parameters: []
+      requestBody:
+        description: The extension details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateExtensionDto'
+        required: true
+      responses:
+        "201":
+          description: The details of the created extension
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/extensions/{extensionId}:
+    get:
+      tags:
+      - Extension
+      summary: Get details for an extension
+      description: Returns details of the specified extension
+      operationId: ExtensionsController_getExtension
+      parameters:
+      - name: extensionId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The details of the specified extension
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionDto'
+        "401":
+          description: Unauthorized
+        "404":
+          description: Extension not found
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - Extension
+      summary: Update extension
+      description: Returns details of the updated extension
+      operationId: ExtensionsController_updateExtension
+      parameters:
+      - name: extensionId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The extension details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateExtensionDto'
+        required: true
+      responses:
+        "200":
+          description: The details of the updated extension
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/extensions/{extensionId}/actions/publish:
+    post:
+      tags:
+      - Extension
+      summary: Publish draft extension
+      description: Publishes draft extension.
+      operationId: ExtensionsController_publishExtension
+      parameters:
+      - name: extensionId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The extension was published successfully
+        "401":
+          description: Unauthorized
+        "404":
+          description: Extension not found
+        "409":
+          description: The extension state does not allow this operation.
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/extensions/{extensionId}/actions/archive:
+    post:
+      tags:
+      - Extension
+      summary: Archive published extension
+      description: Archives published extension.
+      operationId: ExtensionsController_archiveExtension
+      parameters:
+      - name: extensionId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The extension was archived successfully
+        "401":
+          description: Unauthorized
+        "404":
+          description: Extension not found
+        "409":
+          description: The extension state does not allow this operation.
+      security:
+      - JWT: []
+      - apiKey: []
   /api/v2/config:
     get:
       tags:
@@ -5196,6 +5411,74 @@ components:
         id: 1
         totalSpaceGB: 5.637376656633329
         status: status
+    VMPoolListDto:
+      required:
+      - data
+      - links
+      - meta
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of VM Pools
+          items:
+            $ref: '#/components/schemas/VMPoolDto'
+        meta:
+          type: object
+          description: Meta information
+        links:
+          type: object
+          description: Links to other resources
+      example:
+        data:
+        - totalRamGB: 6.027456183070403
+          datacenterName: datacenterName
+          usedRamGB: 1.4658129805029452
+          inMaintenance: 1
+          managementHost: managementHost
+          usedSpaceGB: 2.3021358869347655
+          freeSpaceGB: 7.061401241503109
+          freeRamGB: 5.962133916683182
+          createdTimestamp: createdTimestamp
+          certificate: certificate
+          description: description
+          type: type
+          updatedTimestamp: updatedTimestamp
+          tags:
+          - tags
+          - tags
+          isExperimental: 1
+          name: name
+          siteId: 0.8008281904610115
+          externalIdentifier: externalIdentifier
+          id: 1
+          totalSpaceGB: 5.637376656633329
+          status: status
+        - totalRamGB: 6.027456183070403
+          datacenterName: datacenterName
+          usedRamGB: 1.4658129805029452
+          inMaintenance: 1
+          managementHost: managementHost
+          usedSpaceGB: 2.3021358869347655
+          freeSpaceGB: 7.061401241503109
+          freeRamGB: 5.962133916683182
+          createdTimestamp: createdTimestamp
+          certificate: certificate
+          description: description
+          type: type
+          updatedTimestamp: updatedTimestamp
+          tags:
+          - tags
+          - tags
+          isExperimental: 1
+          name: name
+          siteId: 0.8008281904610115
+          externalIdentifier: externalIdentifier
+          id: 1
+          totalSpaceGB: 5.637376656633329
+          status: status
+        meta: {}
+        links: {}
     CreateVMPoolDto:
       type: object
       properties:
@@ -5721,13 +6004,13 @@ components:
       type: object
       properties: {}
       example: {}
-    CreateStorage:
-      type: object
-      properties: {}
     StorageRegistrationResponse:
       type: object
       properties: {}
       example: {}
+    CreateStorage:
+      type: object
+      properties: {}
     CreateVMInstanceGroupDto:
       required:
       - diskSizeGB
@@ -6446,6 +6729,129 @@ components:
     DiscoveryQueryDto:
       type: object
       properties: {}
+    ExtensionInfoDto:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The extension ID
+          example: 10
+        slug:
+          type: string
+          description: The extension unique slug
+          example: my-app
+        name:
+          type: string
+          description: The extension name
+          example: My App
+        description:
+          type: string
+          description: The extension description
+          example: My App Description
+        status:
+          type: string
+          description: Extension status
+          example: draft
+      example:
+        name: My App
+        description: My App Description
+        id: 10
+        slug: my-app
+        status: draft
+    ExtensionListDto:
+      required:
+      - extensions
+      type: object
+      properties:
+        extensions:
+          type: array
+          description: The list of Extensions.
+          items:
+            $ref: '#/components/schemas/ExtensionInfoDto'
+      example:
+        extensions:
+        - name: My App
+          description: My App Description
+          id: 10
+          slug: my-app
+          status: draft
+        - name: My App
+          description: My App Description
+          id: 10
+          slug: my-app
+          status: draft
+    ExtensionDto:
+      required:
+      - definition
+      - description
+      - id
+      - name
+      - slug
+      - status
+      type: object
+      properties:
+        id:
+          type: number
+          description: The extension ID
+          example: 10
+        slug:
+          type: string
+          description: The extension unique slug
+          example: my-app
+        name:
+          type: string
+          description: The extension name
+          example: My App
+        description:
+          type: string
+          description: The extension description
+          example: My App Description
+        status:
+          type: string
+          description: Extension status
+          example: draft
+        definition:
+          type: string
+          description: Extension definition (JSON)
+      example:
+        name: My App
+        description: My App Description
+        definition: definition
+        id: 10
+        slug: my-app
+        status: draft
+    CreateExtensionDto:
+      required:
+      - definition
+      - description
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The extension name
+          example: My App
+        description:
+          type: string
+          description: The extension description
+          example: My App Description
+        definition:
+          type: string
+          description: Extension definition (JSON)
+    UpdateExtensionDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The extension name
+          example: My App
+        description:
+          type: string
+          description: The extension description
+          example: My App Description
+        definition:
+          type: string
+          description: Extension definition (JSON)
     Version:
       required:
       - version

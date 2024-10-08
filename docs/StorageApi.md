@@ -5,6 +5,7 @@ All URIs are relative to **
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**InventoryController1CreateStorage**](StorageApi.md#InventoryController1CreateStorage) | **Post** /api/v2/storages | Creates a Storage
+[**InventoryController1GetStorage**](StorageApi.md#InventoryController1GetStorage) | **Get** /api/v2/storages/{storageId} | Retrieves a Storage
 
 # **InventoryController1CreateStorage**
 > StorageRegistrationResponse InventoryController1CreateStorage(ctx, body)
@@ -30,6 +31,34 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InventoryController1GetStorage**
+> StorageRegistrationResponse InventoryController1GetStorage(ctx, storageId)
+Retrieves a Storage
+
+Retrieves a Storage
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **storageId** | **float64**|  | 
+
+### Return type
+
+[**StorageRegistrationResponse**](StorageRegistrationResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
