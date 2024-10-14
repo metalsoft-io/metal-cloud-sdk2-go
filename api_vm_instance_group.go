@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -32,15 +32,15 @@ Applies a VM Type to a VM Instance Group
  * @param infrastructureId
  * @param vmInstanceGroupId
  * @param vmTypeId
-@return VmInstanceGroupDto
+@return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerApplyVMTypeOnVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64, vmTypeId float64) (VmInstanceGroupDto, *http.Response, error) {
+func (a *VMInstanceGroupApiService) BlueprintControllerApplyVMTypeOnVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64, vmTypeId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceGroupDto
+		localVarReturnValue VmInstanceGroup
 	)
 
 	// create path and map variables
@@ -80,7 +80,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerApplyVMTypeOnVMInstanceGr
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -89,7 +89,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerApplyVMTypeOnVMInstanceGr
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -100,7 +100,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerApplyVMTypeOnVMInstanceGr
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceGroupDto
+			var v VmInstanceGroup
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -120,15 +120,15 @@ Creates a VM Instance Group
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The VM Instance Group create object
  * @param infrastructureId
-@return VmInstanceGroupDto
+@return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInstanceGroup(ctx context.Context, body CreateVmInstanceGroupDto, infrastructureId float64) (VmInstanceGroupDto, *http.Response, error) {
+func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInstanceGroup(ctx context.Context, body CreateVmInstanceGroup, infrastructureId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceGroupDto
+		localVarReturnValue VmInstanceGroup
 	)
 
 	// create path and map variables
@@ -168,7 +168,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInstanceGroup(ctx
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -177,7 +177,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInstanceGroup(ctx
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -188,7 +188,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInstanceGroup(ctx
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceGroupDto
+			var v VmInstanceGroup
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -209,15 +209,15 @@ Creates a new Virtual Interface for the VM Instance Group
  * @param body
  * @param infrastructureId
  * @param vmInstanceGroupId
-@return VmInstanceGroupInterfaceDto
+@return VmInstanceGroupInterface
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInterfaceOnVMInstanceGroup(ctx context.Context, body CreateVmInstanceGroupInterfaceDto, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroupInterfaceDto, *http.Response, error) {
+func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInterfaceOnVMInstanceGroup(ctx context.Context, body CreateVmInstanceGroupInterface, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroupInterface, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceGroupInterfaceDto
+		localVarReturnValue VmInstanceGroupInterface
 	)
 
 	// create path and map variables
@@ -258,7 +258,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInterfaceOnVMInst
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -267,7 +267,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInterfaceOnVMInst
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -278,7 +278,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInterfaceOnVMInst
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceGroupInterfaceDto
+			var v VmInstanceGroupInterface
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -345,7 +345,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerDeleteVMInstanceGroup(ctx
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -368,15 +368,15 @@ Returns VM Instance Group information
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param infrastructureId
  * @param vmInstanceGroupId
-@return VmInstanceGroupDto
+@return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroupDto, *http.Response, error) {
+func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceGroupDto
+		localVarReturnValue VmInstanceGroup
 	)
 
 	// create path and map variables
@@ -415,7 +415,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroup(ctx co
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -424,7 +424,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroup(ctx co
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -435,7 +435,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroup(ctx co
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceGroupDto
+			var v VmInstanceGroup
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -455,15 +455,15 @@ Returns the VM Instances of VM Instance Group
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param infrastructureId
  * @param vmInstanceGroupId
-@return []VmInstanceDto
+@return []VmInstance
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroupVMInstances(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) ([]VmInstanceDto, *http.Response, error) {
+func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroupVMInstances(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) ([]VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []VmInstanceDto
+		localVarReturnValue []VmInstance
 	)
 
 	// create path and map variables
@@ -502,7 +502,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroupVMInsta
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -511,7 +511,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroupVMInsta
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -522,7 +522,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroupVMInsta
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []VmInstanceDto
+			var v []VmInstance
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -541,15 +541,15 @@ VMInstanceGroupApiService Get all VM Instance Groups
 Returns list of all VM Instance Groups
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param infrastructureId
-@return []VmInstanceGroupDto
+@return []VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroups(ctx context.Context, infrastructureId float64) ([]VmInstanceGroupDto, *http.Response, error) {
+func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroups(ctx context.Context, infrastructureId float64) ([]VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []VmInstanceGroupDto
+		localVarReturnValue []VmInstanceGroup
 	)
 
 	// create path and map variables
@@ -587,7 +587,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroups(ctx c
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -596,7 +596,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroups(ctx c
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -607,7 +607,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroups(ctx c
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []VmInstanceGroupDto
+			var v []VmInstanceGroup
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -629,15 +629,15 @@ Applies the given Network Profile to the specified VM Instance Group Network
  * @param infrastructureId
  * @param vmInstanceGroupId
  * @param networkId
-@return VmInstanceGroupDto
+@return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork(ctx context.Context, body UpdateVmInstanceGroupNetworkDto, infrastructureId float64, vmInstanceGroupId float64, networkId float64) (VmInstanceGroupDto, *http.Response, error) {
+func (a *VMInstanceGroupApiService) BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork(ctx context.Context, body UpdateVmInstanceGroupNetwork, infrastructureId float64, vmInstanceGroupId float64, networkId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceGroupDto
+		localVarReturnValue VmInstanceGroup
 	)
 
 	// create path and map variables
@@ -679,7 +679,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerPatchNetworkProfileOnVMIn
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -688,7 +688,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerPatchNetworkProfileOnVMIn
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -699,7 +699,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerPatchNetworkProfileOnVMIn
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceGroupDto
+			var v VmInstanceGroup
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -720,15 +720,15 @@ Updates VM Instance Group information
  * @param body The VM Instance Group update object
  * @param infrastructureId
  * @param vmInstanceGroupId
-@return VmInstanceGroupDto
+@return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerUpdateVMInstanceGroup(ctx context.Context, body UpdateVmInstanceGroupDto, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroupDto, *http.Response, error) {
+func (a *VMInstanceGroupApiService) BlueprintControllerUpdateVMInstanceGroup(ctx context.Context, body UpdateVmInstanceGroup, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceGroupDto
+		localVarReturnValue VmInstanceGroup
 	)
 
 	// create path and map variables
@@ -769,7 +769,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerUpdateVMInstanceGroup(ctx
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -778,7 +778,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerUpdateVMInstanceGroup(ctx
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -789,7 +789,7 @@ func (a *VMInstanceGroupApiService) BlueprintControllerUpdateVMInstanceGroup(ctx
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceGroupDto
+			var v VmInstanceGroup
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

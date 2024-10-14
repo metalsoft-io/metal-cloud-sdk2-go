@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**BlueprintControllerUpdateVMInstanceGroup**](VMInstanceGroupApi.md#BlueprintControllerUpdateVMInstanceGroup) | **Patch** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId} | Updates VM Instance Group information
 
 # **BlueprintControllerApplyVMTypeOnVMInstanceGroup**
-> VmInstanceGroupDto BlueprintControllerApplyVMTypeOnVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId, vmTypeId)
+> VmInstanceGroup BlueprintControllerApplyVMTypeOnVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId, vmTypeId)
 Applies a VM Type to a VM Instance Group
 
 Applies a VM Type to a VM Instance Group
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VmInstanceGroupDto**](VMInstanceGroupDto.md)
+[**VmInstanceGroup**](VMInstanceGroup.md)
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerCreateVMInstanceGroup**
-> VmInstanceGroupDto BlueprintControllerCreateVMInstanceGroup(ctx, body, infrastructureId)
+> VmInstanceGroup BlueprintControllerCreateVMInstanceGroup(ctx, body, infrastructureId)
 Creates a VM Instance Group
 
 Creates a VM Instance Group
@@ -55,12 +55,12 @@ Creates a VM Instance Group
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**CreateVmInstanceGroupDto**](CreateVmInstanceGroupDto.md)| The VM Instance Group create object | 
+  **body** | [**CreateVmInstanceGroup**](CreateVmInstanceGroup.md)| The VM Instance Group create object | 
   **infrastructureId** | **float64**|  | 
 
 ### Return type
 
-[**VmInstanceGroupDto**](VMInstanceGroupDto.md)
+[**VmInstanceGroup**](VMInstanceGroup.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerCreateVMInterfaceOnVMInstanceGroup**
-> VmInstanceGroupInterfaceDto BlueprintControllerCreateVMInterfaceOnVMInstanceGroup(ctx, body, infrastructureId, vmInstanceGroupId)
+> VmInstanceGroupInterface BlueprintControllerCreateVMInterfaceOnVMInstanceGroup(ctx, body, infrastructureId, vmInstanceGroupId)
 Creates a new Virtual Interface for the VM Instance Group
 
 Creates a new Virtual Interface for the VM Instance Group
@@ -84,13 +84,13 @@ Creates a new Virtual Interface for the VM Instance Group
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**CreateVmInstanceGroupInterfaceDto**](CreateVmInstanceGroupInterfaceDto.md)|  | 
+  **body** | [**CreateVmInstanceGroupInterface**](CreateVmInstanceGroupInterface.md)|  | 
   **infrastructureId** | **float64**|  | 
   **vmInstanceGroupId** | **float64**|  | 
 
 ### Return type
 
-[**VmInstanceGroupInterfaceDto**](VMInstanceGroupInterfaceDto.md)
+[**VmInstanceGroupInterface**](VMInstanceGroupInterface.md)
 
 ### Authorization
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerGetVMInstanceGroup**
-> VmInstanceGroupDto BlueprintControllerGetVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId)
+> VmInstanceGroup BlueprintControllerGetVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId)
 Get VM Instance Group information
 
 Returns VM Instance Group information
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VmInstanceGroupDto**](VMInstanceGroupDto.md)
+[**VmInstanceGroup**](VMInstanceGroup.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerGetVMInstanceGroupVMInstances**
-> []VmInstanceDto BlueprintControllerGetVMInstanceGroupVMInstances(ctx, infrastructureId, vmInstanceGroupId)
+> []VmInstance BlueprintControllerGetVMInstanceGroupVMInstances(ctx, infrastructureId, vmInstanceGroupId)
 Get the VM Instances of VM Instance Group
 
 Returns the VM Instances of VM Instance Group
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]VmInstanceDto**](VMInstanceDto.md)
+[**[]VmInstance**](VMInstance.md)
 
 ### Authorization
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerGetVMInstanceGroups**
-> []VmInstanceGroupDto BlueprintControllerGetVMInstanceGroups(ctx, infrastructureId)
+> []VmInstanceGroup BlueprintControllerGetVMInstanceGroups(ctx, infrastructureId)
 Get all VM Instance Groups
 
 Returns list of all VM Instance Groups
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]VmInstanceGroupDto**](VMInstanceGroupDto.md)
+[**[]VmInstanceGroup**](VMInstanceGroup.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork**
-> VmInstanceGroupDto BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork(ctx, body, infrastructureId, vmInstanceGroupId, networkId)
+> VmInstanceGroup BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork(ctx, body, infrastructureId, vmInstanceGroupId, networkId)
 Applies the given Network Profile to the specified VM Instance Group Network
 
 Applies the given Network Profile to the specified VM Instance Group Network
@@ -229,14 +229,14 @@ Applies the given Network Profile to the specified VM Instance Group Network
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**UpdateVmInstanceGroupNetworkDto**](UpdateVmInstanceGroupNetworkDto.md)| The VM Instance Group Network update object | 
+  **body** | [**UpdateVmInstanceGroupNetwork**](UpdateVmInstanceGroupNetwork.md)| The VM Instance Group Network update object | 
   **infrastructureId** | **float64**|  | 
   **vmInstanceGroupId** | **float64**|  | 
   **networkId** | **float64**|  | 
 
 ### Return type
 
-[**VmInstanceGroupDto**](VMInstanceGroupDto.md)
+[**VmInstanceGroup**](VMInstanceGroup.md)
 
 ### Authorization
 
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerUpdateVMInstanceGroup**
-> VmInstanceGroupDto BlueprintControllerUpdateVMInstanceGroup(ctx, body, infrastructureId, vmInstanceGroupId)
+> VmInstanceGroup BlueprintControllerUpdateVMInstanceGroup(ctx, body, infrastructureId, vmInstanceGroupId)
 Updates VM Instance Group information
 
 Updates VM Instance Group information
@@ -260,13 +260,13 @@ Updates VM Instance Group information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**UpdateVmInstanceGroupDto**](UpdateVmInstanceGroupDto.md)| The VM Instance Group update object | 
+  **body** | [**UpdateVmInstanceGroup**](UpdateVmInstanceGroup.md)| The VM Instance Group update object | 
   **infrastructureId** | **float64**|  | 
   **vmInstanceGroupId** | **float64**|  | 
 
 ### Return type
 
-[**VmInstanceGroupDto**](VMInstanceGroupDto.md)
+[**VmInstanceGroup**](VMInstanceGroup.md)
 
 ### Authorization
 

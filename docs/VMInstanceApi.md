@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**BlueprintControllerUpdateVMInstance**](VMInstanceApi.md#BlueprintControllerUpdateVMInstance) | **Patch** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId} | Updates VM Instance information
 
 # **BlueprintControllerApplyVMTypeOnVMInstance**
-> VmInstanceDto BlueprintControllerApplyVMTypeOnVMInstance(ctx, infrastructureId, vmInstanceId, vmTypeId)
+> VmInstance BlueprintControllerApplyVMTypeOnVMInstance(ctx, infrastructureId, vmInstanceId, vmTypeId)
 Applies a VM Type to a VM Instance
 
 Applies a VM Type to a VM Instance
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VmInstanceDto**](VMInstanceDto.md)
+[**VmInstance**](VMInstance.md)
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerCreateVMInstance**
-> VmInstanceDto BlueprintControllerCreateVMInstance(ctx, body, infrastructureId)
+> VmInstance BlueprintControllerCreateVMInstance(ctx, body, infrastructureId)
 Creates a VM Instance
 
 Creates a VM Instance
@@ -55,12 +55,12 @@ Creates a VM Instance
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**CreateVmInstanceDto**](CreateVmInstanceDto.md)| The VM Instance create object | 
+  **body** | [**CreateVmInstance**](CreateVmInstance.md)| The VM Instance create object | 
   **infrastructureId** | **float64**|  | 
 
 ### Return type
 
-[**VmInstanceDto**](VMInstanceDto.md)
+[**VmInstance**](VMInstance.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerGetVMInstance**
-> VmInstanceDto BlueprintControllerGetVMInstance(ctx, infrastructureId, vmInstanceId)
+> VmInstance BlueprintControllerGetVMInstance(ctx, infrastructureId, vmInstanceId)
 Get VM Instance information
 
 Returns VM Instance information
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VmInstanceDto**](VMInstanceDto.md)
+[**VmInstance**](VMInstance.md)
 
 ### Authorization
 
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BlueprintControllerUpdateVMInstance**
-> VmInstanceDto BlueprintControllerUpdateVMInstance(ctx, body, infrastructureId, vmInstanceId)
+> VmInstance BlueprintControllerUpdateVMInstance(ctx, body, infrastructureId, vmInstanceId)
 Updates VM Instance information
 
 Updates VM Instance information
@@ -258,13 +258,13 @@ Updates VM Instance information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**UpdateVmInstanceDto**](UpdateVmInstanceDto.md)| The VM Instance update object | 
+  **body** | [**UpdateVmInstance**](UpdateVmInstance.md)| The VM Instance update object | 
   **infrastructureId** | **float64**|  | 
   **vmInstanceId** | **float64**|  | 
 
 ### Return type
 
-[**VmInstanceDto**](VMInstanceDto.md)
+[**VmInstance**](VMInstance.md)
 
 ### Authorization
 

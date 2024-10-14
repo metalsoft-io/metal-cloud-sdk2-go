@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -77,7 +77,7 @@ func (a *UsersApiService) UsersControllerArchiveUser(ctx context.Context, userId
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -86,7 +86,7 @@ func (a *UsersApiService) UsersControllerArchiveUser(ctx context.Context, userId
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -165,7 +165,7 @@ func (a *UsersApiService) UsersControllerChangeUserAccount(ctx context.Context, 
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -174,7 +174,7 @@ func (a *UsersApiService) UsersControllerChangeUserAccount(ctx context.Context, 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -251,7 +251,7 @@ func (a *UsersApiService) UsersControllerCreateUser(ctx context.Context, body Cr
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -260,7 +260,7 @@ func (a *UsersApiService) UsersControllerCreateUser(ctx context.Context, body Cr
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -346,7 +346,7 @@ func (a *UsersApiService) UsersControllerGetUser(ctx context.Context, userId flo
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -355,7 +355,7 @@ func (a *UsersApiService) UsersControllerGetUser(ctx context.Context, userId flo
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -431,7 +431,7 @@ func (a *UsersApiService) UsersControllerGetUserLimits(ctx context.Context, user
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -440,7 +440,7 @@ func (a *UsersApiService) UsersControllerGetUserLimits(ctx context.Context, user
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -514,7 +514,7 @@ func (a *UsersApiService) UsersControllerGetUsers(ctx context.Context) ([]UserDt
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -523,7 +523,7 @@ func (a *UsersApiService) UsersControllerGetUsers(ctx context.Context) ([]UserDt
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -599,7 +599,7 @@ func (a *UsersApiService) UsersControllerUnarchiveUser(ctx context.Context, user
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -608,7 +608,7 @@ func (a *UsersApiService) UsersControllerUnarchiveUser(ctx context.Context, user
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -687,7 +687,7 @@ func (a *UsersApiService) UsersControllerUpdateUser(ctx context.Context, body Up
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -696,7 +696,7 @@ func (a *UsersApiService) UsersControllerUpdateUser(ctx context.Context, body Up
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -775,7 +775,7 @@ func (a *UsersApiService) UsersControllerUpdateUserLimits(ctx context.Context, b
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -784,7 +784,7 @@ func (a *UsersApiService) UsersControllerUpdateUserLimits(ctx context.Context, b
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}

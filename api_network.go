@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -31,15 +31,15 @@ Creates a new LAN network on the infrastructure
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The Network create object
  * @param infrastructureId
-@return NetworkDto
+@return Network
 */
-func (a *NetworkApiService) BlueprintControllerCreateNetwork(ctx context.Context, body CreateNetworkDto, infrastructureId float64) (NetworkDto, *http.Response, error) {
+func (a *NetworkApiService) BlueprintControllerCreateNetwork(ctx context.Context, body CreateNetwork, infrastructureId float64) (Network, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue NetworkDto
+		localVarReturnValue Network
 	)
 
 	// create path and map variables
@@ -79,7 +79,7 @@ func (a *NetworkApiService) BlueprintControllerCreateNetwork(ctx context.Context
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -88,7 +88,7 @@ func (a *NetworkApiService) BlueprintControllerCreateNetwork(ctx context.Context
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -99,7 +99,7 @@ func (a *NetworkApiService) BlueprintControllerCreateNetwork(ctx context.Context
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v NetworkDto
+			var v Network
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -166,7 +166,7 @@ func (a *NetworkApiService) BlueprintControllerDeleteNetwork(ctx context.Context
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -236,7 +236,7 @@ func (a *NetworkApiService) BlueprintControllerGetNetwork(ctx context.Context, i
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -304,7 +304,7 @@ func (a *NetworkApiService) BlueprintControllerGetNetworks(ctx context.Context, 
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err

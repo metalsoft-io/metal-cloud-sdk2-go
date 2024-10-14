@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**BlueprintControllerGetNetworks**](NetworkApi.md#BlueprintControllerGetNetworks) | **Get** /api/v2/infrastructures/{infrastructureId}/networks | Retrieves all networks on the infrastructure
 
 # **BlueprintControllerCreateNetwork**
-> NetworkDto BlueprintControllerCreateNetwork(ctx, body, infrastructureId)
+> Network BlueprintControllerCreateNetwork(ctx, body, infrastructureId)
 Creates a new LAN network on the infrastructure
 
 Creates a new LAN network on the infrastructure
@@ -20,12 +20,12 @@ Creates a new LAN network on the infrastructure
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**CreateNetworkDto**](CreateNetworkDto.md)| The Network create object | 
+  **body** | [**CreateNetwork**](CreateNetwork.md)| The Network create object | 
   **infrastructureId** | **float64**|  | 
 
 ### Return type
 
-[**NetworkDto**](NetworkDto.md)
+[**Network**](Network.md)
 
 ### Authorization
 

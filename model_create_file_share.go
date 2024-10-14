@@ -14,6 +14,4 @@ type CreateFileShare struct {
 	Label string `json:"label,omitempty"`
 	// Disk size in GB for File Share
 	SizeGB float64 `json:"sizeGB"`
-	// Storage type for File Share
-	StorageType string `json:"storageType"`
 }

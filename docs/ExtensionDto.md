@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **Id** | **float64** | The extension ID | [default to null]
 **Slug** | **string** | The extension unique slug | [default to null]
 **Name** | **string** | The extension name | [default to null]
+**Label** | **string** | The extension unique label | [optional] [default to null]
 **Description** | **string** | The extension description | [default to null]
 **Status** | **string** | Extension status | [default to null]
 **Definition** | **string** | Extension definition (JSON) | [default to null]

@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -33,7 +33,7 @@ Add a user to a Resource Pool
  * @param userId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1AddResourcePoolUser(ctx context.Context, resourcePoolId float64, userId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerAddResourcePoolUser(ctx context.Context, resourcePoolId float64, userId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -78,7 +78,7 @@ func (a *ResourcePoolsApiService) InventoryController1AddResourcePoolUser(ctx co
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -103,7 +103,7 @@ Add a server to a Resource Pool
  * @param serverId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1AddServerToResourcePool(ctx context.Context, resourcePoolId float64, serverId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerAddServerToResourcePool(ctx context.Context, resourcePoolId float64, serverId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -148,7 +148,7 @@ func (a *ResourcePoolsApiService) InventoryController1AddServerToResourcePool(ct
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -173,7 +173,7 @@ Add a subnet pool to a resource pool
  * @param subnetPoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1AddSubnetPoolToResourcePool(ctx context.Context, resourcePoolId float64, subnetPoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerAddSubnetPoolToResourcePool(ctx context.Context, resourcePoolId float64, subnetPoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -218,7 +218,7 @@ func (a *ResourcePoolsApiService) InventoryController1AddSubnetPoolToResourcePoo
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -242,7 +242,7 @@ Creates a Resource Pool
  * @param body The Resource Pool create object
 @return ResourcePoolDto
 */
-func (a *ResourcePoolsApiService) InventoryController1CreateResourcePool(ctx context.Context, body CreateResourcePoolDto) (ResourcePoolDto, *http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerCreateResourcePool(ctx context.Context, body CreateResourcePoolDto) (ResourcePoolDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -287,7 +287,7 @@ func (a *ResourcePoolsApiService) InventoryController1CreateResourcePool(ctx con
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -296,7 +296,7 @@ func (a *ResourcePoolsApiService) InventoryController1CreateResourcePool(ctx con
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -328,7 +328,7 @@ Deletes a Resource Pool
  * @param resourcePoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1DeleteResourcePool(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerDeleteResourcePool(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -372,7 +372,7 @@ func (a *ResourcePoolsApiService) InventoryController1DeleteResourcePool(ctx con
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -396,7 +396,7 @@ Returns Resource Pool information
  * @param resourcePoolId
 @return ResourcePoolDto
 */
-func (a *ResourcePoolsApiService) InventoryController1GetResourcePool(ctx context.Context, resourcePoolId float64) (ResourcePoolDto, *http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerGetResourcePool(ctx context.Context, resourcePoolId float64) (ResourcePoolDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -440,7 +440,7 @@ func (a *ResourcePoolsApiService) InventoryController1GetResourcePool(ctx contex
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -449,7 +449,7 @@ func (a *ResourcePoolsApiService) InventoryController1GetResourcePool(ctx contex
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -481,7 +481,7 @@ Returns list of all servers that are part of a Resource Pool
  * @param resourcePoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1GetResourcePoolServers(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerGetResourcePoolServers(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -525,7 +525,7 @@ func (a *ResourcePoolsApiService) InventoryController1GetResourcePoolServers(ctx
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -549,7 +549,7 @@ Returns list of all subnet pools that are part of a resource pool
  * @param resourcePoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1GetResourcePoolSubnetPools(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerGetResourcePoolSubnetPools(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -593,7 +593,7 @@ func (a *ResourcePoolsApiService) InventoryController1GetResourcePoolSubnetPools
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -617,7 +617,7 @@ Returns list of all users that have access to a Resource Pool
  * @param resourcePoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1GetResourcePoolUsers(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerGetResourcePoolUsers(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -661,7 +661,7 @@ func (a *ResourcePoolsApiService) InventoryController1GetResourcePoolUsers(ctx c
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -684,7 +684,7 @@ Returns list of all Resource Pools
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []ResourcePoolWithStatsDto
 */
-func (a *ResourcePoolsApiService) InventoryController1GetResourcePools(ctx context.Context) ([]ResourcePoolWithStatsDto, *http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerGetResourcePools(ctx context.Context) ([]ResourcePoolWithStatsDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -727,7 +727,7 @@ func (a *ResourcePoolsApiService) InventoryController1GetResourcePools(ctx conte
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -736,7 +736,7 @@ func (a *ResourcePoolsApiService) InventoryController1GetResourcePools(ctx conte
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -768,7 +768,7 @@ Returns list of all Resource Pools that a user has access to
  * @param userId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1GetUserResourcePools(ctx context.Context, userId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerGetUserResourcePools(ctx context.Context, userId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -812,7 +812,7 @@ func (a *ResourcePoolsApiService) InventoryController1GetUserResourcePools(ctx c
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -837,7 +837,7 @@ Remove a user from a Resource Pool
  * @param userId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1RemoveResourcePoolUser(ctx context.Context, resourcePoolId float64, userId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerRemoveResourcePoolUser(ctx context.Context, resourcePoolId float64, userId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -882,7 +882,7 @@ func (a *ResourcePoolsApiService) InventoryController1RemoveResourcePoolUser(ctx
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -907,7 +907,7 @@ Remove a server from a Resource Pool
  * @param serverId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1RemoveServerFromResourcePool(ctx context.Context, resourcePoolId float64, serverId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerRemoveServerFromResourcePool(ctx context.Context, resourcePoolId float64, serverId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -952,7 +952,7 @@ func (a *ResourcePoolsApiService) InventoryController1RemoveServerFromResourcePo
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -977,7 +977,7 @@ Remove a subnet from a resource pool
  * @param subnetPoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryController1RemoveSubnetPoolFromResourcePool(ctx context.Context, resourcePoolId float64, subnetPoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerRemoveSubnetPoolFromResourcePool(ctx context.Context, resourcePoolId float64, subnetPoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -1022,7 +1022,7 @@ func (a *ResourcePoolsApiService) InventoryController1RemoveSubnetPoolFromResour
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -1047,7 +1047,7 @@ Updates Resource Pool information
  * @param resourcePoolId
 @return ResourcePoolDto
 */
-func (a *ResourcePoolsApiService) InventoryController1UpdateResourcePool(ctx context.Context, body UpdateResourcePoolDto, resourcePoolId float64) (ResourcePoolDto, *http.Response, error) {
+func (a *ResourcePoolsApiService) InventoryControllerUpdateResourcePool(ctx context.Context, body UpdateResourcePoolDto, resourcePoolId float64) (ResourcePoolDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -1093,7 +1093,7 @@ func (a *ResourcePoolsApiService) InventoryController1UpdateResourcePool(ctx con
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -1102,7 +1102,7 @@ func (a *ResourcePoolsApiService) InventoryController1UpdateResourcePool(ctx con
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}

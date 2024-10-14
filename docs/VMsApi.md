@@ -4,7 +4,7 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**InventoryController1UpdateVM**](VMsApi.md#InventoryController1UpdateVM) | **Patch** /api/v2/vms/{vmId} | Updates VM information
+[**InventoryControllerUpdateVM**](VMsApi.md#InventoryControllerUpdateVM) | **Patch** /api/v2/vms/{vmId} | Updates VM information
 [**VMMicroserviceControllerGetRemoteConsoleInfo**](VMsApi.md#VMMicroserviceControllerGetRemoteConsoleInfo) | **Get** /api/v2/vms/{vmId}/remote-console-info | Get Remote Console information
 [**VMMicroserviceControllerGetVM**](VMsApi.md#VMMicroserviceControllerGetVM) | **Get** /api/v2/vms/{vmId} | Retrieves the VM information
 [**VMMicroserviceControllerPowerStatusVMInstance**](VMsApi.md#VMMicroserviceControllerPowerStatusVMInstance) | **Get** /api/v2/vms/{vmId}/power-status | Retrieves the power status of the VM
@@ -12,8 +12,8 @@ Method | HTTP request | Description
 [**VMMicroserviceControllerShutdownVM**](VMsApi.md#VMMicroserviceControllerShutdownVM) | **Post** /api/v2/vms/{vmId}/shutdown | Shuts down the VM
 [**VMMicroserviceControllerStartVM**](VMsApi.md#VMMicroserviceControllerStartVM) | **Post** /api/v2/vms/{vmId}/start | Starts the VM
 
-# **InventoryController1UpdateVM**
-> VmDto InventoryController1UpdateVM(ctx, body, vmId)
+# **InventoryControllerUpdateVM**
+> Vm InventoryControllerUpdateVM(ctx, body, vmId)
 Updates VM information
 
 Updates VM information
@@ -23,12 +23,12 @@ Updates VM information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**UpdateVmDto**](UpdateVmDto.md)| The VM update object | 
+  **body** | [**UpdateVm**](UpdateVm.md)| The VM update object | 
   **vmId** | **float64**|  | 
 
 ### Return type
 
-[**VmDto**](VMDto.md)
+[**Vm**](VM.md)
 
 ### Authorization
 

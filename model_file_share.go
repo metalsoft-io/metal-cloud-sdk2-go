@@ -22,8 +22,6 @@ type FileShare struct {
 	CreatedTimestamp string `json:"createdTimestamp"`
 	// Timestamp of the File Share last update.
 	UpdatedTimestamp string `json:"updatedTimestamp"`
-	// Storage type for File Share
-	StorageType string `json:"storageType"`
 	// Id of the storage pool the File Share is assigned to
 	StoragePoolId float64 `json:"storagePoolId,omitempty"`
 	// Service status of the File Share

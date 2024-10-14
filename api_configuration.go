@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -29,16 +29,16 @@ type ConfigurationApiService service
 ConfigurationApiService Get configuration
 Returns a configuration object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ConfigurationApiConfigController1GetConfigurationOpts - Optional Parameters:
+ * @param optional nil or *ConfigurationApiConfigControllerGetConfigurationOpts - Optional Parameters:
      * @param "Filter" (optional.String) -  Filter to be applied.
 @return interface{}
 */
 
-type ConfigurationApiConfigController1GetConfigurationOpts struct {
+type ConfigurationApiConfigControllerGetConfigurationOpts struct {
     Filter optional.String
 }
 
-func (a *ConfigurationApiService) ConfigController1GetConfiguration(ctx context.Context, localVarOptionals *ConfigurationApiConfigController1GetConfigurationOpts) (interface{}, *http.Response, error) {
+func (a *ConfigurationApiService) ConfigControllerGetConfiguration(ctx context.Context, localVarOptionals *ConfigurationApiConfigControllerGetConfigurationOpts) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -84,7 +84,7 @@ func (a *ConfigurationApiService) ConfigController1GetConfiguration(ctx context.
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -93,7 +93,7 @@ func (a *ConfigurationApiService) ConfigController1GetConfiguration(ctx context.
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}

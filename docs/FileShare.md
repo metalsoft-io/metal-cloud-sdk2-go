@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **SizeGB** | **float64** | Disk size in GB for File Share | [default to null]
 **CreatedTimestamp** | **string** | Timestamp of the File Share creation. | [default to null]
 **UpdatedTimestamp** | **string** | Timestamp of the File Share last update. | [default to null]
-**StorageType** | **string** | Storage type for File Share | [default to null]
 **StoragePoolId** | **float64** | Id of the storage pool the File Share is assigned to | [optional] [default to null]
 **ServiceStatus** | **string** | Service status of the File Share | [default to null]
 **Label** | **string** | Label of the File Share. | [default to null]

@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -34,7 +34,7 @@ Deploys the specified infrastructure
  * @param infrastructureId
 @return interface{}
 */
-func (a *InfrastructureApiService) InventoryController1DeployInfrastructure(ctx context.Context, body InfrastructureDeployOptions, infrastructureId float64) (interface{}, *http.Response, error) {
+func (a *InfrastructureApiService) InventoryControllerDeployInfrastructure(ctx context.Context, body InfrastructureDeployOptions, infrastructureId float64) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -80,7 +80,7 @@ func (a *InfrastructureApiService) InventoryController1DeployInfrastructure(ctx 
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -89,7 +89,7 @@ func (a *InfrastructureApiService) InventoryController1DeployInfrastructure(ctx 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -121,7 +121,7 @@ Retrieves the specified infrastructure
  * @param infrastructureId
 
 */
-func (a *InfrastructureApiService) InventoryController1GetInfrastructure(ctx context.Context, infrastructureId float64) (*http.Response, error) {
+func (a *InfrastructureApiService) InventoryControllerGetInfrastructure(ctx context.Context, infrastructureId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -165,7 +165,7 @@ func (a *InfrastructureApiService) InventoryController1GetInfrastructure(ctx con
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -186,16 +186,16 @@ func (a *InfrastructureApiService) InventoryController1GetInfrastructure(ctx con
 InfrastructureApiService Get all infrastructures
 Returns list of all infrastructures
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *InfrastructureApiInventoryController1GetInfrastructuresOpts - Optional Parameters:
+ * @param optional nil or *InfrastructureApiInventoryControllerGetInfrastructuresOpts - Optional Parameters:
      * @param "AccountId" (optional.Float64) -  The account ID to filter user infrastructures by
 @return []InfrastructureDto
 */
 
-type InfrastructureApiInventoryController1GetInfrastructuresOpts struct {
+type InfrastructureApiInventoryControllerGetInfrastructuresOpts struct {
     AccountId optional.Float64
 }
 
-func (a *InfrastructureApiService) InventoryController1GetInfrastructures(ctx context.Context, localVarOptionals *InfrastructureApiInventoryController1GetInfrastructuresOpts) ([]InfrastructureDto, *http.Response, error) {
+func (a *InfrastructureApiService) InventoryControllerGetInfrastructures(ctx context.Context, localVarOptionals *InfrastructureApiInventoryControllerGetInfrastructuresOpts) ([]InfrastructureDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -241,7 +241,7 @@ func (a *InfrastructureApiService) InventoryController1GetInfrastructures(ctx co
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -250,7 +250,7 @@ func (a *InfrastructureApiService) InventoryController1GetInfrastructures(ctx co
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -282,7 +282,7 @@ Reverts the specified infrastructure
  * @param infrastructureId
 
 */
-func (a *InfrastructureApiService) InventoryController1RevertInfrastructure(ctx context.Context, infrastructureId float64) (*http.Response, error) {
+func (a *InfrastructureApiService) InventoryControllerRevertInfrastructure(ctx context.Context, infrastructureId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -326,7 +326,7 @@ func (a *InfrastructureApiService) InventoryController1RevertInfrastructure(ctx 
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err

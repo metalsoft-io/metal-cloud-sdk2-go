@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**BlueprintControllerGetFileShare**](FileShareApi.md#BlueprintControllerGetFileShare) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Get File Share information
 [**BlueprintControllerGetFileShareHosts**](FileShareApi.md#BlueprintControllerGetFileShareHosts) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/hosts | Get the Hosts of File Share
 [**BlueprintControllerGetFileShares**](FileShareApi.md#BlueprintControllerGetFileShares) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares | Get all File Shares
+[**BlueprintControllerGetIndividualFileShare**](FileShareApi.md#BlueprintControllerGetIndividualFileShare) | **Get** /api/v2/file-shares/{fileShareId} | Get File Share information
 [**BlueprintControllerStartFileShare**](FileShareApi.md#BlueprintControllerStartFileShare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/start | Starts a File Share
 [**BlueprintControllerStopFileShare**](FileShareApi.md#BlueprintControllerStopFileShare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/stop | Stops a File Share
 [**BlueprintControllerUpdateFileShare**](FileShareApi.md#BlueprintControllerUpdateFileShare) | **Patch** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Updates File Share information
@@ -146,6 +147,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]FileShare**](FileShare.md)
+
+### Authorization
+
+[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BlueprintControllerGetIndividualFileShare**
+> FileShareExtendedInfo BlueprintControllerGetIndividualFileShare(ctx, fileShareId)
+Get File Share information
+
+Returns File Share information
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **fileShareId** | **float64**|  | 
+
+### Return type
+
+[**FileShareExtendedInfo**](FileShareExtendedInfo.md)
 
 ### Authorization
 

@@ -48,6 +48,8 @@ tags:
   description: A group of virtual compute instances part of an infrastructure.
 - name: File Share
   description: File shares that can be attached to one or more servers.
+- name: Bucket
+  description: Buckets that can be attached to one or more servers.
 - name: Extension
   description: Extensions are used to add extended functionality like deploying clustered
     application.
@@ -742,7 +744,7 @@ paths:
       - Resource Pools
       summary: Get all Resource Pools
       description: Returns list of all Resource Pools
-      operationId: InventoryController_1_getResourcePools
+      operationId: InventoryController_getResourcePools
       parameters: []
       responses:
         "200":
@@ -764,7 +766,7 @@ paths:
       - Resource Pools
       summary: Creates a Resource Pool
       description: Creates a Resource Pool
-      operationId: InventoryController_1_createResourcePool
+      operationId: InventoryController_createResourcePool
       parameters: []
       requestBody:
         description: The Resource Pool create object
@@ -793,7 +795,7 @@ paths:
       - Resource Pools
       summary: Get Resource Pool information
       description: Returns Resource Pool information
-      operationId: InventoryController_1_getResourcePool
+      operationId: InventoryController_getResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -821,7 +823,7 @@ paths:
       - Resource Pools
       summary: Updates Resource Pool information
       description: Updates Resource Pool information
-      operationId: InventoryController_1_updateResourcePool
+      operationId: InventoryController_updateResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -856,7 +858,7 @@ paths:
       - Resource Pools
       summary: Deletes a Resource Pool
       description: Deletes a Resource Pool
-      operationId: InventoryController_1_deleteResourcePool
+      operationId: InventoryController_deleteResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -881,7 +883,7 @@ paths:
       - Resource Pools
       summary: Get all servers that are part of a Resource Pool
       description: Returns list of all servers that are part of a Resource Pool
-      operationId: InventoryController_1_getResourcePoolServers
+      operationId: InventoryController_getResourcePoolServers
       parameters:
       - name: resourcePoolId
         in: path
@@ -906,7 +908,7 @@ paths:
       - Resource Pools
       summary: Add a server to a Resource Pool
       description: Add a server to a Resource Pool
-      operationId: InventoryController_1_addServerToResourcePool
+      operationId: InventoryController_addServerToResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -937,7 +939,7 @@ paths:
       - Resource Pools
       summary: Remove a server from a Resource Pool
       description: Remove a server from a Resource Pool
-      operationId: InventoryController_1_removeServerFromResourcePool
+      operationId: InventoryController_removeServerFromResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -969,7 +971,7 @@ paths:
       - Resource Pools
       summary: Get all subnet pools that are part of a resource pool
       description: Returns list of all subnet pools that are part of a resource pool
-      operationId: InventoryController_1_getResourcePoolSubnetPools
+      operationId: InventoryController_getResourcePoolSubnetPools
       parameters:
       - name: resourcePoolId
         in: path
@@ -995,7 +997,7 @@ paths:
       - Resource Pools
       summary: Add a subnet pool to a resource pool
       description: Add a subnet pool to a resource pool
-      operationId: InventoryController_1_addSubnetPoolToResourcePool
+      operationId: InventoryController_addSubnetPoolToResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -1026,7 +1028,7 @@ paths:
       - Resource Pools
       summary: Remove a subnet from a resource pool
       description: Remove a subnet from a resource pool
-      operationId: InventoryController_1_removeSubnetPoolFromResourcePool
+      operationId: InventoryController_removeSubnetPoolFromResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -1059,7 +1061,7 @@ paths:
       - Resource Pools
       summary: Get all users that have access to a Resource Pool
       description: Returns list of all users that have access to a Resource Pool
-      operationId: InventoryController_1_getResourcePoolUsers
+      operationId: InventoryController_getResourcePoolUsers
       parameters:
       - name: resourcePoolId
         in: path
@@ -1084,7 +1086,7 @@ paths:
       - Resource Pools
       summary: Get all Resource Pools that a user has access to
       description: Returns list of all Resource Pools that a user has access to
-      operationId: InventoryController_1_getUserResourcePools
+      operationId: InventoryController_getUserResourcePools
       parameters:
       - name: userId
         in: path
@@ -1109,7 +1111,7 @@ paths:
       - Resource Pools
       summary: Add a user to a Resource Pool
       description: Add a user to a Resource Pool
-      operationId: InventoryController_1_addResourcePoolUser
+      operationId: InventoryController_addResourcePoolUser
       parameters:
       - name: resourcePoolId
         in: path
@@ -1140,7 +1142,7 @@ paths:
       - Resource Pools
       summary: Remove a user from a Resource Pool
       description: Remove a user from a Resource Pool
-      operationId: InventoryController_1_removeResourcePoolUser
+      operationId: InventoryController_removeResourcePoolUser
       parameters:
       - name: resourcePoolId
         in: path
@@ -1202,7 +1204,7 @@ paths:
       - VMs
       summary: Updates VM information
       description: Updates VM information
-      operationId: InventoryController_1_updateVM
+      operationId: InventoryController_updateVM
       parameters:
       - name: vmId
         in: path
@@ -1216,7 +1218,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateVMDto'
+              $ref: '#/components/schemas/UpdateVM'
         required: true
       responses:
         "200":
@@ -1224,7 +1226,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMDto'
+                $ref: '#/components/schemas/VM'
         "400":
           description: Bad request
         "401":
@@ -1244,7 +1246,7 @@ paths:
       - VM Pools
       summary: Get all VM Pools
       description: Returns list of all VM Pools
-      operationId: InventoryController_1_getVMPools
+      operationId: InventoryController_getVMPools
       parameters: []
       responses:
         "200":
@@ -1252,7 +1254,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMPoolListDto'
+                $ref: '#/components/schemas/VMPoolList'
         "400":
           description: Bad request
         "401":
@@ -1269,14 +1271,14 @@ paths:
       - VM Pools
       summary: Creates a VM Pool
       description: Creates a VM Pool
-      operationId: InventoryController_1_createVMPool
+      operationId: InventoryController_createVMPool
       parameters: []
       requestBody:
         description: The VM Pool create object
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateVMPoolDto'
+              $ref: '#/components/schemas/CreateVMPool'
         required: true
       responses:
         "200":
@@ -1284,7 +1286,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMPoolDto'
+                $ref: '#/components/schemas/VMPool'
         "400":
           description: Bad request
         "401":
@@ -1304,7 +1306,7 @@ paths:
       - VM Pools
       summary: Get VM Pool information
       description: Returns VM Pool information
-      operationId: InventoryController_1_getVMPool
+      operationId: InventoryController_getVMPool
       parameters:
       - name: vmPoolId
         in: path
@@ -1319,7 +1321,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMPoolDto'
+                $ref: '#/components/schemas/VMPool'
         "400":
           description: Bad request
         "401":
@@ -1336,7 +1338,7 @@ paths:
       - VM Pools
       summary: Deletes a VM Pool
       description: Deletes a VM Pool
-      operationId: InventoryController_1_deleteVMPool
+      operationId: InventoryController_deleteVMPool
       parameters:
       - name: vmPoolId
         in: path
@@ -1366,7 +1368,7 @@ paths:
       - VM Pools
       summary: Updates VM Pool information
       description: Updates VM Pool information
-      operationId: InventoryController_1_updateVMPool
+      operationId: InventoryController_updateVMPool
       parameters:
       - name: vmPoolId
         in: path
@@ -1380,7 +1382,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateVMPoolDto'
+              $ref: '#/components/schemas/UpdateVMPool'
         required: true
       responses:
         "200":
@@ -1388,7 +1390,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMPoolDto'
+                $ref: '#/components/schemas/VMPool'
         "400":
           description: Bad request
         "401":
@@ -1408,7 +1410,7 @@ paths:
       - VM Pools
       summary: Returns all VMs linked to the VM Pool
       description: Returns all VMs linked to the VM Pool
-      operationId: InventoryController_1_getVMPoolVMs
+      operationId: InventoryController_getVMPoolVMs
       parameters:
       - name: vmPoolId
         in: path
@@ -1437,7 +1439,7 @@ paths:
       - VM Pools
       summary: Get list of VM Cluster Hosts linked to the VM Pool
       description: Returns list of VM Cluster Hosts linked to the VM Pool
-      operationId: InventoryController_1_getVMPoolClusterHosts
+      operationId: InventoryController_getVMPoolClusterHosts
       parameters:
       - name: vmPoolId
         in: path
@@ -1452,10 +1454,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VMPoolHostsDto'
-                x-content-type: application/json
+                $ref: '#/components/schemas/VMPoolHostsList'
         "400":
           description: Bad request
         "401":
@@ -1473,7 +1472,7 @@ paths:
       - VM Pools
       summary: Retrieves a VM Cluster Host
       description: Returns a VM Cluster Host
-      operationId: InventoryController_1_getVMPoolClusterHost
+      operationId: InventoryController_getVMPoolClusterHost
       parameters:
       - name: vmPoolId
         in: path
@@ -1495,7 +1494,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMPoolHostsDto'
+                $ref: '#/components/schemas/VMPoolHosts'
         "400":
           description: Bad request
         "401":
@@ -1513,7 +1512,7 @@ paths:
       - VM Pools
       summary: Retrieves a list of VM Cluster Host Interfaces
       description: Returns a list of VM Cluster Host Interfaces
-      operationId: InventoryController_1_getVMPoolClusterHostInterfaces
+      operationId: InventoryController_getVMPoolClusterHostInterfaces
       parameters:
       - name: vmPoolId
         in: path
@@ -1537,7 +1536,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/VMPoolHostInterfacesDto'
+                  $ref: '#/components/schemas/VMPoolHostInterfaces'
                 x-content-type: application/json
         "400":
           description: Bad request
@@ -1556,7 +1555,7 @@ paths:
       - VM Pools
       summary: Retrieves a VM Cluster Host Interface
       description: Returns a VM Cluster Host Interface
-      operationId: InventoryController_1_getVMPoolClusterHostInterface
+      operationId: InventoryController_getVMPoolClusterHostInterface
       parameters:
       - name: vmPoolId
         in: path
@@ -1585,7 +1584,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMPoolHostInterfacesDto'
+                $ref: '#/components/schemas/VMPoolHostInterfaces'
         "400":
           description: Bad request
         "401":
@@ -1602,7 +1601,7 @@ paths:
       - VM Pools
       summary: Updates a VM Cluster Host Interface
       description: Updates a VM Cluster Host Interface
-      operationId: InventoryController_1_patchVMPoolClusterHostInterface
+      operationId: InventoryController_patchVMPoolClusterHostInterface
       parameters:
       - name: vmPoolId
         in: path
@@ -1630,7 +1629,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateVMPoolClusterHostInterfaceDto'
+              $ref: '#/components/schemas/UpdateVMPoolClusterHostInterface'
         required: true
       responses:
         "200":
@@ -1638,7 +1637,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMPoolHostInterfacesDto'
+                $ref: '#/components/schemas/VMPoolHostInterfaces'
         "400":
           description: Bad request
         "401":
@@ -1656,7 +1655,7 @@ paths:
       - VM Pools
       summary: Retrieves a list of VM Cluster Host VMs
       description: Returns a list of VM Cluster Host VMs
-      operationId: InventoryController_1_getVMPoolClusterHostVMs
+      operationId: InventoryController_getVMPoolClusterHostVMs
       parameters:
       - name: vmPoolId
         in: path
@@ -1678,10 +1677,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VMDto'
-                x-content-type: application/json
+                $ref: '#/components/schemas/VMList'
         "400":
           description: Bad request
         "401":
@@ -1699,7 +1695,7 @@ paths:
       - VM Types
       summary: Get all VM Types
       description: Returns list of all VM Types
-      operationId: InventoryController_1_getVMTypes
+      operationId: InventoryController_getVMTypes
       parameters: []
       responses:
         "200":
@@ -1707,10 +1703,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VMTypeDto'
-                x-content-type: application/json
+                $ref: '#/components/schemas/VMTypeList'
         "400":
           description: Bad request
         "401":
@@ -1727,14 +1720,14 @@ paths:
       - VM Types
       summary: Creates a VM Type
       description: Creates a VM Type
-      operationId: InventoryController_1_createVMType
+      operationId: InventoryController_createVMType
       parameters: []
       requestBody:
         description: The VM Type create object
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateVMTypeDto'
+              $ref: '#/components/schemas/CreateVMType'
         required: true
       responses:
         "200":
@@ -1742,7 +1735,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMTypeDto'
+                $ref: '#/components/schemas/VMType'
         "400":
           description: Bad request
         "401":
@@ -1762,7 +1755,7 @@ paths:
       - VM Types
       summary: Get VM Type information
       description: Returns VM Type information
-      operationId: InventoryController_1_getVMType
+      operationId: InventoryController_getVMType
       parameters:
       - name: vmTypeId
         in: path
@@ -1777,7 +1770,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMTypeDto'
+                $ref: '#/components/schemas/VMType'
         "400":
           description: Bad request
         "401":
@@ -1794,7 +1787,7 @@ paths:
       - VM Types
       summary: Deletes a VM Type
       description: Deletes a VM Type
-      operationId: InventoryController_1_deleteVMType
+      operationId: InventoryController_deleteVMType
       parameters:
       - name: vmTypeId
         in: path
@@ -1824,7 +1817,7 @@ paths:
       - VM Types
       summary: Updates VM Type information
       description: Updates VM Type information
-      operationId: InventoryController_1_updateVMType
+      operationId: InventoryController_updateVMType
       parameters:
       - name: vmTypeId
         in: path
@@ -1838,7 +1831,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateVMTypeDto'
+              $ref: '#/components/schemas/UpdateVMType'
         required: true
       responses:
         "200":
@@ -1846,7 +1839,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMTypeDto'
+                $ref: '#/components/schemas/VMType'
         "400":
           description: Bad request
         "401":
@@ -1866,7 +1859,7 @@ paths:
       - VM Types
       summary: Returns all VMs linked to the VM Type
       description: Returns all VMs linked to the VM Type
-      operationId: InventoryController_1_getVMsByVMType
+      operationId: InventoryController_getVMsByVMType
       parameters:
       - name: vmTypeId
         in: path
@@ -1895,7 +1888,7 @@ paths:
       - Infrastructure
       summary: Deploys the specified infrastructure
       description: Deploys the specified infrastructure
-      operationId: InventoryController_1_deployInfrastructure
+      operationId: InventoryController_deployInfrastructure
       parameters:
       - name: infrastructureId
         in: path
@@ -1936,7 +1929,7 @@ paths:
       - Infrastructure
       summary: Reverts the specified infrastructure
       description: Reverts the specified infrastructure
-      operationId: InventoryController_1_revertInfrastructure
+      operationId: InventoryController_revertInfrastructure
       parameters:
       - name: infrastructureId
         in: path
@@ -1965,7 +1958,7 @@ paths:
       - Infrastructure
       summary: Get all infrastructures
       description: Returns list of all infrastructures
-      operationId: InventoryController_1_getInfrastructures
+      operationId: InventoryController_getInfrastructures
       parameters:
       - name: accountId
         in: query
@@ -2000,7 +1993,7 @@ paths:
       - Infrastructure
       summary: Retrieves the specified infrastructure
       description: Retrieves the specified infrastructure
-      operationId: InventoryController_1_getInfrastructure
+      operationId: InventoryController_getInfrastructure
       parameters:
       - name: infrastructureId
         in: path
@@ -2029,7 +2022,7 @@ paths:
       - Server
       summary: Initialize server registration
       description: Initializes server registration process
-      operationId: InventoryController_1_registerServer
+      operationId: InventoryController_registerServer
       parameters: []
       requestBody:
         description: The server registration information
@@ -2072,7 +2065,7 @@ paths:
       - Server
       summary: Get Server information
       description: Returns Server information
-      operationId: InventoryController_1_getServerInfo
+      operationId: InventoryController_getServerInfo
       parameters:
       - name: serverId
         in: path
@@ -2105,7 +2098,7 @@ paths:
       - Storage
       summary: Retrieves a Storage
       description: Retrieves a Storage
-      operationId: InventoryController_1_getStorage
+      operationId: InventoryController_getStorage
       parameters:
       - name: storageId
         in: path
@@ -2134,13 +2127,50 @@ paths:
       security:
       - JWT: []
       - apiKey: []
+    patch:
+      tags:
+      - Storage
+      summary: Updates a Storage
+      description: Updates a Storage
+      operationId: InventoryController_patchStorage
+      parameters:
+      - name: storageId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The Storage update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchStorage'
+        required: true
+      responses:
+        "200":
+          description: The Storage successfully updated
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
   /api/v2/storages:
     post:
       tags:
       - Storage
       summary: Creates a Storage
       description: Creates a Storage
-      operationId: InventoryController_1_createStorage
+      operationId: InventoryController_createStorage
       parameters: []
       requestBody:
         description: The Storage create object
@@ -2192,7 +2222,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/VMInstanceGroupDto'
+                  $ref: '#/components/schemas/VMInstanceGroup'
                 x-content-type: application/json
         "400":
           description: Bad request
@@ -2224,7 +2254,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateVMInstanceGroupDto'
+              $ref: '#/components/schemas/CreateVMInstanceGroup'
         required: true
       responses:
         "200":
@@ -2232,7 +2262,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceGroupDto'
+                $ref: '#/components/schemas/VMInstanceGroup'
         "400":
           description: Bad request
         "401":
@@ -2274,7 +2304,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceGroupDto'
+                $ref: '#/components/schemas/VMInstanceGroup'
         "400":
           description: Bad request
         "401":
@@ -2349,7 +2379,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateVMInstanceGroupDto'
+              $ref: '#/components/schemas/UpdateVMInstanceGroup'
         required: true
       responses:
         "200":
@@ -2357,7 +2387,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceGroupDto'
+                $ref: '#/components/schemas/VMInstanceGroup'
         "400":
           description: Bad request
         "401":
@@ -2401,7 +2431,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/VMInstanceDto'
+                  $ref: '#/components/schemas/VMInstance'
                 x-content-type: application/json
         "400":
           description: Bad request
@@ -2449,7 +2479,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceGroupDto'
+                $ref: '#/components/schemas/VMInstanceGroup'
         "400":
           description: Bad request
         "401":
@@ -2489,7 +2519,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateVMInstanceGroupInterfaceDto'
+              $ref: '#/components/schemas/CreateVMInstanceGroupInterface'
         required: true
       responses:
         "200":
@@ -2497,7 +2527,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceGroupInterfaceDto'
+                $ref: '#/components/schemas/VMInstanceGroupInterface'
         "400":
           description: Bad request
         "401":
@@ -2547,7 +2577,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateVMInstanceGroupNetworkDto'
+              $ref: '#/components/schemas/UpdateVMInstanceGroupNetwork'
         required: true
       responses:
         "200":
@@ -2556,7 +2586,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceGroupDto'
+                $ref: '#/components/schemas/VMInstanceGroup'
         "400":
           description: Bad request
         "401":
@@ -2590,7 +2620,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateVMInstanceDto'
+              $ref: '#/components/schemas/CreateVMInstance'
         required: true
       responses:
         "200":
@@ -2598,7 +2628,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceDto'
+                $ref: '#/components/schemas/VMInstance'
         "400":
           description: Bad request
         "401":
@@ -2640,7 +2670,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceDto'
+                $ref: '#/components/schemas/VMInstance'
         "400":
           description: Bad request
         "401":
@@ -2715,7 +2745,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateVMInstanceDto'
+              $ref: '#/components/schemas/UpdateVMInstance'
         required: true
       responses:
         "200":
@@ -2723,7 +2753,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceDto'
+                $ref: '#/components/schemas/VMInstance'
         "400":
           description: Bad request
         "401":
@@ -2772,7 +2802,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VMInstanceDto'
+                $ref: '#/components/schemas/VMInstance'
         "400":
           description: Bad request
         "401":
@@ -2988,7 +3018,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateNetworkDto'
+              $ref: '#/components/schemas/CreateNetwork'
         required: true
       responses:
         "200":
@@ -2996,7 +3026,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NetworkDto'
+                $ref: '#/components/schemas/Network'
         "400":
           description: Bad request
         "401":
@@ -3085,6 +3115,39 @@ paths:
       security:
       - JWT: []
       - apiKey: []
+  /api/v2/file-shares/{fileShareId}:
+    get:
+      tags:
+      - File Share
+      summary: Get File Share information
+      description: Returns File Share information
+      operationId: BlueprintController_getIndividualFileShare
+      parameters:
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns File Share information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileShareExtendedInfo'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
   /api/v2/infrastructures/{infrastructureId}/file-shares:
     get:
       tags:
@@ -3159,6 +3222,39 @@ paths:
           description: Not found
         "409":
           description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/storages/{storageId}/file-shares:
+    get:
+      tags:
+      - Storage
+      summary: Get all File Shares linked to the specified storage
+      description: Returns list of all File Shares linked to the specified Storage
+      operationId: BlueprintController_getStorageFileShares
+      parameters:
+      - name: storageId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all File Shares linked to the specified Storage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileShareList'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
       security:
       - JWT: []
       - apiKey: []
@@ -3287,6 +3383,46 @@ paths:
       security:
       - JWT: []
       - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/hosts:
+    get:
+      tags:
+      - File Share
+      summary: Get the Hosts of File Share
+      description: Returns the Hosts of File Share
+      operationId: BlueprintController_getFileShareHosts
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: fileShareId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns the Hosts of File Share
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileShareHosts'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
   /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/start:
     post:
       tags:
@@ -3363,46 +3499,6 @@ paths:
       security:
       - JWT: []
       - apiKey: []
-  /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/hosts:
-    get:
-      tags:
-      - File Share
-      summary: Get the Hosts of File Share
-      description: Returns the Hosts of File Share
-      operationId: BlueprintController_getFileShareHosts
-      parameters:
-      - name: infrastructureId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: number
-      - name: fileShareId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: number
-      responses:
-        "200":
-          description: Returns the Hosts of File Share
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FileShareHosts'
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - JWT: []
-      - apiKey: []
   /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/modify-instance-array-hosts-bulk:
     post:
       tags:
@@ -3439,6 +3535,439 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FileShareHosts'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/buckets/{bucketId}:
+    get:
+      tags:
+      - Bucket
+      summary: Get Bucket information
+      description: Returns Bucket information
+      operationId: BlueprintController_getIndividualBucket
+      parameters:
+      - name: bucketId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns Bucket information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketExtendedInfo'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/buckets:
+    get:
+      tags:
+      - Bucket
+      summary: Get all Buckets
+      description: Returns list of all Buckets
+      operationId: BlueprintController_getBuckets
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all Buckets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bucket'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - Bucket
+      summary: Creates a Bucket
+      description: Creates a Bucket
+      operationId: BlueprintController_createBucket
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The Bucket create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBucket'
+        required: true
+      responses:
+        "200":
+          description: The Bucket successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bucket'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/storages/{storageId}/buckets:
+    get:
+      tags:
+      - Storage
+      summary: Get all Buckets linked to the specified storage
+      description: Returns list of all Buckets linked to the specified Storage
+      operationId: BlueprintController_getStorageBuckets
+      parameters:
+      - name: storageId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns list of all Buckets linked to the specified Storage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketList'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}:
+    get:
+      tags:
+      - Bucket
+      summary: Get Bucket information
+      description: Returns Bucket information
+      operationId: BlueprintController_getBucket
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: bucketId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns Bucket information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bucket'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - Bucket
+      summary: Deletes a Bucket
+      description: Deletes a Bucket
+      operationId: BlueprintController_deleteBucket
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: bucketId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The Bucket successfully deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - Bucket
+      summary: Updates Bucket information
+      description: Updates Bucket information
+      operationId: BlueprintController_updateBucket
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: bucketId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The Bucket update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBucket'
+        required: true
+      responses:
+        "200":
+          description: The Bucket information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bucket'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/hosts:
+    get:
+      tags:
+      - Bucket
+      summary: Get the Hosts of Bucket
+      description: Returns the Hosts of Bucket
+      operationId: BlueprintController_getBucketHosts
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: bucketId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Returns the Hosts of Bucket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketHosts'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/start:
+    post:
+      tags:
+      - Bucket
+      summary: Starts a Bucket
+      description: Starts a Bucket
+      operationId: BlueprintController_startBucket
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: bucketId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The Bucket successfully scheduled to start
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/stop:
+    post:
+      tags:
+      - Bucket
+      summary: Stops a Bucket
+      description: Stops a Bucket
+      operationId: BlueprintController_stopBucket
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: bucketId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The Bucket successfully scheduled to stop
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/modify-instance-array-hosts-bulk:
+    post:
+      tags:
+      - Bucket
+      summary: Updates Instance Array Hosts on the Bucket
+      description: Updates Instance Array Hosts on the Bucket
+      operationId: BlueprintController_updatebucketInstanceArrayHostsBulk
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: bucketId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The Bucket Instance Array Hosts update object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BucketHostsModifyBulk'
+        required: true
+      responses:
+        "200":
+          description: The Bucket information successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketHosts'
         "400":
           description: Bad request
         "401":
@@ -3641,7 +4170,7 @@ paths:
       - Server
       summary: Get VNC information
       description: Returns VNC information
-      operationId: ServersController_1_getVNCInfo
+      operationId: ServersController_getVNCInfo
       parameters:
       - name: serverId
         in: path
@@ -3673,7 +4202,7 @@ paths:
       - Server
       summary: Get Remote Console information
       description: Returns Remote Console information
-      operationId: ServersController_1_getRemoteConsoleInfo
+      operationId: ServersController_getRemoteConsoleInfo
       parameters:
       - name: serverId
         in: path
@@ -3705,7 +4234,7 @@ paths:
       - Server
       summary: Resets a server to factory defaults
       description: Resets a server to factory defaults
-      operationId: ServersController_1_resetServerToFactoryDefaults
+      operationId: ServersController_resetServerToFactoryDefaults
       parameters:
       - name: serverId
         in: path
@@ -3734,7 +4263,7 @@ paths:
       - Server
       summary: Enables remote syslog for a server
       description: Enables remote syslog for a server
-      operationId: ServersController_1_enableSyslog
+      operationId: ServersController_enableSyslog
       parameters:
       - name: serverId
         in: path
@@ -3763,7 +4292,7 @@ paths:
       - Server
       summary: Gets the power state of a server
       description: Gets the power state of a server
-      operationId: ServersController_1_getPowerState
+      operationId: ServersController_getPowerState
       parameters:
       - name: serverId
         in: path
@@ -3792,7 +4321,7 @@ paths:
       - Server
       summary: Sets the power state of a server
       description: Sets the power state of a server
-      operationId: ServersController_1_setPowerState
+      operationId: ServersController_setPowerState
       parameters:
       - name: serverId
         in: path
@@ -4185,7 +4714,7 @@ paths:
       - Configuration
       summary: Get configuration
       description: Returns a configuration object
-      operationId: ConfigController_1_getConfiguration
+      operationId: ConfigController_getConfiguration
       parameters:
       - name: filter
         in: query
@@ -5121,7 +5650,7 @@ components:
         resource_pool_description:
           type: string
           description: Description of the Resource Pool
-    UpdateVMDto:
+    UpdateVM:
       type: object
       properties:
         comments:
@@ -5132,7 +5661,7 @@ components:
           description: Tags for the VM. This is a JSON object.
           items:
             type: string
-    VMDto:
+    VM:
       required:
       - administrationState
       - allocationTimestamp
@@ -5252,7 +5781,7 @@ components:
           type: array
           description: The disks of the VM.
           items:
-            $ref: '#/components/schemas/VMDiskDto'
+            $ref: '#/components/schemas/VMDisk'
       example:
         allocationTimestamp: allocationTimestamp
         datacenterName: datacenterName
@@ -5292,7 +5821,7 @@ components:
         poolId: 1
         siteId: 0.8008281904610115
         typeId: 1
-    VMPoolDto:
+    VMPool:
       required:
       - certificate
       - createdTimestamp
@@ -5411,7 +5940,7 @@ components:
         id: 1
         totalSpaceGB: 5.637376656633329
         status: status
-    VMPoolListDto:
+    VMPoolList:
       required:
       - data
       - links
@@ -5422,7 +5951,7 @@ components:
           type: array
           description: List of VM Pools
           items:
-            $ref: '#/components/schemas/VMPoolDto'
+            $ref: '#/components/schemas/VMPool'
         meta:
           type: object
           description: Meta information
@@ -5479,7 +6008,7 @@ components:
           status: status
         meta: {}
         links: {}
-    CreateVMPoolDto:
+    CreateVMPool:
       type: object
       properties:
         siteId:
@@ -5507,7 +6036,7 @@ components:
         privateKey:
           type: string
           description: Private key of the VM Pool
-    UpdateVMPoolDto:
+    UpdateVMPool:
       type: object
       properties:
         description:
@@ -5543,7 +6072,7 @@ components:
           description: Tags for the VM Pool.
           items:
             type: string
-    VMPoolHostsDto:
+    VMPoolHosts:
       required:
       - address
       - architecture
@@ -5644,7 +6173,69 @@ components:
         totalSpaceGB: 5.637376656633329
         architecture: architecture
         status: status
-    VMPoolHostInterfacesDto:
+    VMPoolHostsList:
+      required:
+      - data
+      - links
+      - meta
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of VM Pool Hosts
+          items:
+            $ref: '#/components/schemas/VMPoolHosts'
+        meta:
+          type: object
+          description: Meta information
+        links:
+          type: object
+          description: Links to other resources
+      example:
+        data:
+        - totalRamGB: 6.027456183070403
+          address: address
+          usedRamGB: 5.962133916683182
+          failureDomain: failureDomain
+          usedSpaceGB: 2.3021358869347655
+          freeSpaceGB: 7.061401241503109
+          roles:
+          - roles
+          - roles
+          freeRamGB: 1.4658129805029452
+          description: description
+          updatedTimestamp: updatedTimestamp
+          database: 0.8008281904610115
+          port: 1
+          name: name
+          poolId: 1
+          id: 1
+          totalSpaceGB: 5.637376656633329
+          architecture: architecture
+          status: status
+        - totalRamGB: 6.027456183070403
+          address: address
+          usedRamGB: 5.962133916683182
+          failureDomain: failureDomain
+          usedSpaceGB: 2.3021358869347655
+          freeSpaceGB: 7.061401241503109
+          roles:
+          - roles
+          - roles
+          freeRamGB: 1.4658129805029452
+          description: description
+          updatedTimestamp: updatedTimestamp
+          database: 0.8008281904610115
+          port: 1
+          name: name
+          poolId: 1
+          id: 1
+          totalSpaceGB: 5.637376656633329
+          architecture: architecture
+          status: status
+        meta: {}
+        links: {}
+    VMPoolHostInterfaces:
       required:
       - fabric
       - hostId
@@ -5679,7 +6270,7 @@ components:
         name: name
         hostId: 1
         id: 1
-    UpdateVMPoolClusterHostInterfaceDto:
+    UpdateVMPoolClusterHostInterface:
       type: object
       properties:
         fabric:
@@ -5691,7 +6282,7 @@ components:
         switchInterfaceName:
           type: number
           description: Name of the switch interface
-    VMDiskDto:
+    VMDisk:
       required:
       - datastore
       - id
@@ -5720,7 +6311,105 @@ components:
         vmId: 1
         datastore: local
         id: 1
-    VMTypeDto:
+    VMList:
+      required:
+      - data
+      - links
+      - meta
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of VMs
+          items:
+            $ref: '#/components/schemas/VM'
+        meta:
+          type: object
+          description: Meta information
+        links:
+          type: object
+          description: Links to other resources
+      example:
+        data:
+        - allocationTimestamp: allocationTimestamp
+          datacenterName: datacenterName
+          disks:
+          - sizeGB: 100
+            vmId: 1
+            datastore: local
+            id: 1
+          - sizeGB: 100
+            vmId: 1
+            datastore: local
+            id: 1
+          ramGB: 2
+          powerStateLastUpdatedTimestamp: powerStateLastUpdatedTimestamp
+          instanceId: 5.962133916683182
+          powerState: {}
+          host: host
+          userEmail: userEmail
+          id: 1
+          diskSizeGB: 2
+          vncPort: 5900
+          comments: 2.3021358869347655
+          hosts:
+          - hosts
+          - hosts
+          createdTimestamp: createdTimestamp
+          userId: 1.4658129805029452
+          tags:
+          - tags
+          - tags
+          vmInstanceId: 5.637376656633329
+          vncPassword: vncPassword
+          infrastructureId: 6.027456183070403
+          cpuCores: 2
+          administrationState: {}
+          name: name
+          poolId: 1
+          siteId: 0.8008281904610115
+          typeId: 1
+        - allocationTimestamp: allocationTimestamp
+          datacenterName: datacenterName
+          disks:
+          - sizeGB: 100
+            vmId: 1
+            datastore: local
+            id: 1
+          - sizeGB: 100
+            vmId: 1
+            datastore: local
+            id: 1
+          ramGB: 2
+          powerStateLastUpdatedTimestamp: powerStateLastUpdatedTimestamp
+          instanceId: 5.962133916683182
+          powerState: {}
+          host: host
+          userEmail: userEmail
+          id: 1
+          diskSizeGB: 2
+          vncPort: 5900
+          comments: 2.3021358869347655
+          hosts:
+          - hosts
+          - hosts
+          createdTimestamp: createdTimestamp
+          userId: 1.4658129805029452
+          tags:
+          - tags
+          - tags
+          vmInstanceId: 5.637376656633329
+          vncPassword: vncPassword
+          infrastructureId: 6.027456183070403
+          cpuCores: 2
+          administrationState: {}
+          name: name
+          poolId: 1
+          siteId: 0.8008281904610115
+          typeId: 1
+        meta: {}
+        links: {}
+    VMType:
       required:
       - cpuCores
       - displayName
@@ -5781,7 +6470,51 @@ components:
         tags:
         - tags
         - tags
-    CreateVMTypeDto:
+    VMTypeList:
+      required:
+      - data
+      - links
+      - meta
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of VM Types
+          items:
+            $ref: '#/components/schemas/VMType'
+        meta:
+          type: object
+          description: Meta information
+        links:
+          type: object
+          description: Links to other resources
+      example:
+        data:
+        - forUnmanagedVMsOnly: 0
+          isExperimental: 1
+          cpuCores: 2
+          displayName: displayName
+          name: name
+          id: 1
+          label: label
+          ramGB: 2
+          tags:
+          - tags
+          - tags
+        - forUnmanagedVMsOnly: 0
+          isExperimental: 1
+          cpuCores: 2
+          displayName: displayName
+          name: name
+          id: 1
+          label: label
+          ramGB: 2
+          tags:
+          - tags
+          - tags
+        meta: {}
+        links: {}
+    CreateVMType:
       type: object
       properties:
         name:
@@ -5816,7 +6549,7 @@ components:
           description: "Flag to indicate if the VM Type is for unmanaged VMs only.\
             \ 1 for true, 0 for false. Default is 0."
           example: 0
-    UpdateVMTypeDto:
+    UpdateVMType:
       type: object
       properties:
         displayName:
@@ -6011,7 +6744,10 @@ components:
     CreateStorage:
       type: object
       properties: {}
-    CreateVMInstanceGroupDto:
+    PatchStorage:
+      type: object
+      properties: {}
+    CreateVMInstanceGroup:
       required:
       - diskSizeGB
       - instanceCount
@@ -6061,7 +6797,7 @@ components:
         userAgent:
           type: string
           description: User agent.
-    VMInstanceGroupDto:
+    VMInstanceGroup:
       required:
       - changeId
       - createdTimestamp
@@ -6149,7 +6885,7 @@ components:
         guiSettings: ""
         diskSizeGB: 5.962133916683182
         networkIdToNetworkProfileId: {}
-    VMInstanceDto:
+    VMInstance:
       required:
       - changeId
       - createdTimestamp
@@ -6234,7 +6970,7 @@ components:
         id: 0.8008281904610115
         operation: {}
         diskSizeGB: 7.061401241503109
-    UpdateVMInstanceGroupInterfaceDto:
+    UpdateVMInstanceGroupInterface:
       required:
       - id
       type: object
@@ -6245,7 +6981,7 @@ components:
         networkId:
           type: number
           description: Network ID
-    UpdateVMInstanceGroupDto:
+    UpdateVMInstanceGroup:
       type: object
       properties:
         label:
@@ -6264,18 +7000,18 @@ components:
           type: array
           description: Interfaces for the VM Instance Group
           items:
-            $ref: '#/components/schemas/UpdateVMInstanceGroupInterfaceDto'
+            $ref: '#/components/schemas/UpdateVMInstanceGroupInterface'
         customVariables:
           type: object
           description: Custom variables for the VM Instance.
-    CreateVMInstanceGroupInterfaceDto:
+    CreateVMInstanceGroupInterface:
       type: object
       properties:
         networkId:
           type: number
           description: Network ID for the interface. Can be null if the interface
             is not connected to any network
-    VMInstanceGroupInterfaceDto:
+    VMInstanceGroupInterface:
       required:
       - changeId
       - createdTimestamp
@@ -6335,13 +7071,13 @@ components:
         label: 7.061401241503109
         updatedTimestamp: updatedTimestamp
         operation: {}
-    UpdateVMInstanceGroupNetworkDto:
+    UpdateVMInstanceGroupNetwork:
       type: object
       properties:
         networkProfileId:
           type: number
           description: Network Profile ID
-    CreateVMInstanceDto:
+    CreateVMInstance:
       required:
       - groupId
       - typeId
@@ -6358,7 +7094,7 @@ components:
           description: Tags for the VM Instance.
           items:
             type: string
-    UpdateVMInstanceDto:
+    UpdateVMInstance:
       type: object
       properties:
         tags:
@@ -6372,13 +7108,13 @@ components:
         customVariables:
           type: object
           description: Custom variables for the VM Instance.
-    CreateNetworkDto:
+    CreateNetwork:
       type: object
       properties:
         label:
           type: string
           description: Label of the Network.
-    NetworkDto:
+    Network:
       required:
       - createdTimestamp
       - infrastructureId
@@ -6438,23 +7174,6 @@ components:
         subdomainPermanent: subdomainPermanent
         networkType: lan
         updatedTimestamp: updatedTimestamp
-    CreateFileShare:
-      required:
-      - sizeGB
-      - storageType
-      type: object
-      properties:
-        label:
-          type: string
-          description: Display name of the File Share.
-        sizeGB:
-          type: number
-          description: Disk size in GB for File Share
-        storageType:
-          type: string
-          description: Storage type for File Share
-          enum:
-          - ssd
     GenericGUISettings:
       required:
       - columnIndex
@@ -6479,6 +7198,93 @@ components:
         userAgent:
           type: string
           description: User agent.
+    FileShareExtendedInfo:
+      required:
+      - infrastructure
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the File Share
+        changeId:
+          type: number
+          description: Change id of the File Share
+        infrastructureId:
+          type: number
+          description: Infrastructure id of the File Share
+        sizeGB:
+          type: number
+          description: Disk size in GB for File Share
+        createdTimestamp:
+          type: string
+          description: Timestamp of the File Share creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the File Share last update.
+        storagePoolId:
+          type: number
+          description: Id of the storage pool the File Share is assigned to
+        serviceStatus:
+          type: string
+          description: Service status of the File Share
+          enum:
+          - ordered
+          - active
+          - deleted
+          - stopped
+        label:
+          type: string
+          description: Label of the File Share.
+        subdomain:
+          type: string
+          description: Subdomain of the File Share.
+        subdomainPermanent:
+          type: string
+          description: Subdomain permanent of the File Share.
+        dnsSubdomainId:
+          type: number
+          description: Id of the DNS subdomain for the File Share.
+        networkVlanId:
+          type: number
+          description: Id of the VLAN for the File Share.
+        guiSettings:
+          description: GUI settings for the File Share. This is a JSON object.
+          allOf:
+          - $ref: '#/components/schemas/GenericGUISettings'
+        endpoint:
+          type: string
+          description: Endpoint of the File Share.
+        infrastructure:
+          type: object
+          description: Infrastructure information
+      example:
+        sizeGB: 5.962133916683182
+        dnsSubdomainId: 2.3021358869347655
+        createdTimestamp: createdTimestamp
+        changeId: 6.027456183070403
+        label: label
+        subdomainPermanent: subdomainPermanent
+        updatedTimestamp: updatedTimestamp
+        endpoint: endpoint
+        infrastructureId: 1.4658129805029452
+        serviceStatus: ordered
+        infrastructure: {}
+        networkVlanId: 7.061401241503109
+        subdomain: subdomain
+        id: 0.8008281904610115
+        storagePoolId: 5.637376656633329
+        guiSettings: ""
+    CreateFileShare:
+      required:
+      - sizeGB
+      type: object
+      properties:
+        label:
+          type: string
+          description: Display name of the File Share.
+        sizeGB:
+          type: number
+          description: Disk size in GB for File Share
     FileShare:
       required:
       - changeId
@@ -6488,7 +7294,6 @@ components:
       - label
       - serviceStatus
       - sizeGB
-      - storageType
       - updatedTimestamp
       type: object
       properties:
@@ -6510,11 +7315,6 @@ components:
         updatedTimestamp:
           type: string
           description: Timestamp of the File Share last update.
-        storageType:
-          type: string
-          description: Storage type for File Share
-          enum:
-          - ssd
         storagePoolId:
           type: number
           description: Id of the storage pool the File Share is assigned to
@@ -6526,7 +7326,6 @@ components:
           - active
           - deleted
           - stopped
-          - suspended
         label:
           type: string
           description: Label of the File Share.
@@ -6564,12 +7363,65 @@ components:
         infrastructureId: 1.4658129805029452
         serviceStatus: ordered
         networkVlanId: 7.061401241503109
-        storageType: ssd
         subdomain: subdomain
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
         guiSettings: ""
         operation: operation
+    FileShareList:
+      required:
+      - data
+      - links
+      - meta
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of File Shares
+          items:
+            $ref: '#/components/schemas/FileShareExtendedInfo'
+        meta:
+          type: object
+          description: Meta information
+        links:
+          type: object
+          description: Links to other resources
+      example:
+        data:
+        - sizeGB: 5.962133916683182
+          dnsSubdomainId: 2.3021358869347655
+          createdTimestamp: createdTimestamp
+          changeId: 6.027456183070403
+          label: label
+          subdomainPermanent: subdomainPermanent
+          updatedTimestamp: updatedTimestamp
+          endpoint: endpoint
+          infrastructureId: 1.4658129805029452
+          serviceStatus: ordered
+          infrastructure: {}
+          networkVlanId: 7.061401241503109
+          subdomain: subdomain
+          id: 0.8008281904610115
+          storagePoolId: 5.637376656633329
+          guiSettings: ""
+        - sizeGB: 5.962133916683182
+          dnsSubdomainId: 2.3021358869347655
+          createdTimestamp: createdTimestamp
+          changeId: 6.027456183070403
+          label: label
+          subdomainPermanent: subdomainPermanent
+          updatedTimestamp: updatedTimestamp
+          endpoint: endpoint
+          infrastructureId: 1.4658129805029452
+          serviceStatus: ordered
+          infrastructure: {}
+          networkVlanId: 7.061401241503109
+          subdomain: subdomain
+          id: 0.8008281904610115
+          storagePoolId: 5.637376656633329
+          guiSettings: ""
+        meta: {}
+        links: {}
     UpdateFileShare:
       type: object
       properties:
@@ -6621,6 +7473,298 @@ components:
           enum:
           - add
           - remove
+    BucketExtendedInfo:
+      required:
+      - infrastructure
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the Bucket
+        changeId:
+          type: number
+          description: Change id of the Bucket
+        infrastructureId:
+          type: number
+          description: Infrastructure id of the Bucket
+        sizeGB:
+          type: number
+          description: Disk size in GB for Bucket
+        createdTimestamp:
+          type: string
+          description: Timestamp of the Bucket creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the Bucket last update.
+        storagePoolId:
+          type: number
+          description: Id of the storage pool the Bucket is assigned to
+        serviceStatus:
+          type: string
+          description: Service status of the Bucket
+          enum:
+          - ordered
+          - active
+          - deleted
+          - stopped
+        label:
+          type: string
+          description: Label of the Bucket.
+        subdomain:
+          type: string
+          description: Subdomain of the Bucket.
+        subdomainPermanent:
+          type: string
+          description: Subdomain permanent of the Bucket.
+        dnsSubdomainId:
+          type: number
+          description: Id of the DNS subdomain for the Bucket.
+        networkVlanId:
+          type: number
+          description: Id of the VLAN for the Bucket.
+        guiSettings:
+          description: GUI settings for the Bucket. This is a JSON object.
+          allOf:
+          - $ref: '#/components/schemas/GenericGUISettings'
+        endpoint:
+          type: string
+          description: Endpoint of the Bucket.
+        accessKeyId:
+          type: string
+          description: Endpoint of the Bucket.
+        secretKeyEncrypted:
+          type: string
+          description: Endpoint of the Bucket.
+        infrastructure:
+          type: object
+          description: Infrastructure information
+      example:
+        accessKeyId: accessKeyId
+        sizeGB: 5.962133916683182
+        dnsSubdomainId: 2.3021358869347655
+        createdTimestamp: createdTimestamp
+        changeId: 6.027456183070403
+        label: label
+        subdomainPermanent: subdomainPermanent
+        updatedTimestamp: updatedTimestamp
+        endpoint: endpoint
+        infrastructureId: 1.4658129805029452
+        serviceStatus: ordered
+        infrastructure: {}
+        networkVlanId: 7.061401241503109
+        subdomain: subdomain
+        id: 0.8008281904610115
+        storagePoolId: 5.637376656633329
+        secretKeyEncrypted: secretKeyEncrypted
+        guiSettings: ""
+    CreateBucket:
+      required:
+      - sizeGB
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the Bucket.
+        sizeGB:
+          type: number
+          description: Disk size in GB for Bucket
+    Bucket:
+      required:
+      - changeId
+      - createdTimestamp
+      - id
+      - infrastructureId
+      - label
+      - serviceStatus
+      - sizeGB
+      - updatedTimestamp
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the Bucket
+        changeId:
+          type: number
+          description: Change id of the Bucket
+        infrastructureId:
+          type: number
+          description: Infrastructure id of the Bucket
+        sizeGB:
+          type: number
+          description: Disk size in GB for Bucket
+        createdTimestamp:
+          type: string
+          description: Timestamp of the Bucket creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the Bucket last update.
+        storagePoolId:
+          type: number
+          description: Id of the storage pool the Bucket is assigned to
+        serviceStatus:
+          type: string
+          description: Service status of the Bucket
+          enum:
+          - ordered
+          - active
+          - deleted
+          - stopped
+        label:
+          type: string
+          description: Label of the Bucket.
+        subdomain:
+          type: string
+          description: Subdomain of the Bucket.
+        subdomainPermanent:
+          type: string
+          description: Subdomain permanent of the Bucket.
+        dnsSubdomainId:
+          type: number
+          description: Id of the DNS subdomain for the Bucket.
+        networkVlanId:
+          type: number
+          description: Id of the VLAN for the Bucket.
+        guiSettings:
+          description: GUI settings for the Bucket. This is a JSON object.
+          allOf:
+          - $ref: '#/components/schemas/GenericGUISettings'
+        endpoint:
+          type: string
+          description: Endpoint of the Bucket.
+        accessKeyId:
+          type: string
+          description: Endpoint of the Bucket.
+        secretKeyEncrypted:
+          type: string
+          description: Endpoint of the Bucket.
+        operation:
+          type: string
+          description: Operation object of the Bucket.
+      example:
+        accessKeyId: accessKeyId
+        sizeGB: 5.962133916683182
+        dnsSubdomainId: 2.3021358869347655
+        createdTimestamp: createdTimestamp
+        changeId: 6.027456183070403
+        label: label
+        subdomainPermanent: subdomainPermanent
+        updatedTimestamp: updatedTimestamp
+        endpoint: endpoint
+        infrastructureId: 1.4658129805029452
+        serviceStatus: ordered
+        networkVlanId: 7.061401241503109
+        subdomain: subdomain
+        id: 0.8008281904610115
+        storagePoolId: 5.637376656633329
+        secretKeyEncrypted: secretKeyEncrypted
+        guiSettings: ""
+        operation: operation
+    BucketList:
+      required:
+      - data
+      - links
+      - meta
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of Buckets
+          items:
+            $ref: '#/components/schemas/BucketExtendedInfo'
+        meta:
+          type: object
+          description: Meta information
+        links:
+          type: object
+          description: Links to other resources
+      example:
+        data:
+        - accessKeyId: accessKeyId
+          sizeGB: 5.962133916683182
+          dnsSubdomainId: 2.3021358869347655
+          createdTimestamp: createdTimestamp
+          changeId: 6.027456183070403
+          label: label
+          subdomainPermanent: subdomainPermanent
+          updatedTimestamp: updatedTimestamp
+          endpoint: endpoint
+          infrastructureId: 1.4658129805029452
+          serviceStatus: ordered
+          infrastructure: {}
+          networkVlanId: 7.061401241503109
+          subdomain: subdomain
+          id: 0.8008281904610115
+          storagePoolId: 5.637376656633329
+          secretKeyEncrypted: secretKeyEncrypted
+          guiSettings: ""
+        - accessKeyId: accessKeyId
+          sizeGB: 5.962133916683182
+          dnsSubdomainId: 2.3021358869347655
+          createdTimestamp: createdTimestamp
+          changeId: 6.027456183070403
+          label: label
+          subdomainPermanent: subdomainPermanent
+          updatedTimestamp: updatedTimestamp
+          endpoint: endpoint
+          infrastructureId: 1.4658129805029452
+          serviceStatus: ordered
+          infrastructure: {}
+          networkVlanId: 7.061401241503109
+          subdomain: subdomain
+          id: 0.8008281904610115
+          storagePoolId: 5.637376656633329
+          secretKeyEncrypted: secretKeyEncrypted
+          guiSettings: ""
+        meta: {}
+        links: {}
+    UpdateBucket:
+      type: object
+      properties:
+        sizeGB:
+          type: number
+          description: Disk size in GB for Bucket
+        label:
+          type: string
+          description: Label of the Bucket.
+        guiSettings:
+          description: Settings for GUI. In JSON format
+          allOf:
+          - $ref: '#/components/schemas/GenericGUISettings'
+    BucketHosts:
+      required:
+      - instanceArray
+      type: object
+      properties:
+        instanceArray:
+          type: object
+          description: Bucket Hosts.
+      example:
+        instanceArray: {}
+    BucketHostBulkOperation:
+      required:
+      - instanceArrayId
+      - operationType
+      type: object
+      properties:
+        instanceArrayId:
+          type: number
+          description: Id of the Instance Array Host that will be modified
+        operationType:
+          type: string
+          description: Operation type for the Instance Array Host
+          enum:
+          - add
+          - remove
+    BucketHostsModifyBulk:
+      required:
+      - bucketHostBulkOperations
+      type: object
+      properties:
+        bucketHostBulkOperations:
+          type: array
+          description: List of operations to be performed on the File Share Hosts
+          items:
+            $ref: '#/components/schemas/BucketHostBulkOperation'
     RemoteConsoleInfoDto:
       required:
       - activeConnections
@@ -6744,6 +7888,10 @@ components:
           type: string
           description: The extension name
           example: My App
+        label:
+          type: string
+          description: The extension unique label
+          example: incus_6x
         description:
           type: string
           description: The extension description
@@ -6756,6 +7904,7 @@ components:
         name: My App
         description: My App Description
         id: 10
+        label: incus_6x
         slug: my-app
         status: draft
     ExtensionListDto:
@@ -6773,11 +7922,13 @@ components:
         - name: My App
           description: My App Description
           id: 10
+          label: incus_6x
           slug: my-app
           status: draft
         - name: My App
           description: My App Description
           id: 10
+          label: incus_6x
           slug: my-app
           status: draft
     ExtensionDto:
@@ -6802,6 +7953,10 @@ components:
           type: string
           description: The extension name
           example: My App
+        label:
+          type: string
+          description: The extension unique label
+          example: incus_6x
         description:
           type: string
           description: The extension description
@@ -6818,6 +7973,7 @@ components:
         description: My App Description
         definition: definition
         id: 10
+        label: incus_6x
         slug: my-app
         status: draft
     CreateExtensionDto:
@@ -6831,6 +7987,10 @@ components:
           type: string
           description: The extension name
           example: My App
+        label:
+          type: string
+          description: The extension unique label
+          example: incus_6x
         description:
           type: string
           description: The extension description
@@ -6845,6 +8005,10 @@ components:
           type: string
           description: The extension name
           example: My App
+        label:
+          type: string
+          description: The extension unique label
+          example: incus_6x
         description:
           type: string
           description: The extension description

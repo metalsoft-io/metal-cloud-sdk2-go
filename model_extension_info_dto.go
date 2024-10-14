@@ -16,6 +16,8 @@ type ExtensionInfoDto struct {
 	Slug string `json:"slug,omitempty"`
 	// The extension name
 	Name string `json:"name,omitempty"`
+	// The extension unique label
+	Label string `json:"label,omitempty"`
 	// The extension description
 	Description string `json:"description,omitempty"`
 	// Extension status

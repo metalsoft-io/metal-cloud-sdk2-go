@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -30,15 +30,15 @@ VMTypesApiService Creates a VM Type
 Creates a VM Type
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The VM Type create object
-@return VmTypeDto
+@return VmType
 */
-func (a *VMTypesApiService) InventoryController1CreateVMType(ctx context.Context, body CreateVmTypeDto) (VmTypeDto, *http.Response, error) {
+func (a *VMTypesApiService) InventoryControllerCreateVMType(ctx context.Context, body CreateVmType) (VmType, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmTypeDto
+		localVarReturnValue VmType
 	)
 
 	// create path and map variables
@@ -77,7 +77,7 @@ func (a *VMTypesApiService) InventoryController1CreateVMType(ctx context.Context
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -86,7 +86,7 @@ func (a *VMTypesApiService) InventoryController1CreateVMType(ctx context.Context
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -97,7 +97,7 @@ func (a *VMTypesApiService) InventoryController1CreateVMType(ctx context.Context
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmTypeDto
+			var v VmType
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -118,7 +118,7 @@ Deletes a VM Type
  * @param vmTypeId
 
 */
-func (a *VMTypesApiService) InventoryController1DeleteVMType(ctx context.Context, vmTypeId float64) (*http.Response, error) {
+func (a *VMTypesApiService) InventoryControllerDeleteVMType(ctx context.Context, vmTypeId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -162,7 +162,7 @@ func (a *VMTypesApiService) InventoryController1DeleteVMType(ctx context.Context
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -184,15 +184,15 @@ VMTypesApiService Get VM Type information
 Returns VM Type information
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param vmTypeId
-@return VmTypeDto
+@return VmType
 */
-func (a *VMTypesApiService) InventoryController1GetVMType(ctx context.Context, vmTypeId float64) (VmTypeDto, *http.Response, error) {
+func (a *VMTypesApiService) InventoryControllerGetVMType(ctx context.Context, vmTypeId float64) (VmType, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmTypeDto
+		localVarReturnValue VmType
 	)
 
 	// create path and map variables
@@ -230,7 +230,7 @@ func (a *VMTypesApiService) InventoryController1GetVMType(ctx context.Context, v
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -239,7 +239,7 @@ func (a *VMTypesApiService) InventoryController1GetVMType(ctx context.Context, v
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -250,7 +250,7 @@ func (a *VMTypesApiService) InventoryController1GetVMType(ctx context.Context, v
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmTypeDto
+			var v VmType
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -268,15 +268,15 @@ func (a *VMTypesApiService) InventoryController1GetVMType(ctx context.Context, v
 VMTypesApiService Get all VM Types
 Returns list of all VM Types
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return []VmTypeDto
+@return VmTypeList
 */
-func (a *VMTypesApiService) InventoryController1GetVMTypes(ctx context.Context) ([]VmTypeDto, *http.Response, error) {
+func (a *VMTypesApiService) InventoryControllerGetVMTypes(ctx context.Context) (VmTypeList, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []VmTypeDto
+		localVarReturnValue VmTypeList
 	)
 
 	// create path and map variables
@@ -313,7 +313,7 @@ func (a *VMTypesApiService) InventoryController1GetVMTypes(ctx context.Context) 
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -322,7 +322,7 @@ func (a *VMTypesApiService) InventoryController1GetVMTypes(ctx context.Context) 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -333,7 +333,7 @@ func (a *VMTypesApiService) InventoryController1GetVMTypes(ctx context.Context) 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []VmTypeDto
+			var v VmTypeList
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -354,7 +354,7 @@ Returns all VMs linked to the VM Type
  * @param vmTypeId
 
 */
-func (a *VMTypesApiService) InventoryController1GetVMsByVMType(ctx context.Context, vmTypeId float64) (*http.Response, error) {
+func (a *VMTypesApiService) InventoryControllerGetVMsByVMType(ctx context.Context, vmTypeId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -398,7 +398,7 @@ func (a *VMTypesApiService) InventoryController1GetVMsByVMType(ctx context.Conte
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -421,15 +421,15 @@ Updates VM Type information
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The VM Type update object
  * @param vmTypeId
-@return VmTypeDto
+@return VmType
 */
-func (a *VMTypesApiService) InventoryController1UpdateVMType(ctx context.Context, body UpdateVmTypeDto, vmTypeId float64) (VmTypeDto, *http.Response, error) {
+func (a *VMTypesApiService) InventoryControllerUpdateVMType(ctx context.Context, body UpdateVmType, vmTypeId float64) (VmType, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmTypeDto
+		localVarReturnValue VmType
 	)
 
 	// create path and map variables
@@ -469,7 +469,7 @@ func (a *VMTypesApiService) InventoryController1UpdateVMType(ctx context.Context
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -478,7 +478,7 @@ func (a *VMTypesApiService) InventoryController1UpdateVMType(ctx context.Context
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -489,7 +489,7 @@ func (a *VMTypesApiService) InventoryController1UpdateVMType(ctx context.Context
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmTypeDto
+			var v VmType
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -32,7 +32,7 @@ Returns Server information
  * @param serverId
 @return Server
 */
-func (a *ServerApiService) InventoryController1GetServerInfo(ctx context.Context, serverId float64) (Server, *http.Response, error) {
+func (a *ServerApiService) InventoryControllerGetServerInfo(ctx context.Context, serverId float64) (Server, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -76,7 +76,7 @@ func (a *ServerApiService) InventoryController1GetServerInfo(ctx context.Context
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -85,7 +85,7 @@ func (a *ServerApiService) InventoryController1GetServerInfo(ctx context.Context
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -117,7 +117,7 @@ Initializes server registration process
  * @param body The server registration information
 @return ServerRegistrationResponseDto
 */
-func (a *ServerApiService) InventoryController1RegisterServer(ctx context.Context, body ServerRegistrationDto) (ServerRegistrationResponseDto, *http.Response, error) {
+func (a *ServerApiService) InventoryControllerRegisterServer(ctx context.Context, body ServerRegistrationDto) (ServerRegistrationResponseDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -162,7 +162,7 @@ func (a *ServerApiService) InventoryController1RegisterServer(ctx context.Contex
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -171,7 +171,7 @@ func (a *ServerApiService) InventoryController1RegisterServer(ctx context.Contex
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -213,7 +213,7 @@ Enables remote syslog for a server
  * @param serverId
 
 */
-func (a *ServerApiService) ServersController1EnableSyslog(ctx context.Context, serverId float64) (*http.Response, error) {
+func (a *ServerApiService) ServersControllerEnableSyslog(ctx context.Context, serverId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -257,7 +257,7 @@ func (a *ServerApiService) ServersController1EnableSyslog(ctx context.Context, s
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -281,7 +281,7 @@ Gets the power state of a server
  * @param serverId
 
 */
-func (a *ServerApiService) ServersController1GetPowerState(ctx context.Context, serverId float64) (*http.Response, error) {
+func (a *ServerApiService) ServersControllerGetPowerState(ctx context.Context, serverId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -325,7 +325,7 @@ func (a *ServerApiService) ServersController1GetPowerState(ctx context.Context, 
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -349,7 +349,7 @@ Returns Remote Console information
  * @param serverId
 @return []RemoteConsoleInfoDto
 */
-func (a *ServerApiService) ServersController1GetRemoteConsoleInfo(ctx context.Context, serverId float64) ([]RemoteConsoleInfoDto, *http.Response, error) {
+func (a *ServerApiService) ServersControllerGetRemoteConsoleInfo(ctx context.Context, serverId float64) ([]RemoteConsoleInfoDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -393,7 +393,7 @@ func (a *ServerApiService) ServersController1GetRemoteConsoleInfo(ctx context.Co
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -402,7 +402,7 @@ func (a *ServerApiService) ServersController1GetRemoteConsoleInfo(ctx context.Co
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -434,7 +434,7 @@ Returns VNC information
  * @param serverId
 @return []ServerVncInfoDto
 */
-func (a *ServerApiService) ServersController1GetVNCInfo(ctx context.Context, serverId float64) ([]ServerVncInfoDto, *http.Response, error) {
+func (a *ServerApiService) ServersControllerGetVNCInfo(ctx context.Context, serverId float64) ([]ServerVncInfoDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -478,7 +478,7 @@ func (a *ServerApiService) ServersController1GetVNCInfo(ctx context.Context, ser
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -487,7 +487,7 @@ func (a *ServerApiService) ServersController1GetVNCInfo(ctx context.Context, ser
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -519,7 +519,7 @@ Resets a server to factory defaults
  * @param serverId
 
 */
-func (a *ServerApiService) ServersController1ResetServerToFactoryDefaults(ctx context.Context, serverId float64) (*http.Response, error) {
+func (a *ServerApiService) ServersControllerResetServerToFactoryDefaults(ctx context.Context, serverId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -563,7 +563,7 @@ func (a *ServerApiService) ServersController1ResetServerToFactoryDefaults(ctx co
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -588,7 +588,7 @@ Sets the power state of a server
  * @param serverId
 
 */
-func (a *ServerApiService) ServersController1SetPowerState(ctx context.Context, body ServerPowerSetDto, serverId float64) (*http.Response, error) {
+func (a *ServerApiService) ServersControllerSetPowerState(ctx context.Context, body ServerPowerSetDto, serverId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -634,7 +634,7 @@ func (a *ServerApiService) ServersController1SetPowerState(ctx context.Context, 
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err

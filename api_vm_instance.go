@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -32,15 +32,15 @@ Applies a VM Type to a VM Instance
  * @param infrastructureId
  * @param vmInstanceId
  * @param vmTypeId
-@return VmInstanceDto
+@return VmInstance
 */
-func (a *VMInstanceApiService) BlueprintControllerApplyVMTypeOnVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64, vmTypeId float64) (VmInstanceDto, *http.Response, error) {
+func (a *VMInstanceApiService) BlueprintControllerApplyVMTypeOnVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64, vmTypeId float64) (VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceDto
+		localVarReturnValue VmInstance
 	)
 
 	// create path and map variables
@@ -80,7 +80,7 @@ func (a *VMInstanceApiService) BlueprintControllerApplyVMTypeOnVMInstance(ctx co
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -89,7 +89,7 @@ func (a *VMInstanceApiService) BlueprintControllerApplyVMTypeOnVMInstance(ctx co
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -100,7 +100,7 @@ func (a *VMInstanceApiService) BlueprintControllerApplyVMTypeOnVMInstance(ctx co
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceDto
+			var v VmInstance
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -120,15 +120,15 @@ Creates a VM Instance
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The VM Instance create object
  * @param infrastructureId
-@return VmInstanceDto
+@return VmInstance
 */
-func (a *VMInstanceApiService) BlueprintControllerCreateVMInstance(ctx context.Context, body CreateVmInstanceDto, infrastructureId float64) (VmInstanceDto, *http.Response, error) {
+func (a *VMInstanceApiService) BlueprintControllerCreateVMInstance(ctx context.Context, body CreateVmInstance, infrastructureId float64) (VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceDto
+		localVarReturnValue VmInstance
 	)
 
 	// create path and map variables
@@ -168,7 +168,7 @@ func (a *VMInstanceApiService) BlueprintControllerCreateVMInstance(ctx context.C
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -177,7 +177,7 @@ func (a *VMInstanceApiService) BlueprintControllerCreateVMInstance(ctx context.C
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -188,7 +188,7 @@ func (a *VMInstanceApiService) BlueprintControllerCreateVMInstance(ctx context.C
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceDto
+			var v VmInstance
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -255,7 +255,7 @@ func (a *VMInstanceApiService) BlueprintControllerDeleteVMInstance(ctx context.C
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -278,15 +278,15 @@ Returns VM Instance information
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param infrastructureId
  * @param vmInstanceId
-@return VmInstanceDto
+@return VmInstance
 */
-func (a *VMInstanceApiService) BlueprintControllerGetVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (VmInstanceDto, *http.Response, error) {
+func (a *VMInstanceApiService) BlueprintControllerGetVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceDto
+		localVarReturnValue VmInstance
 	)
 
 	// create path and map variables
@@ -325,7 +325,7 @@ func (a *VMInstanceApiService) BlueprintControllerGetVMInstance(ctx context.Cont
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -334,7 +334,7 @@ func (a *VMInstanceApiService) BlueprintControllerGetVMInstance(ctx context.Cont
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -345,7 +345,7 @@ func (a *VMInstanceApiService) BlueprintControllerGetVMInstance(ctx context.Cont
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceDto
+			var v VmInstance
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -412,7 +412,7 @@ func (a *VMInstanceApiService) BlueprintControllerPowerStatusVMInstance(ctx cont
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -482,7 +482,7 @@ func (a *VMInstanceApiService) BlueprintControllerRebootVMInstance(ctx context.C
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -552,7 +552,7 @@ func (a *VMInstanceApiService) BlueprintControllerShutdownVMInstance(ctx context
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -622,7 +622,7 @@ func (a *VMInstanceApiService) BlueprintControllerStartVMInstance(ctx context.Co
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -646,15 +646,15 @@ Updates VM Instance information
  * @param body The VM Instance update object
  * @param infrastructureId
  * @param vmInstanceId
-@return VmInstanceDto
+@return VmInstance
 */
-func (a *VMInstanceApiService) BlueprintControllerUpdateVMInstance(ctx context.Context, body UpdateVmInstanceDto, infrastructureId float64, vmInstanceId float64) (VmInstanceDto, *http.Response, error) {
+func (a *VMInstanceApiService) BlueprintControllerUpdateVMInstance(ctx context.Context, body UpdateVmInstance, infrastructureId float64, vmInstanceId float64) (VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmInstanceDto
+		localVarReturnValue VmInstance
 	)
 
 	// create path and map variables
@@ -695,7 +695,7 @@ func (a *VMInstanceApiService) BlueprintControllerUpdateVMInstance(ctx context.C
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -704,7 +704,7 @@ func (a *VMInstanceApiService) BlueprintControllerUpdateVMInstance(ctx context.C
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -715,7 +715,7 @@ func (a *VMInstanceApiService) BlueprintControllerUpdateVMInstance(ctx context.C
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmInstanceDto
+			var v VmInstance
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

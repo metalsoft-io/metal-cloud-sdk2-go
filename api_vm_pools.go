@@ -12,7 +12,7 @@ package sdk2
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -30,15 +30,15 @@ VMPoolsApiService Creates a VM Pool
 Creates a VM Pool
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The VM Pool create object
-@return VmPoolDto
+@return VmPool
 */
-func (a *VMPoolsApiService) InventoryController1CreateVMPool(ctx context.Context, body CreateVmPoolDto) (VmPoolDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerCreateVMPool(ctx context.Context, body CreateVmPool) (VmPool, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmPoolDto
+		localVarReturnValue VmPool
 	)
 
 	// create path and map variables
@@ -77,7 +77,7 @@ func (a *VMPoolsApiService) InventoryController1CreateVMPool(ctx context.Context
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -86,7 +86,7 @@ func (a *VMPoolsApiService) InventoryController1CreateVMPool(ctx context.Context
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -97,7 +97,7 @@ func (a *VMPoolsApiService) InventoryController1CreateVMPool(ctx context.Context
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmPoolDto
+			var v VmPool
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -118,7 +118,7 @@ Deletes a VM Pool
  * @param vmPoolId
 
 */
-func (a *VMPoolsApiService) InventoryController1DeleteVMPool(ctx context.Context, vmPoolId float64) (*http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerDeleteVMPool(ctx context.Context, vmPoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -162,7 +162,7 @@ func (a *VMPoolsApiService) InventoryController1DeleteVMPool(ctx context.Context
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -184,15 +184,15 @@ VMPoolsApiService Get VM Pool information
 Returns VM Pool information
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param vmPoolId
-@return VmPoolDto
+@return VmPool
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPool(ctx context.Context, vmPoolId float64) (VmPoolDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerGetVMPool(ctx context.Context, vmPoolId float64) (VmPool, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmPoolDto
+		localVarReturnValue VmPool
 	)
 
 	// create path and map variables
@@ -230,7 +230,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPool(ctx context.Context, v
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -239,7 +239,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPool(ctx context.Context, v
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -250,7 +250,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPool(ctx context.Context, v
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmPoolDto
+			var v VmPool
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -270,15 +270,15 @@ Returns a VM Cluster Host
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param vmPoolId
  * @param vmPoolClusterHostId
-@return VmPoolHostsDto
+@return VmPoolHosts
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHost(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) (VmPoolHostsDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHost(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) (VmPoolHosts, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmPoolHostsDto
+		localVarReturnValue VmPoolHosts
 	)
 
 	// create path and map variables
@@ -317,7 +317,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHost(ctx context
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -326,7 +326,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHost(ctx context
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -337,7 +337,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHost(ctx context
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmPoolHostsDto
+			var v VmPoolHosts
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -358,15 +358,15 @@ Returns a VM Cluster Host Interface
  * @param vmPoolId
  * @param vmPoolClusterHostId
  * @param vmPoolClusterHostInterfaceId
-@return VmPoolHostInterfacesDto
+@return VmPoolHostInterfaces
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostInterface(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64, vmPoolClusterHostInterfaceId float64) (VmPoolHostInterfacesDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHostInterface(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64, vmPoolClusterHostInterfaceId float64) (VmPoolHostInterfaces, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmPoolHostInterfacesDto
+		localVarReturnValue VmPoolHostInterfaces
 	)
 
 	// create path and map variables
@@ -406,7 +406,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostInterface(ct
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -415,7 +415,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostInterface(ct
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -426,7 +426,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostInterface(ct
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmPoolHostInterfacesDto
+			var v VmPoolHostInterfaces
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -446,15 +446,15 @@ Returns a list of VM Cluster Host Interfaces
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param vmPoolId
  * @param vmPoolClusterHostId
-@return []VmPoolHostInterfacesDto
+@return []VmPoolHostInterfaces
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostInterfaces(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) ([]VmPoolHostInterfacesDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHostInterfaces(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) ([]VmPoolHostInterfaces, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []VmPoolHostInterfacesDto
+		localVarReturnValue []VmPoolHostInterfaces
 	)
 
 	// create path and map variables
@@ -493,7 +493,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostInterfaces(c
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -502,7 +502,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostInterfaces(c
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -513,7 +513,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostInterfaces(c
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []VmPoolHostInterfacesDto
+			var v []VmPoolHostInterfaces
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -533,15 +533,15 @@ Returns a list of VM Cluster Host VMs
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param vmPoolId
  * @param vmPoolClusterHostId
-@return []VmDto
+@return VmList
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostVMs(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) ([]VmDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHostVMs(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) (VmList, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []VmDto
+		localVarReturnValue VmList
 	)
 
 	// create path and map variables
@@ -580,7 +580,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostVMs(ctx cont
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -589,7 +589,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostVMs(ctx cont
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -600,7 +600,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHostVMs(ctx cont
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []VmDto
+			var v VmList
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -619,15 +619,15 @@ VMPoolsApiService Get list of VM Cluster Hosts linked to the VM Pool
 Returns list of VM Cluster Hosts linked to the VM Pool
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param vmPoolId
-@return []VmPoolHostsDto
+@return VmPoolHostsList
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHosts(ctx context.Context, vmPoolId float64) ([]VmPoolHostsDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHosts(ctx context.Context, vmPoolId float64) (VmPoolHostsList, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []VmPoolHostsDto
+		localVarReturnValue VmPoolHostsList
 	)
 
 	// create path and map variables
@@ -665,7 +665,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHosts(ctx contex
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -674,7 +674,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHosts(ctx contex
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -685,7 +685,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolClusterHosts(ctx contex
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []VmPoolHostsDto
+			var v VmPoolHostsList
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -706,7 +706,7 @@ Returns all VMs linked to the VM Pool
  * @param vmPoolId
 
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPoolVMs(ctx context.Context, vmPoolId float64) (*http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerGetVMPoolVMs(ctx context.Context, vmPoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -750,7 +750,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolVMs(ctx context.Context
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -771,15 +771,15 @@ func (a *VMPoolsApiService) InventoryController1GetVMPoolVMs(ctx context.Context
 VMPoolsApiService Get all VM Pools
 Returns list of all VM Pools
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return VmPoolListDto
+@return VmPoolList
 */
-func (a *VMPoolsApiService) InventoryController1GetVMPools(ctx context.Context) (VmPoolListDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerGetVMPools(ctx context.Context) (VmPoolList, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmPoolListDto
+		localVarReturnValue VmPoolList
 	)
 
 	// create path and map variables
@@ -816,7 +816,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPools(ctx context.Context) 
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -825,7 +825,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPools(ctx context.Context) 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -836,7 +836,7 @@ func (a *VMPoolsApiService) InventoryController1GetVMPools(ctx context.Context) 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmPoolListDto
+			var v VmPoolList
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -858,15 +858,15 @@ Updates a VM Cluster Host Interface
  * @param vmPoolId
  * @param vmPoolClusterHostId
  * @param vmPoolClusterHostInterfaceId
-@return VmPoolHostInterfacesDto
+@return VmPoolHostInterfaces
 */
-func (a *VMPoolsApiService) InventoryController1PatchVMPoolClusterHostInterface(ctx context.Context, body UpdateVmPoolClusterHostInterfaceDto, vmPoolId float64, vmPoolClusterHostId float64, vmPoolClusterHostInterfaceId float64) (VmPoolHostInterfacesDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerPatchVMPoolClusterHostInterface(ctx context.Context, body UpdateVmPoolClusterHostInterface, vmPoolId float64, vmPoolClusterHostId float64, vmPoolClusterHostInterfaceId float64) (VmPoolHostInterfaces, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmPoolHostInterfacesDto
+		localVarReturnValue VmPoolHostInterfaces
 	)
 
 	// create path and map variables
@@ -908,7 +908,7 @@ func (a *VMPoolsApiService) InventoryController1PatchVMPoolClusterHostInterface(
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -917,7 +917,7 @@ func (a *VMPoolsApiService) InventoryController1PatchVMPoolClusterHostInterface(
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -928,7 +928,7 @@ func (a *VMPoolsApiService) InventoryController1PatchVMPoolClusterHostInterface(
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmPoolHostInterfacesDto
+			var v VmPoolHostInterfaces
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -948,15 +948,15 @@ Updates VM Pool information
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The VM Pool update object
  * @param vmPoolId
-@return VmPoolDto
+@return VmPool
 */
-func (a *VMPoolsApiService) InventoryController1UpdateVMPool(ctx context.Context, body UpdateVmPoolDto, vmPoolId float64) (VmPoolDto, *http.Response, error) {
+func (a *VMPoolsApiService) InventoryControllerUpdateVMPool(ctx context.Context, body UpdateVmPool, vmPoolId float64) (VmPool, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue VmPoolDto
+		localVarReturnValue VmPool
 	)
 
 	// create path and map variables
@@ -996,7 +996,7 @@ func (a *VMPoolsApiService) InventoryController1UpdateVMPool(ctx context.Context
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -1005,7 +1005,7 @@ func (a *VMPoolsApiService) InventoryController1UpdateVMPool(ctx context.Context
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		if err != nil { 
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -1016,7 +1016,7 @@ func (a *VMPoolsApiService) InventoryController1UpdateVMPool(ctx context.Context
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v VmPoolDto
+			var v VmPool
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

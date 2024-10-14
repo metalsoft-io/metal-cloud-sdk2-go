@@ -12,6 +12,8 @@ package sdk2
 type CreateExtensionDto struct {
 	// The extension name
 	Name string `json:"name"`
+	// The extension unique label
+	Label string `json:"label,omitempty"`
 	// The extension description
 	Description string `json:"description"`
 	// Extension definition (JSON)
