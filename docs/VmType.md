@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **IsExperimental** | **float64** | Flag to indicate if the VM Pool is experimental. 1 for true, 0 for false. Default is 0. | [default to null]
 **Tags** | **[]string** | Tags for the VM Type. | [default to null]
 **ForUnmanagedVMsOnly** | **float64** | Flag to indicate if the VM Pool is for unmanaged VMs only. 1 for true, 0 for false. Default is 0. | [default to null]
+**Links** | [***interface{}**](interface{}.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

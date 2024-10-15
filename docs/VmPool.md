@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **CreatedTimestamp** | **string** | Timestamp when the VM Pool was created | [default to null]
 **UpdatedTimestamp** | **string** | Timestamp when the VM Pool was updated | [default to null]
 **Tags** | **[]string** | Tags for the VM Pool. | [default to null]
+**Links** | [***interface{}**](interface{}.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

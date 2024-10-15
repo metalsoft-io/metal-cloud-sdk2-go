@@ -4,18 +4,18 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BlueprintControllerApplyVMTypeOnVMInstance**](VMInstanceApi.md#BlueprintControllerApplyVMTypeOnVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/actions/apply-type/{vmTypeId} | Applies a VM Type to a VM Instance
-[**BlueprintControllerCreateVMInstance**](VMInstanceApi.md#BlueprintControllerCreateVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances | Creates a VM Instance
-[**BlueprintControllerDeleteVMInstance**](VMInstanceApi.md#BlueprintControllerDeleteVMInstance) | **Delete** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId} | Deletes a VM Instance
-[**BlueprintControllerGetVMInstance**](VMInstanceApi.md#BlueprintControllerGetVMInstance) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId} | Get VM Instance information
-[**BlueprintControllerPowerStatusVMInstance**](VMInstanceApi.md#BlueprintControllerPowerStatusVMInstance) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/power-status | Retrieves the power status of the VM Instance
-[**BlueprintControllerRebootVMInstance**](VMInstanceApi.md#BlueprintControllerRebootVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/reboot | Reboots the VM Instance
-[**BlueprintControllerShutdownVMInstance**](VMInstanceApi.md#BlueprintControllerShutdownVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/shutdown | Shuts down the VM Instance
-[**BlueprintControllerStartVMInstance**](VMInstanceApi.md#BlueprintControllerStartVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/start | Starts the VM Instance
-[**BlueprintControllerUpdateVMInstance**](VMInstanceApi.md#BlueprintControllerUpdateVMInstance) | **Patch** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId} | Updates VM Instance information
+[**ApplyVMTypeOnVMInstance**](VMInstanceApi.md#ApplyVMTypeOnVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/actions/apply-type/{vmTypeId} | Applies a VM Type to a VM Instance
+[**CreateVMInstance**](VMInstanceApi.md#CreateVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances | Creates a VM Instance
+[**DeleteVMInstance**](VMInstanceApi.md#DeleteVMInstance) | **Delete** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId} | Deletes a VM Instance
+[**GetVMInstance**](VMInstanceApi.md#GetVMInstance) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId} | Get VM Instance information
+[**GetVMInstancePowerStatus**](VMInstanceApi.md#GetVMInstancePowerStatus) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/power-status | Retrieves the power status of the VM Instance
+[**RebootVMInstance**](VMInstanceApi.md#RebootVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/reboot | Reboots the VM Instance
+[**ShutdownVMInstance**](VMInstanceApi.md#ShutdownVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/shutdown | Shuts down the VM Instance
+[**StartVMInstance**](VMInstanceApi.md#StartVMInstance) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId}/start | Starts the VM Instance
+[**UpdateVMInstance**](VMInstanceApi.md#UpdateVMInstance) | **Patch** /api/v2/infrastructures/{infrastructureId}/vm-instances/{vmInstanceId} | Updates VM Instance information
 
-# **BlueprintControllerApplyVMTypeOnVMInstance**
-> VmInstance BlueprintControllerApplyVMTypeOnVMInstance(ctx, infrastructureId, vmInstanceId, vmTypeId)
+# **ApplyVMTypeOnVMInstance**
+> VmInstance ApplyVMTypeOnVMInstance(ctx, infrastructureId, vmInstanceId, vmTypeId)
 Applies a VM Type to a VM Instance
 
 Applies a VM Type to a VM Instance
@@ -44,8 +44,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerCreateVMInstance**
-> VmInstance BlueprintControllerCreateVMInstance(ctx, body, infrastructureId)
+# **CreateVMInstance**
+> VmInstance CreateVMInstance(ctx, body, infrastructureId)
 Creates a VM Instance
 
 Creates a VM Instance
@@ -73,8 +73,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerDeleteVMInstance**
-> BlueprintControllerDeleteVMInstance(ctx, infrastructureId, vmInstanceId)
+# **DeleteVMInstance**
+> DeleteVMInstance(ctx, infrastructureId, vmInstanceId)
 Deletes a VM Instance
 
 Deletes a VM Instance
@@ -102,8 +102,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetVMInstance**
-> VmInstance BlueprintControllerGetVMInstance(ctx, infrastructureId, vmInstanceId)
+# **GetVMInstance**
+> VmInstance GetVMInstance(ctx, infrastructureId, vmInstanceId)
 Get VM Instance information
 
 Returns VM Instance information
@@ -131,8 +131,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerPowerStatusVMInstance**
-> BlueprintControllerPowerStatusVMInstance(ctx, infrastructureId, vmInstanceId)
+# **GetVMInstancePowerStatus**
+> GetVMInstancePowerStatus(ctx, infrastructureId, vmInstanceId)
 Retrieves the power status of the VM Instance
 
 Retrieves the power status of the VM Instance
@@ -160,8 +160,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerRebootVMInstance**
-> BlueprintControllerRebootVMInstance(ctx, infrastructureId, vmInstanceId)
+# **RebootVMInstance**
+> RebootVMInstance(ctx, infrastructureId, vmInstanceId)
 Reboots the VM Instance
 
 Reboots the VM Instance
@@ -189,8 +189,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerShutdownVMInstance**
-> BlueprintControllerShutdownVMInstance(ctx, infrastructureId, vmInstanceId)
+# **ShutdownVMInstance**
+> ShutdownVMInstance(ctx, infrastructureId, vmInstanceId)
 Shuts down the VM Instance
 
 Shuts down the VM Instance
@@ -218,8 +218,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerStartVMInstance**
-> BlueprintControllerStartVMInstance(ctx, infrastructureId, vmInstanceId)
+# **StartVMInstance**
+> StartVMInstance(ctx, infrastructureId, vmInstanceId)
 Starts the VM Instance
 
 Starts the VM Instance
@@ -247,8 +247,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerUpdateVMInstance**
-> VmInstance BlueprintControllerUpdateVMInstance(ctx, body, infrastructureId, vmInstanceId)
+# **UpdateVMInstance**
+> VmInstance UpdateVMInstance(ctx, body, infrastructureId, vmInstanceId)
 Updates VM Instance information
 
 Updates VM Instance information

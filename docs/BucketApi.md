@@ -4,19 +4,19 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BlueprintControllerCreateBucket**](BucketApi.md#BlueprintControllerCreateBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets | Creates a Bucket
-[**BlueprintControllerDeleteBucket**](BucketApi.md#BlueprintControllerDeleteBucket) | **Delete** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Deletes a Bucket
-[**BlueprintControllerGetBucket**](BucketApi.md#BlueprintControllerGetBucket) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Get Bucket information
-[**BlueprintControllerGetBucketHosts**](BucketApi.md#BlueprintControllerGetBucketHosts) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/hosts | Get the Hosts of Bucket
-[**BlueprintControllerGetBuckets**](BucketApi.md#BlueprintControllerGetBuckets) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets | Get all Buckets
-[**BlueprintControllerGetIndividualBucket**](BucketApi.md#BlueprintControllerGetIndividualBucket) | **Get** /api/v2/buckets/{bucketId} | Get Bucket information
-[**BlueprintControllerStartBucket**](BucketApi.md#BlueprintControllerStartBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/start | Starts a Bucket
-[**BlueprintControllerStopBucket**](BucketApi.md#BlueprintControllerStopBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/stop | Stops a Bucket
-[**BlueprintControllerUpdateBucket**](BucketApi.md#BlueprintControllerUpdateBucket) | **Patch** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Updates Bucket information
-[**BlueprintControllerUpdatebucketInstanceArrayHostsBulk**](BucketApi.md#BlueprintControllerUpdatebucketInstanceArrayHostsBulk) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/modify-instance-array-hosts-bulk | Updates Instance Array Hosts on the Bucket
+[**CreateInfrastructureBucket**](BucketApi.md#CreateInfrastructureBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets | Creates a Bucket
+[**DeleteBucket**](BucketApi.md#DeleteBucket) | **Delete** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Deletes a Bucket
+[**GetBucket**](BucketApi.md#GetBucket) | **Get** /api/v2/buckets/{bucketId} | Get Bucket information
+[**GetBucketHosts**](BucketApi.md#GetBucketHosts) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/hosts | Get the Hosts of Bucket
+[**GetInfrastructureBucket**](BucketApi.md#GetInfrastructureBucket) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Get Bucket information
+[**GetInfrastructureBuckets**](BucketApi.md#GetInfrastructureBuckets) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets | Get all Buckets
+[**StartBucket**](BucketApi.md#StartBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/start | Starts a Bucket
+[**StopBucket**](BucketApi.md#StopBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/stop | Stops a Bucket
+[**UpdateBucket**](BucketApi.md#UpdateBucket) | **Patch** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Updates Bucket information
+[**UpdateBucketInstanceArrayHostsBulk**](BucketApi.md#UpdateBucketInstanceArrayHostsBulk) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/modify-instance-array-hosts-bulk | Updates Instance Array Hosts on the Bucket
 
-# **BlueprintControllerCreateBucket**
-> Bucket BlueprintControllerCreateBucket(ctx, body, infrastructureId)
+# **CreateInfrastructureBucket**
+> Bucket CreateInfrastructureBucket(ctx, body, infrastructureId)
 Creates a Bucket
 
 Creates a Bucket
@@ -44,8 +44,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerDeleteBucket**
-> BlueprintControllerDeleteBucket(ctx, infrastructureId, bucketId)
+# **DeleteBucket**
+> DeleteBucket(ctx, infrastructureId, bucketId)
 Deletes a Bucket
 
 Deletes a Bucket
@@ -73,8 +73,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetBucket**
-> Bucket BlueprintControllerGetBucket(ctx, infrastructureId, bucketId)
+# **GetBucket**
+> BucketExtendedInfo GetBucket(ctx, bucketId)
 Get Bucket information
 
 Returns Bucket information
@@ -84,12 +84,11 @@ Returns Bucket information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **infrastructureId** | **float64**|  | 
   **bucketId** | **float64**|  | 
 
 ### Return type
 
-[**Bucket**](Bucket.md)
+[**BucketExtendedInfo**](BucketExtendedInfo.md)
 
 ### Authorization
 
@@ -102,8 +101,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetBucketHosts**
-> BucketHosts BlueprintControllerGetBucketHosts(ctx, infrastructureId, bucketId)
+# **GetBucketHosts**
+> BucketHosts GetBucketHosts(ctx, infrastructureId, bucketId)
 Get the Hosts of Bucket
 
 Returns the Hosts of Bucket
@@ -131,8 +130,37 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetBuckets**
-> []Bucket BlueprintControllerGetBuckets(ctx, infrastructureId)
+# **GetInfrastructureBucket**
+> Bucket GetInfrastructureBucket(ctx, infrastructureId, bucketId)
+Get Bucket information
+
+Returns Bucket information
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **infrastructureId** | **float64**|  | 
+  **bucketId** | **float64**|  | 
+
+### Return type
+
+[**Bucket**](Bucket.md)
+
+### Authorization
+
+[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetInfrastructureBuckets**
+> []Bucket GetInfrastructureBuckets(ctx, infrastructureId)
 Get all Buckets
 
 Returns list of all Buckets
@@ -159,36 +187,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetIndividualBucket**
-> BucketExtendedInfo BlueprintControllerGetIndividualBucket(ctx, bucketId)
-Get Bucket information
-
-Returns Bucket information
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **bucketId** | **float64**|  | 
-
-### Return type
-
-[**BucketExtendedInfo**](BucketExtendedInfo.md)
-
-### Authorization
-
-[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **BlueprintControllerStartBucket**
-> BlueprintControllerStartBucket(ctx, infrastructureId, bucketId)
+# **StartBucket**
+> StartBucket(ctx, infrastructureId, bucketId)
 Starts a Bucket
 
 Starts a Bucket
@@ -216,8 +216,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerStopBucket**
-> BlueprintControllerStopBucket(ctx, infrastructureId, bucketId)
+# **StopBucket**
+> StopBucket(ctx, infrastructureId, bucketId)
 Stops a Bucket
 
 Stops a Bucket
@@ -245,8 +245,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerUpdateBucket**
-> Bucket BlueprintControllerUpdateBucket(ctx, body, infrastructureId, bucketId)
+# **UpdateBucket**
+> Bucket UpdateBucket(ctx, body, infrastructureId, bucketId)
 Updates Bucket information
 
 Updates Bucket information
@@ -275,8 +275,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerUpdatebucketInstanceArrayHostsBulk**
-> BucketHosts BlueprintControllerUpdatebucketInstanceArrayHostsBulk(ctx, body, infrastructureId, bucketId)
+# **UpdateBucketInstanceArrayHostsBulk**
+> BucketHosts UpdateBucketInstanceArrayHostsBulk(ctx, body, infrastructureId, bucketId)
 Updates Instance Array Hosts on the Bucket
 
 Updates Instance Array Hosts on the Bucket

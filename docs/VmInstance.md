@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **DiskSizeGB** | **float64** | Disk size in GB of the VM Instance. | [default to null]
 **TemplateIdOrigin** | **float64** | Id of the template used by the VM Instance. | [optional] [default to null]
 **VmPoolId** | **float64** | Id of the VM Pool. | [optional] [default to null]
+**Links** | [***interface{}**](interface{}.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

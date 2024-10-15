@@ -4,13 +4,13 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**InventoryControllerDeployInfrastructure**](InfrastructureApi.md#InventoryControllerDeployInfrastructure) | **Post** /api/v2/infrastructures/{infrastructureId}/actions/deploy | Deploys the specified infrastructure
-[**InventoryControllerGetInfrastructure**](InfrastructureApi.md#InventoryControllerGetInfrastructure) | **Get** /api/v2/infrastructures/{infrastructureId} | Retrieves the specified infrastructure
-[**InventoryControllerGetInfrastructures**](InfrastructureApi.md#InventoryControllerGetInfrastructures) | **Get** /api/v2/infrastructures | Get all infrastructures
-[**InventoryControllerRevertInfrastructure**](InfrastructureApi.md#InventoryControllerRevertInfrastructure) | **Post** /api/v2/infrastructures/{infrastructureId}/actions/revert | Reverts the specified infrastructure
+[**DeployInfrastructure**](InfrastructureApi.md#DeployInfrastructure) | **Post** /api/v2/infrastructures/{infrastructureId}/actions/deploy | Deploys the specified infrastructure
+[**GetInfrastructure**](InfrastructureApi.md#GetInfrastructure) | **Get** /api/v2/infrastructures/{infrastructureId} | Retrieves the specified infrastructure
+[**GetInfrastructures**](InfrastructureApi.md#GetInfrastructures) | **Get** /api/v2/infrastructures | Get all infrastructures
+[**RevertInfrastructure**](InfrastructureApi.md#RevertInfrastructure) | **Post** /api/v2/infrastructures/{infrastructureId}/actions/revert | Reverts the specified infrastructure
 
-# **InventoryControllerDeployInfrastructure**
-> interface{} InventoryControllerDeployInfrastructure(ctx, body, infrastructureId)
+# **DeployInfrastructure**
+> interface{} DeployInfrastructure(ctx, body, infrastructureId)
 Deploys the specified infrastructure
 
 Deploys the specified infrastructure
@@ -38,8 +38,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetInfrastructure**
-> InventoryControllerGetInfrastructure(ctx, infrastructureId)
+# **GetInfrastructure**
+> GetInfrastructure(ctx, infrastructureId)
 Retrieves the specified infrastructure
 
 Retrieves the specified infrastructure
@@ -66,8 +66,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetInfrastructures**
-> []InfrastructureDto InventoryControllerGetInfrastructures(ctx, optional)
+# **GetInfrastructures**
+> []InfrastructureDto GetInfrastructures(ctx, optional)
 Get all infrastructures
 
 Returns list of all infrastructures
@@ -77,10 +77,10 @@ Returns list of all infrastructures
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***InfrastructureApiInventoryControllerGetInfrastructuresOpts** | optional parameters | nil if no parameters
+ **optional** | ***InfrastructureApiGetInfrastructuresOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a InfrastructureApiInventoryControllerGetInfrastructuresOpts struct
+Optional parameters are passed through a pointer to a InfrastructureApiGetInfrastructuresOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | **optional.Float64**| The account ID to filter user infrastructures by | 
@@ -100,8 +100,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerRevertInfrastructure**
-> InventoryControllerRevertInfrastructure(ctx, infrastructureId)
+# **RevertInfrastructure**
+> RevertInfrastructure(ctx, infrastructureId)
 Reverts the specified infrastructure
 
 Reverts the specified infrastructure

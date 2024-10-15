@@ -33,7 +33,7 @@ Archives an account
  * @param accountId
 @return AccountDto
 */
-func (a *AccountsApiService) AccountsControllerArchiveAccount(ctx context.Context, accountId float64) (AccountDto, *http.Response, error) {
+func (a *AccountsApiService) ArchiveAccount(ctx context.Context, accountId float64) (AccountDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -118,7 +118,7 @@ Creates an account
  * @param body The account to create
 @return AccountDto
 */
-func (a *AccountsApiService) AccountsControllerCreateAccount(ctx context.Context, body CreateAccountDto) (AccountDto, *http.Response, error) {
+func (a *AccountsApiService) CreateAccount(ctx context.Context, body CreateAccountDto) (AccountDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -202,16 +202,16 @@ AccountsApiService Get account by id
 Returns an account by id
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param accountId
- * @param optional nil or *AccountsApiAccountsControllerGetAccountOpts - Optional Parameters:
+ * @param optional nil or *AccountsApiGetAccountOpts - Optional Parameters:
      * @param "Recursion" (optional.Float64) -  The recursion level of the displayed details. Default is 0.
 @return AccountDto
 */
 
-type AccountsApiAccountsControllerGetAccountOpts struct {
+type AccountsApiGetAccountOpts struct {
     Recursion optional.Float64
 }
 
-func (a *AccountsApiService) AccountsControllerGetAccount(ctx context.Context, accountId float64, localVarOptionals *AccountsApiAccountsControllerGetAccountOpts) (AccountDto, *http.Response, error) {
+func (a *AccountsApiService) GetAccount(ctx context.Context, accountId float64, localVarOptionals *AccountsApiGetAccountOpts) (AccountDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -299,7 +299,7 @@ Returns the limits of an account
  * @param accountId
 @return AccountLimitsDto
 */
-func (a *AccountsApiService) AccountsControllerGetAccountLimits(ctx context.Context, accountId float64) (AccountLimitsDto, *http.Response, error) {
+func (a *AccountsApiService) GetAccountLimits(ctx context.Context, accountId float64) (AccountLimitsDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -378,96 +378,13 @@ func (a *AccountsApiService) AccountsControllerGetAccountLimits(ctx context.Cont
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-AccountsApiService Get all accounts
-Returns all accounts
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return []AccountDto
-*/
-func (a *AccountsApiService) AccountsControllerGetAccounts(ctx context.Context) ([]AccountDto, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue []AccountDto
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/v2/accounts"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err != nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		if localVarHttpResponse.StatusCode == 200 {
-			var v []AccountDto
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-/*
 AccountsApiService Get users for account
 Returns users for an account
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param accountId
 @return []UserDto
 */
-func (a *AccountsApiService) AccountsControllerGetUsersForAccount(ctx context.Context, accountId float64) ([]UserDto, *http.Response, error) {
+func (a *AccountsApiService) GetAccountUsers(ctx context.Context, accountId float64) ([]UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -546,13 +463,96 @@ func (a *AccountsApiService) AccountsControllerGetUsersForAccount(ctx context.Co
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
+AccountsApiService Get all accounts
+Returns all accounts
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+@return []AccountDto
+*/
+func (a *AccountsApiService) GetAccounts(ctx context.Context) ([]AccountDto, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		localVarReturnValue []AccountDto
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/api/v2/accounts"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		if err != nil { 
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body: localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v []AccountDto
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+/*
 AccountsApiService Unarchive account
 Unarchives an account
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param accountId
 @return AccountDto
 */
-func (a *AccountsApiService) AccountsControllerUnarchiveAccount(ctx context.Context, accountId float64) (AccountDto, *http.Response, error) {
+func (a *AccountsApiService) UnarchiveAccount(ctx context.Context, accountId float64) (AccountDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -638,7 +638,7 @@ Updates an account
  * @param accountId
 @return AccountDto
 */
-func (a *AccountsApiService) AccountsControllerUpdateAccount(ctx context.Context, body UpdateAccountDto, accountId float64) (AccountDto, *http.Response, error) {
+func (a *AccountsApiService) UpdateAccount(ctx context.Context, body UpdateAccountDto, accountId float64) (AccountDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -726,7 +726,7 @@ Updates the limits of an account
  * @param accountId
 @return AccountLimitsDto
 */
-func (a *AccountsApiService) AccountsControllerUpdateAccountLimits(ctx context.Context, body AccountLimitsDto, accountId float64) (AccountLimitsDto, *http.Response, error) {
+func (a *AccountsApiService) UpdateAccountLimits(ctx context.Context, body AccountLimitsDto, accountId float64) (AccountLimitsDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}

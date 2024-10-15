@@ -33,7 +33,7 @@ Creates a File Share
  * @param infrastructureId
 @return FileShare
 */
-func (a *FileShareApiService) BlueprintControllerCreateFileShare(ctx context.Context, body CreateFileShare, infrastructureId float64) (FileShare, *http.Response, error) {
+func (a *FileShareApiService) CreateInfrastructureFileShare(ctx context.Context, body CreateFileShare, infrastructureId float64) (FileShare, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -121,7 +121,7 @@ Deletes a File Share
  * @param fileShareId
 
 */
-func (a *FileShareApiService) BlueprintControllerDeleteFileShare(ctx context.Context, infrastructureId float64, fileShareId float64) (*http.Response, error) {
+func (a *FileShareApiService) DeleteFileShare(ctx context.Context, infrastructureId float64, fileShareId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -187,22 +187,20 @@ func (a *FileShareApiService) BlueprintControllerDeleteFileShare(ctx context.Con
 FileShareApiService Get File Share information
 Returns File Share information
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param infrastructureId
  * @param fileShareId
-@return FileShare
+@return FileShareExtendedInfo
 */
-func (a *FileShareApiService) BlueprintControllerGetFileShare(ctx context.Context, infrastructureId float64, fileShareId float64) (FileShare, *http.Response, error) {
+func (a *FileShareApiService) GetFileShare(ctx context.Context, fileShareId float64) (FileShareExtendedInfo, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue FileShare
+		localVarReturnValue FileShareExtendedInfo
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"infrastructureId"+"}", fmt.Sprintf("%v", infrastructureId), -1)
+	localVarPath := a.client.cfg.BasePath + "/api/v2/file-shares/{fileShareId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"fileShareId"+"}", fmt.Sprintf("%v", fileShareId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -256,7 +254,7 @@ func (a *FileShareApiService) BlueprintControllerGetFileShare(ctx context.Contex
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v FileShare
+			var v FileShareExtendedInfo
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -278,7 +276,7 @@ Returns the Hosts of File Share
  * @param fileShareId
 @return FileShareHosts
 */
-func (a *FileShareApiService) BlueprintControllerGetFileShareHosts(ctx context.Context, infrastructureId float64, fileShareId float64) (FileShareHosts, *http.Response, error) {
+func (a *FileShareApiService) GetFileShareHosts(ctx context.Context, infrastructureId float64, fileShareId float64) (FileShareHosts, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -358,13 +356,100 @@ func (a *FileShareApiService) BlueprintControllerGetFileShareHosts(ctx context.C
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
+FileShareApiService Get File Share information
+Returns File Share information
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param infrastructureId
+ * @param fileShareId
+@return FileShare
+*/
+func (a *FileShareApiService) GetInfrastructureFileShare(ctx context.Context, infrastructureId float64, fileShareId float64) (FileShare, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		localVarReturnValue FileShare
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"infrastructureId"+"}", fmt.Sprintf("%v", infrastructureId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileShareId"+"}", fmt.Sprintf("%v", fileShareId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		if err != nil { 
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body: localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v FileShare
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+/*
 FileShareApiService Get all File Shares
 Returns list of all File Shares
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param infrastructureId
 @return []FileShare
 */
-func (a *FileShareApiService) BlueprintControllerGetFileShares(ctx context.Context, infrastructureId float64) ([]FileShare, *http.Response, error) {
+func (a *FileShareApiService) GetInfrastructureFileShares(ctx context.Context, infrastructureId float64) ([]FileShare, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -443,91 +528,6 @@ func (a *FileShareApiService) BlueprintControllerGetFileShares(ctx context.Conte
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-FileShareApiService Get File Share information
-Returns File Share information
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param fileShareId
-@return FileShareExtendedInfo
-*/
-func (a *FileShareApiService) BlueprintControllerGetIndividualFileShare(ctx context.Context, fileShareId float64) (FileShareExtendedInfo, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue FileShareExtendedInfo
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/v2/file-shares/{fileShareId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileShareId"+"}", fmt.Sprintf("%v", fileShareId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err != nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		if localVarHttpResponse.StatusCode == 200 {
-			var v FileShareExtendedInfo
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-/*
 FileShareApiService Starts a File Share
 Starts a File Share
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -535,7 +535,7 @@ Starts a File Share
  * @param fileShareId
 
 */
-func (a *FileShareApiService) BlueprintControllerStartFileShare(ctx context.Context, infrastructureId float64, fileShareId float64) (*http.Response, error) {
+func (a *FileShareApiService) StartFileShare(ctx context.Context, infrastructureId float64, fileShareId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -605,7 +605,7 @@ Stops a File Share
  * @param fileShareId
 
 */
-func (a *FileShareApiService) BlueprintControllerStopFileShare(ctx context.Context, infrastructureId float64, fileShareId float64) (*http.Response, error) {
+func (a *FileShareApiService) StopFileShare(ctx context.Context, infrastructureId float64, fileShareId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -676,7 +676,7 @@ Updates File Share information
  * @param fileShareId
 @return FileShare
 */
-func (a *FileShareApiService) BlueprintControllerUpdateFileShare(ctx context.Context, body UpdateFileShare, infrastructureId float64, fileShareId float64) (FileShare, *http.Response, error) {
+func (a *FileShareApiService) UpdateFileShare(ctx context.Context, body UpdateFileShare, infrastructureId float64, fileShareId float64) (FileShare, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -766,7 +766,7 @@ Updates Instance Array Hosts on the File Share
  * @param fileShareId
 @return FileShareHosts
 */
-func (a *FileShareApiService) BlueprintControllerUpdateFileShareInstanceArrayHostsBulk(ctx context.Context, body FileShareHostsModifyBulk, infrastructureId float64, fileShareId float64) (FileShareHosts, *http.Response, error) {
+func (a *FileShareApiService) UpdateFileShareInstanceArrayHostsBulk(ctx context.Context, body FileShareHostsModifyBulk, infrastructureId float64, fileShareId float64) (FileShareHosts, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}

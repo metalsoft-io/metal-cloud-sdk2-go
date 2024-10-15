@@ -34,7 +34,7 @@ Applies a VM Type to a VM Instance
  * @param vmTypeId
 @return VmInstance
 */
-func (a *VMInstanceApiService) BlueprintControllerApplyVMTypeOnVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64, vmTypeId float64) (VmInstance, *http.Response, error) {
+func (a *VMInstanceApiService) ApplyVMTypeOnVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64, vmTypeId float64) (VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -122,7 +122,7 @@ Creates a VM Instance
  * @param infrastructureId
 @return VmInstance
 */
-func (a *VMInstanceApiService) BlueprintControllerCreateVMInstance(ctx context.Context, body CreateVmInstance, infrastructureId float64) (VmInstance, *http.Response, error) {
+func (a *VMInstanceApiService) CreateVMInstance(ctx context.Context, body CreateVmInstance, infrastructureId float64) (VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -210,7 +210,7 @@ Deletes a VM Instance
  * @param vmInstanceId
 
 */
-func (a *VMInstanceApiService) BlueprintControllerDeleteVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
+func (a *VMInstanceApiService) DeleteVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -280,7 +280,7 @@ Returns VM Instance information
  * @param vmInstanceId
 @return VmInstance
 */
-func (a *VMInstanceApiService) BlueprintControllerGetVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (VmInstance, *http.Response, error) {
+func (a *VMInstanceApiService) GetVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -367,7 +367,7 @@ Retrieves the power status of the VM Instance
  * @param vmInstanceId
 
 */
-func (a *VMInstanceApiService) BlueprintControllerPowerStatusVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
+func (a *VMInstanceApiService) GetVMInstancePowerStatus(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -437,7 +437,7 @@ Reboots the VM Instance
  * @param vmInstanceId
 
 */
-func (a *VMInstanceApiService) BlueprintControllerRebootVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
+func (a *VMInstanceApiService) RebootVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -507,7 +507,7 @@ Shuts down the VM Instance
  * @param vmInstanceId
 
 */
-func (a *VMInstanceApiService) BlueprintControllerShutdownVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
+func (a *VMInstanceApiService) ShutdownVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -577,7 +577,7 @@ Starts the VM Instance
  * @param vmInstanceId
 
 */
-func (a *VMInstanceApiService) BlueprintControllerStartVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
+func (a *VMInstanceApiService) StartVMInstance(ctx context.Context, infrastructureId float64, vmInstanceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -648,7 +648,7 @@ Updates VM Instance information
  * @param vmInstanceId
 @return VmInstance
 */
-func (a *VMInstanceApiService) BlueprintControllerUpdateVMInstance(ctx context.Context, body UpdateVmInstance, infrastructureId float64, vmInstanceId float64) (VmInstance, *http.Response, error) {
+func (a *VMInstanceApiService) UpdateVMInstance(ctx context.Context, body UpdateVmInstance, infrastructureId float64, vmInstanceId float64) (VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}

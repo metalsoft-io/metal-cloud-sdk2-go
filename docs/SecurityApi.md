@@ -4,11 +4,11 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthenticationControllerListProviders**](SecurityApi.md#AuthenticationControllerListProviders) | **Get** /api/v2/authentication/providers | Get available authentication providers
-[**AuthenticationControllerUpdateProvider**](SecurityApi.md#AuthenticationControllerUpdateProvider) | **Patch** /api/v2/authentication/providers/{name} | Updates authentication provider
+[**ListProviders**](SecurityApi.md#ListProviders) | **Get** /api/v2/authentication/providers | Get available authentication providers
+[**UpdateProvider**](SecurityApi.md#UpdateProvider) | **Patch** /api/v2/authentication/providers/{name} | Updates authentication provider
 
-# **AuthenticationControllerListProviders**
-> []AuthenticationProvider AuthenticationControllerListProviders(ctx, )
+# **ListProviders**
+> []AuthenticationProvider ListProviders(ctx, )
 Get available authentication providers
 
 Returns the available authentication providers
@@ -31,8 +31,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AuthenticationControllerUpdateProvider**
-> []AuthenticationProvider AuthenticationControllerUpdateProvider(ctx, body, name)
+# **UpdateProvider**
+> []AuthenticationProvider UpdateProvider(ctx, body, name)
 Updates authentication provider
 
 Updates authentication provider

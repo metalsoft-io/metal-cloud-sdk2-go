@@ -4,10 +4,10 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ConfigControllerGetConfiguration**](ConfigurationApi.md#ConfigControllerGetConfiguration) | **Get** /api/v2/config | Get configuration
+[**GetConfiguration**](ConfigurationApi.md#GetConfiguration) | **Get** /api/v2/config | Get configuration
 
-# **ConfigControllerGetConfiguration**
-> interface{} ConfigControllerGetConfiguration(ctx, optional)
+# **GetConfiguration**
+> interface{} GetConfiguration(ctx, optional)
 Get configuration
 
 Returns a configuration object
@@ -17,10 +17,10 @@ Returns a configuration object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ConfigurationApiConfigControllerGetConfigurationOpts** | optional parameters | nil if no parameters
+ **optional** | ***ConfigurationApiGetConfigurationOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ConfigurationApiConfigControllerGetConfigurationOpts struct
+Optional parameters are passed through a pointer to a ConfigurationApiGetConfigurationOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | **optional.String**| Filter to be applied. | 

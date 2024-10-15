@@ -46,4 +46,5 @@ type VmPoolHosts struct {
 	FreeSpaceGB float64 `json:"freeSpaceGB"`
 	// Timestamp when the VM Pool Host was updated
 	UpdatedTimestamp string `json:"updatedTimestamp"`
+	Links *interface{} `json:"links"`
 }

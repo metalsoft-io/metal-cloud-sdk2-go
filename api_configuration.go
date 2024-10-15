@@ -29,16 +29,16 @@ type ConfigurationApiService service
 ConfigurationApiService Get configuration
 Returns a configuration object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ConfigurationApiConfigControllerGetConfigurationOpts - Optional Parameters:
+ * @param optional nil or *ConfigurationApiGetConfigurationOpts - Optional Parameters:
      * @param "Filter" (optional.String) -  Filter to be applied.
 @return interface{}
 */
 
-type ConfigurationApiConfigControllerGetConfigurationOpts struct {
+type ConfigurationApiGetConfigurationOpts struct {
     Filter optional.String
 }
 
-func (a *ConfigurationApiService) ConfigControllerGetConfiguration(ctx context.Context, localVarOptionals *ConfigurationApiConfigControllerGetConfigurationOpts) (interface{}, *http.Response, error) {
+func (a *ConfigurationApiService) GetConfiguration(ctx context.Context, localVarOptionals *ConfigurationApiGetConfigurationOpts) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}

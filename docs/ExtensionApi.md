@@ -4,15 +4,15 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExtensionsControllerArchiveExtension**](ExtensionApi.md#ExtensionsControllerArchiveExtension) | **Post** /api/v2/extensions/{extensionId}/actions/archive | Archive published extension
-[**ExtensionsControllerCreateExtension**](ExtensionApi.md#ExtensionsControllerCreateExtension) | **Post** /api/v2/extensions | Create extension
-[**ExtensionsControllerGetExtension**](ExtensionApi.md#ExtensionsControllerGetExtension) | **Get** /api/v2/extensions/{extensionId} | Get details for an extension
-[**ExtensionsControllerListExtensions**](ExtensionApi.md#ExtensionsControllerListExtensions) | **Get** /api/v2/extensions | List available extensions
-[**ExtensionsControllerPublishExtension**](ExtensionApi.md#ExtensionsControllerPublishExtension) | **Post** /api/v2/extensions/{extensionId}/actions/publish | Publish draft extension
-[**ExtensionsControllerUpdateExtension**](ExtensionApi.md#ExtensionsControllerUpdateExtension) | **Patch** /api/v2/extensions/{extensionId} | Update extension
+[**ArchiveExtension**](ExtensionApi.md#ArchiveExtension) | **Post** /api/v2/extensions/{extensionId}/actions/archive | Archive published extension
+[**CreateExtension**](ExtensionApi.md#CreateExtension) | **Post** /api/v2/extensions | Create extension
+[**GetExtension**](ExtensionApi.md#GetExtension) | **Get** /api/v2/extensions/{extensionId} | Get details for an extension
+[**GetExtensions**](ExtensionApi.md#GetExtensions) | **Get** /api/v2/extensions | List available extensions
+[**PublishExtension**](ExtensionApi.md#PublishExtension) | **Post** /api/v2/extensions/{extensionId}/actions/publish | Publish draft extension
+[**UpdateExtension**](ExtensionApi.md#UpdateExtension) | **Patch** /api/v2/extensions/{extensionId} | Update extension
 
-# **ExtensionsControllerArchiveExtension**
-> ExtensionsControllerArchiveExtension(ctx, extensionId)
+# **ArchiveExtension**
+> ArchiveExtension(ctx, extensionId)
 Archive published extension
 
 Archives published extension.
@@ -39,8 +39,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ExtensionsControllerCreateExtension**
-> ExtensionDto ExtensionsControllerCreateExtension(ctx, body)
+# **CreateExtension**
+> ExtensionDto CreateExtension(ctx, body)
 Create extension
 
 Returns details of the new extension
@@ -67,8 +67,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ExtensionsControllerGetExtension**
-> ExtensionDto ExtensionsControllerGetExtension(ctx, extensionId)
+# **GetExtension**
+> ExtensionDto GetExtension(ctx, extensionId)
 Get details for an extension
 
 Returns details of the specified extension
@@ -95,8 +95,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ExtensionsControllerListExtensions**
-> ExtensionListDto ExtensionsControllerListExtensions(ctx, optional)
+# **GetExtensions**
+> ExtensionListDto GetExtensions(ctx, optional)
 List available extensions
 
 Returns list of the available extensions
@@ -106,10 +106,10 @@ Returns list of the available extensions
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ExtensionApiExtensionsControllerListExtensionsOpts** | optional parameters | nil if no parameters
+ **optional** | ***ExtensionApiGetExtensionsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ExtensionApiExtensionsControllerListExtensionsOpts struct
+Optional parameters are passed through a pointer to a ExtensionApiGetExtensionsOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | **optional.String**| Filter by extension status | 
@@ -129,8 +129,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ExtensionsControllerPublishExtension**
-> ExtensionsControllerPublishExtension(ctx, extensionId)
+# **PublishExtension**
+> PublishExtension(ctx, extensionId)
 Publish draft extension
 
 Publishes draft extension.
@@ -157,8 +157,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ExtensionsControllerUpdateExtension**
-> ExtensionDto ExtensionsControllerUpdateExtension(ctx, body, extensionId)
+# **UpdateExtension**
+> ExtensionDto UpdateExtension(ctx, body, extensionId)
 Update extension
 
 Returns details of the updated extension

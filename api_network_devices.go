@@ -29,10 +29,11 @@ type NetworkDevicesApiService service
 NetworkDevicesApiService Change status of a network device
 Change status of a network device
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body Network device status
  * @param networkDeviceId Network device ID
 
 */
-func (a *NetworkDevicesApiService) SwitchControllerChangeStatus(ctx context.Context, networkDeviceId float64) (*http.Response, error) {
+func (a *NetworkDevicesApiService) ChangeNetworkDeviceStatus(ctx context.Context, body NetworkDeviceStatusDto, networkDeviceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -66,6 +67,8 @@ func (a *NetworkDevicesApiService) SwitchControllerChangeStatus(ctx context.Cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	localVarPostBody = &body
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -101,7 +104,7 @@ Discover network device interfaces, hardware and software configuration and retu
  * @param networkDeviceId Network device identifier
 
 */
-func (a *NetworkDevicesApiService) SwitchControllerDiscover(ctx context.Context, body DiscoveryQueryDto, networkDeviceId float64) (*http.Response, error) {
+func (a *NetworkDevicesApiService) DiscoverNetworkDevice(ctx context.Context, body DiscoveryQueryDto, networkDeviceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -171,7 +174,7 @@ Enables remote syslog for a network device
  * @param networkDeviceId Network device ID
 
 */
-func (a *NetworkDevicesApiService) SwitchControllerEnableSyslog(ctx context.Context, networkDeviceId float64) (*http.Response, error) {
+func (a *NetworkDevicesApiService) EnableNetworkDeviceSyslog(ctx context.Context, networkDeviceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -238,7 +241,7 @@ NetworkDevicesApiService Get all ports for network device
  * @param networkDeviceId
 
 */
-func (a *NetworkDevicesApiService) SwitchControllerGetPorts(ctx context.Context, networkDeviceId float64) (*http.Response, error) {
+func (a *NetworkDevicesApiService) GetNetworkDevicePorts(ctx context.Context, networkDeviceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -306,7 +309,7 @@ Resets a network device to default state and destroy all configurations
  * @param networkDeviceId Network device ID
 
 */
-func (a *NetworkDevicesApiService) SwitchControllerResetNetworkDevice(ctx context.Context, networkDeviceId float64) (*http.Response, error) {
+func (a *NetworkDevicesApiService) ResetNetworkDevice(ctx context.Context, networkDeviceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -374,7 +377,7 @@ NetworkDevicesApiService Set port status
  * @param networkDeviceId Network device ID
 
 */
-func (a *NetworkDevicesApiService) SwitchControllerSetPortStatus(ctx context.Context, body NetworkDevicePortStatusDto, networkDeviceId float64) (*http.Response, error) {
+func (a *NetworkDevicesApiService) SetNetworkDevicePortStatus(ctx context.Context, body NetworkDevicePortStatusDto, networkDeviceId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}

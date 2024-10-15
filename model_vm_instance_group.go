@@ -40,4 +40,5 @@ type VmInstanceGroup struct {
 	NetworkIdToNetworkProfileId *interface{} `json:"networkIdToNetworkProfileId,omitempty"`
 	// GUI settings for the VM Instance Group. This is a JSON object.
 	GuiSettings *AllOfVmInstanceGroupGuiSettings `json:"guiSettings,omitempty"`
+	Links *interface{} `json:"links"`
 }

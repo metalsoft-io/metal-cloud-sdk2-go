@@ -62,7 +62,7 @@ paths:
       - Accounts
       summary: Get all accounts
       description: Returns all accounts
-      operationId: AccountsController_getAccounts
+      operationId: getAccounts
       parameters: []
       responses:
         "200":
@@ -86,7 +86,7 @@ paths:
       - Accounts
       summary: Create account
       description: Creates an account
-      operationId: AccountsController_createAccount
+      operationId: createAccount
       parameters: []
       requestBody:
         description: The account to create
@@ -119,7 +119,7 @@ paths:
       - Accounts
       summary: Get account by id
       description: Returns an account by id
-      operationId: AccountsController_getAccount
+      operationId: getAccount
       parameters:
       - name: accountId
         in: path
@@ -159,7 +159,7 @@ paths:
       - Accounts
       summary: Update account
       description: Updates an account
-      operationId: AccountsController_updateAccount
+      operationId: updateAccount
       parameters:
       - name: accountId
         in: path
@@ -199,7 +199,7 @@ paths:
       - Accounts
       summary: Archive account
       description: Archives an account
-      operationId: AccountsController_archiveAccount
+      operationId: archiveAccount
       parameters:
       - name: accountId
         in: path
@@ -232,7 +232,7 @@ paths:
       - Accounts
       summary: Unarchive account
       description: Unarchives an account
-      operationId: AccountsController_unarchiveAccount
+      operationId: unarchiveAccount
       parameters:
       - name: accountId
         in: path
@@ -265,7 +265,7 @@ paths:
       - Accounts
       summary: Get account limits
       description: Returns the limits of an account
-      operationId: AccountsController_getAccountLimits
+      operationId: getAccountLimits
       parameters:
       - name: accountId
         in: path
@@ -295,7 +295,7 @@ paths:
       - Accounts
       summary: Update account limits
       description: Updates the limits of an account
-      operationId: AccountsController_updateAccountLimits
+      operationId: updateAccountLimits
       parameters:
       - name: accountId
         in: path
@@ -333,7 +333,7 @@ paths:
       - Accounts
       summary: Get users for account
       description: Returns users for an account
-      operationId: AccountsController_getUsersForAccount
+      operationId: getAccountUsers
       parameters:
       - name: accountId
         in: path
@@ -367,7 +367,7 @@ paths:
       - Users
       summary: Get users
       description: Returns a list of users
-      operationId: UsersController_getUsers
+      operationId: getUsers
       parameters: []
       responses:
         "200":
@@ -391,7 +391,7 @@ paths:
       - Users
       summary: Creates a user
       description: Creates a user
-      operationId: UsersController_createUser
+      operationId: createUser
       parameters: []
       requestBody:
         description: The user to create
@@ -426,7 +426,7 @@ paths:
       - Users
       summary: Get user
       description: Returns a user
-      operationId: UsersController_getUser
+      operationId: getUser
       parameters:
       - name: userId
         in: path
@@ -464,7 +464,7 @@ paths:
       - Users
       summary: Update user
       description: Updates a user
-      operationId: UsersController_updateUser
+      operationId: updateUser
       parameters:
       - name: userId
         in: path
@@ -504,7 +504,7 @@ paths:
       - Users
       summary: Change account for user
       description: Changes account for user
-      operationId: UsersController_changeUserAccount
+      operationId: changeUserAccount
       parameters:
       - name: userId
         in: path
@@ -544,7 +544,7 @@ paths:
       - Users
       summary: Archive user
       description: Archives a user
-      operationId: UsersController_archiveUser
+      operationId: archiveUser
       parameters:
       - name: userId
         in: path
@@ -575,7 +575,7 @@ paths:
       - Users
       summary: Unarchive user
       description: Unarchives a user
-      operationId: UsersController_unarchiveUser
+      operationId: unarchiveUser
       parameters:
       - name: userId
         in: path
@@ -606,7 +606,7 @@ paths:
       - Users
       summary: Get user limits
       description: Returns the limits of a user
-      operationId: UsersController_getUserLimits
+      operationId: getUserLimits
       parameters:
       - name: userId
         in: path
@@ -636,7 +636,7 @@ paths:
       - Users
       summary: Update user limits
       description: Updates the limits of a user
-      operationId: UsersController_updateUserLimits
+      operationId: updateUserLimits
       parameters:
       - name: userId
         in: path
@@ -674,7 +674,7 @@ paths:
       - Security
       summary: Get available authentication providers
       description: Returns the available authentication providers
-      operationId: AuthenticationController_listProviders
+      operationId: listProviders
       parameters: []
       responses:
         "200":
@@ -699,7 +699,7 @@ paths:
       - Security
       summary: Updates authentication provider
       description: Updates authentication provider
-      operationId: AuthenticationController_updateProvider
+      operationId: updateProvider
       parameters:
       - name: name
         in: path
@@ -744,7 +744,7 @@ paths:
       - Resource Pools
       summary: Get all Resource Pools
       description: Returns list of all Resource Pools
-      operationId: InventoryController_getResourcePools
+      operationId: getResourcePools
       parameters: []
       responses:
         "200":
@@ -766,7 +766,7 @@ paths:
       - Resource Pools
       summary: Creates a Resource Pool
       description: Creates a Resource Pool
-      operationId: InventoryController_createResourcePool
+      operationId: createResourcePool
       parameters: []
       requestBody:
         description: The Resource Pool create object
@@ -795,7 +795,7 @@ paths:
       - Resource Pools
       summary: Get Resource Pool information
       description: Returns Resource Pool information
-      operationId: InventoryController_getResourcePool
+      operationId: getResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -823,7 +823,7 @@ paths:
       - Resource Pools
       summary: Updates Resource Pool information
       description: Updates Resource Pool information
-      operationId: InventoryController_updateResourcePool
+      operationId: updateResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -858,7 +858,7 @@ paths:
       - Resource Pools
       summary: Deletes a Resource Pool
       description: Deletes a Resource Pool
-      operationId: InventoryController_deleteResourcePool
+      operationId: deleteResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -883,7 +883,7 @@ paths:
       - Resource Pools
       summary: Get all servers that are part of a Resource Pool
       description: Returns list of all servers that are part of a Resource Pool
-      operationId: InventoryController_getResourcePoolServers
+      operationId: getResourcePoolServers
       parameters:
       - name: resourcePoolId
         in: path
@@ -908,7 +908,7 @@ paths:
       - Resource Pools
       summary: Add a server to a Resource Pool
       description: Add a server to a Resource Pool
-      operationId: InventoryController_addServerToResourcePool
+      operationId: addServerToResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -939,7 +939,7 @@ paths:
       - Resource Pools
       summary: Remove a server from a Resource Pool
       description: Remove a server from a Resource Pool
-      operationId: InventoryController_removeServerFromResourcePool
+      operationId: removeServerFromResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -971,7 +971,7 @@ paths:
       - Resource Pools
       summary: Get all subnet pools that are part of a resource pool
       description: Returns list of all subnet pools that are part of a resource pool
-      operationId: InventoryController_getResourcePoolSubnetPools
+      operationId: getResourcePoolSubnetPools
       parameters:
       - name: resourcePoolId
         in: path
@@ -997,7 +997,7 @@ paths:
       - Resource Pools
       summary: Add a subnet pool to a resource pool
       description: Add a subnet pool to a resource pool
-      operationId: InventoryController_addSubnetPoolToResourcePool
+      operationId: addSubnetPoolToResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -1028,7 +1028,7 @@ paths:
       - Resource Pools
       summary: Remove a subnet from a resource pool
       description: Remove a subnet from a resource pool
-      operationId: InventoryController_removeSubnetPoolFromResourcePool
+      operationId: removeSubnetPoolFromResourcePool
       parameters:
       - name: resourcePoolId
         in: path
@@ -1061,7 +1061,7 @@ paths:
       - Resource Pools
       summary: Get all users that have access to a Resource Pool
       description: Returns list of all users that have access to a Resource Pool
-      operationId: InventoryController_getResourcePoolUsers
+      operationId: getResourcePoolUsers
       parameters:
       - name: resourcePoolId
         in: path
@@ -1086,7 +1086,7 @@ paths:
       - Resource Pools
       summary: Get all Resource Pools that a user has access to
       description: Returns list of all Resource Pools that a user has access to
-      operationId: InventoryController_getUserResourcePools
+      operationId: getUserResourcePools
       parameters:
       - name: userId
         in: path
@@ -1111,7 +1111,7 @@ paths:
       - Resource Pools
       summary: Add a user to a Resource Pool
       description: Add a user to a Resource Pool
-      operationId: InventoryController_addResourcePoolUser
+      operationId: addResourcePoolUser
       parameters:
       - name: resourcePoolId
         in: path
@@ -1142,7 +1142,7 @@ paths:
       - Resource Pools
       summary: Remove a user from a Resource Pool
       description: Remove a user from a Resource Pool
-      operationId: InventoryController_removeResourcePoolUser
+      operationId: removeResourcePoolUser
       parameters:
       - name: resourcePoolId
         in: path
@@ -1174,7 +1174,7 @@ paths:
       - VMs
       summary: Retrieves the VM information
       description: Retrieves the VM information
-      operationId: VMMicroserviceController_getVM
+      operationId: getVM
       parameters:
       - name: vmId
         in: path
@@ -1204,7 +1204,7 @@ paths:
       - VMs
       summary: Updates VM information
       description: Updates VM information
-      operationId: InventoryController_updateVM
+      operationId: updateVM
       parameters:
       - name: vmId
         in: path
@@ -1246,7 +1246,7 @@ paths:
       - VM Pools
       summary: Get all VM Pools
       description: Returns list of all VM Pools
-      operationId: InventoryController_getVMPools
+      operationId: getVMPools
       parameters: []
       responses:
         "200":
@@ -1271,7 +1271,7 @@ paths:
       - VM Pools
       summary: Creates a VM Pool
       description: Creates a VM Pool
-      operationId: InventoryController_createVMPool
+      operationId: createVMPool
       parameters: []
       requestBody:
         description: The VM Pool create object
@@ -1306,7 +1306,7 @@ paths:
       - VM Pools
       summary: Get VM Pool information
       description: Returns VM Pool information
-      operationId: InventoryController_getVMPool
+      operationId: getVMPool
       parameters:
       - name: vmPoolId
         in: path
@@ -1338,7 +1338,7 @@ paths:
       - VM Pools
       summary: Deletes a VM Pool
       description: Deletes a VM Pool
-      operationId: InventoryController_deleteVMPool
+      operationId: deleteVMPool
       parameters:
       - name: vmPoolId
         in: path
@@ -1368,7 +1368,7 @@ paths:
       - VM Pools
       summary: Updates VM Pool information
       description: Updates VM Pool information
-      operationId: InventoryController_updateVMPool
+      operationId: updateVMPool
       parameters:
       - name: vmPoolId
         in: path
@@ -1410,7 +1410,7 @@ paths:
       - VM Pools
       summary: Returns all VMs linked to the VM Pool
       description: Returns all VMs linked to the VM Pool
-      operationId: InventoryController_getVMPoolVMs
+      operationId: getVMPoolVMs
       parameters:
       - name: vmPoolId
         in: path
@@ -1439,7 +1439,7 @@ paths:
       - VM Pools
       summary: Get list of VM Cluster Hosts linked to the VM Pool
       description: Returns list of VM Cluster Hosts linked to the VM Pool
-      operationId: InventoryController_getVMPoolClusterHosts
+      operationId: getVMPoolClusterHosts
       parameters:
       - name: vmPoolId
         in: path
@@ -1472,7 +1472,7 @@ paths:
       - VM Pools
       summary: Retrieves a VM Cluster Host
       description: Returns a VM Cluster Host
-      operationId: InventoryController_getVMPoolClusterHost
+      operationId: getVMPoolClusterHost
       parameters:
       - name: vmPoolId
         in: path
@@ -1512,7 +1512,7 @@ paths:
       - VM Pools
       summary: Retrieves a list of VM Cluster Host Interfaces
       description: Returns a list of VM Cluster Host Interfaces
-      operationId: InventoryController_getVMPoolClusterHostInterfaces
+      operationId: getVMPoolClusterHostInterfaces
       parameters:
       - name: vmPoolId
         in: path
@@ -1555,7 +1555,7 @@ paths:
       - VM Pools
       summary: Retrieves a VM Cluster Host Interface
       description: Returns a VM Cluster Host Interface
-      operationId: InventoryController_getVMPoolClusterHostInterface
+      operationId: getVMPoolClusterHostInterface
       parameters:
       - name: vmPoolId
         in: path
@@ -1601,7 +1601,7 @@ paths:
       - VM Pools
       summary: Updates a VM Cluster Host Interface
       description: Updates a VM Cluster Host Interface
-      operationId: InventoryController_patchVMPoolClusterHostInterface
+      operationId: updateVMPoolClusterHostInterface
       parameters:
       - name: vmPoolId
         in: path
@@ -1655,7 +1655,7 @@ paths:
       - VM Pools
       summary: Retrieves a list of VM Cluster Host VMs
       description: Returns a list of VM Cluster Host VMs
-      operationId: InventoryController_getVMPoolClusterHostVMs
+      operationId: getVMPoolClusterHostVMs
       parameters:
       - name: vmPoolId
         in: path
@@ -1695,7 +1695,7 @@ paths:
       - VM Types
       summary: Get all VM Types
       description: Returns list of all VM Types
-      operationId: InventoryController_getVMTypes
+      operationId: getVMTypes
       parameters: []
       responses:
         "200":
@@ -1720,7 +1720,7 @@ paths:
       - VM Types
       summary: Creates a VM Type
       description: Creates a VM Type
-      operationId: InventoryController_createVMType
+      operationId: createVMType
       parameters: []
       requestBody:
         description: The VM Type create object
@@ -1755,7 +1755,7 @@ paths:
       - VM Types
       summary: Get VM Type information
       description: Returns VM Type information
-      operationId: InventoryController_getVMType
+      operationId: getVMType
       parameters:
       - name: vmTypeId
         in: path
@@ -1787,7 +1787,7 @@ paths:
       - VM Types
       summary: Deletes a VM Type
       description: Deletes a VM Type
-      operationId: InventoryController_deleteVMType
+      operationId: deleteVMType
       parameters:
       - name: vmTypeId
         in: path
@@ -1817,7 +1817,7 @@ paths:
       - VM Types
       summary: Updates VM Type information
       description: Updates VM Type information
-      operationId: InventoryController_updateVMType
+      operationId: updateVMType
       parameters:
       - name: vmTypeId
         in: path
@@ -1859,7 +1859,7 @@ paths:
       - VM Types
       summary: Returns all VMs linked to the VM Type
       description: Returns all VMs linked to the VM Type
-      operationId: InventoryController_getVMsByVMType
+      operationId: getVMsByVMType
       parameters:
       - name: vmTypeId
         in: path
@@ -1888,7 +1888,7 @@ paths:
       - Infrastructure
       summary: Deploys the specified infrastructure
       description: Deploys the specified infrastructure
-      operationId: InventoryController_deployInfrastructure
+      operationId: deployInfrastructure
       parameters:
       - name: infrastructureId
         in: path
@@ -1929,7 +1929,7 @@ paths:
       - Infrastructure
       summary: Reverts the specified infrastructure
       description: Reverts the specified infrastructure
-      operationId: InventoryController_revertInfrastructure
+      operationId: revertInfrastructure
       parameters:
       - name: infrastructureId
         in: path
@@ -1958,7 +1958,7 @@ paths:
       - Infrastructure
       summary: Get all infrastructures
       description: Returns list of all infrastructures
-      operationId: InventoryController_getInfrastructures
+      operationId: getInfrastructures
       parameters:
       - name: accountId
         in: query
@@ -1993,7 +1993,7 @@ paths:
       - Infrastructure
       summary: Retrieves the specified infrastructure
       description: Retrieves the specified infrastructure
-      operationId: InventoryController_getInfrastructure
+      operationId: getInfrastructure
       parameters:
       - name: infrastructureId
         in: path
@@ -2022,7 +2022,7 @@ paths:
       - Server
       summary: Initialize server registration
       description: Initializes server registration process
-      operationId: InventoryController_registerServer
+      operationId: registerServer
       parameters: []
       requestBody:
         description: The server registration information
@@ -2065,7 +2065,7 @@ paths:
       - Server
       summary: Get Server information
       description: Returns Server information
-      operationId: InventoryController_getServerInfo
+      operationId: getServerInfo
       parameters:
       - name: serverId
         in: path
@@ -2098,7 +2098,7 @@ paths:
       - Storage
       summary: Retrieves a Storage
       description: Retrieves a Storage
-      operationId: InventoryController_getStorage
+      operationId: getStorage
       parameters:
       - name: storageId
         in: path
@@ -2132,7 +2132,7 @@ paths:
       - Storage
       summary: Updates a Storage
       description: Updates a Storage
-      operationId: InventoryController_patchStorage
+      operationId: updateStorage
       parameters:
       - name: storageId
         in: path
@@ -2170,7 +2170,7 @@ paths:
       - Storage
       summary: Creates a Storage
       description: Creates a Storage
-      operationId: InventoryController_createStorage
+      operationId: createStorage
       parameters: []
       requestBody:
         description: The Storage create object
@@ -2205,7 +2205,7 @@ paths:
       - VM Instance Group
       summary: Get all VM Instance Groups
       description: Returns list of all VM Instance Groups
-      operationId: BlueprintController_getVMInstanceGroups
+      operationId: getVMInstanceGroups
       parameters:
       - name: infrastructureId
         in: path
@@ -2240,7 +2240,7 @@ paths:
       - VM Instance Group
       summary: Creates a VM Instance Group
       description: Creates a VM Instance Group
-      operationId: BlueprintController_createVMInstanceGroup
+      operationId: createVMInstanceGroup
       parameters:
       - name: infrastructureId
         in: path
@@ -2282,7 +2282,7 @@ paths:
       - VM Instance Group
       summary: Get VM Instance Group information
       description: Returns VM Instance Group information
-      operationId: BlueprintController_getVMInstanceGroup
+      operationId: getVMInstanceGroup
       parameters:
       - name: infrastructureId
         in: path
@@ -2321,7 +2321,7 @@ paths:
       - VM Instance Group
       summary: Deletes a VM Instance Group
       description: Deletes a VM Instance Group
-      operationId: BlueprintController_deleteVMInstanceGroup
+      operationId: deleteVMInstanceGroup
       parameters:
       - name: infrastructureId
         in: path
@@ -2358,7 +2358,7 @@ paths:
       - VM Instance Group
       summary: Updates VM Instance Group information
       description: Updates VM Instance Group information
-      operationId: BlueprintController_updateVMInstanceGroup
+      operationId: updateVMInstanceGroup
       parameters:
       - name: infrastructureId
         in: path
@@ -2407,7 +2407,7 @@ paths:
       - VM Instance Group
       summary: Get the VM Instances of VM Instance Group
       description: Returns the VM Instances of VM Instance Group
-      operationId: BlueprintController_getVMInstanceGroupVMInstances
+      operationId: getVMInstanceGroupVMInstances
       parameters:
       - name: infrastructureId
         in: path
@@ -2450,7 +2450,7 @@ paths:
       - VM Instance Group
       summary: Applies a VM Type to a VM Instance Group
       description: Applies a VM Type to a VM Instance Group
-      operationId: BlueprintController_applyVMTypeOnVMInstanceGroup
+      operationId: applyVMTypeOnVMInstanceGroup
       parameters:
       - name: infrastructureId
         in: path
@@ -2499,7 +2499,7 @@ paths:
       - VM Instance Group
       summary: Creates a new Virtual Interface for the VM Instance Group
       description: Creates a new Virtual Interface for the VM Instance Group
-      operationId: BlueprintController_createVMInterfaceOnVMInstanceGroup
+      operationId: createVMInterfaceOnVMInstanceGroup
       parameters:
       - name: infrastructureId
         in: path
@@ -2549,7 +2549,7 @@ paths:
         Network
       description: Applies the given Network Profile to the specified VM Instance
         Group Network
-      operationId: BlueprintController_patchNetworkProfileOnVMInstanceGroupNetwork
+      operationId: updateNetworkProfileOnVMInstanceGroupNetwork
       parameters:
       - name: infrastructureId
         in: path
@@ -2606,7 +2606,7 @@ paths:
       - VM Instance
       summary: Creates a VM Instance
       description: Creates a VM Instance
-      operationId: BlueprintController_createVMInstance
+      operationId: createVMInstance
       parameters:
       - name: infrastructureId
         in: path
@@ -2648,7 +2648,7 @@ paths:
       - VM Instance
       summary: Get VM Instance information
       description: Returns VM Instance information
-      operationId: BlueprintController_getVMInstance
+      operationId: getVMInstance
       parameters:
       - name: infrastructureId
         in: path
@@ -2687,7 +2687,7 @@ paths:
       - VM Instance
       summary: Deletes a VM Instance
       description: Deletes a VM Instance
-      operationId: BlueprintController_deleteVMInstance
+      operationId: deleteVMInstance
       parameters:
       - name: infrastructureId
         in: path
@@ -2724,7 +2724,7 @@ paths:
       - VM Instance
       summary: Updates VM Instance information
       description: Updates VM Instance information
-      operationId: BlueprintController_updateVMInstance
+      operationId: updateVMInstance
       parameters:
       - name: infrastructureId
         in: path
@@ -2773,7 +2773,7 @@ paths:
       - VM Instance
       summary: Applies a VM Type to a VM Instance
       description: Applies a VM Type to a VM Instance
-      operationId: BlueprintController_applyVMTypeOnVMInstance
+      operationId: applyVMTypeOnVMInstance
       parameters:
       - name: infrastructureId
         in: path
@@ -2822,7 +2822,7 @@ paths:
       - VM Instance
       summary: Retrieves the power status of the VM Instance
       description: Retrieves the power status of the VM Instance
-      operationId: BlueprintController_powerStatusVMInstance
+      operationId: getVMInstancePowerStatus
       parameters:
       - name: infrastructureId
         in: path
@@ -2860,7 +2860,7 @@ paths:
       - VM Instance
       summary: Starts the VM Instance
       description: Starts the VM Instance
-      operationId: BlueprintController_startVMInstance
+      operationId: startVMInstance
       parameters:
       - name: infrastructureId
         in: path
@@ -2898,7 +2898,7 @@ paths:
       - VM Instance
       summary: Shuts down the VM Instance
       description: Shuts down the VM Instance
-      operationId: BlueprintController_shutdownVMInstance
+      operationId: shutdownVMInstance
       parameters:
       - name: infrastructureId
         in: path
@@ -2936,7 +2936,7 @@ paths:
       - VM Instance
       summary: Reboots the VM Instance
       description: Reboots the VM Instance
-      operationId: BlueprintController_rebootVMInstance
+      operationId: rebootVMInstance
       parameters:
       - name: infrastructureId
         in: path
@@ -2974,7 +2974,7 @@ paths:
       - Network
       summary: Retrieves all networks on the infrastructure
       description: Retrieves all networks on the infrastructure
-      operationId: BlueprintController_getNetworks
+      operationId: getInfrastructureNetworks
       parameters:
       - name: infrastructureId
         in: path
@@ -3004,7 +3004,7 @@ paths:
       - Network
       summary: Creates a new LAN network on the infrastructure
       description: Creates a new LAN network on the infrastructure
-      operationId: BlueprintController_createNetwork
+      operationId: createInfrastructureNetwork
       parameters:
       - name: infrastructureId
         in: path
@@ -3046,7 +3046,7 @@ paths:
       - Network
       summary: Gets the specified network from the infrastructure
       description: Gets the specified network from the infrastructure
-      operationId: BlueprintController_getNetwork
+      operationId: getInfrastructureNetwork
       parameters:
       - name: infrastructureId
         in: path
@@ -3083,7 +3083,7 @@ paths:
       - Network
       summary: Deletes a network from the infrastructure
       description: Deletes a network from the infrastructure
-      operationId: BlueprintController_deleteNetwork
+      operationId: deleteInfrastructureNetwork
       parameters:
       - name: infrastructureId
         in: path
@@ -3121,7 +3121,7 @@ paths:
       - File Share
       summary: Get File Share information
       description: Returns File Share information
-      operationId: BlueprintController_getIndividualFileShare
+      operationId: getFileShare
       parameters:
       - name: fileShareId
         in: path
@@ -3154,7 +3154,7 @@ paths:
       - File Share
       summary: Get all File Shares
       description: Returns list of all File Shares
-      operationId: BlueprintController_getFileShares
+      operationId: getInfrastructureFileShares
       parameters:
       - name: infrastructureId
         in: path
@@ -3189,7 +3189,7 @@ paths:
       - File Share
       summary: Creates a File Share
       description: Creates a File Share
-      operationId: BlueprintController_createFileShare
+      operationId: createInfrastructureFileShare
       parameters:
       - name: infrastructureId
         in: path
@@ -3231,7 +3231,7 @@ paths:
       - Storage
       summary: Get all File Shares linked to the specified storage
       description: Returns list of all File Shares linked to the specified Storage
-      operationId: BlueprintController_getStorageFileShares
+      operationId: getStorageFileShares
       parameters:
       - name: storageId
         in: path
@@ -3264,7 +3264,7 @@ paths:
       - File Share
       summary: Get File Share information
       description: Returns File Share information
-      operationId: BlueprintController_getFileShare
+      operationId: getInfrastructureFileShare
       parameters:
       - name: infrastructureId
         in: path
@@ -3303,7 +3303,7 @@ paths:
       - File Share
       summary: Deletes a File Share
       description: Deletes a File Share
-      operationId: BlueprintController_deleteFileShare
+      operationId: deleteFileShare
       parameters:
       - name: infrastructureId
         in: path
@@ -3340,7 +3340,7 @@ paths:
       - File Share
       summary: Updates File Share information
       description: Updates File Share information
-      operationId: BlueprintController_updateFileShare
+      operationId: updateFileShare
       parameters:
       - name: infrastructureId
         in: path
@@ -3389,7 +3389,7 @@ paths:
       - File Share
       summary: Get the Hosts of File Share
       description: Returns the Hosts of File Share
-      operationId: BlueprintController_getFileShareHosts
+      operationId: getFileShareHosts
       parameters:
       - name: infrastructureId
         in: path
@@ -3429,7 +3429,7 @@ paths:
       - File Share
       summary: Starts a File Share
       description: Starts a File Share
-      operationId: BlueprintController_startFileShare
+      operationId: startFileShare
       parameters:
       - name: infrastructureId
         in: path
@@ -3467,7 +3467,7 @@ paths:
       - File Share
       summary: Stops a File Share
       description: Stops a File Share
-      operationId: BlueprintController_stopFileShare
+      operationId: stopFileShare
       parameters:
       - name: infrastructureId
         in: path
@@ -3505,7 +3505,7 @@ paths:
       - File Share
       summary: Updates Instance Array Hosts on the File Share
       description: Updates Instance Array Hosts on the File Share
-      operationId: BlueprintController_updateFileShareInstanceArrayHostsBulk
+      operationId: updateFileShareInstanceArrayHostsBulk
       parameters:
       - name: infrastructureId
         in: path
@@ -3554,7 +3554,7 @@ paths:
       - Bucket
       summary: Get Bucket information
       description: Returns Bucket information
-      operationId: BlueprintController_getIndividualBucket
+      operationId: getBucket
       parameters:
       - name: bucketId
         in: path
@@ -3587,7 +3587,7 @@ paths:
       - Bucket
       summary: Get all Buckets
       description: Returns list of all Buckets
-      operationId: BlueprintController_getBuckets
+      operationId: getInfrastructureBuckets
       parameters:
       - name: infrastructureId
         in: path
@@ -3622,7 +3622,7 @@ paths:
       - Bucket
       summary: Creates a Bucket
       description: Creates a Bucket
-      operationId: BlueprintController_createBucket
+      operationId: createInfrastructureBucket
       parameters:
       - name: infrastructureId
         in: path
@@ -3664,7 +3664,7 @@ paths:
       - Storage
       summary: Get all Buckets linked to the specified storage
       description: Returns list of all Buckets linked to the specified Storage
-      operationId: BlueprintController_getStorageBuckets
+      operationId: getStorageBuckets
       parameters:
       - name: storageId
         in: path
@@ -3697,7 +3697,7 @@ paths:
       - Bucket
       summary: Get Bucket information
       description: Returns Bucket information
-      operationId: BlueprintController_getBucket
+      operationId: getInfrastructureBucket
       parameters:
       - name: infrastructureId
         in: path
@@ -3736,7 +3736,7 @@ paths:
       - Bucket
       summary: Deletes a Bucket
       description: Deletes a Bucket
-      operationId: BlueprintController_deleteBucket
+      operationId: deleteBucket
       parameters:
       - name: infrastructureId
         in: path
@@ -3773,7 +3773,7 @@ paths:
       - Bucket
       summary: Updates Bucket information
       description: Updates Bucket information
-      operationId: BlueprintController_updateBucket
+      operationId: updateBucket
       parameters:
       - name: infrastructureId
         in: path
@@ -3822,7 +3822,7 @@ paths:
       - Bucket
       summary: Get the Hosts of Bucket
       description: Returns the Hosts of Bucket
-      operationId: BlueprintController_getBucketHosts
+      operationId: getBucketHosts
       parameters:
       - name: infrastructureId
         in: path
@@ -3862,7 +3862,7 @@ paths:
       - Bucket
       summary: Starts a Bucket
       description: Starts a Bucket
-      operationId: BlueprintController_startBucket
+      operationId: startBucket
       parameters:
       - name: infrastructureId
         in: path
@@ -3900,7 +3900,7 @@ paths:
       - Bucket
       summary: Stops a Bucket
       description: Stops a Bucket
-      operationId: BlueprintController_stopBucket
+      operationId: stopBucket
       parameters:
       - name: infrastructureId
         in: path
@@ -3938,7 +3938,7 @@ paths:
       - Bucket
       summary: Updates Instance Array Hosts on the Bucket
       description: Updates Instance Array Hosts on the Bucket
-      operationId: BlueprintController_updatebucketInstanceArrayHostsBulk
+      operationId: updateBucketInstanceArrayHostsBulk
       parameters:
       - name: infrastructureId
         in: path
@@ -3987,7 +3987,7 @@ paths:
       - VMs
       summary: Retrieves the power status of the VM
       description: Retrieves the power status of the VM
-      operationId: VMMicroserviceController_powerStatusVMInstance
+      operationId: getVMPowerStatus
       parameters:
       - name: vmId
         in: path
@@ -4018,7 +4018,7 @@ paths:
       - VMs
       summary: Starts the VM
       description: Starts the VM
-      operationId: VMMicroserviceController_startVM
+      operationId: startVM
       parameters:
       - name: vmId
         in: path
@@ -4049,7 +4049,7 @@ paths:
       - VMs
       summary: Shuts down the VM
       description: Shuts down the VM
-      operationId: VMMicroserviceController_shutdownVM
+      operationId: shutdownVM
       parameters:
       - name: vmId
         in: path
@@ -4080,7 +4080,7 @@ paths:
       - VMs
       summary: Reboots the VM
       description: Reboots the VM
-      operationId: VMMicroserviceController_rebootVM
+      operationId: rebootVM
       parameters:
       - name: vmId
         in: path
@@ -4111,7 +4111,7 @@ paths:
       - VMs
       summary: Get Remote Console information
       description: Returns Remote Console information
-      operationId: VMMicroserviceController_getRemoteConsoleInfo
+      operationId: getVMRemoteConsoleInfo
       parameters:
       - name: vmId
         in: path
@@ -4143,7 +4143,7 @@ paths:
       - AI
       summary: Request from AI a response for the given input
       description: Returns response with potential actions to execute
-      operationId: EliController_generateEliResponse
+      operationId: generateEliResponse
       parameters: []
       requestBody:
         description: The AI generate request
@@ -4170,7 +4170,7 @@ paths:
       - Server
       summary: Get VNC information
       description: Returns VNC information
-      operationId: ServersController_getVNCInfo
+      operationId: getServerVNCInfo
       parameters:
       - name: serverId
         in: path
@@ -4202,7 +4202,7 @@ paths:
       - Server
       summary: Get Remote Console information
       description: Returns Remote Console information
-      operationId: ServersController_getRemoteConsoleInfo
+      operationId: getServerRemoteConsoleInfo
       parameters:
       - name: serverId
         in: path
@@ -4234,7 +4234,7 @@ paths:
       - Server
       summary: Resets a server to factory defaults
       description: Resets a server to factory defaults
-      operationId: ServersController_resetServerToFactoryDefaults
+      operationId: resetServerToFactoryDefaults
       parameters:
       - name: serverId
         in: path
@@ -4263,7 +4263,7 @@ paths:
       - Server
       summary: Enables remote syslog for a server
       description: Enables remote syslog for a server
-      operationId: ServersController_enableSyslog
+      operationId: enableServerSyslog
       parameters:
       - name: serverId
         in: path
@@ -4292,7 +4292,7 @@ paths:
       - Server
       summary: Gets the power state of a server
       description: Gets the power state of a server
-      operationId: ServersController_getPowerState
+      operationId: getServerPowerState
       parameters:
       - name: serverId
         in: path
@@ -4321,7 +4321,7 @@ paths:
       - Server
       summary: Sets the power state of a server
       description: Sets the power state of a server
-      operationId: ServersController_setPowerState
+      operationId: setServerPowerState
       parameters:
       - name: serverId
         in: path
@@ -4355,7 +4355,7 @@ paths:
       tags:
       - Network Devices
       summary: Get all ports for network device
-      operationId: SwitchController_getPorts
+      operationId: getNetworkDevicePorts
       parameters:
       - name: networkDeviceId
         in: path
@@ -4379,7 +4379,7 @@ paths:
       tags:
       - Network Devices
       summary: Set port status
-      operationId: SwitchController_setPortStatus
+      operationId: setNetworkDevicePortStatus
       parameters:
       - name: networkDeviceId
         in: path
@@ -4412,7 +4412,7 @@ paths:
       - Network Devices
       summary: Resets a network device to default state
       description: Resets a network device to default state and destroy all configurations
-      operationId: SwitchController_resetNetworkDevice
+      operationId: resetNetworkDevice
       parameters:
       - name: networkDeviceId
         in: path
@@ -4438,7 +4438,7 @@ paths:
       - Network Devices
       summary: Enables remote syslog for a network device
       description: Enables remote syslog for a network device
-      operationId: SwitchController_enableSyslog
+      operationId: enableNetworkDeviceSyslog
       parameters:
       - name: networkDeviceId
         in: path
@@ -4464,7 +4464,7 @@ paths:
       - Network Devices
       summary: Change status of a network device
       description: Change status of a network device
-      operationId: SwitchController_changeStatus
+      operationId: changeNetworkDeviceStatus
       parameters:
       - name: networkDeviceId
         in: path
@@ -4479,7 +4479,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/'
+              $ref: '#/components/schemas/NetworkDeviceStatusDto'
         required: true
       responses:
         "200":
@@ -4502,7 +4502,7 @@ paths:
       summary: "Discover network device interfaces, hardware and software configuration"
       description: "Discover network device interfaces, hardware and software configuration\
         \ and return them and/or persist them"
-      operationId: SwitchController_discover
+      operationId: discoverNetworkDevice
       parameters:
       - name: networkDeviceId
         in: path
@@ -4534,7 +4534,7 @@ paths:
       - Extension
       summary: List available extensions
       description: Returns list of the available extensions
-      operationId: ExtensionsController_listExtensions
+      operationId: getExtensions
       parameters:
       - name: filter
         in: query
@@ -4561,7 +4561,7 @@ paths:
       - Extension
       summary: Create extension
       description: Returns details of the new extension
-      operationId: ExtensionsController_createExtension
+      operationId: createExtension
       parameters: []
       requestBody:
         description: The extension details
@@ -4592,7 +4592,7 @@ paths:
       - Extension
       summary: Get details for an extension
       description: Returns details of the specified extension
-      operationId: ExtensionsController_getExtension
+      operationId: getExtension
       parameters:
       - name: extensionId
         in: path
@@ -4620,7 +4620,7 @@ paths:
       - Extension
       summary: Update extension
       description: Returns details of the updated extension
-      operationId: ExtensionsController_updateExtension
+      operationId: updateExtension
       parameters:
       - name: extensionId
         in: path
@@ -4660,7 +4660,7 @@ paths:
       - Extension
       summary: Publish draft extension
       description: Publishes draft extension.
-      operationId: ExtensionsController_publishExtension
+      operationId: publishExtension
       parameters:
       - name: extensionId
         in: path
@@ -4687,7 +4687,7 @@ paths:
       - Extension
       summary: Archive published extension
       description: Archives published extension.
-      operationId: ExtensionsController_archiveExtension
+      operationId: archiveExtension
       parameters:
       - name: extensionId
         in: path
@@ -4714,7 +4714,7 @@ paths:
       - Configuration
       summary: Get configuration
       description: Returns a configuration object
-      operationId: ConfigController_getConfiguration
+      operationId: getConfiguration
       parameters:
       - name: filter
         in: query
@@ -4745,7 +4745,7 @@ paths:
       - System
       summary: Get MetalSoft system version
       description: Returns the MetalSoft system version
-      operationId: SystemController_getVersion
+      operationId: getVersion
       parameters: []
       responses:
         "200":
@@ -4780,8 +4780,15 @@ components:
           type: string
           description: The country of the account address
     AccountLimits:
+      required:
+      - user_resource_server_type_name_to_max_count
+      - wan_subnet_prefix_size_to_max_count
       type: object
-      properties: {}
+      properties:
+        user_resource_server_type_name_to_max_count:
+          type: object
+        wan_subnet_prefix_size_to_max_count:
+          type: object
     AccountDto:
       required:
       - id
@@ -4888,8 +4895,267 @@ components:
         wanSubnetPrefixSizeToMaxCount: {}
         userResourceServerTypeNameToMaxCount: {}
     UserLimits:
+      required:
+      - allow_network_profiles
+      - allow_vlan_overrides
+      - allowed_network_profiles
+      - bucket_max_size_gb
+      - bucket_min_size_gb
+      - container_array_containers_max_count
+      - container_array_containers_min_count
+      - container_array_drive_arrays_max_count
+      - container_array_drive_arrays_min_count
+      - container_array_secrets_max_count
+      - container_platform_container_array_max_count
+      - drive_array_drives_max_count
+      - drive_array_drives_min_count
+      - drive_max_size_mbytes
+      - drive_min_size_mbytes
+      - enable_custom_raid_configuration
+      - enable_custom_subnets
+      - file_share_max_size_gb
+      - file_share_min_size_gb
+      - infrastructure_active_max_count
+      - infrastructure_bucket_max_count
+      - infrastructure_cluster_max_count
+      - infrastructure_cluster_mysql_allowed
+      - infrastructure_container_cluster_kafka_allowed
+      - infrastructure_container_cluster_max_count
+      - infrastructure_container_cluster_postgresql_allowed
+      - infrastructure_container_cluster_spark_array_allowed
+      - infrastructure_container_cluster_sparksql_allowed
+      - infrastructure_container_cluster_streamsets_allowed
+      - infrastructure_container_cluster_zookeeper_allowed
+      - infrastructure_container_cluster_zoomdata_allowed
+      - infrastructure_container_platform_max_count
+      - infrastructure_data_lake_enabled
+      - infrastructure_data_lake_max_count
+      - infrastructure_deleted_max_count
+      - infrastructure_drive_array_max_count
+      - infrastructure_file_share_max_count
+      - infrastructure_inactive_max_count
+      - infrastructure_instance_array_max_count
+      - infrastructure_lan_max_count
+      - infrastructure_san_max_count
+      - infrastructure_shared_drive_max_count
+      - infrastructure_vm_instance_group_max_count
+      - infrastructure_volume_template_experimental_allowed
+      - infrastructure_wan_max_count
+      - instance_array_instances_max_count
+      - instance_array_instances_min_count
+      - owner_is_billable
+      - server_type_reservation_max_count
+      - server_type_reservation_max_quantity
+      - shared_drive_max_size_mbytes
+      - shared_drive_min_size_mbytes
+      - show_diagram_app_cluster_type_cloudera
+      - show_diagram_app_cluster_type_couchbase
+      - show_diagram_app_cluster_type_datameer
+      - show_diagram_app_cluster_type_datastax
+      - show_diagram_app_cluster_type_elasticsearch
+      - show_diagram_app_cluster_type_exasol
+      - show_diagram_app_cluster_type_hortonworks
+      - show_diagram_app_cluster_type_kubernetes
+      - show_diagram_app_cluster_type_kubernetes_eksa
+      - show_diagram_app_cluster_type_mapr
+      - show_diagram_app_cluster_type_mesos
+      - show_diagram_app_cluster_type_mysql_percona
+      - show_diagram_app_cluster_type_splunk
+      - show_diagram_app_cluster_type_vmware_vcf
+      - show_diagram_app_cluster_type_vmware_vsphere
+      - show_diagram_apps_global
+      - show_diagram_vm_instance_groups
+      - show_eli_chat_bot
+      - show_experimental_pages
+      - show_legacy_pages
+      - show_operating_system_images_tab
+      - show_stack_trace
+      - show_template_assets_view
+      - storage_types
+      - threshold_max_count
+      - user_resource_iscsi_storage_space_max_gbytes
+      - user_resource_server_type_name_to_max_count
+      - user_resource_servers_max_count
+      - user_ssh_keys_count_max
+      - vm_instance_group_vm_instances_max_count
+      - vm_instance_max_disk_size_mbytes
+      - wan_subnet_ipv4_max_count
+      - wan_subnet_ipv6_max_count
+      - wan_subnet_prefix_size_to_max_count
       type: object
-      properties: {}
+      properties:
+        container_array_containers_max_count:
+          type: number
+        container_array_containers_min_count:
+          type: number
+        container_array_drive_arrays_max_count:
+          type: number
+        container_array_drive_arrays_min_count:
+          type: number
+        container_array_secrets_max_count:
+          type: number
+        container_platform_container_array_max_count:
+          type: number
+        drive_array_drives_max_count:
+          type: number
+        drive_array_drives_min_count:
+          type: number
+        drive_max_size_mbytes:
+          type: number
+        drive_min_size_mbytes:
+          type: number
+        infrastructure_active_max_count:
+          type: number
+        infrastructure_cluster_max_count:
+          type: number
+        infrastructure_cluster_mysql_allowed:
+          type: boolean
+        infrastructure_container_cluster_kafka_allowed:
+          type: boolean
+        infrastructure_container_cluster_max_count:
+          type: number
+        infrastructure_container_cluster_postgresql_allowed:
+          type: boolean
+        infrastructure_container_cluster_spark_array_allowed:
+          type: boolean
+        infrastructure_container_cluster_sparksql_allowed:
+          type: boolean
+        infrastructure_container_cluster_streamsets_allowed:
+          type: boolean
+        infrastructure_container_cluster_zookeeper_allowed:
+          type: boolean
+        infrastructure_container_cluster_zoomdata_allowed:
+          type: boolean
+        infrastructure_container_platform_max_count:
+          type: number
+        infrastructure_data_lake_enabled:
+          type: boolean
+        infrastructure_data_lake_max_count:
+          type: number
+        infrastructure_deleted_max_count:
+          type: number
+        infrastructure_drive_array_max_count:
+          type: number
+        infrastructure_inactive_max_count:
+          type: number
+        infrastructure_instance_array_max_count:
+          type: number
+        infrastructure_lan_max_count:
+          type: number
+        infrastructure_san_max_count:
+          type: number
+        infrastructure_shared_drive_max_count:
+          type: number
+        infrastructure_volume_template_experimental_allowed:
+          type: boolean
+        infrastructure_wan_max_count:
+          type: number
+        instance_array_instances_max_count:
+          type: number
+        instance_array_instances_min_count:
+          type: number
+        infrastructure_vm_instance_group_max_count:
+          type: number
+        vm_instance_group_vm_instances_max_count:
+          type: number
+        vm_instance_max_disk_size_mbytes:
+          type: number
+        owner_is_billable:
+          type: boolean
+        server_type_reservation_max_count:
+          type: number
+        server_type_reservation_max_quantity:
+          type: number
+        shared_drive_max_size_mbytes:
+          type: number
+        shared_drive_min_size_mbytes:
+          type: number
+        infrastructure_file_share_max_count:
+          type: number
+        file_share_min_size_gb:
+          type: number
+        file_share_max_size_gb:
+          type: number
+        infrastructure_bucket_max_count:
+          type: number
+        bucket_min_size_gb:
+          type: number
+        bucket_max_size_gb:
+          type: number
+        allow_vlan_overrides:
+          type: boolean
+        allow_network_profiles:
+          type: boolean
+        show_operating_system_images_tab:
+          type: boolean
+        show_template_assets_view:
+          type: boolean
+        storage_types:
+          type: object
+        threshold_max_count:
+          type: number
+        user_resource_iscsi_storage_space_max_gbytes:
+          type: number
+        user_resource_servers_max_count:
+          type: number
+        user_resource_server_type_name_to_max_count:
+          type: object
+        user_ssh_keys_count_max:
+          type: number
+        wan_subnet_ipv4_max_count:
+          type: number
+        wan_subnet_ipv6_max_count:
+          type: number
+        wan_subnet_prefix_size_to_max_count:
+          type: object
+        show_legacy_pages:
+          type: boolean
+        show_experimental_pages:
+          type: boolean
+        show_diagram_apps_global:
+          type: boolean
+        show_diagram_app_cluster_type_cloudera:
+          type: boolean
+        show_diagram_app_cluster_type_couchbase:
+          type: boolean
+        show_diagram_app_cluster_type_datameer:
+          type: boolean
+        show_diagram_app_cluster_type_datastax:
+          type: boolean
+        show_diagram_app_cluster_type_elasticsearch:
+          type: boolean
+        show_diagram_app_cluster_type_exasol:
+          type: boolean
+        show_diagram_app_cluster_type_hortonworks:
+          type: boolean
+        show_diagram_app_cluster_type_kubernetes:
+          type: boolean
+        show_diagram_app_cluster_type_mapr:
+          type: boolean
+        show_diagram_app_cluster_type_mesos:
+          type: boolean
+        show_diagram_app_cluster_type_mysql_percona:
+          type: boolean
+        show_diagram_app_cluster_type_splunk:
+          type: boolean
+        show_diagram_app_cluster_type_vmware_vsphere:
+          type: boolean
+        show_diagram_app_cluster_type_vmware_vcf:
+          type: boolean
+        show_diagram_app_cluster_type_kubernetes_eksa:
+          type: boolean
+        show_diagram_vm_instance_groups:
+          type: boolean
+        show_eli_chat_bot:
+          type: boolean
+        enable_custom_raid_configuration:
+          type: boolean
+        enable_custom_subnets:
+          type: boolean
+        show_stack_trace:
+          type: boolean
+        allowed_network_profiles:
+          type: object
     UserDto:
       required:
       - accessLevel
@@ -5103,7 +5369,6 @@ components:
     UserUpdatePasswordDto:
       required:
       - newPassword
-      - oldPassword
       type: object
       properties:
         newPassword:
@@ -5537,9 +5802,6 @@ components:
         - domains
         enabled: true
     AuthenticationProviderUpdate:
-      required:
-      - domains
-      - enabled
       type: object
       properties:
         enabled:
@@ -5568,8 +5830,18 @@ components:
         rel: self
         href: /api/v2/path/to/resource
     ResourcePoolStatistics:
+      required:
+      - servers
+      - subnetPools
+      - users
       type: object
-      properties: {}
+      properties:
+        users:
+          type: number
+        servers:
+          type: number
+        subnetPools:
+          type: number
     ResourcePoolWithStatsDto:
       required:
       - resource_pool_created_timestamp
@@ -5639,9 +5911,6 @@ components:
           type: string
           description: Description of the Resource Pool
     UpdateResourcePoolDto:
-      required:
-      - resource_pool_description
-      - resource_pool_label
       type: object
       properties:
         resource_pool_label:
@@ -5656,6 +5925,7 @@ components:
         comments:
           type: number
           description: VM comments.
+          nullable: true
         tags:
           type: array
           description: Tags for the VM. This is a JSON object.
@@ -5707,18 +5977,23 @@ components:
         infrastructureId:
           type: number
           description: ID of the infrastructure where this VM is deployed
+          nullable: true
         userId:
           type: number
           description: ID of the user that owns this VM
+          nullable: true
         userEmail:
           type: string
           description: Email of the user that owns this VM
+          nullable: true
         instanceId:
           type: number
           description: ID of the instance where this VM is deployed
+          nullable: true
         vmInstanceId:
           type: number
           description: ID of the VM instance where this VM is deployed
+          nullable: true
         host:
           type: string
           description: Name of the host
@@ -5750,12 +6025,21 @@ components:
         administrationState:
           type: object
           description: The administration state of the VM.
+          enum:
+          - managed
+          - unmanaged
+          - generic_endpoint
         comments:
           type: number
           description: VM comments.
+          nullable: true
         powerState:
           type: object
           description: The power state of the VM.
+          enum:
+          - "on"
+          - "off"
+          - unknown
         powerStateLastUpdatedTimestamp:
           type: string
           description: Timestamp when the VM power state was last updated.
@@ -5773,10 +6057,12 @@ components:
         vncPort:
           type: number
           description: The port number for the VNC server.
+          nullable: true
           example: 5900
         vncPassword:
           type: string
           description: The password for the VNC server.
+          nullable: true
         disks:
           type: array
           description: The disks of the VM.
@@ -5833,6 +6119,7 @@ components:
       - id
       - inMaintenance
       - isExperimental
+      - links
       - managementHost
       - name
       - siteId
@@ -5865,15 +6152,22 @@ components:
         description:
           type: string
           description: Description of the VM Pool
+          nullable: true
         type:
           type: string
           description: Type of the VM Pool
+          enum:
+          - incus
         certificate:
           type: string
           description: Certificate of the VM Pool
         status:
           type: string
           description: Status of the VM Pool
+          enum:
+          - active
+          - deleted
+          - registering
         externalIdentifier:
           type: string
           description: External identifier of the VM Pool
@@ -5916,6 +6210,8 @@ components:
           description: Tags for the VM Pool.
           items:
             type: string
+        links:
+          type: object
       example:
         totalRamGB: 6.027456183070403
         datacenterName: datacenterName
@@ -5928,7 +6224,7 @@ components:
         createdTimestamp: createdTimestamp
         certificate: certificate
         description: description
-        type: type
+        type: incus
         updatedTimestamp: updatedTimestamp
         tags:
         - tags
@@ -5937,9 +6233,10 @@ components:
         name: name
         siteId: 0.8008281904610115
         externalIdentifier: externalIdentifier
+        links: {}
         id: 1
         totalSpaceGB: 5.637376656633329
-        status: status
+        status: active
     VMPoolList:
       required:
       - data
@@ -5971,7 +6268,7 @@ components:
           createdTimestamp: createdTimestamp
           certificate: certificate
           description: description
-          type: type
+          type: incus
           updatedTimestamp: updatedTimestamp
           tags:
           - tags
@@ -5980,9 +6277,10 @@ components:
           name: name
           siteId: 0.8008281904610115
           externalIdentifier: externalIdentifier
+          links: {}
           id: 1
           totalSpaceGB: 5.637376656633329
-          status: status
+          status: active
         - totalRamGB: 6.027456183070403
           datacenterName: datacenterName
           usedRamGB: 1.4658129805029452
@@ -5994,7 +6292,7 @@ components:
           createdTimestamp: createdTimestamp
           certificate: certificate
           description: description
-          type: type
+          type: incus
           updatedTimestamp: updatedTimestamp
           tags:
           - tags
@@ -6003,9 +6301,10 @@ components:
           name: name
           siteId: 0.8008281904610115
           externalIdentifier: externalIdentifier
+          links: {}
           id: 1
           totalSpaceGB: 5.637376656633329
-          status: status
+          status: active
         meta: {}
         links: {}
     CreateVMPool:
@@ -6026,10 +6325,13 @@ components:
         description:
           type: string
           description: Description of the VM Pool
+          nullable: true
         type:
           type: string
           description: Type of the VM Pool
           example: incus
+          enum:
+          - incus
         certificate:
           type: string
           description: Certificate of the VM Pool
@@ -6042,6 +6344,7 @@ components:
         description:
           type: string
           description: Datacenter of the VM Pool
+          nullable: true
         managementHost:
           type: string
           description: Host of the VM Pool
@@ -6057,6 +6360,8 @@ components:
         status:
           type: string
           description: Status of the VM Pool
+          enum:
+          - active
         inMaintenance:
           type: number
           description: "Flag to indicate if the VM Pool is in maintenance mode. 1\
@@ -6081,6 +6386,7 @@ components:
       - freeRamGB
       - freeSpaceGB
       - id
+      - links
       - name
       - poolId
       - port
@@ -6152,6 +6458,8 @@ components:
         updatedTimestamp:
           type: string
           description: Timestamp when the VM Pool Host was updated
+        links:
+          type: object
       example:
         totalRamGB: 6.027456183070403
         address: address
@@ -6169,6 +6477,7 @@ components:
         port: 1
         name: name
         poolId: 1
+        links: {}
         id: 1
         totalSpaceGB: 5.637376656633329
         architecture: architecture
@@ -6209,6 +6518,7 @@ components:
           port: 1
           name: name
           poolId: 1
+          links: {}
           id: 1
           totalSpaceGB: 5.637376656633329
           architecture: architecture
@@ -6229,6 +6539,7 @@ components:
           port: 1
           name: name
           poolId: 1
+          links: {}
           id: 1
           totalSpaceGB: 5.637376656633329
           architecture: architecture
@@ -6240,6 +6551,7 @@ components:
       - fabric
       - hostId
       - id
+      - links
       - macAddress
       - name
       type: object
@@ -6264,11 +6576,14 @@ components:
           enum:
           - wan
           - san
+        links:
+          type: object
       example:
         macAddress: macAddress
         fabric: wan
         name: name
         hostId: 1
+        links: {}
         id: 1
     UpdateVMPoolClusterHostInterface:
       type: object
@@ -6276,6 +6591,9 @@ components:
         fabric:
           type: string
           description: Fabric of the switch interface
+          enum:
+          - wan
+          - san
         switchId:
           type: number
           description: Id of the switch
@@ -6417,6 +6735,7 @@ components:
       - id
       - isExperimental
       - label
+      - links
       - name
       - ramGB
       - tags
@@ -6458,12 +6777,15 @@ components:
           description: "Flag to indicate if the VM Pool is for unmanaged VMs only.\
             \ 1 for true, 0 for false. Default is 0."
           example: 0
+        links:
+          type: object
       example:
         forUnmanagedVMsOnly: 0
         isExperimental: 1
         cpuCores: 2
         displayName: displayName
         name: name
+        links: {}
         id: 1
         label: label
         ramGB: 2
@@ -6495,6 +6817,7 @@ components:
           cpuCores: 2
           displayName: displayName
           name: name
+          links: {}
           id: 1
           label: label
           ramGB: 2
@@ -6506,6 +6829,7 @@ components:
           cpuCores: 2
           displayName: displayName
           name: name
+          links: {}
           id: 1
           label: label
           ramGB: 2
@@ -6609,7 +6933,6 @@ components:
       - infrastructureId
       - infrastructureServiceStatus
       - operation
-      - userIdOwner
       type: object
       properties:
         infrastructureId:
@@ -6626,6 +6949,7 @@ components:
         userIdOwner:
           type: number
           description: Owner of the infrastructure
+          nullable: true
           example: 100
         infrastructureServiceStatus:
           type: string
@@ -6734,19 +7058,393 @@ components:
         uuid: uuid
         jobInfo: ""
     Server:
+      required:
+      - administrationState
+      - datacenterName
+      - diskCount
+      - gpuCount
+      - gpuInfo
+      - isBasicCampusEndpoint
+      - managementAddress
+      - passwordEncrypted
+      - powerStatus
+      - powerStatusLastUpdateTimestamp
+      - processorCoreCount
+      - processorCoreMhz
+      - processorCount
+      - ramGbytes
+      - requiresReRegister
+      - serverClass
+      - serverCreatedTimestamp
+      - serverDhcpStatus
+      - serverDiskWipe
+      - serverId
+      - serverMetricsMetadata
+      - serverStatus
+      - serverSupportsOobProvisioning
+      - serverSupportsSol
+      - serverSupportsVirtualMedia
+      - serverTypeId
+      - serverUUID
+      - supportsFcProvisioning
+      - username
       type: object
-      properties: {}
-      example: {}
+      properties:
+        serverId:
+          type: number
+        serverTypeId:
+          type: number
+        datacenterName:
+          type: string
+        serverUUID:
+          type: string
+        serialNumber:
+          type: string
+          nullable: true
+        managementAddress:
+          type: string
+        username:
+          type: string
+        passwordEncrypted:
+          type: string
+        impiVersion:
+          type: string
+          nullable: true
+        ramGbytes:
+          type: number
+        processorCount:
+          type: number
+        processorCoreMhz:
+          type: number
+        processorCoreCount:
+          type: number
+        processorName:
+          type: string
+          nullable: true
+        processorCpuMark:
+          type: number
+          nullable: true
+        processorThreads:
+          type: number
+          nullable: true
+        diskCount:
+          type: number
+        mgmtSnmpPort:
+          type: number
+          nullable: true
+        mgmtSnmpPasswordEncrypted:
+          type: string
+          nullable: true
+        bmcMacAddress:
+          type: string
+        serverMetricsMetadata:
+          type: object
+        vendor:
+          type: string
+          nullable: true
+        vendorSkuId:
+          type: string
+          nullable: true
+        model:
+          type: string
+          nullable: true
+        vncPort:
+          type: number
+          nullable: true
+        vncPasswordEncrypted:
+          type: number
+          nullable: true
+        isBasicCampusEndpoint:
+          type: number
+        serverCleanupPolicyId:
+          type: number
+          nullable: true
+        requiresReRegister:
+          type: number
+        serverSupportsSol:
+          type: number
+        serverSupportsVirtualMedia:
+          type: number
+        serverSupportsOobProvisioning:
+          type: number
+        biosInfo:
+          type: object
+        vendorInfo:
+          type: object
+        serverClass:
+          type: string
+          enum:
+          - unknown
+          - bigdata
+          - hdfs
+        serverStatus:
+          type: string
+          enum:
+          - registering
+          - available
+          - cleaning_required
+          - cleaning
+          - used
+          - used_registering
+          - defective
+          - removed_from_rack
+          - decommissioned
+          - updating_firmware
+          - used_diagnostics
+          - pending_registration
+          - unavailable
+        serverComments:
+          type: string
+          nullable: true
+        serverCapacityMbps:
+          type: number
+          nullable: true
+        serverDiskWipe:
+          type: number
+        serverDiskCount:
+          type: number
+          nullable: true
+        administrationState:
+          type: string
+          enum:
+          - managed
+          - unmanaged
+          - generic_endpoint
+        serverDhcpStatus:
+          type: string
+          enum:
+          - quarantine
+          - deny_requests
+          - allow_requests
+          - ansible_provision
+        gpuCount:
+          type: number
+        gpuInfo:
+          type: array
+          items:
+            type: object
+        submodel:
+          type: string
+          nullable: true
+        supportsFcProvisioning:
+          type: number
+        bootLastUpdateTimestamp:
+          type: string
+          nullable: true
+        registeredTimestamp:
+          type: string
+          nullable: true
+        serverCreatedTimestamp:
+          type: string
+        powerStatus:
+          type: string
+          enum:
+          - unknown
+          - "on"
+          - "off"
+        powerStatusLastUpdateTimestamp:
+          type: string
+      example:
+        datacenterName: datacenterName
+        mgmtSnmpPasswordEncrypted: mgmtSnmpPasswordEncrypted
+        serverSupportsOobProvisioning: 1.1730742509559433
+        passwordEncrypted: passwordEncrypted
+        diskCount: 3.616076749251911
+        serverId: 0.8008281904610115
+        processorCoreMhz: 5.637376656633329
+        powerStatus: unknown
+        serverCreatedTimestamp: serverCreatedTimestamp
+        serverDhcpStatus: quarantine
+        model: model
+        bmcMacAddress: bmcMacAddress
+        bootLastUpdateTimestamp: bootLastUpdateTimestamp
+        gpuCount: 9.369310271410669
+        serverSupportsSol: 6.84685269835264
+        vncPasswordEncrypted: 7.386281948385884
+        vncPort: 4.145608029883936
+        serialNumber: serialNumber
+        submodel: submodel
+        registeredTimestamp: registeredTimestamp
+        isBasicCampusEndpoint: 1.2315135367772556
+        gpuInfo:
+        - {}
+        - {}
+        processorThreads: 9.301444243932576
+        serverCleanupPolicyId: 1.0246457001441578
+        serverDiskWipe: 5.025004791520295
+        processorCpuMark: 7.061401241503109
+        ramGbytes: 1.4658129805029452
+        biosInfo: {}
+        serverTypeId: 6.027456183070403
+        requiresReRegister: 1.4894159098541704
+        serverStatus: registering
+        serverDiskCount: 9.965781217890562
+        vendorInfo: {}
+        serverClass: unknown
+        vendorSkuId: vendorSkuId
+        serverUUID: serverUUID
+        serverMetricsMetadata: {}
+        processorCoreCount: 2.3021358869347655
+        vendor: vendor
+        serverSupportsVirtualMedia: 7.457744773683766
+        supportsFcProvisioning: 6.683562403749608
+        processorName: processorName
+        managementAddress: managementAddress
+        serverCapacityMbps: 4.965218492984954
+        processorCount: 5.962133916683182
+        serverComments: serverComments
+        mgmtSnmpPort: 2.027123023002322
+        powerStatusLastUpdateTimestamp: powerStatusLastUpdateTimestamp
+        administrationState: managed
+        impiVersion: impiVersion
+        username: username
     StorageRegistrationResponse:
+      required:
+      - id
+      - jobInfo
       type: object
-      properties: {}
-      example: {}
+      properties:
+        id:
+          type: number
+        jobInfo:
+          $ref: '#/components/schemas/StorageRegistrationResponse_jobInfo'
+      example:
+        id: 0.8008281904610115
+        jobInfo:
+          afcGroupId: 1.4658129805029452
+          afcId: 6.027456183070403
     CreateStorage:
+      required:
+      - managementHost
+      - name
+      - password
+      - siteId
+      - storageDriver
+      - storageTechnology
+      - storageType
+      - subnetType
+      - username
       type: object
-      properties: {}
+      properties:
+        userId:
+          type: number
+        siteId:
+          type: number
+        storageDriver:
+          type: string
+          enum:
+          - dummy_driver
+          - nexenta3
+          - nexenta4
+          - bigstep_storage
+          - hp_msa_1040
+          - unity_storage
+          - power_max
+          - power_flex
+          - power_scale
+          - ecs
+        storageTechnology:
+          type: string
+          enum:
+          - block
+          - file
+          - object
+        storageType:
+          type: string
+          enum:
+          - iscsi_ssd
+          - iscsi_hdd
+          - dummy
+        name:
+          type: string
+        iscsiHost:
+          type: string
+        iscsiPort:
+          type: number
+        managementHost:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        options:
+          type: object
+        inMaintenance:
+          type: number
+        targetIQN:
+          type: string
+        isExperimental:
+          type: number
+        drivePriority:
+          type: number
+          default: 50
+        sharedDrivePriority:
+          type: number
+          default: 50
+        alternateSanIPs:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        portGroupAllocationOrder:
+          type: array
+          items:
+            type: string
+        portGroupPhysicalPorts:
+          type: object
+        defaultIoLimitPolicy:
+          type: string
+        subnetType:
+          type: string
+          enum:
+          - ipv4
+          - ipv6
+        arrayId:
+          type: string
+        directorId:
+          type: string
+        s3Hostname:
+          type: string
+        s3Port:
+          type: number
     PatchStorage:
       type: object
-      properties: {}
+      properties:
+        options:
+          type: object
+        inMaintenance:
+          type: number
+        isExperimental:
+          type: number
+        drivePriority:
+          type: number
+          default: 50
+        sharedDrivePriority:
+          type: number
+          default: 50
+        tags:
+          type: array
+          items:
+            type: string
+        portGroupAllocationOrder:
+          type: array
+          items:
+            type: string
+        portGroupPhysicalPorts:
+          type: object
+        defaultIoLimitPolicy:
+          type: string
+        arrayId:
+          type: string
+        directorId:
+          type: string
+        s3Hostname:
+          type: string
+        s3Port:
+          type: number
     CreateVMInstanceGroup:
       required:
       - diskSizeGB
@@ -6768,6 +7466,7 @@ components:
         volumeTemplateId:
           type: number
           description: Id of the VM Volume Template.
+          nullable: true
         tags:
           type: array
           description: Tags for the VM Instance Group.
@@ -6806,6 +7505,7 @@ components:
       - infrastructureId
       - instanceCount
       - label
+      - links
       - operation
       - serviceStatus
       - tags
@@ -6822,6 +7522,12 @@ components:
         serviceStatus:
           type: string
           description: Status of the VM Instance Group.
+          enum:
+          - active
+          - ordered
+          - suspended
+          - stopped
+          - deleted
         changeId:
           type: number
           description: Id of the VM Instance Group change object.
@@ -6857,6 +7563,7 @@ components:
         volumeTemplateId:
           type: number
           description: Id of the template used by the VM Instance Group.
+          nullable: true
         networkIdToNetworkProfileId:
           type: object
           description: Network Id to Network Profile Id for the VM Instance Group.
@@ -6865,6 +7572,8 @@ components:
           description: GUI settings for the VM Instance Group. This is a JSON object.
           allOf:
           - $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
+        links:
+          type: object
       example:
         vmInstance:
         - vmInstance
@@ -6878,8 +7587,9 @@ components:
         - tags
         infrastructureId: 6.027456183070403
         volumeTemplateId: 5.637376656633329
-        serviceStatus: serviceStatus
+        serviceStatus: active
         instanceCount: 1
+        links: {}
         id: 0.8008281904610115
         operation: {}
         guiSettings: ""
@@ -6894,6 +7604,7 @@ components:
       - id
       - infrastructureId
       - label
+      - links
       - operation
       - serviceStatus
       - typeId
@@ -6927,6 +7638,12 @@ components:
         serviceStatus:
           type: string
           description: Service status of the VM Instance.
+          enum:
+          - active
+          - ordered
+          - suspended
+          - stopped
+          - deleted
         changeId:
           type: number
           description: Id of the VM Instance change object.
@@ -6942,15 +7659,20 @@ components:
         customVariables:
           type: object
           description: Custom variables for the VM Instance.
+          nullable: true
         diskSizeGB:
           type: number
           description: Disk size in GB of the VM Instance.
         templateIdOrigin:
           type: number
           description: Id of the template used by the VM Instance.
+          nullable: true
         vmPoolId:
           type: number
           description: Id of the VM Pool.
+          nullable: true
+        links:
+          type: object
       example:
         vmId: 5.962133916683182
         groupId: 6.027456183070403
@@ -6965,8 +7687,9 @@ components:
         - tags
         - tags
         infrastructureId: 1.4658129805029452
-        serviceStatus: serviceStatus
+        serviceStatus: active
         typeId: 5.637376656633329
+        links: {}
         id: 0.8008281904610115
         operation: {}
         diskSizeGB: 7.061401241503109
@@ -7004,6 +7727,7 @@ components:
         customVariables:
           type: object
           description: Custom variables for the VM Instance.
+          nullable: true
     CreateVMInstanceGroupInterface:
       type: object
       properties:
@@ -7011,6 +7735,7 @@ components:
           type: number
           description: Network ID for the interface. Can be null if the interface
             is not connected to any network
+          nullable: true
     VMInstanceGroupInterface:
       required:
       - changeId
@@ -7038,6 +7763,12 @@ components:
         serviceStatus:
           type: string
           description: Service status of the VM Instance Group Interface.
+          enum:
+          - active
+          - ordered
+          - suspended
+          - stopped
+          - deleted
         groupId:
           type: number
           description: VM Instance Group ID
@@ -7047,6 +7778,7 @@ components:
         changeId:
           type: number
           description: Operation ID
+          nullable: true
         label:
           type: number
           description: Interface label
@@ -7061,7 +7793,7 @@ components:
           description: Operation object for the VM Instance Group.
       example:
         infrastructureId: 5.637376656633329
-        serviceStatus: serviceStatus
+        serviceStatus: active
         groupId: 5.962133916683182
         createdTimestamp: createdTimestamp
         networkId: 6.027456183070403
@@ -7077,6 +7809,7 @@ components:
         networkProfileId:
           type: number
           description: Network Profile ID
+          nullable: true
     CreateVMInstance:
       required:
       - groupId
@@ -7108,6 +7841,7 @@ components:
         customVariables:
           type: object
           description: Custom variables for the VM Instance.
+          nullable: true
     CreateNetwork:
       type: object
       properties:
@@ -7254,9 +7988,12 @@ components:
         endpoint:
           type: string
           description: Endpoint of the File Share.
+          nullable: true
         infrastructure:
           type: object
           description: Infrastructure information
+        links:
+          type: object
       example:
         sizeGB: 5.962133916683182
         dnsSubdomainId: 2.3021358869347655
@@ -7271,6 +8008,7 @@ components:
         infrastructure: {}
         networkVlanId: 7.061401241503109
         subdomain: subdomain
+        links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
         guiSettings: ""
@@ -7292,6 +8030,7 @@ components:
       - id
       - infrastructureId
       - label
+      - links
       - serviceStatus
       - sizeGB
       - updatedTimestamp
@@ -7348,9 +8087,12 @@ components:
         endpoint:
           type: string
           description: Endpoint of the File Share.
+          nullable: true
         operation:
           type: string
           description: Operation object of the File Share.
+        links:
+          type: object
       example:
         sizeGB: 5.962133916683182
         dnsSubdomainId: 2.3021358869347655
@@ -7364,6 +8106,7 @@ components:
         serviceStatus: ordered
         networkVlanId: 7.061401241503109
         subdomain: subdomain
+        links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
         guiSettings: ""
@@ -7401,6 +8144,7 @@ components:
           infrastructure: {}
           networkVlanId: 7.061401241503109
           subdomain: subdomain
+          links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
           guiSettings: ""
@@ -7417,6 +8161,7 @@ components:
           infrastructure: {}
           networkVlanId: 7.061401241503109
           subdomain: subdomain
+          links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
           guiSettings: ""
@@ -7428,9 +8173,6 @@ components:
         sizeGB:
           type: number
           description: Disk size in GB for File Share
-        displayName:
-          type: string
-          description: Display name of the File Share.
         label:
           type: string
           description: Label of the File Share.
@@ -7529,15 +8271,20 @@ components:
         endpoint:
           type: string
           description: Endpoint of the Bucket.
+          nullable: true
         accessKeyId:
           type: string
           description: Endpoint of the Bucket.
+          nullable: true
         secretKeyEncrypted:
           type: string
           description: Endpoint of the Bucket.
+          nullable: true
         infrastructure:
           type: object
           description: Infrastructure information
+        links:
+          type: object
       example:
         accessKeyId: accessKeyId
         sizeGB: 5.962133916683182
@@ -7553,6 +8300,7 @@ components:
         infrastructure: {}
         networkVlanId: 7.061401241503109
         subdomain: subdomain
+        links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
         secretKeyEncrypted: secretKeyEncrypted
@@ -7575,6 +8323,7 @@ components:
       - id
       - infrastructureId
       - label
+      - links
       - serviceStatus
       - sizeGB
       - updatedTimestamp
@@ -7631,15 +8380,20 @@ components:
         endpoint:
           type: string
           description: Endpoint of the Bucket.
+          nullable: true
         accessKeyId:
           type: string
           description: Endpoint of the Bucket.
+          nullable: true
         secretKeyEncrypted:
           type: string
           description: Endpoint of the Bucket.
+          nullable: true
         operation:
           type: string
           description: Operation object of the Bucket.
+        links:
+          type: object
       example:
         accessKeyId: accessKeyId
         sizeGB: 5.962133916683182
@@ -7654,6 +8408,7 @@ components:
         serviceStatus: ordered
         networkVlanId: 7.061401241503109
         subdomain: subdomain
+        links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
         secretKeyEncrypted: secretKeyEncrypted
@@ -7693,6 +8448,7 @@ components:
           infrastructure: {}
           networkVlanId: 7.061401241503109
           subdomain: subdomain
+          links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
           secretKeyEncrypted: secretKeyEncrypted
@@ -7711,6 +8467,7 @@ components:
           infrastructure: {}
           networkVlanId: 7.061401241503109
           subdomain: subdomain
+          links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
           secretKeyEncrypted: secretKeyEncrypted
@@ -7870,9 +8627,39 @@ components:
           type: boolean
           description: The new status of the ports
           example: true
-    DiscoveryQueryDto:
+    NetworkDeviceStatusDto:
+      required:
+      - status
       type: object
-      properties: {}
+      properties:
+        status:
+          type: string
+          description: The new network device status
+          example: active
+          enum:
+          - active
+          - failed
+          - decommissioned
+          - registering
+    DiscoveryQueryDto:
+      required:
+      - discover
+      - persistData
+      - returnData
+      type: object
+      properties:
+        discover:
+          type: array
+          items:
+            type: string
+            enum:
+            - ports
+            - hardware
+            - software
+        returnData:
+          type: boolean
+        persistData:
+          type: boolean
     ExtensionInfoDto:
       type: object
       properties:
@@ -7900,11 +8687,14 @@ components:
           type: string
           description: Extension status
           example: draft
+        version:
+          type: string
       example:
         name: My App
         description: My App Description
         id: 10
         label: incus_6x
+        version: version
         slug: my-app
         status: draft
     ExtensionListDto:
@@ -7923,12 +8713,14 @@ components:
           description: My App Description
           id: 10
           label: incus_6x
+          version: version
           slug: my-app
           status: draft
         - name: My App
           description: My App Description
           id: 10
           label: incus_6x
+          version: version
           slug: my-app
           status: draft
     ExtensionDto:
@@ -7937,7 +8729,6 @@ components:
       - description
       - id
       - name
-      - slug
       - status
       type: object
       properties:
@@ -7968,12 +8759,15 @@ components:
         definition:
           type: string
           description: Extension definition (JSON)
+        version:
+          type: string
       example:
         name: My App
         description: My App Description
         definition: definition
         id: 10
         label: incus_6x
+        version: version
         slug: my-app
         status: draft
     CreateExtensionDto:
@@ -7998,6 +8792,8 @@ components:
         definition:
           type: string
           description: Extension definition (JSON)
+        version:
+          type: string
     UpdateExtensionDto:
       type: object
       properties:
@@ -8016,6 +8812,8 @@ components:
         definition:
           type: string
           description: Extension definition (JSON)
+        version:
+          type: string
     Version:
       required:
       - version
@@ -8036,6 +8834,16 @@ components:
         versionBuild: versionBuild
         version: 1.0.0
         versionDate: 2000-01-23T04:56:07.000+00:00
+    StorageRegistrationResponse_jobInfo:
+      type: object
+      properties:
+        afcId:
+          type: number
+        afcGroupId:
+          type: number
+      example:
+        afcGroupId: 1.4658129805029452
+        afcId: 6.027456183070403
   securitySchemes:
     apiKey:
       type: http

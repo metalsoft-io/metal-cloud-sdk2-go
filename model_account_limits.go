@@ -10,4 +10,6 @@
 package sdk2
 
 type AccountLimits struct {
+	UserResourceServerTypeNameToMaxCount *interface{} `json:"user_resource_server_type_name_to_max_count"`
+	WanSubnetPrefixSizeToMaxCount *interface{} `json:"wan_subnet_prefix_size_to_max_count"`
 }

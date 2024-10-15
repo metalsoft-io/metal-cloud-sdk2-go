@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **UsedSpaceGB** | **float64** | Used Space GB of the VM Pool Host | [default to null]
 **FreeSpaceGB** | **float64** | Free Space GB of the VM Pool Host | [default to null]
 **UpdatedTimestamp** | **string** | Timestamp when the VM Pool Host was updated | [default to null]
+**Links** | [***interface{}**](interface{}.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -30,7 +30,7 @@ Returns the MetalSoft system version
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return Version
 */
-func (a *SystemApiService) SystemControllerGetVersion(ctx context.Context) (Version, *http.Response, error) {
+func (a *SystemApiService) GetVersion(ctx context.Context) (Version, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}

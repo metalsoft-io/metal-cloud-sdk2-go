@@ -34,7 +34,7 @@ Applies a VM Type to a VM Instance Group
  * @param vmTypeId
 @return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerApplyVMTypeOnVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64, vmTypeId float64) (VmInstanceGroup, *http.Response, error) {
+func (a *VMInstanceGroupApiService) ApplyVMTypeOnVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64, vmTypeId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -122,7 +122,7 @@ Creates a VM Instance Group
  * @param infrastructureId
 @return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInstanceGroup(ctx context.Context, body CreateVmInstanceGroup, infrastructureId float64) (VmInstanceGroup, *http.Response, error) {
+func (a *VMInstanceGroupApiService) CreateVMInstanceGroup(ctx context.Context, body CreateVmInstanceGroup, infrastructureId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -211,7 +211,7 @@ Creates a new Virtual Interface for the VM Instance Group
  * @param vmInstanceGroupId
 @return VmInstanceGroupInterface
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerCreateVMInterfaceOnVMInstanceGroup(ctx context.Context, body CreateVmInstanceGroupInterface, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroupInterface, *http.Response, error) {
+func (a *VMInstanceGroupApiService) CreateVMInterfaceOnVMInstanceGroup(ctx context.Context, body CreateVmInstanceGroupInterface, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroupInterface, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -300,7 +300,7 @@ Deletes a VM Instance Group
  * @param vmInstanceGroupId
 
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerDeleteVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) (*http.Response, error) {
+func (a *VMInstanceGroupApiService) DeleteVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -370,7 +370,7 @@ Returns VM Instance Group information
  * @param vmInstanceGroupId
 @return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroup, *http.Response, error) {
+func (a *VMInstanceGroupApiService) GetVMInstanceGroup(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -457,7 +457,7 @@ Returns the VM Instances of VM Instance Group
  * @param vmInstanceGroupId
 @return []VmInstance
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroupVMInstances(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) ([]VmInstance, *http.Response, error) {
+func (a *VMInstanceGroupApiService) GetVMInstanceGroupVMInstances(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) ([]VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -543,7 +543,7 @@ Returns list of all VM Instance Groups
  * @param infrastructureId
 @return []VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerGetVMInstanceGroups(ctx context.Context, infrastructureId float64) ([]VmInstanceGroup, *http.Response, error) {
+func (a *VMInstanceGroupApiService) GetVMInstanceGroups(ctx context.Context, infrastructureId float64) ([]VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -631,7 +631,7 @@ Applies the given Network Profile to the specified VM Instance Group Network
  * @param networkId
 @return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork(ctx context.Context, body UpdateVmInstanceGroupNetwork, infrastructureId float64, vmInstanceGroupId float64, networkId float64) (VmInstanceGroup, *http.Response, error) {
+func (a *VMInstanceGroupApiService) UpdateNetworkProfileOnVMInstanceGroupNetwork(ctx context.Context, body UpdateVmInstanceGroupNetwork, infrastructureId float64, vmInstanceGroupId float64, networkId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -722,7 +722,7 @@ Updates VM Instance Group information
  * @param vmInstanceGroupId
 @return VmInstanceGroup
 */
-func (a *VMInstanceGroupApiService) BlueprintControllerUpdateVMInstanceGroup(ctx context.Context, body UpdateVmInstanceGroup, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroup, *http.Response, error) {
+func (a *VMInstanceGroupApiService) UpdateVMInstanceGroup(ctx context.Context, body UpdateVmInstanceGroup, infrastructureId float64, vmInstanceGroupId float64) (VmInstanceGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}

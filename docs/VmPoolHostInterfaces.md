@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the VM Pool Host Interface | [default to null]
 **MacAddress** | **string** | MAC Address of the VM Pool Host Interface | [default to null]
 **Fabric** | **string** | Fabric of the VM Pool Host Interface | [default to null]
+**Links** | [***interface{}**](interface{}.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

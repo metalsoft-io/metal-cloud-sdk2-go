@@ -4,24 +4,24 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**InventoryControllerAddResourcePoolUser**](ResourcePoolsApi.md#InventoryControllerAddResourcePoolUser) | **Post** /api/v2/resource-pools/user/{userId}/pool/{resourcePoolId} | Add a user to a Resource Pool
-[**InventoryControllerAddServerToResourcePool**](ResourcePoolsApi.md#InventoryControllerAddServerToResourcePool) | **Put** /api/v2/resource-pools/{resourcePoolId}/server/{serverId} | Add a server to a Resource Pool
-[**InventoryControllerAddSubnetPoolToResourcePool**](ResourcePoolsApi.md#InventoryControllerAddSubnetPoolToResourcePool) | **Put** /api/v2/resource-pools/{resourcePoolId}/subnet-pool/{subnetPoolId} | Add a subnet pool to a resource pool
-[**InventoryControllerCreateResourcePool**](ResourcePoolsApi.md#InventoryControllerCreateResourcePool) | **Post** /api/v2/resource-pools | Creates a Resource Pool
-[**InventoryControllerDeleteResourcePool**](ResourcePoolsApi.md#InventoryControllerDeleteResourcePool) | **Delete** /api/v2/resource-pools/{resourcePoolId} | Deletes a Resource Pool
-[**InventoryControllerGetResourcePool**](ResourcePoolsApi.md#InventoryControllerGetResourcePool) | **Get** /api/v2/resource-pools/{resourcePoolId} | Get Resource Pool information
-[**InventoryControllerGetResourcePoolServers**](ResourcePoolsApi.md#InventoryControllerGetResourcePoolServers) | **Get** /api/v2/resource-pools/{resourcePoolId}/servers | Get all servers that are part of a Resource Pool
-[**InventoryControllerGetResourcePoolSubnetPools**](ResourcePoolsApi.md#InventoryControllerGetResourcePoolSubnetPools) | **Get** /api/v2/resource-pools/{resourcePoolId}/subnet-pools | Get all subnet pools that are part of a resource pool
-[**InventoryControllerGetResourcePoolUsers**](ResourcePoolsApi.md#InventoryControllerGetResourcePoolUsers) | **Get** /api/v2/resource-pools/{resourcePoolId}/users | Get all users that have access to a Resource Pool
-[**InventoryControllerGetResourcePools**](ResourcePoolsApi.md#InventoryControllerGetResourcePools) | **Get** /api/v2/resource-pools | Get all Resource Pools
-[**InventoryControllerGetUserResourcePools**](ResourcePoolsApi.md#InventoryControllerGetUserResourcePools) | **Get** /api/v2/resource-pools/user/{userId} | Get all Resource Pools that a user has access to
-[**InventoryControllerRemoveResourcePoolUser**](ResourcePoolsApi.md#InventoryControllerRemoveResourcePoolUser) | **Delete** /api/v2/resource-pools/user/{userId}/pool/{resourcePoolId} | Remove a user from a Resource Pool
-[**InventoryControllerRemoveServerFromResourcePool**](ResourcePoolsApi.md#InventoryControllerRemoveServerFromResourcePool) | **Delete** /api/v2/resource-pools/{resourcePoolId}/server/{serverId} | Remove a server from a Resource Pool
-[**InventoryControllerRemoveSubnetPoolFromResourcePool**](ResourcePoolsApi.md#InventoryControllerRemoveSubnetPoolFromResourcePool) | **Delete** /api/v2/resource-pools/{resourcePoolId}/subnet-pool/{subnetPoolId} | Remove a subnet from a resource pool
-[**InventoryControllerUpdateResourcePool**](ResourcePoolsApi.md#InventoryControllerUpdateResourcePool) | **Put** /api/v2/resource-pools/{resourcePoolId} | Updates Resource Pool information
+[**AddResourcePoolUser**](ResourcePoolsApi.md#AddResourcePoolUser) | **Post** /api/v2/resource-pools/user/{userId}/pool/{resourcePoolId} | Add a user to a Resource Pool
+[**AddServerToResourcePool**](ResourcePoolsApi.md#AddServerToResourcePool) | **Put** /api/v2/resource-pools/{resourcePoolId}/server/{serverId} | Add a server to a Resource Pool
+[**AddSubnetPoolToResourcePool**](ResourcePoolsApi.md#AddSubnetPoolToResourcePool) | **Put** /api/v2/resource-pools/{resourcePoolId}/subnet-pool/{subnetPoolId} | Add a subnet pool to a resource pool
+[**CreateResourcePool**](ResourcePoolsApi.md#CreateResourcePool) | **Post** /api/v2/resource-pools | Creates a Resource Pool
+[**DeleteResourcePool**](ResourcePoolsApi.md#DeleteResourcePool) | **Delete** /api/v2/resource-pools/{resourcePoolId} | Deletes a Resource Pool
+[**GetResourcePool**](ResourcePoolsApi.md#GetResourcePool) | **Get** /api/v2/resource-pools/{resourcePoolId} | Get Resource Pool information
+[**GetResourcePoolServers**](ResourcePoolsApi.md#GetResourcePoolServers) | **Get** /api/v2/resource-pools/{resourcePoolId}/servers | Get all servers that are part of a Resource Pool
+[**GetResourcePoolSubnetPools**](ResourcePoolsApi.md#GetResourcePoolSubnetPools) | **Get** /api/v2/resource-pools/{resourcePoolId}/subnet-pools | Get all subnet pools that are part of a resource pool
+[**GetResourcePoolUsers**](ResourcePoolsApi.md#GetResourcePoolUsers) | **Get** /api/v2/resource-pools/{resourcePoolId}/users | Get all users that have access to a Resource Pool
+[**GetResourcePools**](ResourcePoolsApi.md#GetResourcePools) | **Get** /api/v2/resource-pools | Get all Resource Pools
+[**GetUserResourcePools**](ResourcePoolsApi.md#GetUserResourcePools) | **Get** /api/v2/resource-pools/user/{userId} | Get all Resource Pools that a user has access to
+[**RemoveResourcePoolUser**](ResourcePoolsApi.md#RemoveResourcePoolUser) | **Delete** /api/v2/resource-pools/user/{userId}/pool/{resourcePoolId} | Remove a user from a Resource Pool
+[**RemoveServerFromResourcePool**](ResourcePoolsApi.md#RemoveServerFromResourcePool) | **Delete** /api/v2/resource-pools/{resourcePoolId}/server/{serverId} | Remove a server from a Resource Pool
+[**RemoveSubnetPoolFromResourcePool**](ResourcePoolsApi.md#RemoveSubnetPoolFromResourcePool) | **Delete** /api/v2/resource-pools/{resourcePoolId}/subnet-pool/{subnetPoolId} | Remove a subnet from a resource pool
+[**UpdateResourcePool**](ResourcePoolsApi.md#UpdateResourcePool) | **Put** /api/v2/resource-pools/{resourcePoolId} | Updates Resource Pool information
 
-# **InventoryControllerAddResourcePoolUser**
-> InventoryControllerAddResourcePoolUser(ctx, resourcePoolId, userId)
+# **AddResourcePoolUser**
+> AddResourcePoolUser(ctx, resourcePoolId, userId)
 Add a user to a Resource Pool
 
 Add a user to a Resource Pool
@@ -49,8 +49,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerAddServerToResourcePool**
-> InventoryControllerAddServerToResourcePool(ctx, resourcePoolId, serverId)
+# **AddServerToResourcePool**
+> AddServerToResourcePool(ctx, resourcePoolId, serverId)
 Add a server to a Resource Pool
 
 Add a server to a Resource Pool
@@ -78,8 +78,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerAddSubnetPoolToResourcePool**
-> InventoryControllerAddSubnetPoolToResourcePool(ctx, resourcePoolId, subnetPoolId)
+# **AddSubnetPoolToResourcePool**
+> AddSubnetPoolToResourcePool(ctx, resourcePoolId, subnetPoolId)
 Add a subnet pool to a resource pool
 
 Add a subnet pool to a resource pool
@@ -107,8 +107,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerCreateResourcePool**
-> ResourcePoolDto InventoryControllerCreateResourcePool(ctx, body)
+# **CreateResourcePool**
+> ResourcePoolDto CreateResourcePool(ctx, body)
 Creates a Resource Pool
 
 Creates a Resource Pool
@@ -135,8 +135,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerDeleteResourcePool**
-> InventoryControllerDeleteResourcePool(ctx, resourcePoolId)
+# **DeleteResourcePool**
+> DeleteResourcePool(ctx, resourcePoolId)
 Deletes a Resource Pool
 
 Deletes a Resource Pool
@@ -163,8 +163,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetResourcePool**
-> ResourcePoolDto InventoryControllerGetResourcePool(ctx, resourcePoolId)
+# **GetResourcePool**
+> ResourcePoolDto GetResourcePool(ctx, resourcePoolId)
 Get Resource Pool information
 
 Returns Resource Pool information
@@ -191,8 +191,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetResourcePoolServers**
-> InventoryControllerGetResourcePoolServers(ctx, resourcePoolId)
+# **GetResourcePoolServers**
+> GetResourcePoolServers(ctx, resourcePoolId)
 Get all servers that are part of a Resource Pool
 
 Returns list of all servers that are part of a Resource Pool
@@ -219,8 +219,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetResourcePoolSubnetPools**
-> InventoryControllerGetResourcePoolSubnetPools(ctx, resourcePoolId)
+# **GetResourcePoolSubnetPools**
+> GetResourcePoolSubnetPools(ctx, resourcePoolId)
 Get all subnet pools that are part of a resource pool
 
 Returns list of all subnet pools that are part of a resource pool
@@ -247,8 +247,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetResourcePoolUsers**
-> InventoryControllerGetResourcePoolUsers(ctx, resourcePoolId)
+# **GetResourcePoolUsers**
+> GetResourcePoolUsers(ctx, resourcePoolId)
 Get all users that have access to a Resource Pool
 
 Returns list of all users that have access to a Resource Pool
@@ -275,8 +275,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetResourcePools**
-> []ResourcePoolWithStatsDto InventoryControllerGetResourcePools(ctx, )
+# **GetResourcePools**
+> []ResourcePoolWithStatsDto GetResourcePools(ctx, )
 Get all Resource Pools
 
 Returns list of all Resource Pools
@@ -299,8 +299,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetUserResourcePools**
-> InventoryControllerGetUserResourcePools(ctx, userId)
+# **GetUserResourcePools**
+> GetUserResourcePools(ctx, userId)
 Get all Resource Pools that a user has access to
 
 Returns list of all Resource Pools that a user has access to
@@ -327,8 +327,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerRemoveResourcePoolUser**
-> InventoryControllerRemoveResourcePoolUser(ctx, resourcePoolId, userId)
+# **RemoveResourcePoolUser**
+> RemoveResourcePoolUser(ctx, resourcePoolId, userId)
 Remove a user from a Resource Pool
 
 Remove a user from a Resource Pool
@@ -356,8 +356,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerRemoveServerFromResourcePool**
-> InventoryControllerRemoveServerFromResourcePool(ctx, resourcePoolId, serverId)
+# **RemoveServerFromResourcePool**
+> RemoveServerFromResourcePool(ctx, resourcePoolId, serverId)
 Remove a server from a Resource Pool
 
 Remove a server from a Resource Pool
@@ -385,8 +385,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerRemoveSubnetPoolFromResourcePool**
-> InventoryControllerRemoveSubnetPoolFromResourcePool(ctx, resourcePoolId, subnetPoolId)
+# **RemoveSubnetPoolFromResourcePool**
+> RemoveSubnetPoolFromResourcePool(ctx, resourcePoolId, subnetPoolId)
 Remove a subnet from a resource pool
 
 Remove a subnet from a resource pool
@@ -414,8 +414,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerUpdateResourcePool**
-> ResourcePoolDto InventoryControllerUpdateResourcePool(ctx, body, resourcePoolId)
+# **UpdateResourcePool**
+> ResourcePoolDto UpdateResourcePool(ctx, body, resourcePoolId)
 Updates Resource Pool information
 
 Updates Resource Pool information

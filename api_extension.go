@@ -33,7 +33,7 @@ Archives published extension.
  * @param extensionId
 
 */
-func (a *ExtensionApiService) ExtensionsControllerArchiveExtension(ctx context.Context, extensionId float64) (*http.Response, error) {
+func (a *ExtensionApiService) ArchiveExtension(ctx context.Context, extensionId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -101,7 +101,7 @@ Returns details of the new extension
  * @param body The extension details
 @return ExtensionDto
 */
-func (a *ExtensionApiService) ExtensionsControllerCreateExtension(ctx context.Context, body CreateExtensionDto) (ExtensionDto, *http.Response, error) {
+func (a *ExtensionApiService) CreateExtension(ctx context.Context, body CreateExtensionDto) (ExtensionDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -187,7 +187,7 @@ Returns details of the specified extension
  * @param extensionId
 @return ExtensionDto
 */
-func (a *ExtensionApiService) ExtensionsControllerGetExtension(ctx context.Context, extensionId float64) (ExtensionDto, *http.Response, error) {
+func (a *ExtensionApiService) GetExtension(ctx context.Context, extensionId float64) (ExtensionDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -269,16 +269,16 @@ func (a *ExtensionApiService) ExtensionsControllerGetExtension(ctx context.Conte
 ExtensionApiService List available extensions
 Returns list of the available extensions
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ExtensionApiExtensionsControllerListExtensionsOpts - Optional Parameters:
+ * @param optional nil or *ExtensionApiGetExtensionsOpts - Optional Parameters:
      * @param "Filter" (optional.String) -  Filter by extension status
 @return ExtensionListDto
 */
 
-type ExtensionApiExtensionsControllerListExtensionsOpts struct {
+type ExtensionApiGetExtensionsOpts struct {
     Filter optional.String
 }
 
-func (a *ExtensionApiService) ExtensionsControllerListExtensions(ctx context.Context, localVarOptionals *ExtensionApiExtensionsControllerListExtensionsOpts) (ExtensionListDto, *http.Response, error) {
+func (a *ExtensionApiService) GetExtensions(ctx context.Context, localVarOptionals *ExtensionApiGetExtensionsOpts) (ExtensionListDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -365,7 +365,7 @@ Publishes draft extension.
  * @param extensionId
 
 */
-func (a *ExtensionApiService) ExtensionsControllerPublishExtension(ctx context.Context, extensionId float64) (*http.Response, error) {
+func (a *ExtensionApiService) PublishExtension(ctx context.Context, extensionId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -434,7 +434,7 @@ Returns details of the updated extension
  * @param extensionId
 @return ExtensionDto
 */
-func (a *ExtensionApiService) ExtensionsControllerUpdateExtension(ctx context.Context, body UpdateExtensionDto, extensionId float64) (ExtensionDto, *http.Response, error) {
+func (a *ExtensionApiService) UpdateExtension(ctx context.Context, body UpdateExtensionDto, extensionId float64) (ExtensionDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}

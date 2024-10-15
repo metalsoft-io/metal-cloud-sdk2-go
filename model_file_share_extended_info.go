@@ -42,4 +42,5 @@ type FileShareExtendedInfo struct {
 	Endpoint string `json:"endpoint,omitempty"`
 	// Infrastructure information
 	Infrastructure *interface{} `json:"infrastructure"`
+	Links *interface{} `json:"links,omitempty"`
 }

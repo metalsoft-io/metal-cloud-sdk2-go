@@ -46,4 +46,5 @@ type Bucket struct {
 	SecretKeyEncrypted string `json:"secretKeyEncrypted,omitempty"`
 	// Operation object of the Bucket.
 	Operation string `json:"operation,omitempty"`
+	Links *interface{} `json:"links"`
 }

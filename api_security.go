@@ -31,7 +31,7 @@ Returns the available authentication providers
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []AuthenticationProvider
 */
-func (a *SecurityApiService) AuthenticationControllerListProviders(ctx context.Context) ([]AuthenticationProvider, *http.Response, error) {
+func (a *SecurityApiService) ListProviders(ctx context.Context) ([]AuthenticationProvider, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -116,7 +116,7 @@ Updates authentication provider
  * @param name
 @return []AuthenticationProvider
 */
-func (a *SecurityApiService) AuthenticationControllerUpdateProvider(ctx context.Context, body AuthenticationProviderUpdate, name string) ([]AuthenticationProvider, *http.Response, error) {
+func (a *SecurityApiService) UpdateProvider(ctx context.Context, body AuthenticationProviderUpdate, name string) ([]AuthenticationProvider, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}

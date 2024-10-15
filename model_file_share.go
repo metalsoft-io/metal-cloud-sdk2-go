@@ -42,4 +42,5 @@ type FileShare struct {
 	Endpoint string `json:"endpoint,omitempty"`
 	// Operation object of the File Share.
 	Operation string `json:"operation,omitempty"`
+	Links *interface{} `json:"links"`
 }

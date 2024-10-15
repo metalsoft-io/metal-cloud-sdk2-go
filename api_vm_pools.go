@@ -32,7 +32,7 @@ Creates a VM Pool
  * @param body The VM Pool create object
 @return VmPool
 */
-func (a *VMPoolsApiService) InventoryControllerCreateVMPool(ctx context.Context, body CreateVmPool) (VmPool, *http.Response, error) {
+func (a *VMPoolsApiService) CreateVMPool(ctx context.Context, body CreateVmPool) (VmPool, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -118,7 +118,7 @@ Deletes a VM Pool
  * @param vmPoolId
 
 */
-func (a *VMPoolsApiService) InventoryControllerDeleteVMPool(ctx context.Context, vmPoolId float64) (*http.Response, error) {
+func (a *VMPoolsApiService) DeleteVMPool(ctx context.Context, vmPoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -186,7 +186,7 @@ Returns VM Pool information
  * @param vmPoolId
 @return VmPool
 */
-func (a *VMPoolsApiService) InventoryControllerGetVMPool(ctx context.Context, vmPoolId float64) (VmPool, *http.Response, error) {
+func (a *VMPoolsApiService) GetVMPool(ctx context.Context, vmPoolId float64) (VmPool, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -272,7 +272,7 @@ Returns a VM Cluster Host
  * @param vmPoolClusterHostId
 @return VmPoolHosts
 */
-func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHost(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) (VmPoolHosts, *http.Response, error) {
+func (a *VMPoolsApiService) GetVMPoolClusterHost(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) (VmPoolHosts, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -360,7 +360,7 @@ Returns a VM Cluster Host Interface
  * @param vmPoolClusterHostInterfaceId
 @return VmPoolHostInterfaces
 */
-func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHostInterface(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64, vmPoolClusterHostInterfaceId float64) (VmPoolHostInterfaces, *http.Response, error) {
+func (a *VMPoolsApiService) GetVMPoolClusterHostInterface(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64, vmPoolClusterHostInterfaceId float64) (VmPoolHostInterfaces, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -448,7 +448,7 @@ Returns a list of VM Cluster Host Interfaces
  * @param vmPoolClusterHostId
 @return []VmPoolHostInterfaces
 */
-func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHostInterfaces(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) ([]VmPoolHostInterfaces, *http.Response, error) {
+func (a *VMPoolsApiService) GetVMPoolClusterHostInterfaces(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) ([]VmPoolHostInterfaces, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -535,7 +535,7 @@ Returns a list of VM Cluster Host VMs
  * @param vmPoolClusterHostId
 @return VmList
 */
-func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHostVMs(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) (VmList, *http.Response, error) {
+func (a *VMPoolsApiService) GetVMPoolClusterHostVMs(ctx context.Context, vmPoolId float64, vmPoolClusterHostId float64) (VmList, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -621,7 +621,7 @@ Returns list of VM Cluster Hosts linked to the VM Pool
  * @param vmPoolId
 @return VmPoolHostsList
 */
-func (a *VMPoolsApiService) InventoryControllerGetVMPoolClusterHosts(ctx context.Context, vmPoolId float64) (VmPoolHostsList, *http.Response, error) {
+func (a *VMPoolsApiService) GetVMPoolClusterHosts(ctx context.Context, vmPoolId float64) (VmPoolHostsList, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -706,7 +706,7 @@ Returns all VMs linked to the VM Pool
  * @param vmPoolId
 
 */
-func (a *VMPoolsApiService) InventoryControllerGetVMPoolVMs(ctx context.Context, vmPoolId float64) (*http.Response, error) {
+func (a *VMPoolsApiService) GetVMPoolVMs(ctx context.Context, vmPoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -773,7 +773,7 @@ Returns list of all VM Pools
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return VmPoolList
 */
-func (a *VMPoolsApiService) InventoryControllerGetVMPools(ctx context.Context) (VmPoolList, *http.Response, error) {
+func (a *VMPoolsApiService) GetVMPools(ctx context.Context) (VmPoolList, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -851,6 +851,94 @@ func (a *VMPoolsApiService) InventoryControllerGetVMPools(ctx context.Context) (
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
+VMPoolsApiService Updates VM Pool information
+Updates VM Pool information
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body The VM Pool update object
+ * @param vmPoolId
+@return VmPool
+*/
+func (a *VMPoolsApiService) UpdateVMPool(ctx context.Context, body UpdateVmPool, vmPoolId float64) (VmPool, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Patch")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		localVarReturnValue VmPool
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/api/v2/vm-pools/{vmPoolId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"vmPoolId"+"}", fmt.Sprintf("%v", vmPoolId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &body
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		if err != nil { 
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body: localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v VmPool
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+/*
 VMPoolsApiService Updates a VM Cluster Host Interface
 Updates a VM Cluster Host Interface
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -860,7 +948,7 @@ Updates a VM Cluster Host Interface
  * @param vmPoolClusterHostInterfaceId
 @return VmPoolHostInterfaces
 */
-func (a *VMPoolsApiService) InventoryControllerPatchVMPoolClusterHostInterface(ctx context.Context, body UpdateVmPoolClusterHostInterface, vmPoolId float64, vmPoolClusterHostId float64, vmPoolClusterHostInterfaceId float64) (VmPoolHostInterfaces, *http.Response, error) {
+func (a *VMPoolsApiService) UpdateVMPoolClusterHostInterface(ctx context.Context, body UpdateVmPoolClusterHostInterface, vmPoolId float64, vmPoolClusterHostId float64, vmPoolClusterHostInterfaceId float64) (VmPoolHostInterfaces, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -929,94 +1017,6 @@ func (a *VMPoolsApiService) InventoryControllerPatchVMPoolClusterHostInterface(c
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v VmPoolHostInterfaces
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-/*
-VMPoolsApiService Updates VM Pool information
-Updates VM Pool information
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body The VM Pool update object
- * @param vmPoolId
-@return VmPool
-*/
-func (a *VMPoolsApiService) InventoryControllerUpdateVMPool(ctx context.Context, body UpdateVmPool, vmPoolId float64) (VmPool, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Patch")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue VmPool
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/v2/vm-pools/{vmPoolId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"vmPoolId"+"}", fmt.Sprintf("%v", vmPoolId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	localVarPostBody = &body
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err != nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		if localVarHttpResponse.StatusCode == 200 {
-			var v VmPool
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

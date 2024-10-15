@@ -4,19 +4,19 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BlueprintControllerCreateFileShare**](FileShareApi.md#BlueprintControllerCreateFileShare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares | Creates a File Share
-[**BlueprintControllerDeleteFileShare**](FileShareApi.md#BlueprintControllerDeleteFileShare) | **Delete** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Deletes a File Share
-[**BlueprintControllerGetFileShare**](FileShareApi.md#BlueprintControllerGetFileShare) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Get File Share information
-[**BlueprintControllerGetFileShareHosts**](FileShareApi.md#BlueprintControllerGetFileShareHosts) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/hosts | Get the Hosts of File Share
-[**BlueprintControllerGetFileShares**](FileShareApi.md#BlueprintControllerGetFileShares) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares | Get all File Shares
-[**BlueprintControllerGetIndividualFileShare**](FileShareApi.md#BlueprintControllerGetIndividualFileShare) | **Get** /api/v2/file-shares/{fileShareId} | Get File Share information
-[**BlueprintControllerStartFileShare**](FileShareApi.md#BlueprintControllerStartFileShare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/start | Starts a File Share
-[**BlueprintControllerStopFileShare**](FileShareApi.md#BlueprintControllerStopFileShare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/stop | Stops a File Share
-[**BlueprintControllerUpdateFileShare**](FileShareApi.md#BlueprintControllerUpdateFileShare) | **Patch** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Updates File Share information
-[**BlueprintControllerUpdateFileShareInstanceArrayHostsBulk**](FileShareApi.md#BlueprintControllerUpdateFileShareInstanceArrayHostsBulk) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/modify-instance-array-hosts-bulk | Updates Instance Array Hosts on the File Share
+[**CreateInfrastructureFileShare**](FileShareApi.md#CreateInfrastructureFileShare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares | Creates a File Share
+[**DeleteFileShare**](FileShareApi.md#DeleteFileShare) | **Delete** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Deletes a File Share
+[**GetFileShare**](FileShareApi.md#GetFileShare) | **Get** /api/v2/file-shares/{fileShareId} | Get File Share information
+[**GetFileShareHosts**](FileShareApi.md#GetFileShareHosts) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/hosts | Get the Hosts of File Share
+[**GetInfrastructureFileShare**](FileShareApi.md#GetInfrastructureFileShare) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Get File Share information
+[**GetInfrastructureFileShares**](FileShareApi.md#GetInfrastructureFileShares) | **Get** /api/v2/infrastructures/{infrastructureId}/file-shares | Get all File Shares
+[**StartFileShare**](FileShareApi.md#StartFileShare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/start | Starts a File Share
+[**StopFileShare**](FileShareApi.md#StopFileShare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/stop | Stops a File Share
+[**UpdateFileShare**](FileShareApi.md#UpdateFileShare) | **Patch** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Updates File Share information
+[**UpdateFileShareInstanceArrayHostsBulk**](FileShareApi.md#UpdateFileShareInstanceArrayHostsBulk) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId}/actions/modify-instance-array-hosts-bulk | Updates Instance Array Hosts on the File Share
 
-# **BlueprintControllerCreateFileShare**
-> FileShare BlueprintControllerCreateFileShare(ctx, body, infrastructureId)
+# **CreateInfrastructureFileShare**
+> FileShare CreateInfrastructureFileShare(ctx, body, infrastructureId)
 Creates a File Share
 
 Creates a File Share
@@ -44,8 +44,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerDeleteFileShare**
-> BlueprintControllerDeleteFileShare(ctx, infrastructureId, fileShareId)
+# **DeleteFileShare**
+> DeleteFileShare(ctx, infrastructureId, fileShareId)
 Deletes a File Share
 
 Deletes a File Share
@@ -73,8 +73,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetFileShare**
-> FileShare BlueprintControllerGetFileShare(ctx, infrastructureId, fileShareId)
+# **GetFileShare**
+> FileShareExtendedInfo GetFileShare(ctx, fileShareId)
 Get File Share information
 
 Returns File Share information
@@ -84,12 +84,11 @@ Returns File Share information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **infrastructureId** | **float64**|  | 
   **fileShareId** | **float64**|  | 
 
 ### Return type
 
-[**FileShare**](FileShare.md)
+[**FileShareExtendedInfo**](FileShareExtendedInfo.md)
 
 ### Authorization
 
@@ -102,8 +101,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetFileShareHosts**
-> FileShareHosts BlueprintControllerGetFileShareHosts(ctx, infrastructureId, fileShareId)
+# **GetFileShareHosts**
+> FileShareHosts GetFileShareHosts(ctx, infrastructureId, fileShareId)
 Get the Hosts of File Share
 
 Returns the Hosts of File Share
@@ -131,8 +130,37 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetFileShares**
-> []FileShare BlueprintControllerGetFileShares(ctx, infrastructureId)
+# **GetInfrastructureFileShare**
+> FileShare GetInfrastructureFileShare(ctx, infrastructureId, fileShareId)
+Get File Share information
+
+Returns File Share information
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **infrastructureId** | **float64**|  | 
+  **fileShareId** | **float64**|  | 
+
+### Return type
+
+[**FileShare**](FileShare.md)
+
+### Authorization
+
+[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetInfrastructureFileShares**
+> []FileShare GetInfrastructureFileShares(ctx, infrastructureId)
 Get all File Shares
 
 Returns list of all File Shares
@@ -159,36 +187,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetIndividualFileShare**
-> FileShareExtendedInfo BlueprintControllerGetIndividualFileShare(ctx, fileShareId)
-Get File Share information
-
-Returns File Share information
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **fileShareId** | **float64**|  | 
-
-### Return type
-
-[**FileShareExtendedInfo**](FileShareExtendedInfo.md)
-
-### Authorization
-
-[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **BlueprintControllerStartFileShare**
-> BlueprintControllerStartFileShare(ctx, infrastructureId, fileShareId)
+# **StartFileShare**
+> StartFileShare(ctx, infrastructureId, fileShareId)
 Starts a File Share
 
 Starts a File Share
@@ -216,8 +216,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerStopFileShare**
-> BlueprintControllerStopFileShare(ctx, infrastructureId, fileShareId)
+# **StopFileShare**
+> StopFileShare(ctx, infrastructureId, fileShareId)
 Stops a File Share
 
 Stops a File Share
@@ -245,8 +245,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerUpdateFileShare**
-> FileShare BlueprintControllerUpdateFileShare(ctx, body, infrastructureId, fileShareId)
+# **UpdateFileShare**
+> FileShare UpdateFileShare(ctx, body, infrastructureId, fileShareId)
 Updates File Share information
 
 Updates File Share information
@@ -275,8 +275,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerUpdateFileShareInstanceArrayHostsBulk**
-> FileShareHosts BlueprintControllerUpdateFileShareInstanceArrayHostsBulk(ctx, body, infrastructureId, fileShareId)
+# **UpdateFileShareInstanceArrayHostsBulk**
+> FileShareHosts UpdateFileShareInstanceArrayHostsBulk(ctx, body, infrastructureId, fileShareId)
 Updates Instance Array Hosts on the File Share
 
 Updates Instance Array Hosts on the File Share

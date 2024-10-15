@@ -4,10 +4,10 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EliControllerGenerateEliResponse**](AIApi.md#EliControllerGenerateEliResponse) | **Post** /api/v2/ai/generate | Request from AI a response for the given input
+[**GenerateEliResponse**](AIApi.md#GenerateEliResponse) | **Post** /api/v2/ai/generate | Request from AI a response for the given input
 
-# **EliControllerGenerateEliResponse**
-> AiGenerateResponseDto EliControllerGenerateEliResponse(ctx, body)
+# **GenerateEliResponse**
+> AiGenerateResponseDto GenerateEliResponse(ctx, body)
 Request from AI a response for the given input
 
 Returns response with potential actions to execute

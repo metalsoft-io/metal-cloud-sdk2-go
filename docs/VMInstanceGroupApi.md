@@ -4,18 +4,18 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BlueprintControllerApplyVMTypeOnVMInstanceGroup**](VMInstanceGroupApi.md#BlueprintControllerApplyVMTypeOnVMInstanceGroup) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/actions/apply-type/{vmTypeId} | Applies a VM Type to a VM Instance Group
-[**BlueprintControllerCreateVMInstanceGroup**](VMInstanceGroupApi.md#BlueprintControllerCreateVMInstanceGroup) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups | Creates a VM Instance Group
-[**BlueprintControllerCreateVMInterfaceOnVMInstanceGroup**](VMInstanceGroupApi.md#BlueprintControllerCreateVMInterfaceOnVMInstanceGroup) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/interfaces | Creates a new Virtual Interface for the VM Instance Group
-[**BlueprintControllerDeleteVMInstanceGroup**](VMInstanceGroupApi.md#BlueprintControllerDeleteVMInstanceGroup) | **Delete** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId} | Deletes a VM Instance Group
-[**BlueprintControllerGetVMInstanceGroup**](VMInstanceGroupApi.md#BlueprintControllerGetVMInstanceGroup) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId} | Get VM Instance Group information
-[**BlueprintControllerGetVMInstanceGroupVMInstances**](VMInstanceGroupApi.md#BlueprintControllerGetVMInstanceGroupVMInstances) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/vm-instances | Get the VM Instances of VM Instance Group
-[**BlueprintControllerGetVMInstanceGroups**](VMInstanceGroupApi.md#BlueprintControllerGetVMInstanceGroups) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups | Get all VM Instance Groups
-[**BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork**](VMInstanceGroupApi.md#BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork) | **Patch** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/network/{networkId} | Applies the given Network Profile to the specified VM Instance Group Network
-[**BlueprintControllerUpdateVMInstanceGroup**](VMInstanceGroupApi.md#BlueprintControllerUpdateVMInstanceGroup) | **Patch** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId} | Updates VM Instance Group information
+[**ApplyVMTypeOnVMInstanceGroup**](VMInstanceGroupApi.md#ApplyVMTypeOnVMInstanceGroup) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/actions/apply-type/{vmTypeId} | Applies a VM Type to a VM Instance Group
+[**CreateVMInstanceGroup**](VMInstanceGroupApi.md#CreateVMInstanceGroup) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups | Creates a VM Instance Group
+[**CreateVMInterfaceOnVMInstanceGroup**](VMInstanceGroupApi.md#CreateVMInterfaceOnVMInstanceGroup) | **Post** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/interfaces | Creates a new Virtual Interface for the VM Instance Group
+[**DeleteVMInstanceGroup**](VMInstanceGroupApi.md#DeleteVMInstanceGroup) | **Delete** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId} | Deletes a VM Instance Group
+[**GetVMInstanceGroup**](VMInstanceGroupApi.md#GetVMInstanceGroup) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId} | Get VM Instance Group information
+[**GetVMInstanceGroupVMInstances**](VMInstanceGroupApi.md#GetVMInstanceGroupVMInstances) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/vm-instances | Get the VM Instances of VM Instance Group
+[**GetVMInstanceGroups**](VMInstanceGroupApi.md#GetVMInstanceGroups) | **Get** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups | Get all VM Instance Groups
+[**UpdateNetworkProfileOnVMInstanceGroupNetwork**](VMInstanceGroupApi.md#UpdateNetworkProfileOnVMInstanceGroupNetwork) | **Patch** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId}/network/{networkId} | Applies the given Network Profile to the specified VM Instance Group Network
+[**UpdateVMInstanceGroup**](VMInstanceGroupApi.md#UpdateVMInstanceGroup) | **Patch** /api/v2/infrastructures/{infrastructureId}/vm-instance-groups/{vmInstanceGroupId} | Updates VM Instance Group information
 
-# **BlueprintControllerApplyVMTypeOnVMInstanceGroup**
-> VmInstanceGroup BlueprintControllerApplyVMTypeOnVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId, vmTypeId)
+# **ApplyVMTypeOnVMInstanceGroup**
+> VmInstanceGroup ApplyVMTypeOnVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId, vmTypeId)
 Applies a VM Type to a VM Instance Group
 
 Applies a VM Type to a VM Instance Group
@@ -44,8 +44,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerCreateVMInstanceGroup**
-> VmInstanceGroup BlueprintControllerCreateVMInstanceGroup(ctx, body, infrastructureId)
+# **CreateVMInstanceGroup**
+> VmInstanceGroup CreateVMInstanceGroup(ctx, body, infrastructureId)
 Creates a VM Instance Group
 
 Creates a VM Instance Group
@@ -73,8 +73,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerCreateVMInterfaceOnVMInstanceGroup**
-> VmInstanceGroupInterface BlueprintControllerCreateVMInterfaceOnVMInstanceGroup(ctx, body, infrastructureId, vmInstanceGroupId)
+# **CreateVMInterfaceOnVMInstanceGroup**
+> VmInstanceGroupInterface CreateVMInterfaceOnVMInstanceGroup(ctx, body, infrastructureId, vmInstanceGroupId)
 Creates a new Virtual Interface for the VM Instance Group
 
 Creates a new Virtual Interface for the VM Instance Group
@@ -103,8 +103,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerDeleteVMInstanceGroup**
-> BlueprintControllerDeleteVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId)
+# **DeleteVMInstanceGroup**
+> DeleteVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId)
 Deletes a VM Instance Group
 
 Deletes a VM Instance Group
@@ -132,8 +132,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetVMInstanceGroup**
-> VmInstanceGroup BlueprintControllerGetVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId)
+# **GetVMInstanceGroup**
+> VmInstanceGroup GetVMInstanceGroup(ctx, infrastructureId, vmInstanceGroupId)
 Get VM Instance Group information
 
 Returns VM Instance Group information
@@ -161,8 +161,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetVMInstanceGroupVMInstances**
-> []VmInstance BlueprintControllerGetVMInstanceGroupVMInstances(ctx, infrastructureId, vmInstanceGroupId)
+# **GetVMInstanceGroupVMInstances**
+> []VmInstance GetVMInstanceGroupVMInstances(ctx, infrastructureId, vmInstanceGroupId)
 Get the VM Instances of VM Instance Group
 
 Returns the VM Instances of VM Instance Group
@@ -190,8 +190,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetVMInstanceGroups**
-> []VmInstanceGroup BlueprintControllerGetVMInstanceGroups(ctx, infrastructureId)
+# **GetVMInstanceGroups**
+> []VmInstanceGroup GetVMInstanceGroups(ctx, infrastructureId)
 Get all VM Instance Groups
 
 Returns list of all VM Instance Groups
@@ -218,8 +218,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork**
-> VmInstanceGroup BlueprintControllerPatchNetworkProfileOnVMInstanceGroupNetwork(ctx, body, infrastructureId, vmInstanceGroupId, networkId)
+# **UpdateNetworkProfileOnVMInstanceGroupNetwork**
+> VmInstanceGroup UpdateNetworkProfileOnVMInstanceGroupNetwork(ctx, body, infrastructureId, vmInstanceGroupId, networkId)
 Applies the given Network Profile to the specified VM Instance Group Network
 
 Applies the given Network Profile to the specified VM Instance Group Network
@@ -249,8 +249,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerUpdateVMInstanceGroup**
-> VmInstanceGroup BlueprintControllerUpdateVMInstanceGroup(ctx, body, infrastructureId, vmInstanceGroupId)
+# **UpdateVMInstanceGroup**
+> VmInstanceGroup UpdateVMInstanceGroup(ctx, body, infrastructureId, vmInstanceGroupId)
 Updates VM Instance Group information
 
 Updates VM Instance Group information

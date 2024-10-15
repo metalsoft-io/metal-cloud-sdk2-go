@@ -46,4 +46,5 @@ type BucketExtendedInfo struct {
 	SecretKeyEncrypted string `json:"secretKeyEncrypted,omitempty"`
 	// Infrastructure information
 	Infrastructure *interface{} `json:"infrastructure"`
+	Links *interface{} `json:"links,omitempty"`
 }

@@ -20,4 +20,5 @@ type VmPoolHostInterfaces struct {
 	MacAddress string `json:"macAddress"`
 	// Fabric of the VM Pool Host Interface
 	Fabric string `json:"fabric"`
+	Links *interface{} `json:"links"`
 }

@@ -31,7 +31,7 @@ Returns response with potential actions to execute
  * @param body The AI generate request
 @return AiGenerateResponseDto
 */
-func (a *AIApiService) EliControllerGenerateEliResponse(ctx context.Context, body AiGenerateRequestDto) (AiGenerateResponseDto, *http.Response, error) {
+func (a *AIApiService) GenerateEliResponse(ctx context.Context, body AiGenerateRequestDto) (AiGenerateResponseDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}

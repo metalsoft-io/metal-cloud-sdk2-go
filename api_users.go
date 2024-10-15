@@ -33,7 +33,7 @@ Archives a user
  * @param userId
 @return UserDto
 */
-func (a *UsersApiService) UsersControllerArchiveUser(ctx context.Context, userId float64) (UserDto, *http.Response, error) {
+func (a *UsersApiService) ArchiveUser(ctx context.Context, userId float64) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -119,7 +119,7 @@ Changes account for user
  * @param userId
 @return UserDto
 */
-func (a *UsersApiService) UsersControllerChangeUserAccount(ctx context.Context, body ChangeUserAccountDto, userId float64) (UserDto, *http.Response, error) {
+func (a *UsersApiService) ChangeUserAccount(ctx context.Context, body ChangeUserAccountDto, userId float64) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -206,7 +206,7 @@ Creates a user
  * @param body The user to create
 @return UserDto
 */
-func (a *UsersApiService) UsersControllerCreateUser(ctx context.Context, body CreateUserDto) (UserDto, *http.Response, error) {
+func (a *UsersApiService) CreateUser(ctx context.Context, body CreateUserDto) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -290,16 +290,16 @@ UsersApiService Get user
 Returns a user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId
- * @param optional nil or *UsersApiUsersControllerGetUserOpts - Optional Parameters:
+ * @param optional nil or *UsersApiGetUserOpts - Optional Parameters:
      * @param "Recursion" (optional.Float64) -  The recursion level of the displayed details. Default is 0.
 @return UserDto
 */
 
-type UsersApiUsersControllerGetUserOpts struct {
+type UsersApiGetUserOpts struct {
     Recursion optional.Float64
 }
 
-func (a *UsersApiService) UsersControllerGetUser(ctx context.Context, userId float64, localVarOptionals *UsersApiUsersControllerGetUserOpts) (UserDto, *http.Response, error) {
+func (a *UsersApiService) GetUser(ctx context.Context, userId float64, localVarOptionals *UsersApiGetUserOpts) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -387,7 +387,7 @@ Returns the limits of a user
  * @param userId
 @return UserLimitsDto
 */
-func (a *UsersApiService) UsersControllerGetUserLimits(ctx context.Context, userId float64) (UserLimitsDto, *http.Response, error) {
+func (a *UsersApiService) GetUserLimits(ctx context.Context, userId float64) (UserLimitsDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -471,7 +471,7 @@ Returns a list of users
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []UserDto
 */
-func (a *UsersApiService) UsersControllerGetUsers(ctx context.Context) ([]UserDto, *http.Response, error) {
+func (a *UsersApiService) GetUsers(ctx context.Context) ([]UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -555,7 +555,7 @@ Unarchives a user
  * @param userId
 @return UserDto
 */
-func (a *UsersApiService) UsersControllerUnarchiveUser(ctx context.Context, userId float64) (UserDto, *http.Response, error) {
+func (a *UsersApiService) UnarchiveUser(ctx context.Context, userId float64) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -641,7 +641,7 @@ Updates a user
  * @param userId
 @return UserDto
 */
-func (a *UsersApiService) UsersControllerUpdateUser(ctx context.Context, body UpdateUserDto, userId float64) (UserDto, *http.Response, error) {
+func (a *UsersApiService) UpdateUser(ctx context.Context, body UpdateUserDto, userId float64) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -729,7 +729,7 @@ Updates the limits of a user
  * @param userId
 @return UserLimitsDto
 */
-func (a *UsersApiService) UsersControllerUpdateUserLimits(ctx context.Context, body UserLimitsDto, userId float64) (UserLimitsDto, *http.Response, error) {
+func (a *UsersApiService) UpdateUserLimits(ctx context.Context, body UserLimitsDto, userId float64) (UserLimitsDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}

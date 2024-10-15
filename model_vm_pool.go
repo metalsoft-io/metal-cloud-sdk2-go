@@ -52,4 +52,5 @@ type VmPool struct {
 	UpdatedTimestamp string `json:"updatedTimestamp"`
 	// Tags for the VM Pool.
 	Tags []string `json:"tags"`
+	Links *interface{} `json:"links"`
 }

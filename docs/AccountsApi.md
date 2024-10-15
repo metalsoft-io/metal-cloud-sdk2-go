@@ -4,18 +4,18 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AccountsControllerArchiveAccount**](AccountsApi.md#AccountsControllerArchiveAccount) | **Post** /api/v2/accounts/{accountId}/actions/archive | Archive account
-[**AccountsControllerCreateAccount**](AccountsApi.md#AccountsControllerCreateAccount) | **Post** /api/v2/accounts | Create account
-[**AccountsControllerGetAccount**](AccountsApi.md#AccountsControllerGetAccount) | **Get** /api/v2/accounts/{accountId} | Get account by id
-[**AccountsControllerGetAccountLimits**](AccountsApi.md#AccountsControllerGetAccountLimits) | **Get** /api/v2/accounts/{accountId}/limits | Get account limits
-[**AccountsControllerGetAccounts**](AccountsApi.md#AccountsControllerGetAccounts) | **Get** /api/v2/accounts | Get all accounts
-[**AccountsControllerGetUsersForAccount**](AccountsApi.md#AccountsControllerGetUsersForAccount) | **Get** /api/v2/accounts/{accountId}/users | Get users for account
-[**AccountsControllerUnarchiveAccount**](AccountsApi.md#AccountsControllerUnarchiveAccount) | **Post** /api/v2/accounts/{accountId}/actions/unarchive | Unarchive account
-[**AccountsControllerUpdateAccount**](AccountsApi.md#AccountsControllerUpdateAccount) | **Patch** /api/v2/accounts/{accountId} | Update account
-[**AccountsControllerUpdateAccountLimits**](AccountsApi.md#AccountsControllerUpdateAccountLimits) | **Patch** /api/v2/accounts/{accountId}/limits | Update account limits
+[**ArchiveAccount**](AccountsApi.md#ArchiveAccount) | **Post** /api/v2/accounts/{accountId}/actions/archive | Archive account
+[**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /api/v2/accounts | Create account
+[**GetAccount**](AccountsApi.md#GetAccount) | **Get** /api/v2/accounts/{accountId} | Get account by id
+[**GetAccountLimits**](AccountsApi.md#GetAccountLimits) | **Get** /api/v2/accounts/{accountId}/limits | Get account limits
+[**GetAccountUsers**](AccountsApi.md#GetAccountUsers) | **Get** /api/v2/accounts/{accountId}/users | Get users for account
+[**GetAccounts**](AccountsApi.md#GetAccounts) | **Get** /api/v2/accounts | Get all accounts
+[**UnarchiveAccount**](AccountsApi.md#UnarchiveAccount) | **Post** /api/v2/accounts/{accountId}/actions/unarchive | Unarchive account
+[**UpdateAccount**](AccountsApi.md#UpdateAccount) | **Patch** /api/v2/accounts/{accountId} | Update account
+[**UpdateAccountLimits**](AccountsApi.md#UpdateAccountLimits) | **Patch** /api/v2/accounts/{accountId}/limits | Update account limits
 
-# **AccountsControllerArchiveAccount**
-> AccountDto AccountsControllerArchiveAccount(ctx, accountId)
+# **ArchiveAccount**
+> AccountDto ArchiveAccount(ctx, accountId)
 Archive account
 
 Archives an account
@@ -42,8 +42,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AccountsControllerCreateAccount**
-> AccountDto AccountsControllerCreateAccount(ctx, body)
+# **CreateAccount**
+> AccountDto CreateAccount(ctx, body)
 Create account
 
 Creates an account
@@ -70,8 +70,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AccountsControllerGetAccount**
-> AccountDto AccountsControllerGetAccount(ctx, accountId, optional)
+# **GetAccount**
+> AccountDto GetAccount(ctx, accountId, optional)
 Get account by id
 
 Returns an account by id
@@ -82,10 +82,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **accountId** | **float64**|  | 
- **optional** | ***AccountsApiAccountsControllerGetAccountOpts** | optional parameters | nil if no parameters
+ **optional** | ***AccountsApiGetAccountOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a AccountsApiAccountsControllerGetAccountOpts struct
+Optional parameters are passed through a pointer to a AccountsApiGetAccountOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -106,8 +106,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AccountsControllerGetAccountLimits**
-> AccountLimitsDto AccountsControllerGetAccountLimits(ctx, accountId)
+# **GetAccountLimits**
+> AccountLimitsDto GetAccountLimits(ctx, accountId)
 Get account limits
 
 Returns the limits of an account
@@ -134,32 +134,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AccountsControllerGetAccounts**
-> []AccountDto AccountsControllerGetAccounts(ctx, )
-Get all accounts
-
-Returns all accounts
-
-### Required Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**[]AccountDto**](AccountDto.md)
-
-### Authorization
-
-[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **AccountsControllerGetUsersForAccount**
-> []UserDto AccountsControllerGetUsersForAccount(ctx, accountId)
+# **GetAccountUsers**
+> []UserDto GetAccountUsers(ctx, accountId)
 Get users for account
 
 Returns users for an account
@@ -186,8 +162,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AccountsControllerUnarchiveAccount**
-> AccountDto AccountsControllerUnarchiveAccount(ctx, accountId)
+# **GetAccounts**
+> []AccountDto GetAccounts(ctx, )
+Get all accounts
+
+Returns all accounts
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[]AccountDto**](AccountDto.md)
+
+### Authorization
+
+[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UnarchiveAccount**
+> AccountDto UnarchiveAccount(ctx, accountId)
 Unarchive account
 
 Unarchives an account
@@ -214,8 +214,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AccountsControllerUpdateAccount**
-> AccountDto AccountsControllerUpdateAccount(ctx, body, accountId)
+# **UpdateAccount**
+> AccountDto UpdateAccount(ctx, body, accountId)
 Update account
 
 Updates an account
@@ -243,8 +243,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AccountsControllerUpdateAccountLimits**
-> AccountLimitsDto AccountsControllerUpdateAccountLimits(ctx, body, accountId)
+# **UpdateAccountLimits**
+> AccountLimitsDto UpdateAccountLimits(ctx, body, accountId)
 Update account limits
 
 Updates the limits of an account

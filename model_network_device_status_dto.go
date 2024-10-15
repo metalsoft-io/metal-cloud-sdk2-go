@@ -9,8 +9,7 @@
  */
 package sdk2
 
-type DiscoveryQueryDto struct {
-	Discover []string `json:"discover"`
-	ReturnData bool `json:"returnData"`
-	PersistData bool `json:"persistData"`
+type NetworkDeviceStatusDto struct {
+	// The new network device status
+	Status string `json:"status"`
 }

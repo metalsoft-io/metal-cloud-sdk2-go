@@ -18,4 +18,5 @@ type CreateExtensionDto struct {
 	Description string `json:"description"`
 	// Extension definition (JSON)
 	Definition string `json:"definition"`
+	Version string `json:"version,omitempty"`
 }

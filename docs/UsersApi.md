@@ -4,18 +4,18 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**UsersControllerArchiveUser**](UsersApi.md#UsersControllerArchiveUser) | **Post** /api/v2/users/{userId}/actions/archive | Archive user
-[**UsersControllerChangeUserAccount**](UsersApi.md#UsersControllerChangeUserAccount) | **Post** /api/v2/users/{userId}/actions/change-account | Change account for user
-[**UsersControllerCreateUser**](UsersApi.md#UsersControllerCreateUser) | **Post** /api/v2/users | Creates a user
-[**UsersControllerGetUser**](UsersApi.md#UsersControllerGetUser) | **Get** /api/v2/users/{userId} | Get user
-[**UsersControllerGetUserLimits**](UsersApi.md#UsersControllerGetUserLimits) | **Get** /api/v2/users/{userId}/limits | Get user limits
-[**UsersControllerGetUsers**](UsersApi.md#UsersControllerGetUsers) | **Get** /api/v2/users | Get users
-[**UsersControllerUnarchiveUser**](UsersApi.md#UsersControllerUnarchiveUser) | **Post** /api/v2/users/{userId}/actions/unarchive | Unarchive user
-[**UsersControllerUpdateUser**](UsersApi.md#UsersControllerUpdateUser) | **Patch** /api/v2/users/{userId} | Update user
-[**UsersControllerUpdateUserLimits**](UsersApi.md#UsersControllerUpdateUserLimits) | **Patch** /api/v2/users/{userId}/limits | Update user limits
+[**ArchiveUser**](UsersApi.md#ArchiveUser) | **Post** /api/v2/users/{userId}/actions/archive | Archive user
+[**ChangeUserAccount**](UsersApi.md#ChangeUserAccount) | **Post** /api/v2/users/{userId}/actions/change-account | Change account for user
+[**CreateUser**](UsersApi.md#CreateUser) | **Post** /api/v2/users | Creates a user
+[**GetUser**](UsersApi.md#GetUser) | **Get** /api/v2/users/{userId} | Get user
+[**GetUserLimits**](UsersApi.md#GetUserLimits) | **Get** /api/v2/users/{userId}/limits | Get user limits
+[**GetUsers**](UsersApi.md#GetUsers) | **Get** /api/v2/users | Get users
+[**UnarchiveUser**](UsersApi.md#UnarchiveUser) | **Post** /api/v2/users/{userId}/actions/unarchive | Unarchive user
+[**UpdateUser**](UsersApi.md#UpdateUser) | **Patch** /api/v2/users/{userId} | Update user
+[**UpdateUserLimits**](UsersApi.md#UpdateUserLimits) | **Patch** /api/v2/users/{userId}/limits | Update user limits
 
-# **UsersControllerArchiveUser**
-> UserDto UsersControllerArchiveUser(ctx, userId)
+# **ArchiveUser**
+> UserDto ArchiveUser(ctx, userId)
 Archive user
 
 Archives a user
@@ -42,8 +42,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UsersControllerChangeUserAccount**
-> UserDto UsersControllerChangeUserAccount(ctx, body, userId)
+# **ChangeUserAccount**
+> UserDto ChangeUserAccount(ctx, body, userId)
 Change account for user
 
 Changes account for user
@@ -71,8 +71,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UsersControllerCreateUser**
-> UserDto UsersControllerCreateUser(ctx, body)
+# **CreateUser**
+> UserDto CreateUser(ctx, body)
 Creates a user
 
 Creates a user
@@ -99,8 +99,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UsersControllerGetUser**
-> UserDto UsersControllerGetUser(ctx, userId, optional)
+# **GetUser**
+> UserDto GetUser(ctx, userId, optional)
 Get user
 
 Returns a user
@@ -111,10 +111,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **userId** | **float64**|  | 
- **optional** | ***UsersApiUsersControllerGetUserOpts** | optional parameters | nil if no parameters
+ **optional** | ***UsersApiGetUserOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a UsersApiUsersControllerGetUserOpts struct
+Optional parameters are passed through a pointer to a UsersApiGetUserOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -135,8 +135,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UsersControllerGetUserLimits**
-> UserLimitsDto UsersControllerGetUserLimits(ctx, userId)
+# **GetUserLimits**
+> UserLimitsDto GetUserLimits(ctx, userId)
 Get user limits
 
 Returns the limits of a user
@@ -163,8 +163,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UsersControllerGetUsers**
-> []UserDto UsersControllerGetUsers(ctx, )
+# **GetUsers**
+> []UserDto GetUsers(ctx, )
 Get users
 
 Returns a list of users
@@ -187,8 +187,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UsersControllerUnarchiveUser**
-> UserDto UsersControllerUnarchiveUser(ctx, userId)
+# **UnarchiveUser**
+> UserDto UnarchiveUser(ctx, userId)
 Unarchive user
 
 Unarchives a user
@@ -215,8 +215,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UsersControllerUpdateUser**
-> UserDto UsersControllerUpdateUser(ctx, body, userId)
+# **UpdateUser**
+> UserDto UpdateUser(ctx, body, userId)
 Update user
 
 Updates a user
@@ -244,8 +244,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UsersControllerUpdateUserLimits**
-> UserLimitsDto UsersControllerUpdateUserLimits(ctx, body, userId)
+# **UpdateUserLimits**
+> UserLimitsDto UpdateUserLimits(ctx, body, userId)
 Update user limits
 
 Updates the limits of a user

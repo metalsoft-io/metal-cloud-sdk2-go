@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **GuiSettings** | [***AllOfFileShareGuiSettings**](AllOfFileShareGuiSettings.md) | GUI settings for the File Share. This is a JSON object. | [optional] [default to null]
 **Endpoint** | **string** | Endpoint of the File Share. | [optional] [default to null]
 **Operation** | **string** | Operation object of the File Share. | [optional] [default to null]
+**Links** | [***interface{}**](interface{}.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

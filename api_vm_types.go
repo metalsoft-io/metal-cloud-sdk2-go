@@ -32,7 +32,7 @@ Creates a VM Type
  * @param body The VM Type create object
 @return VmType
 */
-func (a *VMTypesApiService) InventoryControllerCreateVMType(ctx context.Context, body CreateVmType) (VmType, *http.Response, error) {
+func (a *VMTypesApiService) CreateVMType(ctx context.Context, body CreateVmType) (VmType, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -118,7 +118,7 @@ Deletes a VM Type
  * @param vmTypeId
 
 */
-func (a *VMTypesApiService) InventoryControllerDeleteVMType(ctx context.Context, vmTypeId float64) (*http.Response, error) {
+func (a *VMTypesApiService) DeleteVMType(ctx context.Context, vmTypeId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -186,7 +186,7 @@ Returns VM Type information
  * @param vmTypeId
 @return VmType
 */
-func (a *VMTypesApiService) InventoryControllerGetVMType(ctx context.Context, vmTypeId float64) (VmType, *http.Response, error) {
+func (a *VMTypesApiService) GetVMType(ctx context.Context, vmTypeId float64) (VmType, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -270,7 +270,7 @@ Returns list of all VM Types
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return VmTypeList
 */
-func (a *VMTypesApiService) InventoryControllerGetVMTypes(ctx context.Context) (VmTypeList, *http.Response, error) {
+func (a *VMTypesApiService) GetVMTypes(ctx context.Context) (VmTypeList, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -354,7 +354,7 @@ Returns all VMs linked to the VM Type
  * @param vmTypeId
 
 */
-func (a *VMTypesApiService) InventoryControllerGetVMsByVMType(ctx context.Context, vmTypeId float64) (*http.Response, error) {
+func (a *VMTypesApiService) GetVMsByVMType(ctx context.Context, vmTypeId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -423,7 +423,7 @@ Updates VM Type information
  * @param vmTypeId
 @return VmType
 */
-func (a *VMTypesApiService) InventoryControllerUpdateVMType(ctx context.Context, body UpdateVmType, vmTypeId float64) (VmType, *http.Response, error) {
+func (a *VMTypesApiService) UpdateVMType(ctx context.Context, body UpdateVmType, vmTypeId float64) (VmType, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}

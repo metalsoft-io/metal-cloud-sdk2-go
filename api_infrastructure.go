@@ -34,7 +34,7 @@ Deploys the specified infrastructure
  * @param infrastructureId
 @return interface{}
 */
-func (a *InfrastructureApiService) InventoryControllerDeployInfrastructure(ctx context.Context, body InfrastructureDeployOptions, infrastructureId float64) (interface{}, *http.Response, error) {
+func (a *InfrastructureApiService) DeployInfrastructure(ctx context.Context, body InfrastructureDeployOptions, infrastructureId float64) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -121,7 +121,7 @@ Retrieves the specified infrastructure
  * @param infrastructureId
 
 */
-func (a *InfrastructureApiService) InventoryControllerGetInfrastructure(ctx context.Context, infrastructureId float64) (*http.Response, error) {
+func (a *InfrastructureApiService) GetInfrastructure(ctx context.Context, infrastructureId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -186,16 +186,16 @@ func (a *InfrastructureApiService) InventoryControllerGetInfrastructure(ctx cont
 InfrastructureApiService Get all infrastructures
 Returns list of all infrastructures
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *InfrastructureApiInventoryControllerGetInfrastructuresOpts - Optional Parameters:
+ * @param optional nil or *InfrastructureApiGetInfrastructuresOpts - Optional Parameters:
      * @param "AccountId" (optional.Float64) -  The account ID to filter user infrastructures by
 @return []InfrastructureDto
 */
 
-type InfrastructureApiInventoryControllerGetInfrastructuresOpts struct {
+type InfrastructureApiGetInfrastructuresOpts struct {
     AccountId optional.Float64
 }
 
-func (a *InfrastructureApiService) InventoryControllerGetInfrastructures(ctx context.Context, localVarOptionals *InfrastructureApiInventoryControllerGetInfrastructuresOpts) ([]InfrastructureDto, *http.Response, error) {
+func (a *InfrastructureApiService) GetInfrastructures(ctx context.Context, localVarOptionals *InfrastructureApiGetInfrastructuresOpts) ([]InfrastructureDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -282,7 +282,7 @@ Reverts the specified infrastructure
  * @param infrastructureId
 
 */
-func (a *InfrastructureApiService) InventoryControllerRevertInfrastructure(ctx context.Context, infrastructureId float64) (*http.Response, error) {
+func (a *InfrastructureApiService) RevertInfrastructure(ctx context.Context, infrastructureId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}

@@ -4,13 +4,13 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BlueprintControllerCreateNetwork**](NetworkApi.md#BlueprintControllerCreateNetwork) | **Post** /api/v2/infrastructures/{infrastructureId}/networks | Creates a new LAN network on the infrastructure
-[**BlueprintControllerDeleteNetwork**](NetworkApi.md#BlueprintControllerDeleteNetwork) | **Delete** /api/v2/infrastructures/{infrastructureId}/networks/{networkId} | Deletes a network from the infrastructure
-[**BlueprintControllerGetNetwork**](NetworkApi.md#BlueprintControllerGetNetwork) | **Get** /api/v2/infrastructures/{infrastructureId}/networks/{networkId} | Gets the specified network from the infrastructure
-[**BlueprintControllerGetNetworks**](NetworkApi.md#BlueprintControllerGetNetworks) | **Get** /api/v2/infrastructures/{infrastructureId}/networks | Retrieves all networks on the infrastructure
+[**CreateInfrastructureNetwork**](NetworkApi.md#CreateInfrastructureNetwork) | **Post** /api/v2/infrastructures/{infrastructureId}/networks | Creates a new LAN network on the infrastructure
+[**DeleteInfrastructureNetwork**](NetworkApi.md#DeleteInfrastructureNetwork) | **Delete** /api/v2/infrastructures/{infrastructureId}/networks/{networkId} | Deletes a network from the infrastructure
+[**GetInfrastructureNetwork**](NetworkApi.md#GetInfrastructureNetwork) | **Get** /api/v2/infrastructures/{infrastructureId}/networks/{networkId} | Gets the specified network from the infrastructure
+[**GetInfrastructureNetworks**](NetworkApi.md#GetInfrastructureNetworks) | **Get** /api/v2/infrastructures/{infrastructureId}/networks | Retrieves all networks on the infrastructure
 
-# **BlueprintControllerCreateNetwork**
-> Network BlueprintControllerCreateNetwork(ctx, body, infrastructureId)
+# **CreateInfrastructureNetwork**
+> Network CreateInfrastructureNetwork(ctx, body, infrastructureId)
 Creates a new LAN network on the infrastructure
 
 Creates a new LAN network on the infrastructure
@@ -38,8 +38,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerDeleteNetwork**
-> BlueprintControllerDeleteNetwork(ctx, infrastructureId, networkId)
+# **DeleteInfrastructureNetwork**
+> DeleteInfrastructureNetwork(ctx, infrastructureId, networkId)
 Deletes a network from the infrastructure
 
 Deletes a network from the infrastructure
@@ -67,8 +67,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetNetwork**
-> BlueprintControllerGetNetwork(ctx, infrastructureId, networkId)
+# **GetInfrastructureNetwork**
+> GetInfrastructureNetwork(ctx, infrastructureId, networkId)
 Gets the specified network from the infrastructure
 
 Gets the specified network from the infrastructure
@@ -96,8 +96,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **BlueprintControllerGetNetworks**
-> BlueprintControllerGetNetworks(ctx, infrastructureId)
+# **GetInfrastructureNetworks**
+> GetInfrastructureNetworks(ctx, infrastructureId)
 Retrieves all networks on the infrastructure
 
 Retrieves all networks on the infrastructure

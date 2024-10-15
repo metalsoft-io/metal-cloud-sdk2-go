@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **AccessKeyId** | **string** | Endpoint of the Bucket. | [optional] [default to null]
 **SecretKeyEncrypted** | **string** | Endpoint of the Bucket. | [optional] [default to null]
 **Infrastructure** | [***interface{}**](interface{}.md) | Infrastructure information | [default to null]
+**Links** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

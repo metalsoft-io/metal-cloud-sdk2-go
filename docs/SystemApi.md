@@ -4,10 +4,10 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SystemControllerGetVersion**](SystemApi.md#SystemControllerGetVersion) | **Get** /api/v2/version | Get MetalSoft system version
+[**GetVersion**](SystemApi.md#GetVersion) | **Get** /api/v2/version | Get MetalSoft system version
 
-# **SystemControllerGetVersion**
-> Version SystemControllerGetVersion(ctx, )
+# **GetVersion**
+> Version GetVersion(ctx, )
 Get MetalSoft system version
 
 Returns the MetalSoft system version

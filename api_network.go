@@ -33,7 +33,7 @@ Creates a new LAN network on the infrastructure
  * @param infrastructureId
 @return Network
 */
-func (a *NetworkApiService) BlueprintControllerCreateNetwork(ctx context.Context, body CreateNetwork, infrastructureId float64) (Network, *http.Response, error) {
+func (a *NetworkApiService) CreateInfrastructureNetwork(ctx context.Context, body CreateNetwork, infrastructureId float64) (Network, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -121,7 +121,7 @@ Deletes a network from the infrastructure
  * @param networkId
 
 */
-func (a *NetworkApiService) BlueprintControllerDeleteNetwork(ctx context.Context, infrastructureId float64, networkId float64) (*http.Response, error) {
+func (a *NetworkApiService) DeleteInfrastructureNetwork(ctx context.Context, infrastructureId float64, networkId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -191,7 +191,7 @@ Gets the specified network from the infrastructure
  * @param networkId
 
 */
-func (a *NetworkApiService) BlueprintControllerGetNetwork(ctx context.Context, infrastructureId float64, networkId float64) (*http.Response, error) {
+func (a *NetworkApiService) GetInfrastructureNetwork(ctx context.Context, infrastructureId float64, networkId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -260,7 +260,7 @@ Retrieves all networks on the infrastructure
  * @param infrastructureId
 
 */
-func (a *NetworkApiService) BlueprintControllerGetNetworks(ctx context.Context, infrastructureId float64) (*http.Response, error) {
+func (a *NetworkApiService) GetInfrastructureNetworks(ctx context.Context, infrastructureId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}

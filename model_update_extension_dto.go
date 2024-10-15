@@ -18,4 +18,5 @@ type UpdateExtensionDto struct {
 	Description string `json:"description,omitempty"`
 	// Extension definition (JSON)
 	Definition string `json:"definition,omitempty"`
+	Version string `json:"version,omitempty"`
 }

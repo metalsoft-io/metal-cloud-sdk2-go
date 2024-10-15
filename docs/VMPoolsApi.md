@@ -4,21 +4,21 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**InventoryControllerCreateVMPool**](VMPoolsApi.md#InventoryControllerCreateVMPool) | **Post** /api/v2/vm-pools | Creates a VM Pool
-[**InventoryControllerDeleteVMPool**](VMPoolsApi.md#InventoryControllerDeleteVMPool) | **Delete** /api/v2/vm-pools/{vmPoolId} | Deletes a VM Pool
-[**InventoryControllerGetVMPool**](VMPoolsApi.md#InventoryControllerGetVMPool) | **Get** /api/v2/vm-pools/{vmPoolId} | Get VM Pool information
-[**InventoryControllerGetVMPoolClusterHost**](VMPoolsApi.md#InventoryControllerGetVMPoolClusterHost) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId} | Retrieves a VM Cluster Host
-[**InventoryControllerGetVMPoolClusterHostInterface**](VMPoolsApi.md#InventoryControllerGetVMPoolClusterHostInterface) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/interfaces/{vmPoolClusterHostInterfaceId} | Retrieves a VM Cluster Host Interface
-[**InventoryControllerGetVMPoolClusterHostInterfaces**](VMPoolsApi.md#InventoryControllerGetVMPoolClusterHostInterfaces) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/interfaces | Retrieves a list of VM Cluster Host Interfaces
-[**InventoryControllerGetVMPoolClusterHostVMs**](VMPoolsApi.md#InventoryControllerGetVMPoolClusterHostVMs) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/vms | Retrieves a list of VM Cluster Host VMs
-[**InventoryControllerGetVMPoolClusterHosts**](VMPoolsApi.md#InventoryControllerGetVMPoolClusterHosts) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts | Get list of VM Cluster Hosts linked to the VM Pool
-[**InventoryControllerGetVMPoolVMs**](VMPoolsApi.md#InventoryControllerGetVMPoolVMs) | **Get** /api/v2/vm-pools/{vmPoolId}/vms | Returns all VMs linked to the VM Pool
-[**InventoryControllerGetVMPools**](VMPoolsApi.md#InventoryControllerGetVMPools) | **Get** /api/v2/vm-pools | Get all VM Pools
-[**InventoryControllerPatchVMPoolClusterHostInterface**](VMPoolsApi.md#InventoryControllerPatchVMPoolClusterHostInterface) | **Patch** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/interfaces/{vmPoolClusterHostInterfaceId} | Updates a VM Cluster Host Interface
-[**InventoryControllerUpdateVMPool**](VMPoolsApi.md#InventoryControllerUpdateVMPool) | **Patch** /api/v2/vm-pools/{vmPoolId} | Updates VM Pool information
+[**CreateVMPool**](VMPoolsApi.md#CreateVMPool) | **Post** /api/v2/vm-pools | Creates a VM Pool
+[**DeleteVMPool**](VMPoolsApi.md#DeleteVMPool) | **Delete** /api/v2/vm-pools/{vmPoolId} | Deletes a VM Pool
+[**GetVMPool**](VMPoolsApi.md#GetVMPool) | **Get** /api/v2/vm-pools/{vmPoolId} | Get VM Pool information
+[**GetVMPoolClusterHost**](VMPoolsApi.md#GetVMPoolClusterHost) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId} | Retrieves a VM Cluster Host
+[**GetVMPoolClusterHostInterface**](VMPoolsApi.md#GetVMPoolClusterHostInterface) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/interfaces/{vmPoolClusterHostInterfaceId} | Retrieves a VM Cluster Host Interface
+[**GetVMPoolClusterHostInterfaces**](VMPoolsApi.md#GetVMPoolClusterHostInterfaces) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/interfaces | Retrieves a list of VM Cluster Host Interfaces
+[**GetVMPoolClusterHostVMs**](VMPoolsApi.md#GetVMPoolClusterHostVMs) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/vms | Retrieves a list of VM Cluster Host VMs
+[**GetVMPoolClusterHosts**](VMPoolsApi.md#GetVMPoolClusterHosts) | **Get** /api/v2/vm-pools/{vmPoolId}/cluster-hosts | Get list of VM Cluster Hosts linked to the VM Pool
+[**GetVMPoolVMs**](VMPoolsApi.md#GetVMPoolVMs) | **Get** /api/v2/vm-pools/{vmPoolId}/vms | Returns all VMs linked to the VM Pool
+[**GetVMPools**](VMPoolsApi.md#GetVMPools) | **Get** /api/v2/vm-pools | Get all VM Pools
+[**UpdateVMPool**](VMPoolsApi.md#UpdateVMPool) | **Patch** /api/v2/vm-pools/{vmPoolId} | Updates VM Pool information
+[**UpdateVMPoolClusterHostInterface**](VMPoolsApi.md#UpdateVMPoolClusterHostInterface) | **Patch** /api/v2/vm-pools/{vmPoolId}/cluster-hosts/{vmPoolClusterHostId}/interfaces/{vmPoolClusterHostInterfaceId} | Updates a VM Cluster Host Interface
 
-# **InventoryControllerCreateVMPool**
-> VmPool InventoryControllerCreateVMPool(ctx, body)
+# **CreateVMPool**
+> VmPool CreateVMPool(ctx, body)
 Creates a VM Pool
 
 Creates a VM Pool
@@ -45,8 +45,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerDeleteVMPool**
-> InventoryControllerDeleteVMPool(ctx, vmPoolId)
+# **DeleteVMPool**
+> DeleteVMPool(ctx, vmPoolId)
 Deletes a VM Pool
 
 Deletes a VM Pool
@@ -73,8 +73,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetVMPool**
-> VmPool InventoryControllerGetVMPool(ctx, vmPoolId)
+# **GetVMPool**
+> VmPool GetVMPool(ctx, vmPoolId)
 Get VM Pool information
 
 Returns VM Pool information
@@ -101,8 +101,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetVMPoolClusterHost**
-> VmPoolHosts InventoryControllerGetVMPoolClusterHost(ctx, vmPoolId, vmPoolClusterHostId)
+# **GetVMPoolClusterHost**
+> VmPoolHosts GetVMPoolClusterHost(ctx, vmPoolId, vmPoolClusterHostId)
 Retrieves a VM Cluster Host
 
 Returns a VM Cluster Host
@@ -130,8 +130,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetVMPoolClusterHostInterface**
-> VmPoolHostInterfaces InventoryControllerGetVMPoolClusterHostInterface(ctx, vmPoolId, vmPoolClusterHostId, vmPoolClusterHostInterfaceId)
+# **GetVMPoolClusterHostInterface**
+> VmPoolHostInterfaces GetVMPoolClusterHostInterface(ctx, vmPoolId, vmPoolClusterHostId, vmPoolClusterHostInterfaceId)
 Retrieves a VM Cluster Host Interface
 
 Returns a VM Cluster Host Interface
@@ -160,8 +160,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetVMPoolClusterHostInterfaces**
-> []VmPoolHostInterfaces InventoryControllerGetVMPoolClusterHostInterfaces(ctx, vmPoolId, vmPoolClusterHostId)
+# **GetVMPoolClusterHostInterfaces**
+> []VmPoolHostInterfaces GetVMPoolClusterHostInterfaces(ctx, vmPoolId, vmPoolClusterHostId)
 Retrieves a list of VM Cluster Host Interfaces
 
 Returns a list of VM Cluster Host Interfaces
@@ -189,8 +189,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetVMPoolClusterHostVMs**
-> VmList InventoryControllerGetVMPoolClusterHostVMs(ctx, vmPoolId, vmPoolClusterHostId)
+# **GetVMPoolClusterHostVMs**
+> VmList GetVMPoolClusterHostVMs(ctx, vmPoolId, vmPoolClusterHostId)
 Retrieves a list of VM Cluster Host VMs
 
 Returns a list of VM Cluster Host VMs
@@ -218,8 +218,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetVMPoolClusterHosts**
-> VmPoolHostsList InventoryControllerGetVMPoolClusterHosts(ctx, vmPoolId)
+# **GetVMPoolClusterHosts**
+> VmPoolHostsList GetVMPoolClusterHosts(ctx, vmPoolId)
 Get list of VM Cluster Hosts linked to the VM Pool
 
 Returns list of VM Cluster Hosts linked to the VM Pool
@@ -246,8 +246,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetVMPoolVMs**
-> InventoryControllerGetVMPoolVMs(ctx, vmPoolId)
+# **GetVMPoolVMs**
+> GetVMPoolVMs(ctx, vmPoolId)
 Returns all VMs linked to the VM Pool
 
 Returns all VMs linked to the VM Pool
@@ -274,8 +274,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerGetVMPools**
-> VmPoolList InventoryControllerGetVMPools(ctx, )
+# **GetVMPools**
+> VmPoolList GetVMPools(ctx, )
 Get all VM Pools
 
 Returns list of all VM Pools
@@ -298,8 +298,37 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryControllerPatchVMPoolClusterHostInterface**
-> VmPoolHostInterfaces InventoryControllerPatchVMPoolClusterHostInterface(ctx, body, vmPoolId, vmPoolClusterHostId, vmPoolClusterHostInterfaceId)
+# **UpdateVMPool**
+> VmPool UpdateVMPool(ctx, body, vmPoolId)
+Updates VM Pool information
+
+Updates VM Pool information
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**UpdateVmPool**](UpdateVmPool.md)| The VM Pool update object | 
+  **vmPoolId** | **float64**|  | 
+
+### Return type
+
+[**VmPool**](VMPool.md)
+
+### Authorization
+
+[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UpdateVMPoolClusterHostInterface**
+> VmPoolHostInterfaces UpdateVMPoolClusterHostInterface(ctx, body, vmPoolId, vmPoolClusterHostId, vmPoolClusterHostInterfaceId)
 Updates a VM Cluster Host Interface
 
 Updates a VM Cluster Host Interface
@@ -317,35 +346,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**VmPoolHostInterfaces**](VMPoolHostInterfaces.md)
-
-### Authorization
-
-[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **InventoryControllerUpdateVMPool**
-> VmPool InventoryControllerUpdateVMPool(ctx, body, vmPoolId)
-Updates VM Pool information
-
-Updates VM Pool information
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**UpdateVmPool**](UpdateVmPool.md)| The VM Pool update object | 
-  **vmPoolId** | **float64**|  | 
-
-### Return type
-
-[**VmPool**](VMPool.md)
 
 ### Authorization
 

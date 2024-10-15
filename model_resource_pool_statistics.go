@@ -10,4 +10,7 @@
 package sdk2
 
 type ResourcePoolStatistics struct {
+	Users float64 `json:"users"`
+	Servers float64 `json:"servers"`
+	SubnetPools float64 `json:"subnetPools"`
 }

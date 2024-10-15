@@ -33,7 +33,7 @@ Add a user to a Resource Pool
  * @param userId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerAddResourcePoolUser(ctx context.Context, resourcePoolId float64, userId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) AddResourcePoolUser(ctx context.Context, resourcePoolId float64, userId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -103,7 +103,7 @@ Add a server to a Resource Pool
  * @param serverId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerAddServerToResourcePool(ctx context.Context, resourcePoolId float64, serverId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) AddServerToResourcePool(ctx context.Context, resourcePoolId float64, serverId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -173,7 +173,7 @@ Add a subnet pool to a resource pool
  * @param subnetPoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerAddSubnetPoolToResourcePool(ctx context.Context, resourcePoolId float64, subnetPoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) AddSubnetPoolToResourcePool(ctx context.Context, resourcePoolId float64, subnetPoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -242,7 +242,7 @@ Creates a Resource Pool
  * @param body The Resource Pool create object
 @return ResourcePoolDto
 */
-func (a *ResourcePoolsApiService) InventoryControllerCreateResourcePool(ctx context.Context, body CreateResourcePoolDto) (ResourcePoolDto, *http.Response, error) {
+func (a *ResourcePoolsApiService) CreateResourcePool(ctx context.Context, body CreateResourcePoolDto) (ResourcePoolDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -328,7 +328,7 @@ Deletes a Resource Pool
  * @param resourcePoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerDeleteResourcePool(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) DeleteResourcePool(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -396,7 +396,7 @@ Returns Resource Pool information
  * @param resourcePoolId
 @return ResourcePoolDto
 */
-func (a *ResourcePoolsApiService) InventoryControllerGetResourcePool(ctx context.Context, resourcePoolId float64) (ResourcePoolDto, *http.Response, error) {
+func (a *ResourcePoolsApiService) GetResourcePool(ctx context.Context, resourcePoolId float64) (ResourcePoolDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -481,7 +481,7 @@ Returns list of all servers that are part of a Resource Pool
  * @param resourcePoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerGetResourcePoolServers(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) GetResourcePoolServers(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -549,7 +549,7 @@ Returns list of all subnet pools that are part of a resource pool
  * @param resourcePoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerGetResourcePoolSubnetPools(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) GetResourcePoolSubnetPools(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -617,7 +617,7 @@ Returns list of all users that have access to a Resource Pool
  * @param resourcePoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerGetResourcePoolUsers(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) GetResourcePoolUsers(ctx context.Context, resourcePoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -684,7 +684,7 @@ Returns list of all Resource Pools
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []ResourcePoolWithStatsDto
 */
-func (a *ResourcePoolsApiService) InventoryControllerGetResourcePools(ctx context.Context) ([]ResourcePoolWithStatsDto, *http.Response, error) {
+func (a *ResourcePoolsApiService) GetResourcePools(ctx context.Context) ([]ResourcePoolWithStatsDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -768,7 +768,7 @@ Returns list of all Resource Pools that a user has access to
  * @param userId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerGetUserResourcePools(ctx context.Context, userId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) GetUserResourcePools(ctx context.Context, userId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -837,7 +837,7 @@ Remove a user from a Resource Pool
  * @param userId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerRemoveResourcePoolUser(ctx context.Context, resourcePoolId float64, userId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) RemoveResourcePoolUser(ctx context.Context, resourcePoolId float64, userId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -907,7 +907,7 @@ Remove a server from a Resource Pool
  * @param serverId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerRemoveServerFromResourcePool(ctx context.Context, resourcePoolId float64, serverId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) RemoveServerFromResourcePool(ctx context.Context, resourcePoolId float64, serverId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -977,7 +977,7 @@ Remove a subnet from a resource pool
  * @param subnetPoolId
 
 */
-func (a *ResourcePoolsApiService) InventoryControllerRemoveSubnetPoolFromResourcePool(ctx context.Context, resourcePoolId float64, subnetPoolId float64) (*http.Response, error) {
+func (a *ResourcePoolsApiService) RemoveSubnetPoolFromResourcePool(ctx context.Context, resourcePoolId float64, subnetPoolId float64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -1047,7 +1047,7 @@ Updates Resource Pool information
  * @param resourcePoolId
 @return ResourcePoolDto
 */
-func (a *ResourcePoolsApiService) InventoryControllerUpdateResourcePool(ctx context.Context, body UpdateResourcePoolDto, resourcePoolId float64) (ResourcePoolDto, *http.Response, error) {
+func (a *ResourcePoolsApiService) UpdateResourcePool(ctx context.Context, body UpdateResourcePoolDto, resourcePoolId float64) (ResourcePoolDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}

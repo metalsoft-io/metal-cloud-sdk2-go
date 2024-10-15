@@ -28,4 +28,5 @@ type VmType struct {
 	Tags []string `json:"tags"`
 	// Flag to indicate if the VM Pool is for unmanaged VMs only. 1 for true, 0 for false. Default is 0.
 	ForUnmanagedVMsOnly float64 `json:"forUnmanagedVMsOnly"`
+	Links *interface{} `json:"links"`
 }

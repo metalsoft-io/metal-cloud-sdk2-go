@@ -42,4 +42,5 @@ type VmInstance struct {
 	TemplateIdOrigin float64 `json:"templateIdOrigin,omitempty"`
 	// Id of the VM Pool.
 	VmPoolId float64 `json:"vmPoolId,omitempty"`
+	Links *interface{} `json:"links"`
 }

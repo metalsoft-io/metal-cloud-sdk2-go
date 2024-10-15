@@ -13,7 +13,7 @@ type ExtensionDto struct {
 	// The extension ID
 	Id float64 `json:"id"`
 	// The extension unique slug
-	Slug string `json:"slug"`
+	Slug string `json:"slug,omitempty"`
 	// The extension name
 	Name string `json:"name"`
 	// The extension unique label
@@ -24,4 +24,5 @@ type ExtensionDto struct {
 	Status string `json:"status"`
 	// Extension definition (JSON)
 	Definition string `json:"definition"`
+	Version string `json:"version,omitempty"`
 }
