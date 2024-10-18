@@ -11,7 +11,7 @@ package sdk2
 
 type UserResourcePermissionDto struct {
 	// The resource permission for the user
-	ResourcePermission string `json:"resourcePermission,omitempty"`
+	ResourcePermission string `json:"resourcePermission,omitempty" yaml:"resourcePermission,omitempty"`
 	// Whether to enable the permission
-	EnablePermission bool `json:"enablePermission,omitempty"`
+	EnablePermission bool `json:"enablePermission,omitempty" yaml:"enablePermission,omitempty"`
 }

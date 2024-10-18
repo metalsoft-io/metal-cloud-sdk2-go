@@ -11,36 +11,36 @@ package sdk2
 
 type FileShareExtendedInfo struct {
 	// Id of the File Share
-	Id float64 `json:"id,omitempty"`
+	Id float64 `json:"id,omitempty" yaml:"id,omitempty"`
 	// Change id of the File Share
-	ChangeId float64 `json:"changeId,omitempty"`
+	ChangeId float64 `json:"changeId,omitempty" yaml:"changeId,omitempty"`
 	// Infrastructure id of the File Share
-	InfrastructureId float64 `json:"infrastructureId,omitempty"`
+	InfrastructureId float64 `json:"infrastructureId,omitempty" yaml:"infrastructureId,omitempty"`
 	// Disk size in GB for File Share
-	SizeGB float64 `json:"sizeGB,omitempty"`
+	SizeGB float64 `json:"sizeGB,omitempty" yaml:"sizeGB,omitempty"`
 	// Timestamp of the File Share creation.
-	CreatedTimestamp string `json:"createdTimestamp,omitempty"`
+	CreatedTimestamp string `json:"createdTimestamp,omitempty" yaml:"createdTimestamp,omitempty"`
 	// Timestamp of the File Share last update.
-	UpdatedTimestamp string `json:"updatedTimestamp,omitempty"`
+	UpdatedTimestamp string `json:"updatedTimestamp,omitempty" yaml:"updatedTimestamp,omitempty"`
 	// Id of the storage pool the File Share is assigned to
-	StoragePoolId float64 `json:"storagePoolId,omitempty"`
+	StoragePoolId float64 `json:"storagePoolId,omitempty" yaml:"storagePoolId,omitempty"`
 	// Service status of the File Share
-	ServiceStatus string `json:"serviceStatus,omitempty"`
+	ServiceStatus string `json:"serviceStatus,omitempty" yaml:"serviceStatus,omitempty"`
 	// Label of the File Share.
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// Subdomain of the File Share.
-	Subdomain string `json:"subdomain,omitempty"`
+	Subdomain string `json:"subdomain,omitempty" yaml:"subdomain,omitempty"`
 	// Subdomain permanent of the File Share.
-	SubdomainPermanent string `json:"subdomainPermanent,omitempty"`
+	SubdomainPermanent string `json:"subdomainPermanent,omitempty" yaml:"subdomainPermanent,omitempty"`
 	// Id of the DNS subdomain for the File Share.
-	DnsSubdomainId float64 `json:"dnsSubdomainId,omitempty"`
+	DnsSubdomainId float64 `json:"dnsSubdomainId,omitempty" yaml:"dnsSubdomainId,omitempty"`
 	// Id of the VLAN for the File Share.
-	NetworkVlanId float64 `json:"networkVlanId,omitempty"`
+	NetworkVlanId float64 `json:"networkVlanId,omitempty" yaml:"networkVlanId,omitempty"`
 	// GUI settings for the File Share. This is a JSON object.
-	GuiSettings *AllOfFileShareExtendedInfoGuiSettings `json:"guiSettings,omitempty"`
+	GuiSettings *AllOfFileShareExtendedInfoGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 	// Endpoint of the File Share.
-	Endpoint string `json:"endpoint,omitempty"`
+	Endpoint string `json:"endpoint,omitempty" yaml:"endpoint,omitempty"`
 	// Infrastructure information
-	Infrastructure *interface{} `json:"infrastructure"`
-	Links *interface{} `json:"links,omitempty"`
+	Infrastructure *interface{} `json:"infrastructure" yaml:"infrastructure"`
+	Links *interface{} `json:"links,omitempty" yaml:"links,omitempty"`
 }

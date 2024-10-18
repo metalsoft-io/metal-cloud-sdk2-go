@@ -11,5 +11,5 @@ package sdk2
 
 type CreateNetwork struct {
 	// Label of the Network.
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 }

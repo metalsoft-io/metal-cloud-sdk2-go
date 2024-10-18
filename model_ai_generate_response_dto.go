@@ -11,7 +11,7 @@ package sdk2
 
 type AiGenerateResponseDto struct {
 	// Response to the question asked by the user
-	Result string `json:"result"`
+	Result string `json:"result" yaml:"result"`
 	// Steps to be taken to achieve the result
-	Steps string `json:"steps"`
+	Steps string `json:"steps" yaml:"steps"`
 }

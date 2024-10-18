@@ -10,6 +10,6 @@
 package sdk2
 
 type AccountLimitsDto struct {
-	UserResourceServerTypeNameToMaxCount *interface{} `json:"userResourceServerTypeNameToMaxCount,omitempty"`
-	WanSubnetPrefixSizeToMaxCount *interface{} `json:"wanSubnetPrefixSizeToMaxCount,omitempty"`
+	UserResourceServerTypeNameToMaxCount *interface{} `json:"userResourceServerTypeNameToMaxCount,omitempty" yaml:"userResourceServerTypeNameToMaxCount,omitempty"`
+	WanSubnetPrefixSizeToMaxCount *interface{} `json:"wanSubnetPrefixSizeToMaxCount,omitempty" yaml:"wanSubnetPrefixSizeToMaxCount,omitempty"`
 }

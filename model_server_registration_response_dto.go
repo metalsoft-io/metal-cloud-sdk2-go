@@ -11,13 +11,13 @@ package sdk2
 
 type ServerRegistrationResponseDto struct {
 	// The id of the server.
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// The Serial Number of the server.
-	SerialNumber string `json:"serialNumber"`
+	SerialNumber string `json:"serialNumber" yaml:"serialNumber"`
 	// The UUID of the server.
-	Uuid string `json:"uuid"`
+	Uuid string `json:"uuid" yaml:"uuid"`
 	// The job info of the server.
-	JobInfo *AllOfServerRegistrationResponseDtoJobInfo `json:"jobInfo,omitempty"`
+	JobInfo *AllOfServerRegistrationResponseDtoJobInfo `json:"jobInfo,omitempty" yaml:"jobInfo,omitempty"`
 	// Reference links
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links,omitempty" yaml:"links,omitempty"`
 }

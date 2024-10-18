@@ -11,5 +11,5 @@ package sdk2
 
 type ServerPowerSetDto struct {
 	// The power state of the server
-	PowerCommand string `json:"powerCommand"`
+	PowerCommand string `json:"powerCommand" yaml:"powerCommand"`
 }

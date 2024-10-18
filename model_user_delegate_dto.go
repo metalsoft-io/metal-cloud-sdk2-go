@@ -11,9 +11,9 @@ package sdk2
 
 type UserDelegateDto struct {
 	// The user delegate e-mail
-	Email string `json:"email,omitempty"`
+	Email string `json:"email,omitempty" yaml:"email,omitempty"`
 	// Whether to create the delegate if it does not exist. Can only be used when creating a new delegate.
-	CreateIfNotExists bool `json:"createIfNotExists,omitempty"`
+	CreateIfNotExists bool `json:"createIfNotExists,omitempty" yaml:"createIfNotExists,omitempty"`
 	// Whether to remove the delegate. Cannot be used when creating a new delegate.
-	RemoveDelegate bool `json:"removeDelegate,omitempty"`
+	RemoveDelegate bool `json:"removeDelegate,omitempty" yaml:"removeDelegate,omitempty"`
 }

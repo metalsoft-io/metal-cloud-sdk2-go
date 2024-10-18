@@ -12,11 +12,11 @@ package sdk2
 // The new suspension status of the user
 type AllOfUpdateUserDtoSuspension struct {
 	// The suspend reason of the user
-	SuspendReason string `json:"suspendReason,omitempty"`
+	SuspendReason string `json:"suspendReason,omitempty" yaml:"suspendReason,omitempty"`
 	// The public comment for the suspension
-	SuspendReasonPublicComment string `json:"suspendReasonPublicComment,omitempty"`
+	SuspendReasonPublicComment string `json:"suspendReasonPublicComment,omitempty" yaml:"suspendReasonPublicComment,omitempty"`
 	// The private comment for the suspension
-	SuspendReasonPrivateComment string `json:"suspendReasonPrivateComment,omitempty"`
+	SuspendReasonPrivateComment string `json:"suspendReasonPrivateComment,omitempty" yaml:"suspendReasonPrivateComment,omitempty"`
 	// Whether to remove the suspension
-	RemoveSuspension bool `json:"removeSuspension,omitempty"`
+	RemoveSuspension bool `json:"removeSuspension,omitempty" yaml:"removeSuspension,omitempty"`
 }

@@ -10,6 +10,6 @@
 package sdk2
 
 type StorageRegistrationResponse struct {
-	Id float64 `json:"id"`
-	JobInfo *StorageRegistrationResponseJobInfo `json:"jobInfo"`
+	Id float64 `json:"id" yaml:"id"`
+	JobInfo *StorageRegistrationResponseJobInfo `json:"jobInfo" yaml:"jobInfo"`
 }

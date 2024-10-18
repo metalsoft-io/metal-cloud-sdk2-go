@@ -11,5 +11,5 @@ package sdk2
 
 type BucketHostsModifyBulk struct {
 	// List of operations to be performed on the File Share Hosts
-	BucketHostBulkOperations []BucketHostBulkOperation `json:"bucketHostBulkOperations"`
+	BucketHostBulkOperations []BucketHostBulkOperation `json:"bucketHostBulkOperations" yaml:"bucketHostBulkOperations"`
 }

@@ -11,7 +11,7 @@ package sdk2
 
 type UserExperimentalTagDto struct {
 	// The experimental tag for the user
-	ExperimentalTag string `json:"experimentalTag,omitempty"`
+	ExperimentalTag string `json:"experimentalTag,omitempty" yaml:"experimentalTag,omitempty"`
 	// Whether to remove the experimental tag
-	RemoveExperimentalTag bool `json:"removeExperimentalTag,omitempty"`
+	RemoveExperimentalTag bool `json:"removeExperimentalTag,omitempty" yaml:"removeExperimentalTag,omitempty"`
 }

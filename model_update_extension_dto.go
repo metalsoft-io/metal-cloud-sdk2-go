@@ -11,12 +11,12 @@ package sdk2
 
 type UpdateExtensionDto struct {
 	// The extension name
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" yaml:"name,omitempty"`
 	// The extension unique label
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// The extension description
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Extension definition (JSON)
-	Definition string `json:"definition,omitempty"`
-	Version string `json:"version,omitempty"`
+	Definition string `json:"definition,omitempty" yaml:"definition,omitempty"`
+	Version string `json:"version,omitempty" yaml:"version,omitempty"`
 }

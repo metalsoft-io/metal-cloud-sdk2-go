@@ -11,7 +11,7 @@ package sdk2
 
 type AiGenerateRequestDto struct {
 	// Datacenter that is being filtered
-	Datacenter string `json:"datacenter"`
+	Datacenter string `json:"datacenter" yaml:"datacenter"`
 	// String input sent to the AI
-	Prompt string `json:"prompt"`
+	Prompt string `json:"prompt" yaml:"prompt"`
 }

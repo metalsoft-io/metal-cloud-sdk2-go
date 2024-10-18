@@ -11,9 +11,9 @@ package sdk2
 
 type FileShareList struct {
 	// List of File Shares
-	Data []FileShareExtendedInfo `json:"data"`
+	Data []FileShareExtendedInfo `json:"data" yaml:"data"`
 	// Meta information
-	Meta *interface{} `json:"meta"`
+	Meta *interface{} `json:"meta" yaml:"meta"`
 	// Links to other resources
-	Links *interface{} `json:"links"`
+	Links *interface{} `json:"links" yaml:"links"`
 }

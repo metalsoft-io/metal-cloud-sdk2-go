@@ -11,7 +11,7 @@ package sdk2
 
 type UpdateVmInstanceGroupInterface struct {
 	// Interface ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// Network ID
-	NetworkId float64 `json:"networkId,omitempty"`
+	NetworkId float64 `json:"networkId,omitempty" yaml:"networkId,omitempty"`
 }

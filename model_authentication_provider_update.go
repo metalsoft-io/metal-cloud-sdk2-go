@@ -11,7 +11,7 @@ package sdk2
 
 type AuthenticationProviderUpdate struct {
 	// True if the provider is enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled,omitempty" yaml:"enabled,omitempty"`
 	// Permitted domains
-	Domains []string `json:"domains,omitempty"`
+	Domains []string `json:"domains,omitempty" yaml:"domains,omitempty"`
 }

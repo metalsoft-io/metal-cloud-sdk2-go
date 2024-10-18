@@ -11,9 +11,9 @@ package sdk2
 
 type InfrastructureDeployShutdownOptions struct {
 	// Attempt soft shutdown
-	AttemptSoftShutdown bool `json:"attemptSoftShutdown"`
+	AttemptSoftShutdown bool `json:"attemptSoftShutdown" yaml:"attemptSoftShutdown"`
 	// Soft shutdown timeout in seconds
-	SoftShutdownTimeout float64 `json:"softShutdownTimeout"`
+	SoftShutdownTimeout float64 `json:"softShutdownTimeout" yaml:"softShutdownTimeout"`
 	// Force shutdown
-	ForceShutdown bool `json:"forceShutdown"`
+	ForceShutdown bool `json:"forceShutdown" yaml:"forceShutdown"`
 }

@@ -11,5 +11,5 @@ package sdk2
 
 type UpdateVmInstanceGroupNetwork struct {
 	// Network Profile ID
-	NetworkProfileId float64 `json:"networkProfileId,omitempty"`
+	NetworkProfileId float64 `json:"networkProfileId,omitempty" yaml:"networkProfileId,omitempty"`
 }

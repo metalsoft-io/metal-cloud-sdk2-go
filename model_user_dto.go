@@ -11,71 +11,71 @@ package sdk2
 
 type UserDto struct {
 	// User ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// The franchise of the user
-	Franchise string `json:"franchise"`
+	Franchise string `json:"franchise" yaml:"franchise"`
 	// The display name of the user
-	DisplayName string `json:"displayName"`
+	DisplayName string `json:"displayName" yaml:"displayName"`
 	// The email address of the user
-	Email string `json:"email"`
+	Email string `json:"email" yaml:"email"`
 	// Whether the user must change authenticator
-	AuthenticatorMustChange float64 `json:"authenticatorMustChange"`
+	AuthenticatorMustChange float64 `json:"authenticatorMustChange" yaml:"authenticatorMustChange"`
 	// The timestamp when the authenticator was created
-	AuthenticatorCreatedTimestamp string `json:"authenticatorCreatedTimestamp"`
+	AuthenticatorCreatedTimestamp string `json:"authenticatorCreatedTimestamp" yaml:"authenticatorCreatedTimestamp"`
 	// The timestamp when the user was created
-	CreatedTimestamp string `json:"createdTimestamp"`
+	CreatedTimestamp string `json:"createdTimestamp" yaml:"createdTimestamp"`
 	// The timestamp when the user logged in last
-	LastLoginTimestamp string `json:"lastLoginTimestamp"`
+	LastLoginTimestamp string `json:"lastLoginTimestamp" yaml:"lastLoginTimestamp"`
 	// The last login type of the user
-	LastLoginType string `json:"lastLoginType"`
+	LastLoginType string `json:"lastLoginType" yaml:"lastLoginType"`
 	// Whether the user is blocked
-	Blocked float64 `json:"blocked"`
+	Blocked float64 `json:"blocked" yaml:"blocked"`
 	// The email status of the user
-	EmailStatus string `json:"emailStatus"`
+	EmailStatus string `json:"emailStatus" yaml:"emailStatus"`
 	// Whether the user must change password
-	PasswordChangeRequired float64 `json:"passwordChangeRequired"`
+	PasswordChangeRequired float64 `json:"passwordChangeRequired" yaml:"passwordChangeRequired"`
 	// The access level of the user
-	AccessLevel string `json:"accessLevel"`
+	AccessLevel string `json:"accessLevel" yaml:"accessLevel"`
 	// Whether the user is billable
-	IsBillable float64 `json:"isBillable"`
+	IsBillable float64 `json:"isBillable" yaml:"isBillable"`
 	// Whether the user is in testing mode
-	IsTestingMode float64 `json:"isTestingMode"`
+	IsTestingMode float64 `json:"isTestingMode" yaml:"isTestingMode"`
 	// Whether the user is suspended
-	IsSuspended float64 `json:"isSuspended"`
+	IsSuspended float64 `json:"isSuspended" yaml:"isSuspended"`
 	// The language of the user
-	Language string `json:"language"`
+	Language string `json:"language" yaml:"language"`
 	// The default infrastructure ID of the user
-	InfrastructureIdDefault float64 `json:"infrastructureIdDefault,omitempty"`
+	InfrastructureIdDefault float64 `json:"infrastructureIdDefault,omitempty" yaml:"infrastructureIdDefault,omitempty"`
 	// The GUI settings of the user
-	GuiSettings *interface{} `json:"guiSettings"`
+	GuiSettings *interface{} `json:"guiSettings" yaml:"guiSettings"`
 	// The promotion tags of the user
-	PromotionTags *interface{} `json:"promotionTags"`
+	PromotionTags *interface{} `json:"promotionTags" yaml:"promotionTags"`
 	// The experimental tags of the user
-	ExperimentalTags *interface{} `json:"experimentalTags"`
+	ExperimentalTags *interface{} `json:"experimentalTags" yaml:"experimentalTags"`
 	// The custom prices for the user
-	CustomPrices *interface{} `json:"customPrices"`
+	CustomPrices *interface{} `json:"customPrices" yaml:"customPrices"`
 	// The permissions of the user
-	Permissions *interface{} `json:"permissions"`
+	Permissions *interface{} `json:"permissions" yaml:"permissions"`
 	// The external IDs of the user
-	ExternalIds *interface{} `json:"externalIds"`
+	ExternalIds *interface{} `json:"externalIds" yaml:"externalIds"`
 	// The limits of the user
-	Limits *AllOfUserDtoLimits `json:"limits"`
+	Limits *AllOfUserDtoLimits `json:"limits" yaml:"limits"`
 	// Whether the user is excluded from reports
-	ExcludeFromReports float64 `json:"excludeFromReports"`
+	ExcludeFromReports float64 `json:"excludeFromReports" yaml:"excludeFromReports"`
 	// Whether the user is a test account
-	IsTestAccount float64 `json:"isTestAccount"`
+	IsTestAccount float64 `json:"isTestAccount" yaml:"isTestAccount"`
 	// The plan type of the user
-	PlanType string `json:"planType"`
+	PlanType string `json:"planType" yaml:"planType"`
 	// The brand of the user
-	Brand string `json:"brand"`
+	Brand string `json:"brand" yaml:"brand"`
 	// Whether the user is a brand manager
-	IsBrandManager float64 `json:"isBrandManager"`
+	IsBrandManager float64 `json:"isBrandManager" yaml:"isBrandManager"`
 	// Whether the user is a datastore publisher
-	IsDatastorePublisher float64 `json:"isDatastorePublisher"`
+	IsDatastorePublisher float64 `json:"isDatastorePublisher" yaml:"isDatastorePublisher"`
 	// The provider of the user
-	Provider string `json:"provider"`
+	Provider string `json:"provider" yaml:"provider"`
 	// Whether the user is a archived
-	Archived float64 `json:"archived"`
+	Archived float64 `json:"archived" yaml:"archived"`
 	// The account ID of the user
-	AccountId float64 `json:"accountId"`
+	AccountId float64 `json:"accountId" yaml:"accountId"`
 }

@@ -11,55 +11,55 @@ package sdk2
 
 type Vm struct {
 	// VM ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// Name of the VM
-	Name string `json:"name"`
+	Name string `json:"name" yaml:"name"`
 	// Id of the site for the VM
-	SiteId float64 `json:"siteId"`
+	SiteId float64 `json:"siteId" yaml:"siteId"`
 	// Datacenter of the VM
-	DatacenterName string `json:"datacenterName"`
+	DatacenterName string `json:"datacenterName" yaml:"datacenterName"`
 	// ID of the infrastructure where this VM is deployed
-	InfrastructureId float64 `json:"infrastructureId"`
+	InfrastructureId float64 `json:"infrastructureId" yaml:"infrastructureId"`
 	// ID of the user that owns this VM
-	UserId float64 `json:"userId"`
+	UserId float64 `json:"userId" yaml:"userId"`
 	// Email of the user that owns this VM
-	UserEmail string `json:"userEmail"`
+	UserEmail string `json:"userEmail" yaml:"userEmail"`
 	// ID of the instance where this VM is deployed
-	InstanceId float64 `json:"instanceId"`
+	InstanceId float64 `json:"instanceId" yaml:"instanceId"`
 	// ID of the VM instance where this VM is deployed
-	VmInstanceId float64 `json:"vmInstanceId"`
+	VmInstanceId float64 `json:"vmInstanceId" yaml:"vmInstanceId"`
 	// Name of the host
-	Host string `json:"host"`
+	Host string `json:"host" yaml:"host"`
 	// List of hosts
-	Hosts []string `json:"hosts"`
+	Hosts []string `json:"hosts" yaml:"hosts"`
 	// Number of CPU cores for the VM
-	CpuCores float64 `json:"cpuCores"`
+	CpuCores float64 `json:"cpuCores" yaml:"cpuCores"`
 	// RAM in GB for the VM
-	RamGB float64 `json:"ramGB"`
+	RamGB float64 `json:"ramGB" yaml:"ramGB"`
 	// Disk size in GB for the VM
-	DiskSizeGB float64 `json:"diskSizeGB"`
+	DiskSizeGB float64 `json:"diskSizeGB" yaml:"diskSizeGB"`
 	// The id of the VM Type. This is a number.
-	TypeId float64 `json:"typeId"`
+	TypeId float64 `json:"typeId" yaml:"typeId"`
 	// The id of the VM Pool. This is a number.
-	PoolId float64 `json:"poolId"`
+	PoolId float64 `json:"poolId" yaml:"poolId"`
 	// The administration state of the VM.
-	AdministrationState *interface{} `json:"administrationState"`
+	AdministrationState *interface{} `json:"administrationState" yaml:"administrationState"`
 	// VM comments.
-	Comments float64 `json:"comments"`
+	Comments float64 `json:"comments" yaml:"comments"`
 	// The power state of the VM.
-	PowerState *interface{} `json:"powerState"`
+	PowerState *interface{} `json:"powerState" yaml:"powerState"`
 	// Timestamp when the VM power state was last updated.
-	PowerStateLastUpdatedTimestamp string `json:"powerStateLastUpdatedTimestamp"`
+	PowerStateLastUpdatedTimestamp string `json:"powerStateLastUpdatedTimestamp" yaml:"powerStateLastUpdatedTimestamp"`
 	// Timestamp when the VM was created
-	CreatedTimestamp string `json:"createdTimestamp"`
+	CreatedTimestamp string `json:"createdTimestamp" yaml:"createdTimestamp"`
 	// Timestamp when the VM was allocated
-	AllocationTimestamp string `json:"allocationTimestamp"`
+	AllocationTimestamp string `json:"allocationTimestamp" yaml:"allocationTimestamp"`
 	// Tags for the VM.
-	Tags []string `json:"tags"`
+	Tags []string `json:"tags" yaml:"tags"`
 	// The port number for the VNC server.
-	VncPort float64 `json:"vncPort"`
+	VncPort float64 `json:"vncPort" yaml:"vncPort"`
 	// The password for the VNC server.
-	VncPassword string `json:"vncPassword"`
+	VncPassword string `json:"vncPassword" yaml:"vncPassword"`
 	// The disks of the VM.
-	Disks []VmDisk `json:"disks"`
+	Disks []VmDisk `json:"disks" yaml:"disks"`
 }

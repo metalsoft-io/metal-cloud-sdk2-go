@@ -11,22 +11,22 @@ package sdk2
 
 type VmType struct {
 	// VM Type ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// Name of the VM Pool type
-	Name string `json:"name"`
+	Name string `json:"name" yaml:"name"`
 	// Display name of the VM Pool type
-	DisplayName string `json:"displayName"`
+	DisplayName string `json:"displayName" yaml:"displayName"`
 	// Label of the VM Pool type
-	Label string `json:"label"`
+	Label string `json:"label" yaml:"label"`
 	// Number of CPU cores for the VM Pool type
-	CpuCores float64 `json:"cpuCores"`
+	CpuCores float64 `json:"cpuCores" yaml:"cpuCores"`
 	// RAM in GB for the VM Pool type
-	RamGB float64 `json:"ramGB"`
+	RamGB float64 `json:"ramGB" yaml:"ramGB"`
 	// Flag to indicate if the VM Pool is experimental. 1 for true, 0 for false. Default is 0.
-	IsExperimental float64 `json:"isExperimental"`
+	IsExperimental float64 `json:"isExperimental" yaml:"isExperimental"`
 	// Tags for the VM Type.
-	Tags []string `json:"tags"`
+	Tags []string `json:"tags" yaml:"tags"`
 	// Flag to indicate if the VM Pool is for unmanaged VMs only. 1 for true, 0 for false. Default is 0.
-	ForUnmanagedVMsOnly float64 `json:"forUnmanagedVMsOnly"`
-	Links *interface{} `json:"links"`
+	ForUnmanagedVMsOnly float64 `json:"forUnmanagedVMsOnly" yaml:"forUnmanagedVMsOnly"`
+	Links *interface{} `json:"links" yaml:"links"`
 }

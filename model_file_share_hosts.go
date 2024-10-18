@@ -11,5 +11,5 @@ package sdk2
 
 type FileShareHosts struct {
 	// File Share Hosts.
-	InstanceArray *interface{} `json:"instanceArray"`
+	InstanceArray *interface{} `json:"instanceArray" yaml:"instanceArray"`
 }

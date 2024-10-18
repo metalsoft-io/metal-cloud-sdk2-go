@@ -11,9 +11,9 @@ package sdk2
 
 type VmPoolHostsList struct {
 	// List of VM Pool Hosts
-	Data []VmPoolHosts `json:"data"`
+	Data []VmPoolHosts `json:"data" yaml:"data"`
 	// Meta information
-	Meta *interface{} `json:"meta"`
+	Meta *interface{} `json:"meta" yaml:"meta"`
 	// Links to other resources
-	Links *interface{} `json:"links"`
+	Links *interface{} `json:"links" yaml:"links"`
 }

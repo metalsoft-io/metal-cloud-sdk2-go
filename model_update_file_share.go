@@ -11,9 +11,9 @@ package sdk2
 
 type UpdateFileShare struct {
 	// Disk size in GB for File Share
-	SizeGB float64 `json:"sizeGB,omitempty"`
+	SizeGB float64 `json:"sizeGB,omitempty" yaml:"sizeGB,omitempty"`
 	// Label of the File Share.
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// Settings for GUI. In JSON format
-	GuiSettings *AllOfUpdateFileShareGuiSettings `json:"guiSettings,omitempty"`
+	GuiSettings *AllOfUpdateFileShareGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 }

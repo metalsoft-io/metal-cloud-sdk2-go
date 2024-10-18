@@ -10,6 +10,6 @@
 package sdk2
 
 type StorageRegistrationResponseJobInfo struct {
-	AfcId float64 `json:"afcId,omitempty"`
-	AfcGroupId float64 `json:"afcGroupId,omitempty"`
+	AfcId float64 `json:"afcId,omitempty" yaml:"afcId,omitempty"`
+	AfcGroupId float64 `json:"afcGroupId,omitempty" yaml:"afcGroupId,omitempty"`
 }

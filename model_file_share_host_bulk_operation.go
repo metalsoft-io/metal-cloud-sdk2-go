@@ -11,7 +11,7 @@ package sdk2
 
 type FileShareHostBulkOperation struct {
 	// Id of the Instance Array Host that will be modified
-	InstanceArrayId float64 `json:"instanceArrayId"`
+	InstanceArrayId float64 `json:"instanceArrayId" yaml:"instanceArrayId"`
 	// Operation type for the Instance Array Host
-	OperationType string `json:"operationType"`
+	OperationType string `json:"operationType" yaml:"operationType"`
 }

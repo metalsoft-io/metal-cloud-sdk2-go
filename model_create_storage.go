@@ -10,31 +10,31 @@
 package sdk2
 
 type CreateStorage struct {
-	UserId float64 `json:"userId,omitempty"`
-	SiteId float64 `json:"siteId"`
-	StorageDriver string `json:"storageDriver"`
-	StorageTechnology string `json:"storageTechnology"`
-	StorageType string `json:"storageType"`
-	Name string `json:"name"`
-	IscsiHost string `json:"iscsiHost,omitempty"`
-	IscsiPort float64 `json:"iscsiPort,omitempty"`
-	ManagementHost string `json:"managementHost"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Options *interface{} `json:"options,omitempty"`
-	InMaintenance float64 `json:"inMaintenance,omitempty"`
-	TargetIQN string `json:"targetIQN,omitempty"`
-	IsExperimental float64 `json:"isExperimental,omitempty"`
-	DrivePriority float64 `json:"drivePriority,omitempty"`
-	SharedDrivePriority float64 `json:"sharedDrivePriority,omitempty"`
-	AlternateSanIPs []string `json:"alternateSanIPs,omitempty"`
-	Tags []string `json:"tags,omitempty"`
-	PortGroupAllocationOrder []string `json:"portGroupAllocationOrder,omitempty"`
-	PortGroupPhysicalPorts *interface{} `json:"portGroupPhysicalPorts,omitempty"`
-	DefaultIoLimitPolicy string `json:"defaultIoLimitPolicy,omitempty"`
-	SubnetType string `json:"subnetType"`
-	ArrayId string `json:"arrayId,omitempty"`
-	DirectorId string `json:"directorId,omitempty"`
-	S3Hostname string `json:"s3Hostname,omitempty"`
-	S3Port float64 `json:"s3Port,omitempty"`
+	UserId float64 `json:"userId,omitempty" yaml:"userId,omitempty"`
+	SiteId float64 `json:"siteId" yaml:"siteId"`
+	StorageDriver string `json:"storageDriver" yaml:"storageDriver"`
+	StorageTechnology string `json:"storageTechnology" yaml:"storageTechnology"`
+	StorageType string `json:"storageType" yaml:"storageType"`
+	Name string `json:"name" yaml:"name"`
+	IscsiHost string `json:"iscsiHost,omitempty" yaml:"iscsiHost,omitempty"`
+	IscsiPort float64 `json:"iscsiPort,omitempty" yaml:"iscsiPort,omitempty"`
+	ManagementHost string `json:"managementHost" yaml:"managementHost"`
+	Username string `json:"username" yaml:"username"`
+	Password string `json:"password" yaml:"password"`
+	Options *interface{} `json:"options,omitempty" yaml:"options,omitempty"`
+	InMaintenance float64 `json:"inMaintenance,omitempty" yaml:"inMaintenance,omitempty"`
+	TargetIQN string `json:"targetIQN,omitempty" yaml:"targetIQN,omitempty"`
+	IsExperimental float64 `json:"isExperimental,omitempty" yaml:"isExperimental,omitempty"`
+	DrivePriority float64 `json:"drivePriority,omitempty" yaml:"drivePriority,omitempty"`
+	SharedDrivePriority float64 `json:"sharedDrivePriority,omitempty" yaml:"sharedDrivePriority,omitempty"`
+	AlternateSanIPs []string `json:"alternateSanIPs,omitempty" yaml:"alternateSanIPs,omitempty"`
+	Tags []string `json:"tags,omitempty" yaml:"tags,omitempty"`
+	PortGroupAllocationOrder []string `json:"portGroupAllocationOrder,omitempty" yaml:"portGroupAllocationOrder,omitempty"`
+	PortGroupPhysicalPorts *interface{} `json:"portGroupPhysicalPorts,omitempty" yaml:"portGroupPhysicalPorts,omitempty"`
+	DefaultIoLimitPolicy string `json:"defaultIoLimitPolicy,omitempty" yaml:"defaultIoLimitPolicy,omitempty"`
+	SubnetType string `json:"subnetType" yaml:"subnetType"`
+	ArrayId string `json:"arrayId,omitempty" yaml:"arrayId,omitempty"`
+	DirectorId string `json:"directorId,omitempty" yaml:"directorId,omitempty"`
+	S3Hostname string `json:"s3Hostname,omitempty" yaml:"s3Hostname,omitempty"`
+	S3Port float64 `json:"s3Port,omitempty" yaml:"s3Port,omitempty"`
 }

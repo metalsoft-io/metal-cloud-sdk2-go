@@ -11,19 +11,19 @@ package sdk2
 
 type CreateVmPool struct {
 	// Id of the site for the VM Pool
-	SiteId float64 `json:"siteId,omitempty"`
+	SiteId float64 `json:"siteId,omitempty" yaml:"siteId,omitempty"`
 	// Host of the VM Pool
-	ManagementHost string `json:"managementHost,omitempty"`
+	ManagementHost string `json:"managementHost,omitempty" yaml:"managementHost,omitempty"`
 	// Port of the VM Pool
-	ManagementPort float64 `json:"managementPort,omitempty"`
+	ManagementPort float64 `json:"managementPort,omitempty" yaml:"managementPort,omitempty"`
 	// Name of the VM Pool
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" yaml:"name,omitempty"`
 	// Description of the VM Pool
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Type of the VM Pool
-	Type_ string `json:"type,omitempty"`
+	Type_ string `json:"type,omitempty" yaml:"type,omitempty"`
 	// Certificate of the VM Pool
-	Certificate string `json:"certificate,omitempty"`
+	Certificate string `json:"certificate,omitempty" yaml:"certificate,omitempty"`
 	// Private key of the VM Pool
-	PrivateKey string `json:"privateKey,omitempty"`
+	PrivateKey string `json:"privateKey,omitempty" yaml:"privateKey,omitempty"`
 }

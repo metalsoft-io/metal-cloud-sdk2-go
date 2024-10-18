@@ -11,11 +11,11 @@ package sdk2
 
 type VmDisk struct {
 	// VM ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// VM ID
-	VmId float64 `json:"vmId"`
+	VmId float64 `json:"vmId" yaml:"vmId"`
 	// Name of the VM Disk datastore
-	Datastore string `json:"datastore"`
+	Datastore string `json:"datastore" yaml:"datastore"`
 	// Size of the VM Disk in GB
-	SizeGB float64 `json:"sizeGB"`
+	SizeGB float64 `json:"sizeGB" yaml:"sizeGB"`
 }

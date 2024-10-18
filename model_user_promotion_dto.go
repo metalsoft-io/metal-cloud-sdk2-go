@@ -11,7 +11,7 @@ package sdk2
 
 type UserPromotionDto struct {
 	// The promotion for the user
-	Promotion string `json:"promotion,omitempty"`
+	Promotion string `json:"promotion,omitempty" yaml:"promotion,omitempty"`
 	// Whether to remove the promotion
-	RemovePromotion bool `json:"removePromotion,omitempty"`
+	RemovePromotion bool `json:"removePromotion,omitempty" yaml:"removePromotion,omitempty"`
 }

@@ -11,21 +11,21 @@ package sdk2
 
 type CreateUserDto struct {
 	// The display name of the user
-	DisplayName string `json:"displayName,omitempty"`
+	DisplayName string `json:"displayName,omitempty" yaml:"displayName,omitempty"`
 	// The email address of the user
-	Email string `json:"email,omitempty"`
+	Email string `json:"email,omitempty" yaml:"email,omitempty"`
 	// The access level of the user
-	AccessLevel string `json:"accessLevel,omitempty"`
+	AccessLevel string `json:"accessLevel,omitempty" yaml:"accessLevel,omitempty"`
 	// The password of the user
-	Password string `json:"password,omitempty"`
+	Password string `json:"password,omitempty" yaml:"password,omitempty"`
 	// The redirect URL for the user
-	RedirectUrl string `json:"redirectUrl,omitempty"`
+	RedirectUrl string `json:"redirectUrl,omitempty" yaml:"redirectUrl,omitempty"`
 	// The AES key for the user
-	AESKey string `json:"AESKey,omitempty"`
+	AESKey string `json:"AESKey,omitempty" yaml:"AESKey,omitempty"`
 	// Whether the user has verified their email address
-	EmailVerified bool `json:"emailVerified,omitempty"`
+	EmailVerified bool `json:"emailVerified,omitempty" yaml:"emailVerified,omitempty"`
 	// Whether an account should be created with the user
-	CreateWithAccount bool `json:"createWithAccount,omitempty"`
+	CreateWithAccount bool `json:"createWithAccount,omitempty" yaml:"createWithAccount,omitempty"`
 	// The account ID of the user
-	AccountId float64 `json:"accountId,omitempty"`
+	AccountId float64 `json:"accountId,omitempty" yaml:"accountId,omitempty"`
 }

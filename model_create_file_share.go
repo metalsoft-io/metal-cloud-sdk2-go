@@ -11,7 +11,7 @@ package sdk2
 
 type CreateFileShare struct {
 	// Display name of the File Share.
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// Disk size in GB for File Share
-	SizeGB float64 `json:"sizeGB"`
+	SizeGB float64 `json:"sizeGB" yaml:"sizeGB"`
 }

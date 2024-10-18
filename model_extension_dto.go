@@ -11,18 +11,18 @@ package sdk2
 
 type ExtensionDto struct {
 	// The extension ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// The extension unique slug
-	Slug string `json:"slug,omitempty"`
+	Slug string `json:"slug,omitempty" yaml:"slug,omitempty"`
 	// The extension name
-	Name string `json:"name"`
+	Name string `json:"name" yaml:"name"`
 	// The extension unique label
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// The extension description
-	Description string `json:"description"`
+	Description string `json:"description" yaml:"description"`
 	// Extension status
-	Status string `json:"status"`
+	Status string `json:"status" yaml:"status"`
 	// Extension definition (JSON)
-	Definition string `json:"definition"`
-	Version string `json:"version,omitempty"`
+	Definition string `json:"definition" yaml:"definition"`
+	Version string `json:"version,omitempty" yaml:"version,omitempty"`
 }

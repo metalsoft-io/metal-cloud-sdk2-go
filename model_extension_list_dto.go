@@ -11,5 +11,5 @@ package sdk2
 
 type ExtensionListDto struct {
 	// The list of Extensions.
-	Extensions []ExtensionInfoDto `json:"extensions"`
+	Extensions []ExtensionInfoDto `json:"extensions" yaml:"extensions"`
 }

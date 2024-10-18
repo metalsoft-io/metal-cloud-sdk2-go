@@ -10,7 +10,7 @@
 package sdk2
 
 type DiscoveryQueryDto struct {
-	Discover []string `json:"discover"`
-	ReturnData bool `json:"returnData"`
-	PersistData bool `json:"persistData"`
+	Discover []string `json:"discover" yaml:"discover"`
+	ReturnData bool `json:"returnData" yaml:"returnData"`
+	PersistData bool `json:"persistData" yaml:"persistData"`
 }

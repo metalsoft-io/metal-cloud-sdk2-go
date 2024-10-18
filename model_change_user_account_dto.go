@@ -11,5 +11,5 @@ package sdk2
 
 type ChangeUserAccountDto struct {
 	// The ID of the parent account
-	NewAccountId float64 `json:"newAccountId"`
+	NewAccountId float64 `json:"newAccountId" yaml:"newAccountId"`
 }

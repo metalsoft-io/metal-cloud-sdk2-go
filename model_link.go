@@ -11,7 +11,7 @@ package sdk2
 
 type Link struct {
 	// The relation
-	Rel string `json:"rel"`
+	Rel string `json:"rel" yaml:"rel"`
 	// The link URI
-	Href string `json:"href"`
+	Href string `json:"href" yaml:"href"`
 }

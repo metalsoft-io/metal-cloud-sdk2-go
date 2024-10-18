@@ -11,7 +11,7 @@ package sdk2
 
 type CreateBucket struct {
 	// Label of the Bucket.
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// Disk size in GB for Bucket
-	SizeGB float64 `json:"sizeGB"`
+	SizeGB float64 `json:"sizeGB" yaml:"sizeGB"`
 }

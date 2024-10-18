@@ -11,9 +11,9 @@ package sdk2
 
 type UpdateBucket struct {
 	// Disk size in GB for Bucket
-	SizeGB float64 `json:"sizeGB,omitempty"`
+	SizeGB float64 `json:"sizeGB,omitempty" yaml:"sizeGB,omitempty"`
 	// Label of the Bucket.
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// Settings for GUI. In JSON format
-	GuiSettings *AllOfUpdateBucketGuiSettings `json:"guiSettings,omitempty"`
+	GuiSettings *AllOfUpdateBucketGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 }

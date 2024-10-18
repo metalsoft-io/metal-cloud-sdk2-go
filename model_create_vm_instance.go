@@ -11,9 +11,9 @@ package sdk2
 
 type CreateVmInstance struct {
 	// Id of the VM Instance Group.
-	GroupId float64 `json:"groupId"`
+	GroupId float64 `json:"groupId" yaml:"groupId"`
 	// Id of the VM Type.
-	TypeId float64 `json:"typeId"`
+	TypeId float64 `json:"typeId" yaml:"typeId"`
 	// Tags for the VM Instance.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty" yaml:"tags,omitempty"`
 }

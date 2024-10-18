@@ -11,16 +11,16 @@ package sdk2
 
 type ExtensionInfoDto struct {
 	// The extension ID
-	Id float64 `json:"id,omitempty"`
+	Id float64 `json:"id,omitempty" yaml:"id,omitempty"`
 	// The extension unique slug
-	Slug string `json:"slug,omitempty"`
+	Slug string `json:"slug,omitempty" yaml:"slug,omitempty"`
 	// The extension name
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" yaml:"name,omitempty"`
 	// The extension unique label
-	Label string `json:"label,omitempty"`
+	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// The extension description
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Extension status
-	Status string `json:"status,omitempty"`
-	Version string `json:"version,omitempty"`
+	Status string `json:"status,omitempty" yaml:"status,omitempty"`
+	Version string `json:"version,omitempty" yaml:"version,omitempty"`
 }

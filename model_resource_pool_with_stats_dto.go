@@ -11,15 +11,15 @@ package sdk2
 
 type ResourcePoolWithStatsDto struct {
 	// Resource Pool ID
-	ResourcePoolId float64 `json:"resource_pool_id"`
+	ResourcePoolId float64 `json:"resource_pool_id" yaml:"resource_pool_id"`
 	// Label of the Resource Pool
-	ResourcePoolLabel string `json:"resource_pool_label"`
+	ResourcePoolLabel string `json:"resource_pool_label" yaml:"resource_pool_label"`
 	// Description of the Resource Pool
-	ResourcePoolDescription string `json:"resource_pool_description"`
+	ResourcePoolDescription string `json:"resource_pool_description" yaml:"resource_pool_description"`
 	// Resource Pool Created Timestamp
-	ResourcePoolCreatedTimestamp string `json:"resource_pool_created_timestamp"`
+	ResourcePoolCreatedTimestamp string `json:"resource_pool_created_timestamp" yaml:"resource_pool_created_timestamp"`
 	// Resource Pool Updated Timestamp
-	ResourcePoolUpdatedTimestamp string `json:"resource_pool_updated_timestamp"`
+	ResourcePoolUpdatedTimestamp string `json:"resource_pool_updated_timestamp" yaml:"resource_pool_updated_timestamp"`
 	// Resource Pool statistics for users, servers, and subnet pools
-	Statistics *AllOfResourcePoolWithStatsDtoStatistics `json:"statistics"`
+	Statistics *AllOfResourcePoolWithStatsDtoStatistics `json:"statistics" yaml:"statistics"`
 }

@@ -11,7 +11,7 @@ package sdk2
 
 type InfrastructureDeployOptions struct {
 	// Allow data loss
-	AllowDataLoss bool `json:"allowDataLoss"`
+	AllowDataLoss bool `json:"allowDataLoss" yaml:"allowDataLoss"`
 	// Shutdown options
-	ShutdownOptions *AllOfInfrastructureDeployOptionsShutdownOptions `json:"shutdownOptions"`
+	ShutdownOptions *AllOfInfrastructureDeployOptionsShutdownOptions `json:"shutdownOptions" yaml:"shutdownOptions"`
 }

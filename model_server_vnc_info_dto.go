@@ -11,13 +11,13 @@ package sdk2
 
 type ServerVncInfoDto struct {
 	// Active VNC sessions
-	ActiveSessions float64 `json:"activeSessions"`
+	ActiveSessions float64 `json:"activeSessions" yaml:"activeSessions"`
 	// Max active VNC sessions
-	MaxSessions float64 `json:"maxSessions"`
+	MaxSessions float64 `json:"maxSessions" yaml:"maxSessions"`
 	// VNC port
-	Port float64 `json:"port"`
+	Port float64 `json:"port" yaml:"port"`
 	// VNC timeout
-	Timeout float64 `json:"timeout"`
+	Timeout float64 `json:"timeout" yaml:"timeout"`
 	// VNC enabled
-	Enable string `json:"enable"`
+	Enable string `json:"enable" yaml:"enable"`
 }

@@ -11,9 +11,9 @@ package sdk2
 
 type UpdateVmInstance struct {
 	// Tags for the VM Instance.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty" yaml:"tags,omitempty"`
 	// Disk size in GB for the VM Instance.
-	DiskSizeGB float64 `json:"diskSizeGB,omitempty"`
+	DiskSizeGB float64 `json:"diskSizeGB,omitempty" yaml:"diskSizeGB,omitempty"`
 	// Custom variables for the VM Instance.
-	CustomVariables *interface{} `json:"customVariables,omitempty"`
+	CustomVariables *interface{} `json:"customVariables,omitempty" yaml:"customVariables,omitempty"`
 }

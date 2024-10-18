@@ -11,7 +11,7 @@ package sdk2
 
 type UpdateVm struct {
 	// VM comments.
-	Comments float64 `json:"comments,omitempty"`
+	Comments float64 `json:"comments,omitempty" yaml:"comments,omitempty"`
 	// Tags for the VM. This is a JSON object.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty" yaml:"tags,omitempty"`
 }

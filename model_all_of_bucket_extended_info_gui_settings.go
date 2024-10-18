@@ -12,13 +12,13 @@ package sdk2
 // GUI settings for the Bucket. This is a JSON object.
 type AllOfBucketExtendedInfoGuiSettings struct {
 	// Row index of the object.
-	RowIndex float64 `json:"rowIndex"`
+	RowIndex float64 `json:"rowIndex" yaml:"rowIndex"`
 	// Column index of the object.
-	ColumnIndex float64 `json:"columnIndex"`
+	ColumnIndex float64 `json:"columnIndex" yaml:"columnIndex"`
 	// Whether to show the object children in the GUI.
-	ShowWidgetChildren bool `json:"showWidgetChildren"`
+	ShowWidgetChildren bool `json:"showWidgetChildren" yaml:"showWidgetChildren"`
 	// Random instance ID.
-	RandomInstanceID string `json:"randomInstanceID"`
+	RandomInstanceID string `json:"randomInstanceID" yaml:"randomInstanceID"`
 	// User agent.
-	UserAgent string `json:"userAgent"`
+	UserAgent string `json:"userAgent" yaml:"userAgent"`
 }

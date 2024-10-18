@@ -11,5 +11,5 @@ package sdk2
 
 type NetworkDeviceStatusDto struct {
 	// The new network device status
-	Status string `json:"status"`
+	Status string `json:"status" yaml:"status"`
 }

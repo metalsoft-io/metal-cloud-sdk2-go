@@ -11,5 +11,5 @@ package sdk2
 
 type RemoteConsoleInfoDto struct {
 	// Active Remote Console connections
-	ActiveConnections float64 `json:"activeConnections"`
+	ActiveConnections float64 `json:"activeConnections" yaml:"activeConnections"`
 }

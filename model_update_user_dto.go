@@ -11,41 +11,41 @@ package sdk2
 
 type UpdateUserDto struct {
 	// The new display name of the user
-	DisplayName string `json:"displayName,omitempty"`
+	DisplayName string `json:"displayName,omitempty" yaml:"displayName,omitempty"`
 	// The new password of the user
-	Password *AllOfUpdateUserDtoPassword `json:"password,omitempty"`
+	Password *AllOfUpdateUserDtoPassword `json:"password,omitempty" yaml:"password,omitempty"`
 	// The new login e-mail of the user
-	Email string `json:"email,omitempty"`
+	Email string `json:"email,omitempty" yaml:"email,omitempty"`
 	// The redirect URL for the user
-	RedirectUrl string `json:"redirectUrl,omitempty"`
+	RedirectUrl string `json:"redirectUrl,omitempty" yaml:"redirectUrl,omitempty"`
 	// The AES key for the user
-	AESKey string `json:"AESKey,omitempty"`
+	AESKey string `json:"AESKey,omitempty" yaml:"AESKey,omitempty"`
 	// The new e-mail status of the user
-	EmailStatus string `json:"emailStatus,omitempty"`
+	EmailStatus string `json:"emailStatus,omitempty" yaml:"emailStatus,omitempty"`
 	// The new language of the user
-	Language string `json:"language,omitempty"`
+	Language string `json:"language,omitempty" yaml:"language,omitempty"`
 	// The new brand of the user
-	Brand string `json:"brand,omitempty"`
+	Brand string `json:"brand,omitempty" yaml:"brand,omitempty"`
 	// The new brand manager status of the user
-	IsBrandManager bool `json:"isBrandManager,omitempty"`
+	IsBrandManager bool `json:"isBrandManager,omitempty" yaml:"isBrandManager,omitempty"`
 	// The new user delegates of the user.
-	Delegates []UserDelegateDto `json:"delegates,omitempty"`
+	Delegates []UserDelegateDto `json:"delegates,omitempty" yaml:"delegates,omitempty"`
 	// The new blocked status of the user
-	IsBlocked bool `json:"isBlocked,omitempty"`
+	IsBlocked bool `json:"isBlocked,omitempty" yaml:"isBlocked,omitempty"`
 	// The new suspension status of the user
-	Suspension *AllOfUpdateUserDtoSuspension `json:"suspension,omitempty"`
+	Suspension *AllOfUpdateUserDtoSuspension `json:"suspension,omitempty" yaml:"suspension,omitempty"`
 	// The new access level of the user
-	AccessLevel string `json:"accessLevel,omitempty"`
+	AccessLevel string `json:"accessLevel,omitempty" yaml:"accessLevel,omitempty"`
 	// The new promotions of the user.
-	Promotions []UserPromotionDto `json:"promotions,omitempty"`
+	Promotions []UserPromotionDto `json:"promotions,omitempty" yaml:"promotions,omitempty"`
 	// The new experimental tags of the user.
-	ExperimentalTags []UserExperimentalTagDto `json:"experimentalTags,omitempty"`
+	ExperimentalTags []UserExperimentalTagDto `json:"experimentalTags,omitempty" yaml:"experimentalTags,omitempty"`
 	// The new custom prices of the user
-	CustomPrices *interface{} `json:"customPrices,omitempty"`
+	CustomPrices *interface{} `json:"customPrices,omitempty" yaml:"customPrices,omitempty"`
 	// The new permissions of the user.
-	Permissions *AllOfUpdateUserDtoPermissions `json:"permissions,omitempty"`
+	Permissions *AllOfUpdateUserDtoPermissions `json:"permissions,omitempty" yaml:"permissions,omitempty"`
 	// Whether the user account is a test one.
-	IsTestAccount bool `json:"isTestAccount,omitempty"`
+	IsTestAccount bool `json:"isTestAccount,omitempty" yaml:"isTestAccount,omitempty"`
 	// Whether the user account is billable.
-	IsBillable bool `json:"isBillable,omitempty"`
+	IsBillable bool `json:"isBillable,omitempty" yaml:"isBillable,omitempty"`
 }

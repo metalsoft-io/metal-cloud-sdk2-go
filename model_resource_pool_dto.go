@@ -11,9 +11,9 @@ package sdk2
 
 type ResourcePoolDto struct {
 	// Resource Pool ID
-	ResourcePoolId float64 `json:"resource_pool_id"`
+	ResourcePoolId float64 `json:"resource_pool_id" yaml:"resource_pool_id"`
 	// Label of the Resource Pool
-	ResourcePoolLabel string `json:"resource_pool_label"`
+	ResourcePoolLabel string `json:"resource_pool_label" yaml:"resource_pool_label"`
 	// Description of the Resource Pool
-	ResourcePoolDescription string `json:"resource_pool_description"`
+	ResourcePoolDescription string `json:"resource_pool_description" yaml:"resource_pool_description"`
 }

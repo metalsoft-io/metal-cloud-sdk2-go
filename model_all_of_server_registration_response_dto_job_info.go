@@ -12,7 +12,7 @@ package sdk2
 // The job info of the server.
 type AllOfServerRegistrationResponseDtoJobInfo struct {
 	// The id of the afc job.
-	AfcId float64 `json:"afcId"`
+	AfcId float64 `json:"afcId" yaml:"afcId"`
 	// The id of the afc job group.
-	AfcGroupId float64 `json:"afcGroupId"`
+	AfcGroupId float64 `json:"afcGroupId" yaml:"afcGroupId"`
 }

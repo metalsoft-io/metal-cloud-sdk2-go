@@ -11,40 +11,40 @@ package sdk2
 
 type Bucket struct {
 	// Id of the Bucket
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// Change id of the Bucket
-	ChangeId float64 `json:"changeId"`
+	ChangeId float64 `json:"changeId" yaml:"changeId"`
 	// Infrastructure id of the Bucket
-	InfrastructureId float64 `json:"infrastructureId"`
+	InfrastructureId float64 `json:"infrastructureId" yaml:"infrastructureId"`
 	// Disk size in GB for Bucket
-	SizeGB float64 `json:"sizeGB"`
+	SizeGB float64 `json:"sizeGB" yaml:"sizeGB"`
 	// Timestamp of the Bucket creation.
-	CreatedTimestamp string `json:"createdTimestamp"`
+	CreatedTimestamp string `json:"createdTimestamp" yaml:"createdTimestamp"`
 	// Timestamp of the Bucket last update.
-	UpdatedTimestamp string `json:"updatedTimestamp"`
+	UpdatedTimestamp string `json:"updatedTimestamp" yaml:"updatedTimestamp"`
 	// Id of the storage pool the Bucket is assigned to
-	StoragePoolId float64 `json:"storagePoolId,omitempty"`
+	StoragePoolId float64 `json:"storagePoolId,omitempty" yaml:"storagePoolId,omitempty"`
 	// Service status of the Bucket
-	ServiceStatus string `json:"serviceStatus"`
+	ServiceStatus string `json:"serviceStatus" yaml:"serviceStatus"`
 	// Label of the Bucket.
-	Label string `json:"label"`
+	Label string `json:"label" yaml:"label"`
 	// Subdomain of the Bucket.
-	Subdomain string `json:"subdomain,omitempty"`
+	Subdomain string `json:"subdomain,omitempty" yaml:"subdomain,omitempty"`
 	// Subdomain permanent of the Bucket.
-	SubdomainPermanent string `json:"subdomainPermanent,omitempty"`
+	SubdomainPermanent string `json:"subdomainPermanent,omitempty" yaml:"subdomainPermanent,omitempty"`
 	// Id of the DNS subdomain for the Bucket.
-	DnsSubdomainId float64 `json:"dnsSubdomainId,omitempty"`
+	DnsSubdomainId float64 `json:"dnsSubdomainId,omitempty" yaml:"dnsSubdomainId,omitempty"`
 	// Id of the VLAN for the Bucket.
-	NetworkVlanId float64 `json:"networkVlanId,omitempty"`
+	NetworkVlanId float64 `json:"networkVlanId,omitempty" yaml:"networkVlanId,omitempty"`
 	// GUI settings for the Bucket. This is a JSON object.
-	GuiSettings *AllOfBucketGuiSettings `json:"guiSettings,omitempty"`
+	GuiSettings *AllOfBucketGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 	// Endpoint of the Bucket.
-	Endpoint string `json:"endpoint,omitempty"`
+	Endpoint string `json:"endpoint,omitempty" yaml:"endpoint,omitempty"`
 	// Endpoint of the Bucket.
-	AccessKeyId string `json:"accessKeyId,omitempty"`
+	AccessKeyId string `json:"accessKeyId,omitempty" yaml:"accessKeyId,omitempty"`
 	// Endpoint of the Bucket.
-	SecretKeyEncrypted string `json:"secretKeyEncrypted,omitempty"`
+	SecretKeyEncrypted string `json:"secretKeyEncrypted,omitempty" yaml:"secretKeyEncrypted,omitempty"`
 	// Operation object of the Bucket.
-	Operation string `json:"operation,omitempty"`
-	Links *interface{} `json:"links"`
+	Operation string `json:"operation,omitempty" yaml:"operation,omitempty"`
+	Links *interface{} `json:"links" yaml:"links"`
 }

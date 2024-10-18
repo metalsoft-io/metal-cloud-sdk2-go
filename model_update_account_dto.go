@@ -11,17 +11,17 @@ package sdk2
 
 type UpdateAccountDto struct {
 	// The ID of the parent account
-	ParentAccountId float64 `json:"parentAccountId,omitempty"`
+	ParentAccountId float64 `json:"parentAccountId,omitempty" yaml:"parentAccountId,omitempty"`
 	// The name of the account
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" yaml:"name,omitempty"`
 	// The code of the account
-	Code string `json:"code,omitempty"`
+	Code string `json:"code,omitempty" yaml:"code,omitempty"`
 	// The fiscal number of the account
-	FiscalNumber string `json:"fiscalNumber,omitempty"`
+	FiscalNumber string `json:"fiscalNumber,omitempty" yaml:"fiscalNumber,omitempty"`
 	// The address of the account
-	Address *AllOfUpdateAccountDtoAddress `json:"address,omitempty"`
+	Address *AllOfUpdateAccountDtoAddress `json:"address,omitempty" yaml:"address,omitempty"`
 	// The user ID of the primary contact
-	PrimaryContactId float64 `json:"primaryContactId,omitempty"`
+	PrimaryContactId float64 `json:"primaryContactId,omitempty" yaml:"primaryContactId,omitempty"`
 	// The user ID of the secondary contact
-	SecondaryContactId float64 `json:"secondaryContactId,omitempty"`
+	SecondaryContactId float64 `json:"secondaryContactId,omitempty" yaml:"secondaryContactId,omitempty"`
 }

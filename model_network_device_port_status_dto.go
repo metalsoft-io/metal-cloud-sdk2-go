@@ -11,7 +11,7 @@ package sdk2
 
 type NetworkDevicePortStatusDto struct {
 	// The ports of the network device that will have their status changed
-	Ports []string `json:"ports"`
+	Ports []string `json:"ports" yaml:"ports"`
 	// The new status of the ports
-	Status bool `json:"status"`
+	Status bool `json:"status" yaml:"status"`
 }

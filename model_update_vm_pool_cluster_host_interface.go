@@ -11,9 +11,9 @@ package sdk2
 
 type UpdateVmPoolClusterHostInterface struct {
 	// Fabric of the switch interface
-	Fabric string `json:"fabric,omitempty"`
+	Fabric string `json:"fabric,omitempty" yaml:"fabric,omitempty"`
 	// Id of the switch
-	SwitchId float64 `json:"switchId,omitempty"`
+	SwitchId float64 `json:"switchId,omitempty" yaml:"switchId,omitempty"`
 	// Name of the switch interface
-	SwitchInterfaceName float64 `json:"switchInterfaceName,omitempty"`
+	SwitchInterfaceName float64 `json:"switchInterfaceName,omitempty" yaml:"switchInterfaceName,omitempty"`
 }

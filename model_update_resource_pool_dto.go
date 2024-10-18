@@ -11,7 +11,7 @@ package sdk2
 
 type UpdateResourcePoolDto struct {
 	// Label of the Resource Pool
-	ResourcePoolLabel string `json:"resource_pool_label,omitempty"`
+	ResourcePoolLabel string `json:"resource_pool_label,omitempty" yaml:"resource_pool_label,omitempty"`
 	// Description of the Resource Pool
-	ResourcePoolDescription string `json:"resource_pool_description,omitempty"`
+	ResourcePoolDescription string `json:"resource_pool_description,omitempty" yaml:"resource_pool_description,omitempty"`
 }

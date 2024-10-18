@@ -11,7 +11,7 @@ package sdk2
 
 type UserUpdatePasswordDto struct {
 	// The new password of the user
-	NewPassword string `json:"newPassword"`
+	NewPassword string `json:"newPassword" yaml:"newPassword"`
 	// The old password of the user
-	OldPassword string `json:"oldPassword,omitempty"`
+	OldPassword string `json:"oldPassword,omitempty" yaml:"oldPassword,omitempty"`
 }

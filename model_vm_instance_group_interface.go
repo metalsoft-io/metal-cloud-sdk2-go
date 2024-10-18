@@ -11,25 +11,25 @@ package sdk2
 
 type VmInstanceGroupInterface struct {
 	// Interface ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// Network ID
-	NetworkId float64 `json:"networkId"`
+	NetworkId float64 `json:"networkId" yaml:"networkId"`
 	// Interface index
-	InterfaceIndex float64 `json:"interfaceIndex"`
+	InterfaceIndex float64 `json:"interfaceIndex" yaml:"interfaceIndex"`
 	// Service status of the VM Instance Group Interface.
-	ServiceStatus string `json:"serviceStatus"`
+	ServiceStatus string `json:"serviceStatus" yaml:"serviceStatus"`
 	// VM Instance Group ID
-	GroupId float64 `json:"groupId"`
+	GroupId float64 `json:"groupId" yaml:"groupId"`
 	// Infrastructure ID
-	InfrastructureId float64 `json:"infrastructureId"`
+	InfrastructureId float64 `json:"infrastructureId" yaml:"infrastructureId"`
 	// Operation ID
-	ChangeId float64 `json:"changeId"`
+	ChangeId float64 `json:"changeId" yaml:"changeId"`
 	// Interface label
-	Label float64 `json:"label"`
+	Label float64 `json:"label" yaml:"label"`
 	// Timestamp of the VM Instance Group Interface creation.
-	CreatedTimestamp string `json:"createdTimestamp"`
+	CreatedTimestamp string `json:"createdTimestamp" yaml:"createdTimestamp"`
 	// Timestamp of the VM Instance Group Interface update.
-	UpdatedTimestamp string `json:"updatedTimestamp"`
+	UpdatedTimestamp string `json:"updatedTimestamp" yaml:"updatedTimestamp"`
 	// Operation object for the VM Instance Group.
-	Operation *interface{} `json:"operation"`
+	Operation *interface{} `json:"operation" yaml:"operation"`
 }

@@ -11,9 +11,9 @@ package sdk2
 
 type VmTypeList struct {
 	// List of VM Types
-	Data []VmType `json:"data"`
+	Data []VmType `json:"data" yaml:"data"`
 	// Meta information
-	Meta *interface{} `json:"meta"`
+	Meta *interface{} `json:"meta" yaml:"meta"`
 	// Links to other resources
-	Links *interface{} `json:"links"`
+	Links *interface{} `json:"links" yaml:"links"`
 }

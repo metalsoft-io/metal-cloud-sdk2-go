@@ -11,36 +11,36 @@ package sdk2
 
 type VmInstance struct {
 	// VM Instance ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// Id of the VM Instance Group.
-	GroupId float64 `json:"groupId"`
+	GroupId float64 `json:"groupId" yaml:"groupId"`
 	// Id of the Infrastructure.
-	InfrastructureId float64 `json:"infrastructureId"`
+	InfrastructureId float64 `json:"infrastructureId" yaml:"infrastructureId"`
 	// Name of the VM Instance.
-	Label string `json:"label"`
+	Label string `json:"label" yaml:"label"`
 	// Id of the VM.
-	VmId float64 `json:"vmId"`
+	VmId float64 `json:"vmId" yaml:"vmId"`
 	// Id of the VM Type.
-	TypeId float64 `json:"typeId"`
+	TypeId float64 `json:"typeId" yaml:"typeId"`
 	// Tags for the VM Instance.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty" yaml:"tags,omitempty"`
 	// Service status of the VM Instance.
-	ServiceStatus string `json:"serviceStatus"`
+	ServiceStatus string `json:"serviceStatus" yaml:"serviceStatus"`
 	// Id of the VM Instance change object.
-	ChangeId float64 `json:"changeId"`
+	ChangeId float64 `json:"changeId" yaml:"changeId"`
 	// Timestamp of the VM Instance creation.
-	CreatedTimestamp string `json:"createdTimestamp"`
+	CreatedTimestamp string `json:"createdTimestamp" yaml:"createdTimestamp"`
 	// Timestamp of the VM Instance last update.
-	UpdatedTimestamp string `json:"updatedTimestamp"`
+	UpdatedTimestamp string `json:"updatedTimestamp" yaml:"updatedTimestamp"`
 	// VM Instance change object.
-	Operation *interface{} `json:"operation"`
+	Operation *interface{} `json:"operation" yaml:"operation"`
 	// Custom variables for the VM Instance.
-	CustomVariables *interface{} `json:"customVariables,omitempty"`
+	CustomVariables *interface{} `json:"customVariables,omitempty" yaml:"customVariables,omitempty"`
 	// Disk size in GB of the VM Instance.
-	DiskSizeGB float64 `json:"diskSizeGB"`
+	DiskSizeGB float64 `json:"diskSizeGB" yaml:"diskSizeGB"`
 	// Id of the template used by the VM Instance.
-	TemplateIdOrigin float64 `json:"templateIdOrigin,omitempty"`
+	TemplateIdOrigin float64 `json:"templateIdOrigin,omitempty" yaml:"templateIdOrigin,omitempty"`
 	// Id of the VM Pool.
-	VmPoolId float64 `json:"vmPoolId,omitempty"`
-	Links *interface{} `json:"links"`
+	VmPoolId float64 `json:"vmPoolId,omitempty" yaml:"vmPoolId,omitempty"`
+	Links *interface{} `json:"links" yaml:"links"`
 }

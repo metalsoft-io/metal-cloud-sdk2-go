@@ -14,9 +14,9 @@ import (
 
 type Version struct {
 	// The version of the installed MetalSoft software
-	Version string `json:"version"`
+	Version string `json:"version" yaml:"version"`
 	// The release date of the version
-	VersionDate time.Time `json:"versionDate,omitempty"`
+	VersionDate time.Time `json:"versionDate,omitempty" yaml:"versionDate,omitempty"`
 	// The build number of the version
-	VersionBuild string `json:"versionBuild,omitempty"`
+	VersionBuild string `json:"versionBuild,omitempty" yaml:"versionBuild,omitempty"`
 }

@@ -11,40 +11,40 @@ package sdk2
 
 type VmPoolHosts struct {
 	// VM Pool Host ID
-	Id float64 `json:"id"`
+	Id float64 `json:"id" yaml:"id"`
 	// Name of the VM Pool Host
-	Name string `json:"name"`
+	Name string `json:"name" yaml:"name"`
 	// Address of the VM Pool Host
-	Address string `json:"address"`
+	Address string `json:"address" yaml:"address"`
 	// Port of the VM Pool Host
-	Port float64 `json:"port"`
+	Port float64 `json:"port" yaml:"port"`
 	// VM Pool ID
-	PoolId float64 `json:"poolId"`
+	PoolId float64 `json:"poolId" yaml:"poolId"`
 	// Roles of the VM Pool Host
-	Roles []string `json:"roles"`
+	Roles []string `json:"roles" yaml:"roles"`
 	// Failure domain of the VM Pool Host
-	FailureDomain string `json:"failureDomain"`
+	FailureDomain string `json:"failureDomain" yaml:"failureDomain"`
 	// Architecture of the VM Pool Host
-	Architecture string `json:"architecture"`
+	Architecture string `json:"architecture" yaml:"architecture"`
 	// Flag specifying if the VM Pool Host is database
-	Database float64 `json:"database"`
+	Database float64 `json:"database" yaml:"database"`
 	// Status of the VM Pool Host
-	Status string `json:"status"`
+	Status string `json:"status" yaml:"status"`
 	// Description of the VM Pool Host
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Total RAM GB of the VM Pool Host
-	TotalRamGB float64 `json:"totalRamGB"`
+	TotalRamGB float64 `json:"totalRamGB" yaml:"totalRamGB"`
 	// Free RAM GB of the VM Pool Host
-	FreeRamGB float64 `json:"freeRamGB"`
+	FreeRamGB float64 `json:"freeRamGB" yaml:"freeRamGB"`
 	// Used RAM GB of the VM Pool Host
-	UsedRamGB float64 `json:"usedRamGB"`
+	UsedRamGB float64 `json:"usedRamGB" yaml:"usedRamGB"`
 	// Total Space GB of the VM Pool Host
-	TotalSpaceGB float64 `json:"totalSpaceGB"`
+	TotalSpaceGB float64 `json:"totalSpaceGB" yaml:"totalSpaceGB"`
 	// Used Space GB of the VM Pool Host
-	UsedSpaceGB float64 `json:"usedSpaceGB"`
+	UsedSpaceGB float64 `json:"usedSpaceGB" yaml:"usedSpaceGB"`
 	// Free Space GB of the VM Pool Host
-	FreeSpaceGB float64 `json:"freeSpaceGB"`
+	FreeSpaceGB float64 `json:"freeSpaceGB" yaml:"freeSpaceGB"`
 	// Timestamp when the VM Pool Host was updated
-	UpdatedTimestamp string `json:"updatedTimestamp"`
-	Links *interface{} `json:"links"`
+	UpdatedTimestamp string `json:"updatedTimestamp" yaml:"updatedTimestamp"`
+	Links *interface{} `json:"links" yaml:"links"`
 }
