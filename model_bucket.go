@@ -43,7 +43,7 @@ type Bucket struct {
 	// Endpoint of the Bucket.
 	AccessKeyId string `json:"accessKeyId,omitempty" yaml:"accessKeyId,omitempty"`
 	// Endpoint of the Bucket.
-	SecretKeyEncrypted string `json:"secretKeyEncrypted,omitempty" yaml:"secretKeyEncrypted,omitempty"`
+	SecretKey string `json:"secretKey,omitempty" yaml:"secretKey,omitempty"`
 	// Operation object of the Bucket.
 	Operation string `json:"operation,omitempty" yaml:"operation,omitempty"`
 	Links *interface{} `json:"links" yaml:"links"`

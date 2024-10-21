@@ -43,7 +43,7 @@ type BucketExtendedInfo struct {
 	// Endpoint of the Bucket.
 	AccessKeyId string `json:"accessKeyId,omitempty" yaml:"accessKeyId,omitempty"`
 	// Endpoint of the Bucket.
-	SecretKeyEncrypted string `json:"secretKeyEncrypted,omitempty" yaml:"secretKeyEncrypted,omitempty"`
+	SecretKey string `json:"secretKey,omitempty" yaml:"secretKey,omitempty"`
 	// Infrastructure information
 	Infrastructure *interface{} `json:"infrastructure" yaml:"infrastructure"`
 	Links *interface{} `json:"links,omitempty" yaml:"links,omitempty"`

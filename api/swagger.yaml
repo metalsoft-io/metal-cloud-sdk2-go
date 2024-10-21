@@ -53,6 +53,8 @@ tags:
 - name: Extension
   description: Extensions are used to add extended functionality like deploying clustered
     application.
+- name: Extension Instance
+  description: Extension instances part of an infrastructure.
 - name: AI
   description: Eli AI assistant operations.
 paths:
@@ -2005,6 +2007,10 @@ paths:
       responses:
         "200":
           description: Retrieved the specified infrastructure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InfrastructureDto'
         "400":
           description: Bad request
         "401":
@@ -2054,6 +2060,47 @@ paths:
           description: Conflict
         "422":
           description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/servers/{serverId}/actions/re-register:
+    post:
+      tags:
+      - Server
+      summary: Re-register a server
+      description: Re-registers a server
+      operationId: InventoryController_1_reRegisterServer
+      parameters:
+      - name: serverId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Server re-registration initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerReRegistrationResponseDto'
+        "202":
+          description: Server re-registration accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerRegistrationResponseDto'
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
         "500":
           description: Internal Server Error
       security:
@@ -3816,46 +3863,6 @@ paths:
       security:
       - JWT: []
       - apiKey: []
-  /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/hosts:
-    get:
-      tags:
-      - Bucket
-      summary: Get the Hosts of Bucket
-      description: Returns the Hosts of Bucket
-      operationId: getBucketHosts
-      parameters:
-      - name: infrastructureId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: number
-      - name: bucketId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: number
-      responses:
-        "200":
-          description: Returns the Hosts of Bucket
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BucketHosts'
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - JWT: []
-      - apiKey: []
   /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/start:
     post:
       tags:
@@ -3919,55 +3926,6 @@ paths:
       responses:
         "200":
           description: The Bucket successfully scheduled to stop
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-        "409":
-          description: Conflict
-      security:
-      - JWT: []
-      - apiKey: []
-  /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/modify-instance-array-hosts-bulk:
-    post:
-      tags:
-      - Bucket
-      summary: Updates Instance Array Hosts on the Bucket
-      description: Updates Instance Array Hosts on the Bucket
-      operationId: updateBucketInstanceArrayHostsBulk
-      parameters:
-      - name: infrastructureId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: number
-      - name: bucketId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: number
-      requestBody:
-        description: The Bucket Instance Array Hosts update object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BucketHostsModifyBulk'
-        required: true
-      responses:
-        "200":
-          description: The Bucket information successfully updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BucketHosts'
         "400":
           description: Bad request
         "401":
@@ -4538,12 +4496,13 @@ paths:
       parameters:
       - name: filter
         in: query
-        description: Filter by extension status
+        description: "Filter extension by status, name, label and description"
         required: false
         style: form
         explode: true
         schema:
           type: string
+        example: "status=draft,name=abc,label=lbl,description=desc"
       responses:
         "200":
           description: The list of the available extensions
@@ -4553,6 +4512,8 @@ paths:
                 $ref: '#/components/schemas/ExtensionListDto'
         "401":
           description: Unauthorized
+        "500":
+          description: Internal Server Error
       security:
       - JWT: []
       - apiKey: []
@@ -4568,7 +4529,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateExtensionDto'
+              $ref: '#/components/schemas/ExtensionDefinitionDto'
         required: true
       responses:
         "201":
@@ -4583,6 +4544,8 @@ paths:
           description: Unauthorized
         "403":
           description: Forbidden
+        "500":
+          description: Internal Server Error
       security:
       - JWT: []
       - apiKey: []
@@ -4612,6 +4575,8 @@ paths:
           description: Unauthorized
         "404":
           description: Extension not found
+        "500":
+          description: Internal Server Error
       security:
       - JWT: []
       - apiKey: []
@@ -4634,7 +4599,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateExtensionDto'
+              $ref: '#/components/schemas/ExtensionDefinitionDto'
         required: true
       responses:
         "200":
@@ -4651,6 +4616,8 @@ paths:
           description: Forbidden
         "409":
           description: Conflict
+        "500":
+          description: Internal Server Error
       security:
       - JWT: []
       - apiKey: []
@@ -4678,6 +4645,8 @@ paths:
           description: Extension not found
         "409":
           description: The extension state does not allow this operation.
+        "500":
+          description: Internal Server Error
       security:
       - JWT: []
       - apiKey: []
@@ -4705,6 +4674,258 @@ paths:
           description: Extension not found
         "409":
           description: The extension state does not allow this operation.
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/infrastructures/{infrastructureId}/extension-instances:
+    post:
+      tags:
+      - Extension Instance
+      summary: Add extension instance to an infrastructure
+      description: Adds extension instance to the specified infrastructure. Note that
+        a infrastructure deploy is needed for the changes to take effect.
+      operationId: createExtensionInstance
+      parameters:
+      - name: infrastructureId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The extension instance to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateExtensionInstanceDto'
+        required: true
+      responses:
+        "201":
+          description: The details of created extension instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionInstanceDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Infrastructure not found
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/extension-instances:
+    get:
+      tags:
+      - Extension Instance
+      summary: Get extension instances list
+      description: Returns list of extension instances
+      operationId: getExtensionInstances
+      parameters:
+      - name: page
+        in: query
+        description: "Page number used in pagination, starts with `0`"
+        required: false
+        style: form
+        explode: true
+        schema:
+          title: Page
+          maximum: 10000
+          exclusiveMaximum: true
+          minimum: 0
+          exclusiveMinimum: true
+          type: number
+          format: int32
+      - name: limit
+        in: query
+        description: "Number of items per page, default value `20`"
+        required: false
+        style: form
+        explode: true
+        schema:
+          title: Limit
+          maximum: 100
+          exclusiveMaximum: true
+          minimum: 1
+          exclusiveMinimum: true
+          type: number
+          format: int32
+      - name: sortBy
+        in: query
+        description: "Sort by field and direction, example: `id:ASC`"
+        required: false
+        style: form
+        explode: true
+        schema:
+          title: SortBy
+          type: string
+      - name: filter
+        in: query
+        description: "Filter expression for a field, see [nestjs paginate documentation](https://github.com/ppetzold/nestjs-paginate#filters).<br\
+          \ /> <br /> Use `\"filter.*\"` as a way to specify the field to filter on,\
+          \ see the example bellow: <br /> <br /> "
+        required: false
+        style: form
+        explode: true
+        schema:
+          title: Filter
+          type: object
+      responses:
+        "200":
+          description: The list of extension instances
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionInstanceListDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Infrastructure not found
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/extension-instances/{extensionInstanceId}:
+    get:
+      tags:
+      - Extension Instance
+      summary: Get extension instance details
+      description: Returns the details of the specified extension instance
+      operationId: getExtensionInstance
+      parameters:
+      - name: extensionInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The details of the specified extension instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionInstanceDto'
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Extension instance not found
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      - apiKey: []
+    delete:
+      tags:
+      - Extension Instance
+      summary: Delete extension instance
+      description: Deletes the specified extension instance
+      operationId: deleteExtensionInstance
+      parameters:
+      - name: extensionInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "204":
+          description: The specified extension instance was successfully deleted
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Extension instance not found
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      - apiKey: []
+    patch:
+      tags:
+      - Extension Instance
+      summary: Update extension instance configuration
+      description: Updates the specified extension instance
+      operationId: updateExtensionInstance
+      parameters:
+      - name: extensionInstanceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: The extension instance changes
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateExtensionInstanceDto'
+        required: true
+      responses:
+        "200":
+          description: The specified extension instance was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionInstanceDto'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Extension instance not found
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      - apiKey: []
+  /api/v2/extensions/{extensionId}/definition:
+    get:
+      tags:
+      - Extension
+      summary: Get definition for an extension
+      description: Returns the definition of the specified extension
+      operationId: getExtensionDefinition
+      parameters:
+      - name: extensionId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: The definition of the specified extension
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionDefinitionDto'
+        "401":
+          description: Unauthorized
+        "404":
+          description: Extension not found
+        "500":
+          description: Internal Server Error
       security:
       - JWT: []
       - apiKey: []
@@ -7057,6 +7278,21 @@ components:
         id: 0.8008281904610115
         uuid: uuid
         jobInfo: ""
+    ServerReRegistrationResponseDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: number
+          description: The id of the server.
+        jobInfo:
+          description: The job info of the server.
+          allOf:
+          - $ref: '#/components/schemas/AfcJobInfo'
+      example:
+        id: 0.8008281904610115
+        jobInfo: ""
     Server:
       required:
       - administrationState
@@ -8276,7 +8512,7 @@ components:
           type: string
           description: Endpoint of the Bucket.
           nullable: true
-        secretKeyEncrypted:
+        secretKey:
           type: string
           description: Endpoint of the Bucket.
           nullable: true
@@ -8289,6 +8525,7 @@ components:
         accessKeyId: accessKeyId
         sizeGB: 5.962133916683182
         dnsSubdomainId: 2.3021358869347655
+        secretKey: secretKey
         createdTimestamp: createdTimestamp
         changeId: 6.027456183070403
         label: label
@@ -8303,7 +8540,6 @@ components:
         links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
-        secretKeyEncrypted: secretKeyEncrypted
         guiSettings: ""
     CreateBucket:
       required:
@@ -8385,7 +8621,7 @@ components:
           type: string
           description: Endpoint of the Bucket.
           nullable: true
-        secretKeyEncrypted:
+        secretKey:
           type: string
           description: Endpoint of the Bucket.
           nullable: true
@@ -8398,6 +8634,7 @@ components:
         accessKeyId: accessKeyId
         sizeGB: 5.962133916683182
         dnsSubdomainId: 2.3021358869347655
+        secretKey: secretKey
         createdTimestamp: createdTimestamp
         changeId: 6.027456183070403
         label: label
@@ -8411,7 +8648,6 @@ components:
         links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
-        secretKeyEncrypted: secretKeyEncrypted
         guiSettings: ""
         operation: operation
     BucketList:
@@ -8437,6 +8673,7 @@ components:
         - accessKeyId: accessKeyId
           sizeGB: 5.962133916683182
           dnsSubdomainId: 2.3021358869347655
+          secretKey: secretKey
           createdTimestamp: createdTimestamp
           changeId: 6.027456183070403
           label: label
@@ -8451,11 +8688,11 @@ components:
           links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
-          secretKeyEncrypted: secretKeyEncrypted
           guiSettings: ""
         - accessKeyId: accessKeyId
           sizeGB: 5.962133916683182
           dnsSubdomainId: 2.3021358869347655
+          secretKey: secretKey
           createdTimestamp: createdTimestamp
           changeId: 6.027456183070403
           label: label
@@ -8470,7 +8707,6 @@ components:
           links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
-          secretKeyEncrypted: secretKeyEncrypted
           guiSettings: ""
         meta: {}
         links: {}
@@ -8487,41 +8723,6 @@ components:
           description: Settings for GUI. In JSON format
           allOf:
           - $ref: '#/components/schemas/GenericGUISettings'
-    BucketHosts:
-      required:
-      - instanceArray
-      type: object
-      properties:
-        instanceArray:
-          type: object
-          description: Bucket Hosts.
-      example:
-        instanceArray: {}
-    BucketHostBulkOperation:
-      required:
-      - instanceArrayId
-      - operationType
-      type: object
-      properties:
-        instanceArrayId:
-          type: number
-          description: Id of the Instance Array Host that will be modified
-        operationType:
-          type: string
-          description: Operation type for the Instance Array Host
-          enum:
-          - add
-          - remove
-    BucketHostsModifyBulk:
-      required:
-      - bucketHostBulkOperations
-      type: object
-      properties:
-        bucketHostBulkOperations:
-          type: array
-          description: List of operations to be performed on the File Share Hosts
-          items:
-            $ref: '#/components/schemas/BucketHostBulkOperation'
     RemoteConsoleInfoDto:
       required:
       - activeConnections
@@ -8672,14 +8873,17 @@ components:
           description: The extension unique slug
           example: my-app
         name:
+          maxLength: 255
           type: string
           description: The extension name
           example: My App
         label:
+          maxLength: 63
           type: string
           description: The extension unique label
           example: incus_6x
         description:
+          maxLength: 255
           type: string
           description: The extension description
           example: My App Description
@@ -8687,14 +8891,11 @@ components:
           type: string
           description: Extension status
           example: draft
-        version:
-          type: string
       example:
         name: My App
         description: My App Description
         id: 10
         label: incus_6x
-        version: version
         slug: my-app
         status: draft
     ExtensionListDto:
@@ -8713,14 +8914,12 @@ components:
           description: My App Description
           id: 10
           label: incus_6x
-          version: version
           slug: my-app
           status: draft
         - name: My App
           description: My App Description
           id: 10
           label: incus_6x
-          version: version
           slug: my-app
           status: draft
     ExtensionDto:
@@ -8741,14 +8940,17 @@ components:
           description: The extension unique slug
           example: my-app
         name:
+          maxLength: 255
           type: string
           description: The extension name
           example: My App
         label:
+          maxLength: 63
           type: string
           description: The extension unique label
           example: incus_6x
         description:
+          maxLength: 255
           type: string
           description: The extension description
           example: My App Description
@@ -8759,61 +8961,462 @@ components:
         definition:
           type: string
           description: Extension definition (JSON)
-        version:
-          type: string
       example:
         name: My App
         description: My App Description
         definition: definition
         id: 10
         label: incus_6x
-        version: version
         slug: my-app
         status: draft
-    CreateExtensionDto:
+    CreateExtensionInstanceDto:
+      type: object
+      properties:
+        extensionId:
+          type: number
+          description: The extension ID.
+          example: 12
+        label:
+          maxLength: 63
+          minLength: 1
+          type: string
+          description: The extension instance label. Will be automatically generated
+            if not provided.
+          example: ext-instance-123
+        variablesExtensionInstance:
+          type: object
+          description: Variables for extension instance.
+          example: |-
+            {
+                        "inputVarInt": 1024
+                        "inputVarStr1": "some string 1",
+                        "inputVarStr2": "some string 2"
+                    }
+    ExtensionInstanceDto:
       required:
-      - definition
-      - description
+      - extensionId
+      - id
+      - infrastructureId
+      - label
+      type: object
+      properties:
+        id:
+          type: number
+          description: The extension instance ID.
+          example: 1
+        infrastructureId:
+          type: number
+          description: The infrastructure ID.
+          example: 1
+        extensionId:
+          type: number
+          description: The extension ID.
+          example: 12
+        label:
+          maxLength: 63
+          minLength: 1
+          type: string
+          description: The extension instance label. Will be automatically generated
+            if not provided.
+          example: ext-instance-123
+        variablesExtensionInstance:
+          type: object
+          description: Variables for extension instance.
+          example: |-
+            {
+                        "inputVarInt": 1024
+                        "inputVarStr1": "some string 1",
+                        "inputVarStr2": "some string 2"
+                    }
+      example:
+        infrastructureId: 1
+        id: 1
+        label: ext-instance-123
+        variablesExtensionInstance: |-
+          {
+                      "inputVarInt": 1024
+                      "inputVarStr1": "some string 1",
+                      "inputVarStr2": "some string 2"
+                  }
+        extensionId: 12
+    ExtensionInstanceListDto:
+      required:
+      - extensionInstances
+      type: object
+      properties:
+        extensionInstances:
+          type: array
+          description: The list of extension instances.
+          items:
+            $ref: '#/components/schemas/ExtensionInstanceDto'
+      example:
+        extensionInstances:
+        - infrastructureId: 1
+          id: 1
+          label: ext-instance-123
+          variablesExtensionInstance: |-
+            {
+                        "inputVarInt": 1024
+                        "inputVarStr1": "some string 1",
+                        "inputVarStr2": "some string 2"
+                    }
+          extensionId: 12
+        - infrastructureId: 1
+          id: 1
+          label: ext-instance-123
+          variablesExtensionInstance: |-
+            {
+                        "inputVarInt": 1024
+                        "inputVarStr1": "some string 1",
+                        "inputVarStr2": "some string 2"
+                    }
+          extensionId: 12
+    UpdateExtensionInstanceDto:
+      type: object
+      properties:
+        infrastructureId:
+          type: number
+          description: The infrastructure ID.
+          example: 1
+        extensionId:
+          type: number
+          description: The extension ID.
+          example: 12
+        label:
+          maxLength: 63
+          minLength: 1
+          type: string
+          description: The extension instance label. Will be automatically generated
+            if not provided.
+          example: ext-instance-123
+        variablesExtensionInstance:
+          type: object
+          description: Variables for extension instance.
+          example: |-
+            {
+                        "inputVarInt": 1024
+                        "inputVarStr1": "some string 1",
+                        "inputVarStr2": "some string 2"
+                    }
+    DependencyDto:
+      required:
+      - metalsoft_controller_version
+      - os_templates
+      type: object
+      properties:
+        metalsoft_controller_version:
+          type: string
+          description: Metalsoft Controller version required by the dependency.
+        os_templates:
+          type: array
+          description: List of OS templates required by the dependency.
+          items:
+            type: string
+      example:
+        metalsoft_controller_version: metalsoft_controller_version
+        os_templates:
+        - os_templates
+        - os_templates
+    InputDto:
+      required:
+      - label
       - name
+      - type
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the input.
+        type:
+          type: string
+          description: Type of the input.
+        name:
+          type: string
+          description: Name of the input.
+        validation_regexp:
+          type: string
+          description: Validation regex pattern for the input.
+    InstanceArrayDto:
+      required:
+      - instance_count
+      - instance_count_validation
+      - label
+      - min_cpu
+      - min_instance_count
+      - min_ram
+      - os_templates
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the instance array.
+        min_instance_count:
+          type: number
+          description: Minimum instance count for the instance array.
+        instance_count_validation:
+          type: string
+          description: Validation rules for instance count.
+        instance_count:
+          type: string
+          description: Instance count value.
+        min_cpu:
+          type: number
+          description: Minimum CPU required for the instance array.
+        min_ram:
+          type: number
+          description: Minimum RAM required for the instance array.
+        connected_shared_drive_arrays:
+          type: string
+          description: Connected shared drive arrays.
+          nullable: true
+        os_templates:
+          type: string
+          description: OS templates for the instance array.
+    SharedDriveArrayDto:
+      required:
+      - label
+      - min_size
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the shared drive array.
+        min_size:
+          type: string
+          description: Minimum size of the shared drive array.
+    InfrastructureRequirementDto:
+      type: object
+      properties:
+        instance_array:
+          description: Instance array details for the infrastructure requirement.
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/InstanceArrayDto'
+        shared_drive_array:
+          description: Shared drive array details for the infrastructure requirement.
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/SharedDriveArrayDto'
+    OutputDto:
+      required:
+      - controller_url
+      - name
+      - template
+      - type
+      type: object
+      properties:
+        controller_url:
+          type: string
+          description: Controller URL for the output.
+        type:
+          type: string
+          description: Type of the output.
+        name:
+          type: string
+          description: Name of the output.
+        template:
+          type: string
+          description: Template of the output.
+    AssetDto:
+      required:
+      - label
+      - name
+      - required_assets
+      - type
+      - url
       type: object
       properties:
         name:
           type: string
-          description: The extension name
-          example: My App
+          description: Name of the asset.
+        url:
+          type: string
+          description: URL of the asset.
         label:
           type: string
-          description: The extension unique label
-          example: incus_6x
-        description:
+          description: Label of the asset.
+        type:
           type: string
-          description: The extension description
-          example: My App Description
-        definition:
+          description: Type of the asset.
+        required_assets:
           type: string
-          description: Extension definition (JSON)
-        version:
-          type: string
-    UpdateExtensionDto:
+          description: Required assets for the asset.
+    AnsibleTaskDto:
+      required:
+      - args
+      - asset
       type: object
       properties:
+        asset:
+          type: string
+          description: Asset for the Ansible task.
+        args:
+          type: string
+          description: Arguments for the Ansible task.
+    WebhookDto:
+      required:
+      - args
+      - asset
+      type: object
+      properties:
+        asset:
+          type: string
+          description: Asset for the webhook task.
+        args:
+          type: string
+          description: Arguments for the webhook task.
+    TaskDto:
+      type: object
+      properties:
+        run_ansible_task:
+          description: Run an Ansible task.
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/AnsibleTaskDto'
+        run_webhook:
+          description: Run a webhook task.
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/WebhookDto'
+    EntrypointActionDto:
+      type: object
+      properties:
+        pre_deploy:
+          type: array
+          description: Pre-deploy tasks.
+          nullable: true
+          items:
+            $ref: '#/components/schemas/TaskDto'
+        post_deploy:
+          type: array
+          description: Post-deploy tasks.
+          nullable: true
+          items:
+            $ref: '#/components/schemas/TaskDto'
+    EntrypointDto:
+      type: object
+      properties:
+        oncreate:
+          description: Actions for the onCreate event.
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/EntrypointActionDto'
+        onedit:
+          description: Actions for the onEdit event.
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/EntrypointActionDto'
+        ondelete:
+          description: Actions for the onDelete event.
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/EntrypointActionDto'
+    PlatformServiceDto:
+      required:
+      - assets
+      - entrypoints
+      - infrastructure_requirements
+      - inputs
+      - outputs
+      type: object
+      properties:
+        inputs:
+          type: array
+          description: List of inputs for the platform service.
+          items:
+            $ref: '#/components/schemas/InputDto'
+        infrastructure_requirements:
+          type: array
+          description: List of infrastructure requirements for the platform service.
+          items:
+            $ref: '#/components/schemas/InfrastructureRequirementDto'
+        outputs:
+          type: array
+          description: List of outputs for the platform service.
+          items:
+            $ref: '#/components/schemas/OutputDto'
+        assets:
+          type: array
+          description: List of assets for the platform service.
+          items:
+            $ref: '#/components/schemas/AssetDto'
+        entrypoints:
+          type: array
+          description: List of entrypoints for the platform service.
+          items:
+            $ref: '#/components/schemas/EntrypointDto'
+    ExtensionDefinitionDto:
+      required:
+      - dependencies
+      - extension_version
+      - icon
+      - kind
+      - name
+      - platform_service
+      - schema_version
+      - type
+      - vendor
+      type: object
+      properties:
+        kind:
+          type: string
+          description: The kind of extension.
+        schema_version:
+          type: string
+          description: Schema version of the extension.
         name:
+          maxLength: 255
           type: string
-          description: The extension name
-          example: My App
+          description: Name of the extension.
         label:
+          maxLength: 63
           type: string
-          description: The extension unique label
-          example: incus_6x
+          description: Label of the extension.
+        type:
+          type: string
+          description: Type of the extension.
+        vendor:
+          type: string
+          description: Vendor of the extension.
+        extension_version:
+          type: string
+          description: Version of the extension.
         description:
+          maxLength: 255
           type: string
-          description: The extension description
-          example: My App Description
-        definition:
+          description: Description of the extension.
+        icon:
           type: string
-          description: Extension definition (JSON)
-        version:
-          type: string
+          description: Icon of the extension.
+        dependencies:
+          type: array
+          description: List of dependencies for the extension.
+          items:
+            $ref: '#/components/schemas/DependencyDto'
+        platform_service:
+          description: Platform service information for the extension.
+          allOf:
+          - $ref: '#/components/schemas/PlatformServiceDto'
+      example:
+        schema_version: schema_version
+        extension_version: extension_version
+        kind: kind
+        vendor: vendor
+        name: name
+        icon: icon
+        description: description
+        label: label
+        type: type
+        dependencies:
+        - metalsoft_controller_version: metalsoft_controller_version
+          os_templates:
+          - os_templates
+          - os_templates
+        - metalsoft_controller_version: metalsoft_controller_version
+          os_templates:
+          - os_templates
+          - os_templates
+        platform_service: ""
     Version:
       required:
       - version

@@ -22,5 +22,4 @@ type ExtensionInfoDto struct {
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Extension status
 	Status string `json:"status,omitempty" yaml:"status,omitempty"`
-	Version string `json:"version,omitempty" yaml:"version,omitempty"`
 }

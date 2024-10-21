@@ -24,5 +24,4 @@ type ExtensionDto struct {
 	Status string `json:"status" yaml:"status"`
 	// Extension definition (JSON)
 	Definition string `json:"definition" yaml:"definition"`
-	Version string `json:"version,omitempty" yaml:"version,omitempty"`
 }

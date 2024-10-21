@@ -7,13 +7,11 @@ Method | HTTP request | Description
 [**CreateInfrastructureBucket**](BucketApi.md#CreateInfrastructureBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets | Creates a Bucket
 [**DeleteBucket**](BucketApi.md#DeleteBucket) | **Delete** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Deletes a Bucket
 [**GetBucket**](BucketApi.md#GetBucket) | **Get** /api/v2/buckets/{bucketId} | Get Bucket information
-[**GetBucketHosts**](BucketApi.md#GetBucketHosts) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/hosts | Get the Hosts of Bucket
 [**GetInfrastructureBucket**](BucketApi.md#GetInfrastructureBucket) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Get Bucket information
 [**GetInfrastructureBuckets**](BucketApi.md#GetInfrastructureBuckets) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets | Get all Buckets
 [**StartBucket**](BucketApi.md#StartBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/start | Starts a Bucket
 [**StopBucket**](BucketApi.md#StopBucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/stop | Stops a Bucket
 [**UpdateBucket**](BucketApi.md#UpdateBucket) | **Patch** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Updates Bucket information
-[**UpdateBucketInstanceArrayHostsBulk**](BucketApi.md#UpdateBucketInstanceArrayHostsBulk) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/modify-instance-array-hosts-bulk | Updates Instance Array Hosts on the Bucket
 
 # **CreateInfrastructureBucket**
 > Bucket CreateInfrastructureBucket(ctx, body, infrastructureId)
@@ -89,35 +87,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BucketExtendedInfo**](BucketExtendedInfo.md)
-
-### Authorization
-
-[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GetBucketHosts**
-> BucketHosts GetBucketHosts(ctx, infrastructureId, bucketId)
-Get the Hosts of Bucket
-
-Returns the Hosts of Bucket
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **infrastructureId** | **float64**|  | 
-  **bucketId** | **float64**|  | 
-
-### Return type
-
-[**BucketHosts**](BucketHosts.md)
 
 ### Authorization
 
@@ -263,36 +232,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Bucket**](Bucket.md)
-
-### Authorization
-
-[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **UpdateBucketInstanceArrayHostsBulk**
-> BucketHosts UpdateBucketInstanceArrayHostsBulk(ctx, body, infrastructureId, bucketId)
-Updates Instance Array Hosts on the Bucket
-
-Updates Instance Array Hosts on the Bucket
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**BucketHostsModifyBulk**](BucketHostsModifyBulk.md)| The Bucket Instance Array Hosts update object | 
-  **infrastructureId** | **float64**|  | 
-  **bucketId** | **float64**|  | 
-
-### Return type
-
-[**BucketHosts**](BucketHosts.md)
 
 ### Authorization
 

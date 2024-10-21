@@ -35,20 +35,24 @@ Class | Method | HTTP request | Description
 *BucketApi* | [**CreateInfrastructureBucket**](docs/BucketApi.md#createinfrastructurebucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets | Creates a Bucket
 *BucketApi* | [**DeleteBucket**](docs/BucketApi.md#deletebucket) | **Delete** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Deletes a Bucket
 *BucketApi* | [**GetBucket**](docs/BucketApi.md#getbucket) | **Get** /api/v2/buckets/{bucketId} | Get Bucket information
-*BucketApi* | [**GetBucketHosts**](docs/BucketApi.md#getbuckethosts) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/hosts | Get the Hosts of Bucket
 *BucketApi* | [**GetInfrastructureBucket**](docs/BucketApi.md#getinfrastructurebucket) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Get Bucket information
 *BucketApi* | [**GetInfrastructureBuckets**](docs/BucketApi.md#getinfrastructurebuckets) | **Get** /api/v2/infrastructures/{infrastructureId}/buckets | Get all Buckets
 *BucketApi* | [**StartBucket**](docs/BucketApi.md#startbucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/start | Starts a Bucket
 *BucketApi* | [**StopBucket**](docs/BucketApi.md#stopbucket) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/stop | Stops a Bucket
 *BucketApi* | [**UpdateBucket**](docs/BucketApi.md#updatebucket) | **Patch** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId} | Updates Bucket information
-*BucketApi* | [**UpdateBucketInstanceArrayHostsBulk**](docs/BucketApi.md#updatebucketinstancearrayhostsbulk) | **Post** /api/v2/infrastructures/{infrastructureId}/buckets/{bucketId}/actions/modify-instance-array-hosts-bulk | Updates Instance Array Hosts on the Bucket
 *ConfigurationApi* | [**GetConfiguration**](docs/ConfigurationApi.md#getconfiguration) | **Get** /api/v2/config | Get configuration
 *ExtensionApi* | [**ArchiveExtension**](docs/ExtensionApi.md#archiveextension) | **Post** /api/v2/extensions/{extensionId}/actions/archive | Archive published extension
 *ExtensionApi* | [**CreateExtension**](docs/ExtensionApi.md#createextension) | **Post** /api/v2/extensions | Create extension
 *ExtensionApi* | [**GetExtension**](docs/ExtensionApi.md#getextension) | **Get** /api/v2/extensions/{extensionId} | Get details for an extension
+*ExtensionApi* | [**GetExtensionDefinition**](docs/ExtensionApi.md#getextensiondefinition) | **Get** /api/v2/extensions/{extensionId}/definition | Get definition for an extension
 *ExtensionApi* | [**GetExtensions**](docs/ExtensionApi.md#getextensions) | **Get** /api/v2/extensions | List available extensions
 *ExtensionApi* | [**PublishExtension**](docs/ExtensionApi.md#publishextension) | **Post** /api/v2/extensions/{extensionId}/actions/publish | Publish draft extension
 *ExtensionApi* | [**UpdateExtension**](docs/ExtensionApi.md#updateextension) | **Patch** /api/v2/extensions/{extensionId} | Update extension
+*ExtensionInstanceApi* | [**CreateExtensionInstance**](docs/ExtensionInstanceApi.md#createextensioninstance) | **Post** /api/v2/infrastructures/{infrastructureId}/extension-instances | Add extension instance to an infrastructure
+*ExtensionInstanceApi* | [**DeleteExtensionInstance**](docs/ExtensionInstanceApi.md#deleteextensioninstance) | **Delete** /api/v2/extension-instances/{extensionInstanceId} | Delete extension instance
+*ExtensionInstanceApi* | [**GetExtensionInstance**](docs/ExtensionInstanceApi.md#getextensioninstance) | **Get** /api/v2/extension-instances/{extensionInstanceId} | Get extension instance details
+*ExtensionInstanceApi* | [**GetExtensionInstances**](docs/ExtensionInstanceApi.md#getextensioninstances) | **Get** /api/v2/extension-instances | Get extension instances list
+*ExtensionInstanceApi* | [**UpdateExtensionInstance**](docs/ExtensionInstanceApi.md#updateextensioninstance) | **Patch** /api/v2/extension-instances/{extensionInstanceId} | Update extension instance configuration
 *FileShareApi* | [**CreateInfrastructureFileShare**](docs/FileShareApi.md#createinfrastructurefileshare) | **Post** /api/v2/infrastructures/{infrastructureId}/file-shares | Creates a File Share
 *FileShareApi* | [**DeleteFileShare**](docs/FileShareApi.md#deletefileshare) | **Delete** /api/v2/infrastructures/{infrastructureId}/file-shares/{fileShareId} | Deletes a File Share
 *FileShareApi* | [**GetFileShare**](docs/FileShareApi.md#getfileshare) | **Get** /api/v2/file-shares/{fileShareId} | Get File Share information
@@ -95,6 +99,7 @@ Class | Method | HTTP request | Description
 *ServerApi* | [**GetServerPowerState**](docs/ServerApi.md#getserverpowerstate) | **Post** /api/v2/servers/{serverId}/actions/get-power | Gets the power state of a server
 *ServerApi* | [**GetServerRemoteConsoleInfo**](docs/ServerApi.md#getserverremoteconsoleinfo) | **Get** /api/v2/servers/{serverId}/remote-console-info | Get Remote Console information
 *ServerApi* | [**GetServerVNCInfo**](docs/ServerApi.md#getservervncinfo) | **Get** /api/v2/servers/{serverId}/vnc-info | Get VNC information
+*ServerApi* | [**InventoryController1ReRegisterServer**](docs/ServerApi.md#inventorycontroller1reregisterserver) | **Post** /api/v2/servers/{serverId}/actions/re-register | Re-register a server
 *ServerApi* | [**RegisterServer**](docs/ServerApi.md#registerserver) | **Post** /api/v2/servers | Initialize server registration
 *ServerApi* | [**ResetServerToFactoryDefaults**](docs/ServerApi.md#resetservertofactorydefaults) | **Post** /api/v2/servers/{serverId}/actions/factory-reset | Resets a server to factory defaults
 *ServerApi* | [**SetServerPowerState**](docs/ServerApi.md#setserverpowerstate) | **Post** /api/v2/servers/{serverId}/actions/set-power | Sets the power state of a server
@@ -171,11 +176,20 @@ Class | Method | HTTP request | Description
  - [AllOfBucketExtendedInfoGuiSettings](docs/AllOfBucketExtendedInfoGuiSettings.md)
  - [AllOfBucketGuiSettings](docs/AllOfBucketGuiSettings.md)
  - [AllOfCreateAccountDtoAddress](docs/AllOfCreateAccountDtoAddress.md)
+ - [AllOfEntrypointDtoOncreate](docs/AllOfEntrypointDtoOncreate.md)
+ - [AllOfEntrypointDtoOndelete](docs/AllOfEntrypointDtoOndelete.md)
+ - [AllOfEntrypointDtoOnedit](docs/AllOfEntrypointDtoOnedit.md)
+ - [AllOfExtensionDefinitionDtoPlatformService](docs/AllOfExtensionDefinitionDtoPlatformService.md)
  - [AllOfFileShareExtendedInfoGuiSettings](docs/AllOfFileShareExtendedInfoGuiSettings.md)
  - [AllOfFileShareGuiSettings](docs/AllOfFileShareGuiSettings.md)
  - [AllOfInfrastructureDeployOptionsShutdownOptions](docs/AllOfInfrastructureDeployOptionsShutdownOptions.md)
+ - [AllOfInfrastructureRequirementDtoInstanceArray](docs/AllOfInfrastructureRequirementDtoInstanceArray.md)
+ - [AllOfInfrastructureRequirementDtoSharedDriveArray](docs/AllOfInfrastructureRequirementDtoSharedDriveArray.md)
  - [AllOfResourcePoolWithStatsDtoStatistics](docs/AllOfResourcePoolWithStatsDtoStatistics.md)
+ - [AllOfServerReRegistrationResponseDtoJobInfo](docs/AllOfServerReRegistrationResponseDtoJobInfo.md)
  - [AllOfServerRegistrationResponseDtoJobInfo](docs/AllOfServerRegistrationResponseDtoJobInfo.md)
+ - [AllOfTaskDtoRunAnsibleTask](docs/AllOfTaskDtoRunAnsibleTask.md)
+ - [AllOfTaskDtoRunWebhook](docs/AllOfTaskDtoRunWebhook.md)
  - [AllOfUpdateAccountDtoAddress](docs/AllOfUpdateAccountDtoAddress.md)
  - [AllOfUpdateBucketGuiSettings](docs/AllOfUpdateBucketGuiSettings.md)
  - [AllOfUpdateFileShareGuiSettings](docs/AllOfUpdateFileShareGuiSettings.md)
@@ -185,18 +199,17 @@ Class | Method | HTTP request | Description
  - [AllOfUpdateVmInstanceGroupGuiSettings](docs/AllOfUpdateVmInstanceGroupGuiSettings.md)
  - [AllOfUserDtoLimits](docs/AllOfUserDtoLimits.md)
  - [AllOfVmInstanceGroupGuiSettings](docs/AllOfVmInstanceGroupGuiSettings.md)
+ - [AnsibleTaskDto](docs/AnsibleTaskDto.md)
+ - [AssetDto](docs/AssetDto.md)
  - [AuthenticationProvider](docs/AuthenticationProvider.md)
  - [AuthenticationProviderUpdate](docs/AuthenticationProviderUpdate.md)
  - [Bucket](docs/Bucket.md)
  - [BucketExtendedInfo](docs/BucketExtendedInfo.md)
- - [BucketHostBulkOperation](docs/BucketHostBulkOperation.md)
- - [BucketHosts](docs/BucketHosts.md)
- - [BucketHostsModifyBulk](docs/BucketHostsModifyBulk.md)
  - [BucketList](docs/BucketList.md)
  - [ChangeUserAccountDto](docs/ChangeUserAccountDto.md)
  - [CreateAccountDto](docs/CreateAccountDto.md)
  - [CreateBucket](docs/CreateBucket.md)
- - [CreateExtensionDto](docs/CreateExtensionDto.md)
+ - [CreateExtensionInstanceDto](docs/CreateExtensionInstanceDto.md)
  - [CreateFileShare](docs/CreateFileShare.md)
  - [CreateNetwork](docs/CreateNetwork.md)
  - [CreateResourcePoolDto](docs/CreateResourcePoolDto.md)
@@ -207,9 +220,15 @@ Class | Method | HTTP request | Description
  - [CreateVmInstanceGroupInterface](docs/CreateVmInstanceGroupInterface.md)
  - [CreateVmPool](docs/CreateVmPool.md)
  - [CreateVmType](docs/CreateVmType.md)
+ - [DependencyDto](docs/DependencyDto.md)
  - [DiscoveryQueryDto](docs/DiscoveryQueryDto.md)
+ - [EntrypointActionDto](docs/EntrypointActionDto.md)
+ - [EntrypointDto](docs/EntrypointDto.md)
+ - [ExtensionDefinitionDto](docs/ExtensionDefinitionDto.md)
  - [ExtensionDto](docs/ExtensionDto.md)
  - [ExtensionInfoDto](docs/ExtensionInfoDto.md)
+ - [ExtensionInstanceDto](docs/ExtensionInstanceDto.md)
+ - [ExtensionInstanceListDto](docs/ExtensionInstanceListDto.md)
  - [ExtensionListDto](docs/ExtensionListDto.md)
  - [FileShare](docs/FileShare.md)
  - [FileShareExtendedInfo](docs/FileShareExtendedInfo.md)
@@ -221,25 +240,33 @@ Class | Method | HTTP request | Description
  - [InfrastructureDeployOptions](docs/InfrastructureDeployOptions.md)
  - [InfrastructureDeployShutdownOptions](docs/InfrastructureDeployShutdownOptions.md)
  - [InfrastructureDto](docs/InfrastructureDto.md)
+ - [InfrastructureRequirementDto](docs/InfrastructureRequirementDto.md)
+ - [InputDto](docs/InputDto.md)
+ - [InstanceArrayDto](docs/InstanceArrayDto.md)
  - [Link](docs/Link.md)
  - [Network](docs/Network.md)
  - [NetworkDevicePortStatusDto](docs/NetworkDevicePortStatusDto.md)
  - [NetworkDeviceStatusDto](docs/NetworkDeviceStatusDto.md)
+ - [OutputDto](docs/OutputDto.md)
  - [PatchStorage](docs/PatchStorage.md)
+ - [PlatformServiceDto](docs/PlatformServiceDto.md)
  - [RemoteConsoleInfoDto](docs/RemoteConsoleInfoDto.md)
  - [ResourcePoolDto](docs/ResourcePoolDto.md)
  - [ResourcePoolStatistics](docs/ResourcePoolStatistics.md)
  - [ResourcePoolWithStatsDto](docs/ResourcePoolWithStatsDto.md)
  - [Server](docs/Server.md)
  - [ServerPowerSetDto](docs/ServerPowerSetDto.md)
+ - [ServerReRegistrationResponseDto](docs/ServerReRegistrationResponseDto.md)
  - [ServerRegistrationDto](docs/ServerRegistrationDto.md)
  - [ServerRegistrationResponseDto](docs/ServerRegistrationResponseDto.md)
  - [ServerVncInfoDto](docs/ServerVncInfoDto.md)
+ - [SharedDriveArrayDto](docs/SharedDriveArrayDto.md)
  - [StorageRegistrationResponse](docs/StorageRegistrationResponse.md)
  - [StorageRegistrationResponseJobInfo](docs/StorageRegistrationResponseJobInfo.md)
+ - [TaskDto](docs/TaskDto.md)
  - [UpdateAccountDto](docs/UpdateAccountDto.md)
  - [UpdateBucket](docs/UpdateBucket.md)
- - [UpdateExtensionDto](docs/UpdateExtensionDto.md)
+ - [UpdateExtensionInstanceDto](docs/UpdateExtensionInstanceDto.md)
  - [UpdateFileShare](docs/UpdateFileShare.md)
  - [UpdateResourcePoolDto](docs/UpdateResourcePoolDto.md)
  - [UpdateUserDto](docs/UpdateUserDto.md)
@@ -276,6 +303,7 @@ Class | Method | HTTP request | Description
  - [VmPoolList](docs/VmPoolList.md)
  - [VmType](docs/VmType.md)
  - [VmTypeList](docs/VmTypeList.md)
+ - [WebhookDto](docs/WebhookDto.md)
 
 ## Documentation For Authorization
 

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **GuiSettings** | [***AllOfBucketGuiSettings**](AllOfBucketGuiSettings.md) | GUI settings for the Bucket. This is a JSON object. | [optional] [default to null]
 **Endpoint** | **string** | Endpoint of the Bucket. | [optional] [default to null]
 **AccessKeyId** | **string** | Endpoint of the Bucket. | [optional] [default to null]
-**SecretKeyEncrypted** | **string** | Endpoint of the Bucket. | [optional] [default to null]
+**SecretKey** | **string** | Endpoint of the Bucket. | [optional] [default to null]
 **Operation** | **string** | Operation object of the Bucket. | [optional] [default to null]
 **Links** | [***interface{}**](interface{}.md) |  | [default to null]
 

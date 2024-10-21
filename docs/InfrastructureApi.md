@@ -39,7 +39,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetInfrastructure**
-> GetInfrastructure(ctx, infrastructureId)
+> InfrastructureDto GetInfrastructure(ctx, infrastructureId)
 Retrieves the specified infrastructure
 
 Retrieves the specified infrastructure
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**InfrastructureDto**](InfrastructureDto.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
