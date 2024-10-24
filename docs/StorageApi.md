@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetStorage**](StorageApi.md#GetStorage) | **Get** /api/v2/storages/{storageId} | Retrieves a Storage
 [**GetStorageBuckets**](StorageApi.md#GetStorageBuckets) | **Get** /api/v2/storages/{storageId}/buckets | Get all Buckets linked to the specified storage
 [**GetStorageFileShares**](StorageApi.md#GetStorageFileShares) | **Get** /api/v2/storages/{storageId}/file-shares | Get all File Shares linked to the specified storage
+[**GetStorages**](StorageApi.md#GetStorages) | **Get** /api/v2/storages | Get a list of Storages
 [**UpdateStorage**](StorageApi.md#UpdateStorage) | **Patch** /api/v2/storages/{storageId} | Updates a Storage
 
 # **CreateStorage**
@@ -110,6 +111,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FileShareList**](FileShareList.md)
+
+### Authorization
+
+[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetStorages**
+> StorageList GetStorages(ctx, )
+Get a list of Storages
+
+Returns a list of Storages
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**StorageList**](StorageList.md)
 
 ### Authorization
 

@@ -2023,6 +2023,31 @@ paths:
       - JWT: []
       - apiKey: []
   /api/v2/servers:
+    get:
+      tags:
+      - Server
+      summary: Get a list of Servers
+      description: Returns a list of Servers
+      operationId: getServers
+      parameters: []
+      responses:
+        "200":
+          description: Returns a list of Servers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerList'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
     post:
       tags:
       - Server
@@ -2071,7 +2096,7 @@ paths:
       - Server
       summary: Re-register a server
       description: Re-registers a server
-      operationId: InventoryController_1_reRegisterServer
+      operationId: reRegisterServer
       parameters:
       - name: serverId
         in: path
@@ -2139,6 +2164,66 @@ paths:
       security:
       - JWT: []
       - apiKey: []
+  /api/v2/storages:
+    get:
+      tags:
+      - Storage
+      summary: Get a list of Storages
+      description: Returns a list of Storages
+      operationId: getStorages
+      parameters: []
+      responses:
+        "200":
+          description: Returns a list of Storages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageList'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - JWT: []
+      - apiKey: []
+    post:
+      tags:
+      - Storage
+      summary: Creates a Storage
+      description: Creates a Storage
+      operationId: createStorage
+      parameters: []
+      requestBody:
+        description: The Storage create object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStorage'
+        required: true
+      responses:
+        "200":
+          description: The Storage successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageRegistrationResponse'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+      security:
+      - JWT: []
+      - apiKey: []
   /api/v2/storages/{storageId}:
     get:
       tags:
@@ -2198,41 +2283,6 @@ paths:
       responses:
         "200":
           description: The Storage successfully updated
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-        "409":
-          description: Conflict
-      security:
-      - JWT: []
-      - apiKey: []
-  /api/v2/storages:
-    post:
-      tags:
-      - Storage
-      summary: Creates a Storage
-      description: Creates a Storage
-      operationId: createStorage
-      parameters: []
-      requestBody:
-        description: The Storage create object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateStorage'
-        required: true
-      responses:
-        "200":
-          description: The Storage successfully created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StorageRegistrationResponse'
         "400":
           description: Bad request
         "401":
@@ -7534,6 +7584,370 @@ components:
         administrationState: managed
         impiVersion: impiVersion
         username: username
+    ServerList:
+      required:
+      - data
+      - links
+      - meta
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of Servers
+          items:
+            $ref: '#/components/schemas/Server'
+        meta:
+          type: object
+          description: Meta information
+        links:
+          type: object
+          description: Links to other resources
+      example:
+        data:
+        - datacenterName: datacenterName
+          mgmtSnmpPasswordEncrypted: mgmtSnmpPasswordEncrypted
+          serverSupportsOobProvisioning: 1.1730742509559433
+          passwordEncrypted: passwordEncrypted
+          diskCount: 3.616076749251911
+          serverId: 0.8008281904610115
+          processorCoreMhz: 5.637376656633329
+          powerStatus: unknown
+          serverCreatedTimestamp: serverCreatedTimestamp
+          serverDhcpStatus: quarantine
+          model: model
+          bmcMacAddress: bmcMacAddress
+          bootLastUpdateTimestamp: bootLastUpdateTimestamp
+          gpuCount: 9.369310271410669
+          serverSupportsSol: 6.84685269835264
+          vncPasswordEncrypted: 7.386281948385884
+          vncPort: 4.145608029883936
+          serialNumber: serialNumber
+          submodel: submodel
+          registeredTimestamp: registeredTimestamp
+          isBasicCampusEndpoint: 1.2315135367772556
+          gpuInfo:
+          - {}
+          - {}
+          processorThreads: 9.301444243932576
+          serverCleanupPolicyId: 1.0246457001441578
+          serverDiskWipe: 5.025004791520295
+          processorCpuMark: 7.061401241503109
+          ramGbytes: 1.4658129805029452
+          biosInfo: {}
+          serverTypeId: 6.027456183070403
+          requiresReRegister: 1.4894159098541704
+          serverStatus: registering
+          serverDiskCount: 9.965781217890562
+          vendorInfo: {}
+          serverClass: unknown
+          vendorSkuId: vendorSkuId
+          serverUUID: serverUUID
+          serverMetricsMetadata: {}
+          processorCoreCount: 2.3021358869347655
+          vendor: vendor
+          serverSupportsVirtualMedia: 7.457744773683766
+          supportsFcProvisioning: 6.683562403749608
+          processorName: processorName
+          managementAddress: managementAddress
+          serverCapacityMbps: 4.965218492984954
+          processorCount: 5.962133916683182
+          serverComments: serverComments
+          mgmtSnmpPort: 2.027123023002322
+          powerStatusLastUpdateTimestamp: powerStatusLastUpdateTimestamp
+          administrationState: managed
+          impiVersion: impiVersion
+          username: username
+        - datacenterName: datacenterName
+          mgmtSnmpPasswordEncrypted: mgmtSnmpPasswordEncrypted
+          serverSupportsOobProvisioning: 1.1730742509559433
+          passwordEncrypted: passwordEncrypted
+          diskCount: 3.616076749251911
+          serverId: 0.8008281904610115
+          processorCoreMhz: 5.637376656633329
+          powerStatus: unknown
+          serverCreatedTimestamp: serverCreatedTimestamp
+          serverDhcpStatus: quarantine
+          model: model
+          bmcMacAddress: bmcMacAddress
+          bootLastUpdateTimestamp: bootLastUpdateTimestamp
+          gpuCount: 9.369310271410669
+          serverSupportsSol: 6.84685269835264
+          vncPasswordEncrypted: 7.386281948385884
+          vncPort: 4.145608029883936
+          serialNumber: serialNumber
+          submodel: submodel
+          registeredTimestamp: registeredTimestamp
+          isBasicCampusEndpoint: 1.2315135367772556
+          gpuInfo:
+          - {}
+          - {}
+          processorThreads: 9.301444243932576
+          serverCleanupPolicyId: 1.0246457001441578
+          serverDiskWipe: 5.025004791520295
+          processorCpuMark: 7.061401241503109
+          ramGbytes: 1.4658129805029452
+          biosInfo: {}
+          serverTypeId: 6.027456183070403
+          requiresReRegister: 1.4894159098541704
+          serverStatus: registering
+          serverDiskCount: 9.965781217890562
+          vendorInfo: {}
+          serverClass: unknown
+          vendorSkuId: vendorSkuId
+          serverUUID: serverUUID
+          serverMetricsMetadata: {}
+          processorCoreCount: 2.3021358869347655
+          vendor: vendor
+          serverSupportsVirtualMedia: 7.457744773683766
+          supportsFcProvisioning: 6.683562403749608
+          processorName: processorName
+          managementAddress: managementAddress
+          serverCapacityMbps: 4.965218492984954
+          processorCount: 5.962133916683182
+          serverComments: serverComments
+          mgmtSnmpPort: 2.027123023002322
+          powerStatusLastUpdateTimestamp: powerStatusLastUpdateTimestamp
+          administrationState: managed
+          impiVersion: impiVersion
+          username: username
+        meta: {}
+        links: {}
+    Storage:
+      required:
+      - drivePriority
+      - inMaintenance
+      - managementHost
+      - managementPassword
+      - managementUsername
+      - name
+      - sharedDrivePriority
+      - siteId
+      - storageDriver
+      - storageId
+      - storageTechnology
+      - storageType
+      - subnetType
+      type: object
+      properties:
+        storageId:
+          type: number
+          description: Id of the Storage
+        userId:
+          type: number
+          description: Id of the owner
+        siteId:
+          type: number
+          description: Id of the site
+        storageDriver:
+          type: string
+          description: Storage driver
+          enum:
+          - dummy_driver
+          - nexenta3
+          - nexenta4
+          - bigstep_storage
+          - hp_msa_1040
+          - unity_storage
+          - power_max
+          - power_flex
+          - power_scale
+          - ecs
+        storageTechnology:
+          type: string
+          description: Storage technology
+          enum:
+          - block
+          - file
+          - object
+        storageType:
+          type: string
+          description: Storage type
+          enum:
+          - iscsi_ssd
+          - iscsi_hdd
+          - dummy
+        name:
+          type: string
+          description: Name of the storage
+        iscsiHost:
+          type: string
+          description: ISCSI host
+        iscsiPort:
+          type: number
+          description: ISCSI port
+        managementHost:
+          type: string
+          description: Management host
+        managementUsername:
+          type: string
+          description: Username
+        managementPassword:
+          type: string
+          description: Password
+        options:
+          type: object
+          description: Options for the storage
+        inMaintenance:
+          type: number
+          description: Specifies if the storage is in maintenance
+        targetIQN:
+          type: string
+          description: Target IQN
+        isExperimental:
+          type: number
+          description: Specifies if the storage is experimental
+        drivePriority:
+          type: number
+          description: Specifies if the drive priority
+          default: 50
+        sharedDrivePriority:
+          type: number
+          description: Specifies if the drive priority
+          default: 50
+        alternateSanIPs:
+          type: array
+          description: Alternate SAN IPs
+          items:
+            type: string
+        tags:
+          type: array
+          description: Tags
+          items:
+            type: string
+        portGroupAllocationOrder:
+          type: object
+          description: Port group allocation order
+        portGroupPhysicalPorts:
+          type: object
+          description: Port group physical ports
+        defaultIoLimitPolicy:
+          type: string
+          description: Default IO limit policy
+        subnetType:
+          type: string
+          description: Subnet type
+          enum:
+          - ipv4
+          - ipv6
+        arrayId:
+          type: string
+          description: Array id
+        directorId:
+          type: string
+          description: Director id
+      example:
+        inMaintenance: 5.637376656633329
+        storageTechnology: block
+        managementHost: managementHost
+        managementUsername: managementUsername
+        storageDriver: dummy_driver
+        targetIQN: targetIQN
+        options: {}
+        drivePriority: 7.061401241503109
+        iscsiPort: 5.962133916683182
+        portGroupPhysicalPorts: {}
+        storageId: 0.8008281904610115
+        alternateSanIPs:
+        - alternateSanIPs
+        - alternateSanIPs
+        portGroupAllocationOrder: {}
+        directorId: directorId
+        userId: 6.027456183070403
+        arrayId: arrayId
+        sharedDrivePriority: 9.301444243932576
+        tags:
+        - tags
+        - tags
+        defaultIoLimitPolicy: defaultIoLimitPolicy
+        isExperimental: 2.3021358869347655
+        managementPassword: managementPassword
+        name: name
+        siteId: 1.4658129805029452
+        storageType: iscsi_ssd
+        subnetType: ipv4
+        iscsiHost: iscsiHost
+    StorageList:
+      required:
+      - data
+      - links
+      - meta
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of Storages
+          items:
+            $ref: '#/components/schemas/Storage'
+        meta:
+          type: object
+          description: Meta information
+        links:
+          type: object
+          description: Links to other resources
+      example:
+        data:
+        - inMaintenance: 5.637376656633329
+          storageTechnology: block
+          managementHost: managementHost
+          managementUsername: managementUsername
+          storageDriver: dummy_driver
+          targetIQN: targetIQN
+          options: {}
+          drivePriority: 7.061401241503109
+          iscsiPort: 5.962133916683182
+          portGroupPhysicalPorts: {}
+          storageId: 0.8008281904610115
+          alternateSanIPs:
+          - alternateSanIPs
+          - alternateSanIPs
+          portGroupAllocationOrder: {}
+          directorId: directorId
+          userId: 6.027456183070403
+          arrayId: arrayId
+          sharedDrivePriority: 9.301444243932576
+          tags:
+          - tags
+          - tags
+          defaultIoLimitPolicy: defaultIoLimitPolicy
+          isExperimental: 2.3021358869347655
+          managementPassword: managementPassword
+          name: name
+          siteId: 1.4658129805029452
+          storageType: iscsi_ssd
+          subnetType: ipv4
+          iscsiHost: iscsiHost
+        - inMaintenance: 5.637376656633329
+          storageTechnology: block
+          managementHost: managementHost
+          managementUsername: managementUsername
+          storageDriver: dummy_driver
+          targetIQN: targetIQN
+          options: {}
+          drivePriority: 7.061401241503109
+          iscsiPort: 5.962133916683182
+          portGroupPhysicalPorts: {}
+          storageId: 0.8008281904610115
+          alternateSanIPs:
+          - alternateSanIPs
+          - alternateSanIPs
+          portGroupAllocationOrder: {}
+          directorId: directorId
+          userId: 6.027456183070403
+          arrayId: arrayId
+          sharedDrivePriority: 9.301444243932576
+          tags:
+          - tags
+          - tags
+          defaultIoLimitPolicy: defaultIoLimitPolicy
+          isExperimental: 2.3021358869347655
+          managementPassword: managementPassword
+          name: name
+          siteId: 1.4658129805029452
+          storageType: iscsi_ssd
+          subnetType: ipv4
+          iscsiHost: iscsiHost
+        meta: {}
+        links: {}
     StorageRegistrationResponse:
       required:
       - id
@@ -8986,12 +9400,10 @@ components:
         variablesExtensionInstance:
           type: object
           description: Variables for extension instance.
-          example: |-
-            {
-                        "inputVarInt": 1024
-                        "inputVarStr1": "some string 1",
-                        "inputVarStr2": "some string 2"
-                    }
+          example:
+            inputVarInt: 1024
+            inputVarStr1: some string 1
+            inputVarStr2: some string 2
     ExtensionInstanceDto:
       required:
       - extensionId
@@ -9022,22 +9434,33 @@ components:
         variablesExtensionInstance:
           type: object
           description: Variables for extension instance.
-          example: |-
-            {
-                        "inputVarInt": 1024
-                        "inputVarStr1": "some string 1",
-                        "inputVarStr2": "some string 2"
-                    }
+          example:
+            inputVarInt: 1024
+            inputVarStr1: some string 1
+            inputVarStr2: some string 2
+        ansibleBundlesInfo:
+          type: object
+          description: Ansible bundles info.
+          example:
+            my_ansible_bundle_1:
+              url: http://url_to_bundle
+              path: path_to_bundle
+              file_name: bundle_name
+              token: uuid_token
       example:
         infrastructureId: 1
+        ansibleBundlesInfo:
+          my_ansible_bundle_1:
+            url: http://url_to_bundle
+            path: path_to_bundle
+            file_name: bundle_name
+            token: uuid_token
         id: 1
         label: ext-instance-123
-        variablesExtensionInstance: |-
-          {
-                      "inputVarInt": 1024
-                      "inputVarStr1": "some string 1",
-                      "inputVarStr2": "some string 2"
-                  }
+        variablesExtensionInstance:
+          inputVarInt: 1024
+          inputVarStr1: some string 1
+          inputVarStr2: some string 2
         extensionId: 12
     ExtensionInstanceListDto:
       required:
@@ -9052,24 +9475,32 @@ components:
       example:
         extensionInstances:
         - infrastructureId: 1
+          ansibleBundlesInfo:
+            my_ansible_bundle_1:
+              url: http://url_to_bundle
+              path: path_to_bundle
+              file_name: bundle_name
+              token: uuid_token
           id: 1
           label: ext-instance-123
-          variablesExtensionInstance: |-
-            {
-                        "inputVarInt": 1024
-                        "inputVarStr1": "some string 1",
-                        "inputVarStr2": "some string 2"
-                    }
+          variablesExtensionInstance:
+            inputVarInt: 1024
+            inputVarStr1: some string 1
+            inputVarStr2: some string 2
           extensionId: 12
         - infrastructureId: 1
+          ansibleBundlesInfo:
+            my_ansible_bundle_1:
+              url: http://url_to_bundle
+              path: path_to_bundle
+              file_name: bundle_name
+              token: uuid_token
           id: 1
           label: ext-instance-123
-          variablesExtensionInstance: |-
-            {
-                        "inputVarInt": 1024
-                        "inputVarStr1": "some string 1",
-                        "inputVarStr2": "some string 2"
-                    }
+          variablesExtensionInstance:
+            inputVarInt: 1024
+            inputVarStr1: some string 1
+            inputVarStr2: some string 2
           extensionId: 12
     UpdateExtensionInstanceDto:
       type: object
@@ -9092,12 +9523,19 @@ components:
         variablesExtensionInstance:
           type: object
           description: Variables for extension instance.
-          example: |-
-            {
-                        "inputVarInt": 1024
-                        "inputVarStr1": "some string 1",
-                        "inputVarStr2": "some string 2"
-                    }
+          example:
+            inputVarInt: 1024
+            inputVarStr1: some string 1
+            inputVarStr2: some string 2
+        ansibleBundlesInfo:
+          type: object
+          description: Ansible bundles info.
+          example:
+            my_ansible_bundle_1:
+              url: http://url_to_bundle
+              path: path_to_bundle
+              file_name: bundle_name
+              token: uuid_token
     DependencyDto:
       required:
       - metalsoft_controller_version

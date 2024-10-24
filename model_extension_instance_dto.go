@@ -20,4 +20,6 @@ type ExtensionInstanceDto struct {
 	Label string `json:"label" yaml:"label"`
 	// Variables for extension instance.
 	VariablesExtensionInstance *interface{} `json:"variablesExtensionInstance,omitempty" yaml:"variablesExtensionInstance,omitempty"`
+	// Ansible bundles info.
+	AnsibleBundlesInfo *interface{} `json:"ansibleBundlesInfo,omitempty" yaml:"ansibleBundlesInfo,omitempty"`
 }

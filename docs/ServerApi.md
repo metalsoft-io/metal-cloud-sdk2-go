@@ -9,7 +9,8 @@ Method | HTTP request | Description
 [**GetServerPowerState**](ServerApi.md#GetServerPowerState) | **Post** /api/v2/servers/{serverId}/actions/get-power | Gets the power state of a server
 [**GetServerRemoteConsoleInfo**](ServerApi.md#GetServerRemoteConsoleInfo) | **Get** /api/v2/servers/{serverId}/remote-console-info | Get Remote Console information
 [**GetServerVNCInfo**](ServerApi.md#GetServerVNCInfo) | **Get** /api/v2/servers/{serverId}/vnc-info | Get VNC information
-[**InventoryController1ReRegisterServer**](ServerApi.md#InventoryController1ReRegisterServer) | **Post** /api/v2/servers/{serverId}/actions/re-register | Re-register a server
+[**GetServers**](ServerApi.md#GetServers) | **Get** /api/v2/servers | Get a list of Servers
+[**ReRegisterServer**](ServerApi.md#ReRegisterServer) | **Post** /api/v2/servers/{serverId}/actions/re-register | Re-register a server
 [**RegisterServer**](ServerApi.md#RegisterServer) | **Post** /api/v2/servers | Initialize server registration
 [**ResetServerToFactoryDefaults**](ServerApi.md#ResetServerToFactoryDefaults) | **Post** /api/v2/servers/{serverId}/actions/factory-reset | Resets a server to factory defaults
 [**SetServerPowerState**](ServerApi.md#SetServerPowerState) | **Post** /api/v2/servers/{serverId}/actions/set-power | Sets the power state of a server
@@ -154,8 +155,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **InventoryController1ReRegisterServer**
-> ServerReRegistrationResponseDto InventoryController1ReRegisterServer(ctx, serverId)
+# **GetServers**
+> ServerList GetServers(ctx, )
+Get a list of Servers
+
+Returns a list of Servers
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ServerList**](ServerList.md)
+
+### Authorization
+
+[JWT](../README.md#JWT), [apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ReRegisterServer**
+> ServerReRegistrationResponseDto ReRegisterServer(ctx, serverId)
 Re-register a server
 
 Re-registers a server

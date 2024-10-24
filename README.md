@@ -99,7 +99,8 @@ Class | Method | HTTP request | Description
 *ServerApi* | [**GetServerPowerState**](docs/ServerApi.md#getserverpowerstate) | **Post** /api/v2/servers/{serverId}/actions/get-power | Gets the power state of a server
 *ServerApi* | [**GetServerRemoteConsoleInfo**](docs/ServerApi.md#getserverremoteconsoleinfo) | **Get** /api/v2/servers/{serverId}/remote-console-info | Get Remote Console information
 *ServerApi* | [**GetServerVNCInfo**](docs/ServerApi.md#getservervncinfo) | **Get** /api/v2/servers/{serverId}/vnc-info | Get VNC information
-*ServerApi* | [**InventoryController1ReRegisterServer**](docs/ServerApi.md#inventorycontroller1reregisterserver) | **Post** /api/v2/servers/{serverId}/actions/re-register | Re-register a server
+*ServerApi* | [**GetServers**](docs/ServerApi.md#getservers) | **Get** /api/v2/servers | Get a list of Servers
+*ServerApi* | [**ReRegisterServer**](docs/ServerApi.md#reregisterserver) | **Post** /api/v2/servers/{serverId}/actions/re-register | Re-register a server
 *ServerApi* | [**RegisterServer**](docs/ServerApi.md#registerserver) | **Post** /api/v2/servers | Initialize server registration
 *ServerApi* | [**ResetServerToFactoryDefaults**](docs/ServerApi.md#resetservertofactorydefaults) | **Post** /api/v2/servers/{serverId}/actions/factory-reset | Resets a server to factory defaults
 *ServerApi* | [**SetServerPowerState**](docs/ServerApi.md#setserverpowerstate) | **Post** /api/v2/servers/{serverId}/actions/set-power | Sets the power state of a server
@@ -107,6 +108,7 @@ Class | Method | HTTP request | Description
 *StorageApi* | [**GetStorage**](docs/StorageApi.md#getstorage) | **Get** /api/v2/storages/{storageId} | Retrieves a Storage
 *StorageApi* | [**GetStorageBuckets**](docs/StorageApi.md#getstoragebuckets) | **Get** /api/v2/storages/{storageId}/buckets | Get all Buckets linked to the specified storage
 *StorageApi* | [**GetStorageFileShares**](docs/StorageApi.md#getstoragefileshares) | **Get** /api/v2/storages/{storageId}/file-shares | Get all File Shares linked to the specified storage
+*StorageApi* | [**GetStorages**](docs/StorageApi.md#getstorages) | **Get** /api/v2/storages | Get a list of Storages
 *StorageApi* | [**UpdateStorage**](docs/StorageApi.md#updatestorage) | **Patch** /api/v2/storages/{storageId} | Updates a Storage
 *SystemApi* | [**GetVersion**](docs/SystemApi.md#getversion) | **Get** /api/v2/version | Get MetalSoft system version
 *UsersApi* | [**ArchiveUser**](docs/UsersApi.md#archiveuser) | **Post** /api/v2/users/{userId}/actions/archive | Archive user
@@ -255,12 +257,15 @@ Class | Method | HTTP request | Description
  - [ResourcePoolStatistics](docs/ResourcePoolStatistics.md)
  - [ResourcePoolWithStatsDto](docs/ResourcePoolWithStatsDto.md)
  - [Server](docs/Server.md)
+ - [ServerList](docs/ServerList.md)
  - [ServerPowerSetDto](docs/ServerPowerSetDto.md)
  - [ServerReRegistrationResponseDto](docs/ServerReRegistrationResponseDto.md)
  - [ServerRegistrationDto](docs/ServerRegistrationDto.md)
  - [ServerRegistrationResponseDto](docs/ServerRegistrationResponseDto.md)
  - [ServerVncInfoDto](docs/ServerVncInfoDto.md)
  - [SharedDriveArrayDto](docs/SharedDriveArrayDto.md)
+ - [Storage](docs/Storage.md)
+ - [StorageList](docs/StorageList.md)
  - [StorageRegistrationResponse](docs/StorageRegistrationResponse.md)
  - [StorageRegistrationResponseJobInfo](docs/StorageRegistrationResponseJobInfo.md)
  - [TaskDto](docs/TaskDto.md)
