@@ -20,6 +20,5 @@ type ResourcePoolWithStatsDto struct {
 	ResourcePoolCreatedTimestamp string `json:"resource_pool_created_timestamp" yaml:"resource_pool_created_timestamp"`
 	// Resource Pool Updated Timestamp
 	ResourcePoolUpdatedTimestamp string `json:"resource_pool_updated_timestamp" yaml:"resource_pool_updated_timestamp"`
-	// Resource Pool statistics for users, servers, and subnet pools
-	Statistics *AllOfResourcePoolWithStatsDtoStatistics `json:"statistics" yaml:"statistics"`
+	Statistics *ResourcePoolStatistics `json:"statistics" yaml:"statistics"`
 }

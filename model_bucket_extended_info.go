@@ -36,8 +36,7 @@ type BucketExtendedInfo struct {
 	DnsSubdomainId float64 `json:"dnsSubdomainId,omitempty" yaml:"dnsSubdomainId,omitempty"`
 	// Id of the VLAN for the Bucket.
 	NetworkVlanId float64 `json:"networkVlanId,omitempty" yaml:"networkVlanId,omitempty"`
-	// GUI settings for the Bucket. This is a JSON object.
-	GuiSettings *AllOfBucketExtendedInfoGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
+	GuiSettings *GenericGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 	// Endpoint of the Bucket.
 	Endpoint string `json:"endpoint,omitempty" yaml:"endpoint,omitempty"`
 	// Endpoint of the Bucket.

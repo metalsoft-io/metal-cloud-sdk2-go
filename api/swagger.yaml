@@ -12,7 +12,7 @@ externalDocs:
   url: https://docs.metalsoft.io/
 servers:
 - url: ""
-  description: This server
+  description: MetalSoft
 tags:
 - name: Security
   description: Security configuration and control.
@@ -2937,7 +2937,12 @@ paths:
           type: number
       responses:
         "200":
-          description: The VM Instance power status was successfully retrieved
+          description: The VM Instance power status
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
           description: Bad request
         "401":
@@ -4579,7 +4584,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExtensionDefinitionDto'
+              $ref: '#/components/schemas/CreateExtensionDto'
         required: true
       responses:
         "201":
@@ -4649,7 +4654,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExtensionDefinitionDto'
+              $ref: '#/components/schemas/UpdateExtensionDto'
         required: true
       responses:
         "200":
@@ -4948,37 +4953,6 @@ paths:
       security:
       - JWT: []
       - apiKey: []
-  /api/v2/extensions/{extensionId}/definition:
-    get:
-      tags:
-      - Extension
-      summary: Get definition for an extension
-      description: Returns the definition of the specified extension
-      operationId: getExtensionDefinition
-      parameters:
-      - name: extensionId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: number
-      responses:
-        "200":
-          description: The definition of the specified extension
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExtensionDefinitionDto'
-        "401":
-          description: Unauthorized
-        "404":
-          description: Extension not found
-        "500":
-          description: Internal Server Error
-      security:
-      - JWT: []
-      - apiKey: []
   /api/v2/config:
     get:
       tags:
@@ -5050,6 +5024,12 @@ components:
         country:
           type: string
           description: The country of the account address
+      example:
+        country: country
+        postalCode: postalCode
+        addressLine1: addressLine1
+        addressLine2: addressLine2
+        state: state
     AccountLimits:
       required:
       - user_resource_server_type_name_to_max_count
@@ -5060,6 +5040,9 @@ components:
           type: object
         wan_subnet_prefix_size_to_max_count:
           type: object
+      example:
+        user_resource_server_type_name_to_max_count: {}
+        wan_subnet_prefix_size_to_max_count: {}
     AccountDto:
       required:
       - id
@@ -5084,9 +5067,7 @@ components:
           type: string
           description: The fiscal number of the account
         address:
-          description: The address of the account
-          allOf:
-          - $ref: '#/components/schemas/AccountAddressDto'
+          $ref: '#/components/schemas/AccountAddressDto'
         primaryContactId:
           type: number
           description: The user ID of the primary contact
@@ -5097,19 +5078,24 @@ components:
           type: number
           description: Whether the account is archived
         limits:
-          description: The limits the user
-          allOf:
-          - $ref: '#/components/schemas/AccountLimits'
+          $ref: '#/components/schemas/AccountLimits'
       example:
         parentAccountId: 0.8008281904610115
         archived: 5.962133916683182
         code: code
-        address: ""
+        address:
+          country: country
+          postalCode: postalCode
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          state: state
         secondaryContactId: 1.4658129805029452
         name: name
         id: 1
         fiscalNumber: fiscalNumber
-        limits: ""
+        limits:
+          user_resource_server_type_name_to_max_count: {}
+          wan_subnet_prefix_size_to_max_count: {}
         primaryContactId: 6.027456183070403
     CreateAccountDto:
       type: object
@@ -5127,9 +5113,7 @@ components:
           type: string
           description: The fiscal number of the account
         address:
-          description: The address of the account
-          allOf:
-          - $ref: '#/components/schemas/AccountAddressDto'
+          $ref: '#/components/schemas/AccountAddressDto'
     UpdateAccountDto:
       type: object
       properties:
@@ -5146,9 +5130,7 @@ components:
           type: string
           description: The fiscal number of the account
         address:
-          description: The address of the account
-          allOf:
-          - $ref: '#/components/schemas/AccountAddressDto'
+          $ref: '#/components/schemas/AccountAddressDto'
         primaryContactId:
           type: number
           description: The user ID of the primary contact
@@ -5427,6 +5409,93 @@ components:
           type: boolean
         allowed_network_profiles:
           type: object
+      example:
+        allow_network_profiles: true
+        wan_subnet_ipv4_max_count: 0.2025324113236393
+        infrastructure_container_cluster_spark_array_allowed: true
+        allowed_network_profiles: {}
+        infrastructure_container_cluster_zookeeper_allowed: true
+        infrastructure_container_platform_max_count: 9.369310271410669
+        show_diagram_app_cluster_type_mapr: true
+        show_diagram_app_cluster_type_cloudera: true
+        infrastructure_vm_instance_group_max_count: 6.704019297950036
+        show_diagram_app_cluster_type_datameer: true
+        infrastructure_container_cluster_postgresql_allowed: true
+        drive_array_drives_max_count: 1.4894159098541704
+        infrastructure_inactive_max_count: 6.438423552598547
+        file_share_max_size_gb: 8.969578798196912
+        vm_instance_group_vm_instances_max_count: 3.353193347011243
+        show_stack_trace: true
+        bucket_max_size_gb: 3.0576100241049344
+        infrastructure_active_max_count: 4.965218492984954
+        show_diagram_app_cluster_type_datastax: true
+        infrastructure_container_cluster_sparksql_allowed: true
+        infrastructure_bucket_max_count: 7.740351818741173
+        enable_custom_subnets: true
+        infrastructure_file_share_max_count: 0.10263654006109402
+        user_resource_servers_max_count: 3.2588565619047607
+        infrastructure_cluster_max_count: 5.025004791520295
+        infrastructure_container_cluster_kafka_allowed: true
+        show_operating_system_images_tab: true
+        drive_array_drives_min_count: 6.84685269835264
+        infrastructure_shared_drive_max_count: 2.8841621266687802
+        enable_custom_raid_configuration: true
+        show_diagram_app_cluster_type_splunk: true
+        show_diagram_app_cluster_type_couchbase: true
+        show_diagram_vm_instance_groups: true
+        infrastructure_container_cluster_zoomdata_allowed: true
+        infrastructure_wan_max_count: 6.778324963048013
+        infrastructure_instance_array_max_count: 3.5571952270680973
+        show_diagram_app_cluster_type_vmware_vsphere: true
+        show_diagram_app_cluster_type_exasol: true
+        show_diagram_app_cluster_type_elasticsearch: true
+        infrastructure_container_cluster_streamsets_allowed: true
+        infrastructure_san_max_count: 1.284659006116532
+        file_share_min_size_gb: 4.652396432933246
+        shared_drive_max_size_mbytes: 7.058770351582356
+        show_legacy_pages: true
+        infrastructure_volume_template_experimental_allowed: true
+        infrastructure_cluster_mysql_allowed: true
+        infrastructure_container_cluster_max_count: 9.965781217890562
+        allow_vlan_overrides: true
+        show_diagram_app_cluster_type_mesos: true
+        vm_instance_max_disk_size_mbytes: 3.0937452626664474
+        wan_subnet_ipv6_max_count: 6.628464275087742
+        bucket_min_size_gb: 3.0205796992916243
+        container_array_containers_max_count: 3.616076749251911
+        drive_max_size_mbytes: 7.457744773683766
+        infrastructure_drive_array_max_count: 9.018348186070783
+        show_diagram_app_cluster_type_hortonworks: true
+        container_array_secrets_max_count: 1.2315135367772556
+        show_diagram_app_cluster_type_kubernetes_eksa: true
+        infrastructure_data_lake_enabled: true
+        infrastructure_lan_max_count: 6.965117697638846
+        server_type_reservation_max_quantity: 0.8851374739011653
+        show_template_assets_view: true
+        instance_array_instances_min_count: 5.944895607614016
+        show_diagram_app_cluster_type_mysql_percona: true
+        user_resource_server_type_name_to_max_count: {}
+        instance_array_instances_max_count: 6.878052220127876
+        show_experimental_pages: true
+        container_array_containers_min_count: 2.027123023002322
+        server_type_reservation_max_count: 7.143538047012306
+        drive_min_size_mbytes: 1.1730742509559433
+        show_eli_chat_bot: true
+        user_ssh_keys_count_max: 4.078845849666752
+        show_diagram_app_cluster_type_kubernetes: true
+        wan_subnet_prefix_size_to_max_count: {}
+        container_array_drive_arrays_max_count: 4.145608029883936
+        container_platform_container_array_max_count: 1.0246457001441578
+        threshold_max_count: 7.04836565559697
+        container_array_drive_arrays_min_count: 7.386281948385884
+        infrastructure_data_lake_max_count: 6.683562403749608
+        infrastructure_deleted_max_count: 8.762042012749001
+        owner_is_billable: true
+        show_diagram_app_cluster_type_vmware_vcf: true
+        storage_types: {}
+        user_resource_iscsi_storage_space_max_gbytes: 5.533258397034986
+        show_diagram_apps_global: true
+        shared_drive_min_size_mbytes: 6.519180951018382
     UserDto:
       required:
       - accessLevel
@@ -5537,9 +5606,7 @@ components:
           type: object
           description: The external IDs of the user
         limits:
-          description: The limits of the user
-          allOf:
-          - $ref: '#/components/schemas/UserLimits'
+          $ref: '#/components/schemas/UserLimits'
         excludeFromReports:
           type: number
           description: Whether the user is excluded from reports
@@ -5581,17 +5648,103 @@ components:
         language: language
         infrastructureIdDefault: 9.301444243932576
         authenticatorMustChange: 6.027456183070403
-        isTestAccount: 2.027123023002322
-        archived: 1.2315135367772556
+        isTestAccount: 1.041444916118296
+        archived: 9.132027271330688
         blocked: 1.4658129805029452
         provider: default
         permissions: {}
-        isBrandManager: 4.145608029883936
+        isBrandManager: 4.678947989005849
         id: 0.8008281904610115
-        isDatastorePublisher: 7.386281948385884
+        isDatastorePublisher: 7.260521264802104
         brand: default
         email: email
-        limits: ""
+        limits:
+          allow_network_profiles: true
+          wan_subnet_ipv4_max_count: 0.2025324113236393
+          infrastructure_container_cluster_spark_array_allowed: true
+          allowed_network_profiles: {}
+          infrastructure_container_cluster_zookeeper_allowed: true
+          infrastructure_container_platform_max_count: 9.369310271410669
+          show_diagram_app_cluster_type_mapr: true
+          show_diagram_app_cluster_type_cloudera: true
+          infrastructure_vm_instance_group_max_count: 6.704019297950036
+          show_diagram_app_cluster_type_datameer: true
+          infrastructure_container_cluster_postgresql_allowed: true
+          drive_array_drives_max_count: 1.4894159098541704
+          infrastructure_inactive_max_count: 6.438423552598547
+          file_share_max_size_gb: 8.969578798196912
+          vm_instance_group_vm_instances_max_count: 3.353193347011243
+          show_stack_trace: true
+          bucket_max_size_gb: 3.0576100241049344
+          infrastructure_active_max_count: 4.965218492984954
+          show_diagram_app_cluster_type_datastax: true
+          infrastructure_container_cluster_sparksql_allowed: true
+          infrastructure_bucket_max_count: 7.740351818741173
+          enable_custom_subnets: true
+          infrastructure_file_share_max_count: 0.10263654006109402
+          user_resource_servers_max_count: 3.2588565619047607
+          infrastructure_cluster_max_count: 5.025004791520295
+          infrastructure_container_cluster_kafka_allowed: true
+          show_operating_system_images_tab: true
+          drive_array_drives_min_count: 6.84685269835264
+          infrastructure_shared_drive_max_count: 2.8841621266687802
+          enable_custom_raid_configuration: true
+          show_diagram_app_cluster_type_splunk: true
+          show_diagram_app_cluster_type_couchbase: true
+          show_diagram_vm_instance_groups: true
+          infrastructure_container_cluster_zoomdata_allowed: true
+          infrastructure_wan_max_count: 6.778324963048013
+          infrastructure_instance_array_max_count: 3.5571952270680973
+          show_diagram_app_cluster_type_vmware_vsphere: true
+          show_diagram_app_cluster_type_exasol: true
+          show_diagram_app_cluster_type_elasticsearch: true
+          infrastructure_container_cluster_streamsets_allowed: true
+          infrastructure_san_max_count: 1.284659006116532
+          file_share_min_size_gb: 4.652396432933246
+          shared_drive_max_size_mbytes: 7.058770351582356
+          show_legacy_pages: true
+          infrastructure_volume_template_experimental_allowed: true
+          infrastructure_cluster_mysql_allowed: true
+          infrastructure_container_cluster_max_count: 9.965781217890562
+          allow_vlan_overrides: true
+          show_diagram_app_cluster_type_mesos: true
+          vm_instance_max_disk_size_mbytes: 3.0937452626664474
+          wan_subnet_ipv6_max_count: 6.628464275087742
+          bucket_min_size_gb: 3.0205796992916243
+          container_array_containers_max_count: 3.616076749251911
+          drive_max_size_mbytes: 7.457744773683766
+          infrastructure_drive_array_max_count: 9.018348186070783
+          show_diagram_app_cluster_type_hortonworks: true
+          container_array_secrets_max_count: 1.2315135367772556
+          show_diagram_app_cluster_type_kubernetes_eksa: true
+          infrastructure_data_lake_enabled: true
+          infrastructure_lan_max_count: 6.965117697638846
+          server_type_reservation_max_quantity: 0.8851374739011653
+          show_template_assets_view: true
+          instance_array_instances_min_count: 5.944895607614016
+          show_diagram_app_cluster_type_mysql_percona: true
+          user_resource_server_type_name_to_max_count: {}
+          instance_array_instances_max_count: 6.878052220127876
+          show_experimental_pages: true
+          container_array_containers_min_count: 2.027123023002322
+          server_type_reservation_max_count: 7.143538047012306
+          drive_min_size_mbytes: 1.1730742509559433
+          show_eli_chat_bot: true
+          user_ssh_keys_count_max: 4.078845849666752
+          show_diagram_app_cluster_type_kubernetes: true
+          wan_subnet_prefix_size_to_max_count: {}
+          container_array_drive_arrays_max_count: 4.145608029883936
+          container_platform_container_array_max_count: 1.0246457001441578
+          threshold_max_count: 7.04836565559697
+          container_array_drive_arrays_min_count: 7.386281948385884
+          infrastructure_data_lake_max_count: 6.683562403749608
+          infrastructure_deleted_max_count: 8.762042012749001
+          owner_is_billable: true
+          show_diagram_app_cluster_type_vmware_vcf: true
+          storage_types: {}
+          user_resource_iscsi_storage_space_max_gbytes: 5.533258397034986
+          show_diagram_apps_global: true
+          shared_drive_min_size_mbytes: 6.519180951018382
         lastLoginType: lastLoginType
         experimentalTags: {}
         isSuspended: 7.061401241503109
@@ -5601,8 +5754,8 @@ components:
         externalIds: {}
         isBillable: 5.637376656633329
         lastLoginTimestamp: lastLoginTimestamp
-        excludeFromReports: 3.616076749251911
-        accountId: 1.0246457001441578
+        excludeFromReports: 4.258773108174356
+        accountId: 0.8774076871421566
         emailStatus: emailStatus
         guiSettings: {}
     CreateUserDto:
@@ -5729,9 +5882,7 @@ components:
           type: string
           description: The new display name of the user
         password:
-          description: The new password of the user
-          allOf:
-          - $ref: '#/components/schemas/UserUpdatePasswordDto'
+          $ref: '#/components/schemas/UserUpdatePasswordDto'
         email:
           type: string
           description: The new login e-mail of the user
@@ -5762,9 +5913,7 @@ components:
           type: boolean
           description: The new blocked status of the user
         suspension:
-          description: The new suspension status of the user
-          allOf:
-          - $ref: '#/components/schemas/UserSuspendDto'
+          $ref: '#/components/schemas/UserSuspendDto'
         accessLevel:
           type: string
           description: The new access level of the user
@@ -5782,9 +5931,7 @@ components:
           type: object
           description: The new custom prices of the user
         permissions:
-          description: The new permissions of the user.
-          allOf:
-          - $ref: '#/components/schemas/UserResourcePermissionsDto'
+          $ref: '#/components/schemas/UserResourcePermissionsDto'
         isTestAccount:
           type: boolean
           description: Whether the user account is a test one.
@@ -6113,6 +6260,10 @@ components:
           type: number
         subnetPools:
           type: number
+      example:
+        servers: 1.4658129805029452
+        subnetPools: 5.962133916683182
+        users: 6.027456183070403
     ResourcePoolWithStatsDto:
       required:
       - resource_pool_created_timestamp
@@ -6139,16 +6290,17 @@ components:
           type: string
           description: Resource Pool Updated Timestamp
         statistics:
-          description: "Resource Pool statistics for users, servers, and subnet pools"
-          allOf:
-          - $ref: '#/components/schemas/ResourcePoolStatistics'
+          $ref: '#/components/schemas/ResourcePoolStatistics'
       example:
         resource_pool_updated_timestamp: resource_pool_updated_timestamp
         resource_pool_created_timestamp: resource_pool_created_timestamp
         resource_pool_id: 0.8008281904610115
         resource_pool_description: resource_pool_description
         resource_pool_label: resource_pool_label
-        statistics: ""
+        statistics:
+          servers: 1.4658129805029452
+          subnetPools: 5.962133916683182
+          users: 6.027456183070403
     ResourcePoolDto:
       required:
       - resource_pool_description
@@ -7194,9 +7346,7 @@ components:
           type: boolean
           description: Allow data loss
         shutdownOptions:
-          description: Shutdown options
-          allOf:
-          - $ref: '#/components/schemas/InfrastructureDeployShutdownOptions'
+          $ref: '#/components/schemas/InfrastructureDeployShutdownOptions'
     InfrastructureDto:
       required:
       - datacenterName
@@ -7293,6 +7443,9 @@ components:
         afcGroupId:
           type: number
           description: The id of the afc job group.
+      example:
+        afcGroupId: 1.4658129805029452
+        afcId: 6.027456183070403
     ServerRegistrationResponseDto:
       required:
       - id
@@ -7310,9 +7463,7 @@ components:
           type: string
           description: The UUID of the server.
         jobInfo:
-          description: The job info of the server.
-          allOf:
-          - $ref: '#/components/schemas/AfcJobInfo'
+          $ref: '#/components/schemas/AfcJobInfo'
         links:
           type: array
           description: Reference links
@@ -7327,7 +7478,9 @@ components:
           href: /api/v2/path/to/resource
         id: 0.8008281904610115
         uuid: uuid
-        jobInfo: ""
+        jobInfo:
+          afcGroupId: 1.4658129805029452
+          afcId: 6.027456183070403
     ServerReRegistrationResponseDto:
       required:
       - id
@@ -7337,12 +7490,12 @@ components:
           type: number
           description: The id of the server.
         jobInfo:
-          description: The job info of the server.
-          allOf:
-          - $ref: '#/components/schemas/AfcJobInfo'
+          $ref: '#/components/schemas/AfcJobInfo'
       example:
         id: 0.8008281904610115
-        jobInfo: ""
+        jobInfo:
+          afcGroupId: 1.4658129805029452
+          afcId: 6.027456183070403
     Server:
       required:
       - administrationState
@@ -8146,6 +8299,12 @@ components:
         userAgent:
           type: string
           description: User agent.
+      example:
+        rowIndex: 2.3021358869347655
+        columnIndex: 7.061401241503109
+        userAgent: userAgent
+        randomInstanceID: randomInstanceID
+        showWidgetChildren: true
     VMInstanceGroup:
       required:
       - changeId
@@ -8219,9 +8378,7 @@ components:
           description: Network Id to Network Profile Id for the VM Instance Group.
             This is a JSON object.
         guiSettings:
-          description: GUI settings for the VM Instance Group. This is a JSON object.
-          allOf:
-          - $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
+          $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
         links:
           type: object
       example:
@@ -8242,7 +8399,12 @@ components:
         links: {}
         id: 0.8008281904610115
         operation: {}
-        guiSettings: ""
+        guiSettings:
+          rowIndex: 2.3021358869347655
+          columnIndex: 7.061401241503109
+          userAgent: userAgent
+          randomInstanceID: randomInstanceID
+          showWidgetChildren: true
         diskSizeGB: 5.962133916683182
         networkIdToNetworkProfileId: {}
     VMInstance:
@@ -8366,9 +8528,7 @@ components:
           items:
             type: string
         guiSettings:
-          description: GUI settings for the VM Instance Group. This is a JSON object.
-          allOf:
-          - $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
+          $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
         vmInstanceGroupInterfaces:
           type: array
           description: Interfaces for the VM Instance Group
@@ -8582,6 +8742,12 @@ components:
         userAgent:
           type: string
           description: User agent.
+      example:
+        rowIndex: 9.301444243932576
+        columnIndex: 3.616076749251911
+        userAgent: userAgent
+        randomInstanceID: randomInstanceID
+        showWidgetChildren: true
     FileShareExtendedInfo:
       required:
       - infrastructure
@@ -8632,9 +8798,7 @@ components:
           type: number
           description: Id of the VLAN for the File Share.
         guiSettings:
-          description: GUI settings for the File Share. This is a JSON object.
-          allOf:
-          - $ref: '#/components/schemas/GenericGUISettings'
+          $ref: '#/components/schemas/GenericGUISettings'
         endpoint:
           type: string
           description: Endpoint of the File Share.
@@ -8661,7 +8825,12 @@ components:
         links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
-        guiSettings: ""
+        guiSettings:
+          rowIndex: 9.301444243932576
+          columnIndex: 3.616076749251911
+          userAgent: userAgent
+          randomInstanceID: randomInstanceID
+          showWidgetChildren: true
     CreateFileShare:
       required:
       - sizeGB
@@ -8731,9 +8900,7 @@ components:
           type: number
           description: Id of the VLAN for the File Share.
         guiSettings:
-          description: GUI settings for the File Share. This is a JSON object.
-          allOf:
-          - $ref: '#/components/schemas/GenericGUISettings'
+          $ref: '#/components/schemas/GenericGUISettings'
         endpoint:
           type: string
           description: Endpoint of the File Share.
@@ -8759,7 +8926,12 @@ components:
         links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
-        guiSettings: ""
+        guiSettings:
+          rowIndex: 9.301444243932576
+          columnIndex: 3.616076749251911
+          userAgent: userAgent
+          randomInstanceID: randomInstanceID
+          showWidgetChildren: true
         operation: operation
     FileShareList:
       required:
@@ -8797,7 +8969,12 @@ components:
           links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
-          guiSettings: ""
+          guiSettings:
+            rowIndex: 9.301444243932576
+            columnIndex: 3.616076749251911
+            userAgent: userAgent
+            randomInstanceID: randomInstanceID
+            showWidgetChildren: true
         - sizeGB: 5.962133916683182
           dnsSubdomainId: 2.3021358869347655
           createdTimestamp: createdTimestamp
@@ -8814,7 +8991,12 @@ components:
           links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
-          guiSettings: ""
+          guiSettings:
+            rowIndex: 9.301444243932576
+            columnIndex: 3.616076749251911
+            userAgent: userAgent
+            randomInstanceID: randomInstanceID
+            showWidgetChildren: true
         meta: {}
         links: {}
     UpdateFileShare:
@@ -8827,9 +9009,7 @@ components:
           type: string
           description: Label of the File Share.
         guiSettings:
-          description: Settings for GUI. In JSON format
-          allOf:
-          - $ref: '#/components/schemas/GenericGUISettings'
+          $ref: '#/components/schemas/GenericGUISettings'
     FileShareHosts:
       required:
       - instanceArray
@@ -8915,9 +9095,7 @@ components:
           type: number
           description: Id of the VLAN for the Bucket.
         guiSettings:
-          description: GUI settings for the Bucket. This is a JSON object.
-          allOf:
-          - $ref: '#/components/schemas/GenericGUISettings'
+          $ref: '#/components/schemas/GenericGUISettings'
         endpoint:
           type: string
           description: Endpoint of the Bucket.
@@ -8954,7 +9132,12 @@ components:
         links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
-        guiSettings: ""
+        guiSettings:
+          rowIndex: 9.301444243932576
+          columnIndex: 3.616076749251911
+          userAgent: userAgent
+          randomInstanceID: randomInstanceID
+          showWidgetChildren: true
     CreateBucket:
       required:
       - sizeGB
@@ -9024,9 +9207,7 @@ components:
           type: number
           description: Id of the VLAN for the Bucket.
         guiSettings:
-          description: GUI settings for the Bucket. This is a JSON object.
-          allOf:
-          - $ref: '#/components/schemas/GenericGUISettings'
+          $ref: '#/components/schemas/GenericGUISettings'
         endpoint:
           type: string
           description: Endpoint of the Bucket.
@@ -9062,7 +9243,12 @@ components:
         links: {}
         id: 0.8008281904610115
         storagePoolId: 5.637376656633329
-        guiSettings: ""
+        guiSettings:
+          rowIndex: 9.301444243932576
+          columnIndex: 3.616076749251911
+          userAgent: userAgent
+          randomInstanceID: randomInstanceID
+          showWidgetChildren: true
         operation: operation
     BucketList:
       required:
@@ -9102,7 +9288,12 @@ components:
           links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
-          guiSettings: ""
+          guiSettings:
+            rowIndex: 9.301444243932576
+            columnIndex: 3.616076749251911
+            userAgent: userAgent
+            randomInstanceID: randomInstanceID
+            showWidgetChildren: true
         - accessKeyId: accessKeyId
           sizeGB: 5.962133916683182
           dnsSubdomainId: 2.3021358869347655
@@ -9121,7 +9312,12 @@ components:
           links: {}
           id: 0.8008281904610115
           storagePoolId: 5.637376656633329
-          guiSettings: ""
+          guiSettings:
+            rowIndex: 9.301444243932576
+            columnIndex: 3.616076749251911
+            userAgent: userAgent
+            randomInstanceID: randomInstanceID
+            showWidgetChildren: true
         meta: {}
         links: {}
     UpdateBucket:
@@ -9134,9 +9330,7 @@ components:
           type: string
           description: Label of the Bucket.
         guiSettings:
-          description: Settings for GUI. In JSON format
-          allOf:
-          - $ref: '#/components/schemas/GenericGUISettings'
+          $ref: '#/components/schemas/GenericGUISettings'
     RemoteConsoleInfoDto:
       required:
       - activeConnections
@@ -9293,6 +9487,7 @@ components:
           example: My App
         label:
           maxLength: 63
+          pattern: "^(?!.*-$)[a-z]{1}[a-z0-9-]{0,62}$"
           type: string
           description: The extension unique label
           example: incus_6x
@@ -9360,6 +9555,7 @@ components:
           example: My App
         label:
           maxLength: 63
+          pattern: "^(?!.*-$)[a-z]{1}[a-z0-9-]{0,62}$"
           type: string
           description: The extension unique label
           example: incus_6x
@@ -9373,16 +9569,79 @@ components:
           description: Extension status
           example: draft
         definition:
-          type: string
+          type: object
           description: Extension definition (JSON)
       example:
         name: My App
         description: My App Description
-        definition: definition
+        definition: {}
         id: 10
         label: incus_6x
         slug: my-app
         status: draft
+    CreateExtensionDto:
+      required:
+      - definition
+      - description
+      - name
+      type: object
+      properties:
+        name:
+          maxLength: 255
+          type: string
+          description: The extension name
+          example: My App
+        label:
+          maxLength: 63
+          pattern: "^(?!.*-$)[a-z]{1}[a-z0-9-]{0,62}$"
+          type: string
+          description: The extension unique label
+          example: incus_6x
+        description:
+          maxLength: 255
+          type: string
+          description: The extension description
+          example: My App Description
+        definition:
+          type: object
+          description: Extension definition (JSON)
+    UpdateExtensionDto:
+      type: object
+      properties:
+        name:
+          maxLength: 255
+          type: string
+          description: The extension name
+          example: My App
+        label:
+          maxLength: 63
+          pattern: "^(?!.*-$)[a-z]{1}[a-z0-9-]{0,62}$"
+          type: string
+          description: The extension unique label
+          example: incus_6x
+        description:
+          maxLength: 255
+          type: string
+          description: The extension description
+          example: My App Description
+        definition:
+          type: object
+          description: Extension definition (JSON)
+    ExtensionVariable:
+      required:
+      - label
+      - value
+      type: object
+      properties:
+        label:
+          type: string
+          description: The variable label.
+        value:
+          type: string
+          description: The variable value.
+      example:
+        label: label
+        value: value
     CreateExtensionInstanceDto:
       type: object
       properties:
@@ -9397,19 +9656,19 @@ components:
           description: The extension instance label. Will be automatically generated
             if not provided.
           example: ext-instance-123
-        variablesExtensionInstance:
-          type: object
-          description: Variables for extension instance.
-          example:
-            inputVarInt: 1024
-            inputVarStr1: some string 1
-            inputVarStr2: some string 2
+        inputVariables:
+          type: array
+          description: Input variables values.
+          items:
+            $ref: '#/components/schemas/ExtensionVariable'
     ExtensionInstanceDto:
       required:
       - extensionId
       - id
       - infrastructureId
+      - inputVariables
       - label
+      - outputVariables
       type: object
       properties:
         id:
@@ -9431,36 +9690,28 @@ components:
           description: The extension instance label. Will be automatically generated
             if not provided.
           example: ext-instance-123
-        variablesExtensionInstance:
-          type: object
-          description: Variables for extension instance.
-          example:
-            inputVarInt: 1024
-            inputVarStr1: some string 1
-            inputVarStr2: some string 2
-        ansibleBundlesInfo:
-          type: object
-          description: Ansible bundles info.
-          example:
-            my_ansible_bundle_1:
-              url: http://url_to_bundle
-              path: path_to_bundle
-              file_name: bundle_name
-              token: uuid_token
+        inputVariables:
+          type: array
+          description: Input variables values.
+          items:
+            $ref: '#/components/schemas/ExtensionVariable'
+        outputVariables:
+          type: array
+          description: Output variables values.
+          items:
+            $ref: '#/components/schemas/ExtensionVariable'
       example:
         infrastructureId: 1
-        ansibleBundlesInfo:
-          my_ansible_bundle_1:
-            url: http://url_to_bundle
-            path: path_to_bundle
-            file_name: bundle_name
-            token: uuid_token
+        outputVariables:
+        - null
+        - null
         id: 1
         label: ext-instance-123
-        variablesExtensionInstance:
-          inputVarInt: 1024
-          inputVarStr1: some string 1
-          inputVarStr2: some string 2
+        inputVariables:
+        - label: label
+          value: value
+        - label: label
+          value: value
         extensionId: 12
     ExtensionInstanceListDto:
       required:
@@ -9475,386 +9726,37 @@ components:
       example:
         extensionInstances:
         - infrastructureId: 1
-          ansibleBundlesInfo:
-            my_ansible_bundle_1:
-              url: http://url_to_bundle
-              path: path_to_bundle
-              file_name: bundle_name
-              token: uuid_token
+          outputVariables:
+          - null
+          - null
           id: 1
           label: ext-instance-123
-          variablesExtensionInstance:
-            inputVarInt: 1024
-            inputVarStr1: some string 1
-            inputVarStr2: some string 2
+          inputVariables:
+          - label: label
+            value: value
+          - label: label
+            value: value
           extensionId: 12
         - infrastructureId: 1
-          ansibleBundlesInfo:
-            my_ansible_bundle_1:
-              url: http://url_to_bundle
-              path: path_to_bundle
-              file_name: bundle_name
-              token: uuid_token
+          outputVariables:
+          - null
+          - null
           id: 1
           label: ext-instance-123
-          variablesExtensionInstance:
-            inputVarInt: 1024
-            inputVarStr1: some string 1
-            inputVarStr2: some string 2
+          inputVariables:
+          - label: label
+            value: value
+          - label: label
+            value: value
           extensionId: 12
     UpdateExtensionInstanceDto:
       type: object
       properties:
-        infrastructureId:
-          type: number
-          description: The infrastructure ID.
-          example: 1
-        extensionId:
-          type: number
-          description: The extension ID.
-          example: 12
-        label:
-          maxLength: 63
-          minLength: 1
-          type: string
-          description: The extension instance label. Will be automatically generated
-            if not provided.
-          example: ext-instance-123
-        variablesExtensionInstance:
-          type: object
-          description: Variables for extension instance.
-          example:
-            inputVarInt: 1024
-            inputVarStr1: some string 1
-            inputVarStr2: some string 2
-        ansibleBundlesInfo:
-          type: object
-          description: Ansible bundles info.
-          example:
-            my_ansible_bundle_1:
-              url: http://url_to_bundle
-              path: path_to_bundle
-              file_name: bundle_name
-              token: uuid_token
-    DependencyDto:
-      required:
-      - metalsoft_controller_version
-      - os_templates
-      type: object
-      properties:
-        metalsoft_controller_version:
-          type: string
-          description: Metalsoft Controller version required by the dependency.
-        os_templates:
+        inputVariables:
           type: array
-          description: List of OS templates required by the dependency.
+          description: Input variables values.
           items:
-            type: string
-      example:
-        metalsoft_controller_version: metalsoft_controller_version
-        os_templates:
-        - os_templates
-        - os_templates
-    InputDto:
-      required:
-      - label
-      - name
-      - type
-      type: object
-      properties:
-        label:
-          type: string
-          description: Label of the input.
-        type:
-          type: string
-          description: Type of the input.
-        name:
-          type: string
-          description: Name of the input.
-        validation_regexp:
-          type: string
-          description: Validation regex pattern for the input.
-    InstanceArrayDto:
-      required:
-      - instance_count
-      - instance_count_validation
-      - label
-      - min_cpu
-      - min_instance_count
-      - min_ram
-      - os_templates
-      type: object
-      properties:
-        label:
-          type: string
-          description: Label of the instance array.
-        min_instance_count:
-          type: number
-          description: Minimum instance count for the instance array.
-        instance_count_validation:
-          type: string
-          description: Validation rules for instance count.
-        instance_count:
-          type: string
-          description: Instance count value.
-        min_cpu:
-          type: number
-          description: Minimum CPU required for the instance array.
-        min_ram:
-          type: number
-          description: Minimum RAM required for the instance array.
-        connected_shared_drive_arrays:
-          type: string
-          description: Connected shared drive arrays.
-          nullable: true
-        os_templates:
-          type: string
-          description: OS templates for the instance array.
-    SharedDriveArrayDto:
-      required:
-      - label
-      - min_size
-      type: object
-      properties:
-        label:
-          type: string
-          description: Label of the shared drive array.
-        min_size:
-          type: string
-          description: Minimum size of the shared drive array.
-    InfrastructureRequirementDto:
-      type: object
-      properties:
-        instance_array:
-          description: Instance array details for the infrastructure requirement.
-          nullable: true
-          allOf:
-          - $ref: '#/components/schemas/InstanceArrayDto'
-        shared_drive_array:
-          description: Shared drive array details for the infrastructure requirement.
-          nullable: true
-          allOf:
-          - $ref: '#/components/schemas/SharedDriveArrayDto'
-    OutputDto:
-      required:
-      - controller_url
-      - name
-      - template
-      - type
-      type: object
-      properties:
-        controller_url:
-          type: string
-          description: Controller URL for the output.
-        type:
-          type: string
-          description: Type of the output.
-        name:
-          type: string
-          description: Name of the output.
-        template:
-          type: string
-          description: Template of the output.
-    AssetDto:
-      required:
-      - label
-      - name
-      - required_assets
-      - type
-      - url
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the asset.
-        url:
-          type: string
-          description: URL of the asset.
-        label:
-          type: string
-          description: Label of the asset.
-        type:
-          type: string
-          description: Type of the asset.
-        required_assets:
-          type: string
-          description: Required assets for the asset.
-    AnsibleTaskDto:
-      required:
-      - args
-      - asset
-      type: object
-      properties:
-        asset:
-          type: string
-          description: Asset for the Ansible task.
-        args:
-          type: string
-          description: Arguments for the Ansible task.
-    WebhookDto:
-      required:
-      - args
-      - asset
-      type: object
-      properties:
-        asset:
-          type: string
-          description: Asset for the webhook task.
-        args:
-          type: string
-          description: Arguments for the webhook task.
-    TaskDto:
-      type: object
-      properties:
-        run_ansible_task:
-          description: Run an Ansible task.
-          nullable: true
-          allOf:
-          - $ref: '#/components/schemas/AnsibleTaskDto'
-        run_webhook:
-          description: Run a webhook task.
-          nullable: true
-          allOf:
-          - $ref: '#/components/schemas/WebhookDto'
-    EntrypointActionDto:
-      type: object
-      properties:
-        pre_deploy:
-          type: array
-          description: Pre-deploy tasks.
-          nullable: true
-          items:
-            $ref: '#/components/schemas/TaskDto'
-        post_deploy:
-          type: array
-          description: Post-deploy tasks.
-          nullable: true
-          items:
-            $ref: '#/components/schemas/TaskDto'
-    EntrypointDto:
-      type: object
-      properties:
-        oncreate:
-          description: Actions for the onCreate event.
-          nullable: true
-          allOf:
-          - $ref: '#/components/schemas/EntrypointActionDto'
-        onedit:
-          description: Actions for the onEdit event.
-          nullable: true
-          allOf:
-          - $ref: '#/components/schemas/EntrypointActionDto'
-        ondelete:
-          description: Actions for the onDelete event.
-          nullable: true
-          allOf:
-          - $ref: '#/components/schemas/EntrypointActionDto'
-    PlatformServiceDto:
-      required:
-      - assets
-      - entrypoints
-      - infrastructure_requirements
-      - inputs
-      - outputs
-      type: object
-      properties:
-        inputs:
-          type: array
-          description: List of inputs for the platform service.
-          items:
-            $ref: '#/components/schemas/InputDto'
-        infrastructure_requirements:
-          type: array
-          description: List of infrastructure requirements for the platform service.
-          items:
-            $ref: '#/components/schemas/InfrastructureRequirementDto'
-        outputs:
-          type: array
-          description: List of outputs for the platform service.
-          items:
-            $ref: '#/components/schemas/OutputDto'
-        assets:
-          type: array
-          description: List of assets for the platform service.
-          items:
-            $ref: '#/components/schemas/AssetDto'
-        entrypoints:
-          type: array
-          description: List of entrypoints for the platform service.
-          items:
-            $ref: '#/components/schemas/EntrypointDto'
-    ExtensionDefinitionDto:
-      required:
-      - dependencies
-      - extension_version
-      - icon
-      - kind
-      - name
-      - platform_service
-      - schema_version
-      - type
-      - vendor
-      type: object
-      properties:
-        kind:
-          type: string
-          description: The kind of extension.
-        schema_version:
-          type: string
-          description: Schema version of the extension.
-        name:
-          maxLength: 255
-          type: string
-          description: Name of the extension.
-        label:
-          maxLength: 63
-          type: string
-          description: Label of the extension.
-        type:
-          type: string
-          description: Type of the extension.
-        vendor:
-          type: string
-          description: Vendor of the extension.
-        extension_version:
-          type: string
-          description: Version of the extension.
-        description:
-          maxLength: 255
-          type: string
-          description: Description of the extension.
-        icon:
-          type: string
-          description: Icon of the extension.
-        dependencies:
-          type: array
-          description: List of dependencies for the extension.
-          items:
-            $ref: '#/components/schemas/DependencyDto'
-        platform_service:
-          description: Platform service information for the extension.
-          allOf:
-          - $ref: '#/components/schemas/PlatformServiceDto'
-      example:
-        schema_version: schema_version
-        extension_version: extension_version
-        kind: kind
-        vendor: vendor
-        name: name
-        icon: icon
-        description: description
-        label: label
-        type: type
-        dependencies:
-        - metalsoft_controller_version: metalsoft_controller_version
-          os_templates:
-          - os_templates
-          - os_templates
-        - metalsoft_controller_version: metalsoft_controller_version
-          os_templates:
-          - os_templates
-          - os_templates
-        platform_service: ""
+            $ref: '#/components/schemas/ExtensionVariable'
     Version:
       required:
       - version

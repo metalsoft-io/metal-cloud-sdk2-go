@@ -18,6 +18,5 @@ type CreateAccountDto struct {
 	Code string `json:"code,omitempty" yaml:"code,omitempty"`
 	// The fiscal number of the account
 	FiscalNumber string `json:"fiscalNumber,omitempty" yaml:"fiscalNumber,omitempty"`
-	// The address of the account
-	Address *AllOfCreateAccountDtoAddress `json:"address,omitempty" yaml:"address,omitempty"`
+	Address *AccountAddressDto `json:"address,omitempty" yaml:"address,omitempty"`
 }

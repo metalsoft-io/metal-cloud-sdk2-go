@@ -14,6 +14,6 @@ type CreateExtensionInstanceDto struct {
 	ExtensionId float64 `json:"extensionId,omitempty" yaml:"extensionId,omitempty"`
 	// The extension instance label. Will be automatically generated if not provided.
 	Label string `json:"label,omitempty" yaml:"label,omitempty"`
-	// Variables for extension instance.
-	VariablesExtensionInstance *interface{} `json:"variablesExtensionInstance,omitempty" yaml:"variablesExtensionInstance,omitempty"`
+	// Input variables values.
+	InputVariables []ExtensionVariable `json:"inputVariables,omitempty" yaml:"inputVariables,omitempty"`
 }

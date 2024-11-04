@@ -14,6 +14,5 @@ type UpdateFileShare struct {
 	SizeGB float64 `json:"sizeGB,omitempty" yaml:"sizeGB,omitempty"`
 	// Label of the File Share.
 	Label string `json:"label,omitempty" yaml:"label,omitempty"`
-	// Settings for GUI. In JSON format
-	GuiSettings *AllOfUpdateFileShareGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
+	GuiSettings *GenericGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 }

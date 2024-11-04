@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ResourcePoolDescription** | **string** | Description of the Resource Pool | [default to null]
 **ResourcePoolCreatedTimestamp** | **string** | Resource Pool Created Timestamp | [default to null]
 **ResourcePoolUpdatedTimestamp** | **string** | Resource Pool Updated Timestamp | [default to null]
-**Statistics** | [***AllOfResourcePoolWithStatsDtoStatistics**](AllOfResourcePoolWithStatsDtoStatistics.md) | Resource Pool statistics for users, servers, and subnet pools | [default to null]
+**Statistics** | [***ResourcePoolStatistics**](ResourcePoolStatistics.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **CustomPrices** | [***interface{}**](interface{}.md) | The custom prices for the user | [default to null]
 **Permissions** | [***interface{}**](interface{}.md) | The permissions of the user | [default to null]
 **ExternalIds** | [***interface{}**](interface{}.md) | The external IDs of the user | [default to null]
-**Limits** | [***AllOfUserDtoLimits**](AllOfUserDtoLimits.md) | The limits of the user | [default to null]
+**Limits** | [***UserLimits**](UserLimits.md) |  | [default to null]
 **ExcludeFromReports** | **float64** | Whether the user is excluded from reports | [default to null]
 **IsTestAccount** | **float64** | Whether the user is a test account | [default to null]
 **PlanType** | **string** | The plan type of the user | [default to vanilla]

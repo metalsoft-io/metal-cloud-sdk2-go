@@ -12,8 +12,7 @@ package sdk2
 type UpdateUserDto struct {
 	// The new display name of the user
 	DisplayName string `json:"displayName,omitempty" yaml:"displayName,omitempty"`
-	// The new password of the user
-	Password *AllOfUpdateUserDtoPassword `json:"password,omitempty" yaml:"password,omitempty"`
+	Password *UserUpdatePasswordDto `json:"password,omitempty" yaml:"password,omitempty"`
 	// The new login e-mail of the user
 	Email string `json:"email,omitempty" yaml:"email,omitempty"`
 	// The redirect URL for the user
@@ -32,8 +31,7 @@ type UpdateUserDto struct {
 	Delegates []UserDelegateDto `json:"delegates,omitempty" yaml:"delegates,omitempty"`
 	// The new blocked status of the user
 	IsBlocked bool `json:"isBlocked,omitempty" yaml:"isBlocked,omitempty"`
-	// The new suspension status of the user
-	Suspension *AllOfUpdateUserDtoSuspension `json:"suspension,omitempty" yaml:"suspension,omitempty"`
+	Suspension *UserSuspendDto `json:"suspension,omitempty" yaml:"suspension,omitempty"`
 	// The new access level of the user
 	AccessLevel string `json:"accessLevel,omitempty" yaml:"accessLevel,omitempty"`
 	// The new promotions of the user.
@@ -42,8 +40,7 @@ type UpdateUserDto struct {
 	ExperimentalTags []UserExperimentalTagDto `json:"experimentalTags,omitempty" yaml:"experimentalTags,omitempty"`
 	// The new custom prices of the user
 	CustomPrices *interface{} `json:"customPrices,omitempty" yaml:"customPrices,omitempty"`
-	// The new permissions of the user.
-	Permissions *AllOfUpdateUserDtoPermissions `json:"permissions,omitempty" yaml:"permissions,omitempty"`
+	Permissions *UserResourcePermissionsDto `json:"permissions,omitempty" yaml:"permissions,omitempty"`
 	// Whether the user account is a test one.
 	IsTestAccount bool `json:"isTestAccount,omitempty" yaml:"isTestAccount,omitempty"`
 	// Whether the user account is billable.

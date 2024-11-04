@@ -18,8 +18,7 @@ type UpdateAccountDto struct {
 	Code string `json:"code,omitempty" yaml:"code,omitempty"`
 	// The fiscal number of the account
 	FiscalNumber string `json:"fiscalNumber,omitempty" yaml:"fiscalNumber,omitempty"`
-	// The address of the account
-	Address *AllOfUpdateAccountDtoAddress `json:"address,omitempty" yaml:"address,omitempty"`
+	Address *AccountAddressDto `json:"address,omitempty" yaml:"address,omitempty"`
 	// The user ID of the primary contact
 	PrimaryContactId float64 `json:"primaryContactId,omitempty" yaml:"primaryContactId,omitempty"`
 	// The user ID of the secondary contact

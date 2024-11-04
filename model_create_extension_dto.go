@@ -17,6 +17,5 @@ type CreateExtensionDto struct {
 	// The extension description
 	Description string `json:"description" yaml:"description"`
 	// Extension definition (JSON)
-	Definition string `json:"definition" yaml:"definition"`
-	Version string `json:"version,omitempty" yaml:"version,omitempty"`
+	Definition *interface{} `json:"definition" yaml:"definition"`
 }

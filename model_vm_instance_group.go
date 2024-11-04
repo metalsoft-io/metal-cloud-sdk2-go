@@ -38,7 +38,6 @@ type VmInstanceGroup struct {
 	VolumeTemplateId float64 `json:"volumeTemplateId,omitempty" yaml:"volumeTemplateId,omitempty"`
 	// Network Id to Network Profile Id for the VM Instance Group. This is a JSON object.
 	NetworkIdToNetworkProfileId *interface{} `json:"networkIdToNetworkProfileId,omitempty" yaml:"networkIdToNetworkProfileId,omitempty"`
-	// GUI settings for the VM Instance Group. This is a JSON object.
-	GuiSettings *AllOfVmInstanceGroupGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
+	GuiSettings *VmInstanceGroupGuiSettingsDto `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 	Links *interface{} `json:"links" yaml:"links"`
 }

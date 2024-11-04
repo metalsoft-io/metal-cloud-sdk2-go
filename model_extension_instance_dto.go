@@ -18,8 +18,8 @@ type ExtensionInstanceDto struct {
 	ExtensionId float64 `json:"extensionId" yaml:"extensionId"`
 	// The extension instance label. Will be automatically generated if not provided.
 	Label string `json:"label" yaml:"label"`
-	// Variables for extension instance.
-	VariablesExtensionInstance *interface{} `json:"variablesExtensionInstance,omitempty" yaml:"variablesExtensionInstance,omitempty"`
-	// Ansible bundles info.
-	AnsibleBundlesInfo *interface{} `json:"ansibleBundlesInfo,omitempty" yaml:"ansibleBundlesInfo,omitempty"`
+	// Input variables values.
+	InputVariables []ExtensionVariable `json:"inputVariables" yaml:"inputVariables"`
+	// Output variables values.
+	OutputVariables []ExtensionVariable `json:"outputVariables" yaml:"outputVariables"`
 }

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the account | [optional] [default to null]
 **Code** | **string** | The code of the account | [optional] [default to null]
 **FiscalNumber** | **string** | The fiscal number of the account | [optional] [default to null]
-**Address** | [***AllOfUpdateAccountDtoAddress**](AllOfUpdateAccountDtoAddress.md) | The address of the account | [optional] [default to null]
+**Address** | [***AccountAddressDto**](AccountAddressDto.md) |  | [optional] [default to null]
 **PrimaryContactId** | **float64** | The user ID of the primary contact | [optional] [default to null]
 **SecondaryContactId** | **float64** | The user ID of the secondary contact | [optional] [default to null]
 

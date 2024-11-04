@@ -58,8 +58,7 @@ type UserDto struct {
 	Permissions *interface{} `json:"permissions" yaml:"permissions"`
 	// The external IDs of the user
 	ExternalIds *interface{} `json:"externalIds" yaml:"externalIds"`
-	// The limits of the user
-	Limits *AllOfUserDtoLimits `json:"limits" yaml:"limits"`
+	Limits *UserLimits `json:"limits" yaml:"limits"`
 	// Whether the user is excluded from reports
 	ExcludeFromReports float64 `json:"excludeFromReports" yaml:"excludeFromReports"`
 	// Whether the user is a test account

@@ -12,6 +12,5 @@ package sdk2
 type ServerReRegistrationResponseDto struct {
 	// The id of the server.
 	Id float64 `json:"id" yaml:"id"`
-	// The job info of the server.
-	JobInfo *AllOfServerReRegistrationResponseDtoJobInfo `json:"jobInfo,omitempty" yaml:"jobInfo,omitempty"`
+	JobInfo *AfcJobInfo `json:"jobInfo,omitempty" yaml:"jobInfo,omitempty"`
 }

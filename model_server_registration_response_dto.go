@@ -16,8 +16,7 @@ type ServerRegistrationResponseDto struct {
 	SerialNumber string `json:"serialNumber" yaml:"serialNumber"`
 	// The UUID of the server.
 	Uuid string `json:"uuid" yaml:"uuid"`
-	// The job info of the server.
-	JobInfo *AllOfServerRegistrationResponseDtoJobInfo `json:"jobInfo,omitempty" yaml:"jobInfo,omitempty"`
+	JobInfo *AfcJobInfo `json:"jobInfo,omitempty" yaml:"jobInfo,omitempty"`
 	// Reference links
 	Links []Link `json:"links,omitempty" yaml:"links,omitempty"`
 }

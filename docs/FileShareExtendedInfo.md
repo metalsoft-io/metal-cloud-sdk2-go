@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **SubdomainPermanent** | **string** | Subdomain permanent of the File Share. | [optional] [default to null]
 **DnsSubdomainId** | **float64** | Id of the DNS subdomain for the File Share. | [optional] [default to null]
 **NetworkVlanId** | **float64** | Id of the VLAN for the File Share. | [optional] [default to null]
-**GuiSettings** | [***AllOfFileShareExtendedInfoGuiSettings**](AllOfFileShareExtendedInfoGuiSettings.md) | GUI settings for the File Share. This is a JSON object. | [optional] [default to null]
+**GuiSettings** | [***GenericGuiSettings**](GenericGUISettings.md) |  | [optional] [default to null]
 **Endpoint** | **string** | Endpoint of the File Share. | [optional] [default to null]
 **Infrastructure** | [***interface{}**](interface{}.md) | Infrastructure information | [default to null]
 **Links** | [***interface{}**](interface{}.md) |  | [optional] [default to null]

@@ -9,9 +9,9 @@
  */
 package sdk2
 
-type WebhookDto struct {
-	// Asset for the webhook task.
-	Asset string `json:"asset" yaml:"asset"`
-	// Arguments for the webhook task.
-	Args string `json:"args" yaml:"args"`
+type ExtensionVariable struct {
+	// The variable label.
+	Label string `json:"label" yaml:"label"`
+	// The variable value.
+	Value string `json:"value" yaml:"value"`
 }

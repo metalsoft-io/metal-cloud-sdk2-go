@@ -20,14 +20,12 @@ type AccountDto struct {
 	Code string `json:"code,omitempty" yaml:"code,omitempty"`
 	// The fiscal number of the account
 	FiscalNumber string `json:"fiscalNumber,omitempty" yaml:"fiscalNumber,omitempty"`
-	// The address of the account
-	Address *AllOfAccountDtoAddress `json:"address,omitempty" yaml:"address,omitempty"`
+	Address *AccountAddressDto `json:"address,omitempty" yaml:"address,omitempty"`
 	// The user ID of the primary contact
 	PrimaryContactId float64 `json:"primaryContactId,omitempty" yaml:"primaryContactId,omitempty"`
 	// The user ID of the secondary contact
 	SecondaryContactId float64 `json:"secondaryContactId,omitempty" yaml:"secondaryContactId,omitempty"`
 	// Whether the account is archived
 	Archived float64 `json:"archived,omitempty" yaml:"archived,omitempty"`
-	// The limits the user
-	Limits *AllOfAccountDtoLimits `json:"limits" yaml:"limits"`
+	Limits *AccountLimits `json:"limits" yaml:"limits"`
 }

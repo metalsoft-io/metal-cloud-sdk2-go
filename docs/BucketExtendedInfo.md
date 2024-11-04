@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **SubdomainPermanent** | **string** | Subdomain permanent of the Bucket. | [optional] [default to null]
 **DnsSubdomainId** | **float64** | Id of the DNS subdomain for the Bucket. | [optional] [default to null]
 **NetworkVlanId** | **float64** | Id of the VLAN for the Bucket. | [optional] [default to null]
-**GuiSettings** | [***AllOfBucketExtendedInfoGuiSettings**](AllOfBucketExtendedInfoGuiSettings.md) | GUI settings for the Bucket. This is a JSON object. | [optional] [default to null]
+**GuiSettings** | [***GenericGuiSettings**](GenericGUISettings.md) |  | [optional] [default to null]
 **Endpoint** | **string** | Endpoint of the Bucket. | [optional] [default to null]
 **AccessKeyId** | **string** | Endpoint of the Bucket. | [optional] [default to null]
 **SecretKey** | **string** | Endpoint of the Bucket. | [optional] [default to null]
