@@ -8275,6 +8275,73 @@ components:
           description: Tags for the VM Instance Group.
           items:
             type: string
+    VMInstanceGroupInterface:
+      required:
+      - changeId
+      - createdTimestamp
+      - groupId
+      - id
+      - infrastructureId
+      - interfaceIndex
+      - label
+      - networkId
+      - operation
+      - serviceStatus
+      - updatedTimestamp
+      type: object
+      properties:
+        id:
+          type: number
+          description: Interface ID
+        networkId:
+          type: number
+          description: Network ID
+        interfaceIndex:
+          type: number
+          description: Interface index
+        serviceStatus:
+          type: string
+          description: Service status of the VM Instance Group Interface.
+          enum:
+          - active
+          - ordered
+          - suspended
+          - stopped
+          - deleted
+        groupId:
+          type: number
+          description: VM Instance Group ID
+        infrastructureId:
+          type: number
+          description: Infrastructure ID
+        changeId:
+          type: number
+          description: Operation ID
+          nullable: true
+        label:
+          type: number
+          description: Interface label
+        createdTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group Interface creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group Interface update.
+        operation:
+          type: object
+          description: Operation object for the VM Instance Group.
+      example:
+        infrastructureId: 2.027123023002322
+        serviceStatus: active
+        groupId: 3.616076749251911
+        createdTimestamp: createdTimestamp
+        networkId: 7.061401241503109
+        interfaceIndex: 9.301444243932576
+        id: 2.3021358869347655
+        changeId: 4.145608029883936
+        label: 7.386281948385884
+        updatedTimestamp: updatedTimestamp
+        operation: {}
     VMInstanceGroupGUISettingsDto:
       required:
       - columnIndex
@@ -8300,8 +8367,8 @@ components:
           type: string
           description: User agent.
       example:
-        rowIndex: 2.3021358869347655
-        columnIndex: 7.061401241503109
+        rowIndex: 1.2315135367772556
+        columnIndex: 1.0246457001441578
         userAgent: userAgent
         randomInstanceID: randomInstanceID
         showWidgetChildren: true
@@ -8373,6 +8440,11 @@ components:
           type: number
           description: Id of the template used by the VM Instance Group.
           nullable: true
+        vmInstanceGroupInterfaces:
+          type: array
+          description: Interfaces for the VM Instance Group
+          items:
+            $ref: '#/components/schemas/VMInstanceGroupInterface'
         networkIdToNetworkProfileId:
           type: object
           description: Network Id to Network Profile Id for the VM Instance Group.
@@ -8388,6 +8460,29 @@ components:
         createdTimestamp: createdTimestamp
         changeId: 1.4658129805029452
         label: label
+        vmInstanceGroupInterfaces:
+        - infrastructureId: 2.027123023002322
+          serviceStatus: active
+          groupId: 3.616076749251911
+          createdTimestamp: createdTimestamp
+          networkId: 7.061401241503109
+          interfaceIndex: 9.301444243932576
+          id: 2.3021358869347655
+          changeId: 4.145608029883936
+          label: 7.386281948385884
+          updatedTimestamp: updatedTimestamp
+          operation: {}
+        - infrastructureId: 2.027123023002322
+          serviceStatus: active
+          groupId: 3.616076749251911
+          createdTimestamp: createdTimestamp
+          networkId: 7.061401241503109
+          interfaceIndex: 9.301444243932576
+          id: 2.3021358869347655
+          changeId: 4.145608029883936
+          label: 7.386281948385884
+          updatedTimestamp: updatedTimestamp
+          operation: {}
         updatedTimestamp: updatedTimestamp
         tags:
         - tags
@@ -8400,8 +8495,8 @@ components:
         id: 0.8008281904610115
         operation: {}
         guiSettings:
-          rowIndex: 2.3021358869347655
-          columnIndex: 7.061401241503109
+          rowIndex: 1.2315135367772556
+          columnIndex: 1.0246457001441578
           userAgent: userAgent
           randomInstanceID: randomInstanceID
           showWidgetChildren: true
@@ -8546,73 +8641,6 @@ components:
           description: Network ID for the interface. Can be null if the interface
             is not connected to any network
           nullable: true
-    VMInstanceGroupInterface:
-      required:
-      - changeId
-      - createdTimestamp
-      - groupId
-      - id
-      - infrastructureId
-      - interfaceIndex
-      - label
-      - networkId
-      - operation
-      - serviceStatus
-      - updatedTimestamp
-      type: object
-      properties:
-        id:
-          type: number
-          description: Interface ID
-        networkId:
-          type: number
-          description: Network ID
-        interfaceIndex:
-          type: number
-          description: Interface index
-        serviceStatus:
-          type: string
-          description: Service status of the VM Instance Group Interface.
-          enum:
-          - active
-          - ordered
-          - suspended
-          - stopped
-          - deleted
-        groupId:
-          type: number
-          description: VM Instance Group ID
-        infrastructureId:
-          type: number
-          description: Infrastructure ID
-        changeId:
-          type: number
-          description: Operation ID
-          nullable: true
-        label:
-          type: number
-          description: Interface label
-        createdTimestamp:
-          type: string
-          description: Timestamp of the VM Instance Group Interface creation.
-        updatedTimestamp:
-          type: string
-          description: Timestamp of the VM Instance Group Interface update.
-        operation:
-          type: object
-          description: Operation object for the VM Instance Group.
-      example:
-        infrastructureId: 5.637376656633329
-        serviceStatus: active
-        groupId: 5.962133916683182
-        createdTimestamp: createdTimestamp
-        networkId: 6.027456183070403
-        interfaceIndex: 1.4658129805029452
-        id: 0.8008281904610115
-        changeId: 2.3021358869347655
-        label: 7.061401241503109
-        updatedTimestamp: updatedTimestamp
-        operation: {}
     UpdateVMInstanceGroupNetwork:
       type: object
       properties:
