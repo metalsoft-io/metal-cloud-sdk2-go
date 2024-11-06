@@ -40,6 +40,8 @@ type VmInstanceGroup struct {
 	VmInstanceGroupInterfaces []VmInstanceGroupInterface `json:"vmInstanceGroupInterfaces,omitempty" yaml:"vmInstanceGroupInterfaces,omitempty"`
 	// Network Id to Network Profile Id for the VM Instance Group. This is a JSON object.
 	NetworkIdToNetworkProfileId *interface{} `json:"networkIdToNetworkProfileId,omitempty" yaml:"networkIdToNetworkProfileId,omitempty"`
+	// Custom variables for the VM Instance.
+	CustomVariables *interface{} `json:"customVariables,omitempty" yaml:"customVariables,omitempty"`
 	GuiSettings *VmInstanceGroupGuiSettingsDto `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 	Links *interface{} `json:"links" yaml:"links"`
 }

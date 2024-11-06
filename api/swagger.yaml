@@ -8449,6 +8449,10 @@ components:
           type: object
           description: Network Id to Network Profile Id for the VM Instance Group.
             This is a JSON object.
+        customVariables:
+          type: object
+          description: Custom variables for the VM Instance.
+          nullable: true
         guiSettings:
           $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
         links:
@@ -8484,6 +8488,7 @@ components:
           updatedTimestamp: updatedTimestamp
           operation: {}
         updatedTimestamp: updatedTimestamp
+        customVariables: {}
         tags:
         - tags
         - tags

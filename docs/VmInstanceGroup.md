@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **VolumeTemplateId** | **float64** | Id of the template used by the VM Instance Group. | [optional] [default to null]
 **VmInstanceGroupInterfaces** | [**[]VmInstanceGroupInterface**](VMInstanceGroupInterface.md) | Interfaces for the VM Instance Group | [optional] [default to null]
 **NetworkIdToNetworkProfileId** | [***interface{}**](interface{}.md) | Network Id to Network Profile Id for the VM Instance Group. This is a JSON object. | [optional] [default to null]
+**CustomVariables** | [***interface{}**](interface{}.md) | Custom variables for the VM Instance. | [optional] [default to null]
 **GuiSettings** | [***VmInstanceGroupGuiSettingsDto**](VMInstanceGroupGUISettingsDto.md) |  | [optional] [default to null]
 **Links** | [***interface{}**](interface{}.md) |  | [default to null]
 
