@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **CreatedTimestamp** | **string** | Timestamp of the VM Instance Group creation. | [default to null]
 **UpdatedTimestamp** | **string** | Timestamp of the VM Instance Group update. | [default to null]
 **Operation** | [***interface{}**](interface{}.md) | Operation object for the VM Instance Group. | [default to null]
-**VmInstance** | **[]string** | Array of VM instances in the VM Instance Group. | [default to null]
+**VmInstance** | [**[]VmInstance**](VMInstance.md) | Array of VM instances in the VM Instance Group. | [default to null]
 **Tags** | **[]string** | Tags for the VM Instance Group. | [default to null]
 **DiskSizeGB** | **float64** | Disk size in GB for each VM Instance in the VM Instance Group. | [default to null]
 **VolumeTemplateId** | **float64** | Id of the template used by the VM Instance Group. | [optional] [default to null]

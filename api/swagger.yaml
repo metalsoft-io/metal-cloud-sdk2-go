@@ -8275,238 +8275,6 @@ components:
           description: Tags for the VM Instance Group.
           items:
             type: string
-    VMInstanceGroupInterface:
-      required:
-      - changeId
-      - createdTimestamp
-      - groupId
-      - id
-      - infrastructureId
-      - interfaceIndex
-      - label
-      - networkId
-      - operation
-      - serviceStatus
-      - updatedTimestamp
-      type: object
-      properties:
-        id:
-          type: number
-          description: Interface ID
-        networkId:
-          type: number
-          description: Network ID
-        interfaceIndex:
-          type: number
-          description: Interface index
-        serviceStatus:
-          type: string
-          description: Service status of the VM Instance Group Interface.
-          enum:
-          - active
-          - ordered
-          - suspended
-          - stopped
-          - deleted
-        groupId:
-          type: number
-          description: VM Instance Group ID
-        infrastructureId:
-          type: number
-          description: Infrastructure ID
-        changeId:
-          type: number
-          description: Operation ID
-          nullable: true
-        label:
-          type: number
-          description: Interface label
-        createdTimestamp:
-          type: string
-          description: Timestamp of the VM Instance Group Interface creation.
-        updatedTimestamp:
-          type: string
-          description: Timestamp of the VM Instance Group Interface update.
-        operation:
-          type: object
-          description: Operation object for the VM Instance Group.
-      example:
-        infrastructureId: 2.027123023002322
-        serviceStatus: active
-        groupId: 3.616076749251911
-        createdTimestamp: createdTimestamp
-        networkId: 7.061401241503109
-        interfaceIndex: 9.301444243932576
-        id: 2.3021358869347655
-        changeId: 4.145608029883936
-        label: 7.386281948385884
-        updatedTimestamp: updatedTimestamp
-        operation: {}
-    VMInstanceGroupGUISettingsDto:
-      required:
-      - columnIndex
-      - randomInstanceID
-      - rowIndex
-      - showWidgetChildren
-      - userAgent
-      type: object
-      properties:
-        rowIndex:
-          type: number
-          description: Row index of the VM Instance Group.
-        columnIndex:
-          type: number
-          description: Column index of the VM Instance Group.
-        showWidgetChildren:
-          type: boolean
-          description: Whether to show the VM Instance Group children in the GUI.
-        randomInstanceID:
-          type: string
-          description: Random instance ID.
-        userAgent:
-          type: string
-          description: User agent.
-      example:
-        rowIndex: 1.2315135367772556
-        columnIndex: 1.0246457001441578
-        userAgent: userAgent
-        randomInstanceID: randomInstanceID
-        showWidgetChildren: true
-    VMInstanceGroup:
-      required:
-      - changeId
-      - createdTimestamp
-      - diskSizeGB
-      - id
-      - infrastructureId
-      - instanceCount
-      - label
-      - links
-      - operation
-      - serviceStatus
-      - tags
-      - updatedTimestamp
-      - vmInstance
-      type: object
-      properties:
-        id:
-          type: number
-          description: Id of the VM Instance Group.
-        infrastructureId:
-          type: number
-          description: Id of the Infrastructure.
-        serviceStatus:
-          type: string
-          description: Status of the VM Instance Group.
-          enum:
-          - active
-          - ordered
-          - suspended
-          - stopped
-          - deleted
-        changeId:
-          type: number
-          description: Id of the VM Instance Group change object.
-        label:
-          type: string
-          description: Name of the VM Instance Group.
-        instanceCount:
-          type: number
-          description: Number of VM instances in the VM Instance Group.
-          example: 1
-        createdTimestamp:
-          type: string
-          description: Timestamp of the VM Instance Group creation.
-        updatedTimestamp:
-          type: string
-          description: Timestamp of the VM Instance Group update.
-        operation:
-          type: object
-          description: Operation object for the VM Instance Group.
-        vmInstance:
-          type: array
-          description: Array of VM instances in the VM Instance Group.
-          items:
-            type: string
-        tags:
-          type: array
-          description: Tags for the VM Instance Group.
-          items:
-            type: string
-        diskSizeGB:
-          type: number
-          description: Disk size in GB for each VM Instance in the VM Instance Group.
-        volumeTemplateId:
-          type: number
-          description: Id of the template used by the VM Instance Group.
-          nullable: true
-        vmInstanceGroupInterfaces:
-          type: array
-          description: Interfaces for the VM Instance Group
-          items:
-            $ref: '#/components/schemas/VMInstanceGroupInterface'
-        networkIdToNetworkProfileId:
-          type: object
-          description: Network Id to Network Profile Id for the VM Instance Group.
-            This is a JSON object.
-        customVariables:
-          type: object
-          description: Custom variables for the VM Instance.
-          nullable: true
-        guiSettings:
-          $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
-        links:
-          type: object
-      example:
-        vmInstance:
-        - vmInstance
-        - vmInstance
-        createdTimestamp: createdTimestamp
-        changeId: 1.4658129805029452
-        label: label
-        vmInstanceGroupInterfaces:
-        - infrastructureId: 2.027123023002322
-          serviceStatus: active
-          groupId: 3.616076749251911
-          createdTimestamp: createdTimestamp
-          networkId: 7.061401241503109
-          interfaceIndex: 9.301444243932576
-          id: 2.3021358869347655
-          changeId: 4.145608029883936
-          label: 7.386281948385884
-          updatedTimestamp: updatedTimestamp
-          operation: {}
-        - infrastructureId: 2.027123023002322
-          serviceStatus: active
-          groupId: 3.616076749251911
-          createdTimestamp: createdTimestamp
-          networkId: 7.061401241503109
-          interfaceIndex: 9.301444243932576
-          id: 2.3021358869347655
-          changeId: 4.145608029883936
-          label: 7.386281948385884
-          updatedTimestamp: updatedTimestamp
-          operation: {}
-        updatedTimestamp: updatedTimestamp
-        customVariables: {}
-        tags:
-        - tags
-        - tags
-        infrastructureId: 6.027456183070403
-        volumeTemplateId: 5.637376656633329
-        serviceStatus: active
-        instanceCount: 1
-        links: {}
-        id: 0.8008281904610115
-        operation: {}
-        guiSettings:
-          rowIndex: 1.2315135367772556
-          columnIndex: 1.0246457001441578
-          userAgent: userAgent
-          randomInstanceID: randomInstanceID
-          showWidgetChildren: true
-        diskSizeGB: 5.962133916683182
-        networkIdToNetworkProfileId: {}
     VMInstance:
       required:
       - changeId
@@ -8586,25 +8354,293 @@ components:
         links:
           type: object
       example:
-        vmId: 5.962133916683182
-        groupId: 6.027456183070403
+        vmId: 7.061401241503109
+        groupId: 5.637376656633329
         createdTimestamp: createdTimestamp
         label: label
-        changeId: 2.3021358869347655
-        vmPoolId: 3.616076749251911
-        templateIdOrigin: 9.301444243932576
+        changeId: 3.616076749251911
+        vmPoolId: 7.386281948385884
+        templateIdOrigin: 4.145608029883936
         updatedTimestamp: updatedTimestamp
         customVariables: {}
         tags:
         - tags
         - tags
-        infrastructureId: 1.4658129805029452
+        infrastructureId: 2.3021358869347655
         serviceStatus: active
-        typeId: 5.637376656633329
+        typeId: 9.301444243932576
+        links: {}
+        id: 5.962133916683182
+        operation: {}
+        diskSizeGB: 2.027123023002322
+    VMInstanceGroupInterface:
+      required:
+      - changeId
+      - createdTimestamp
+      - groupId
+      - id
+      - infrastructureId
+      - interfaceIndex
+      - label
+      - networkId
+      - operation
+      - serviceStatus
+      - updatedTimestamp
+      type: object
+      properties:
+        id:
+          type: number
+          description: Interface ID
+        networkId:
+          type: number
+          description: Network ID
+        interfaceIndex:
+          type: number
+          description: Interface index
+        serviceStatus:
+          type: string
+          description: Service status of the VM Instance Group Interface.
+          enum:
+          - active
+          - ordered
+          - suspended
+          - stopped
+          - deleted
+        groupId:
+          type: number
+          description: VM Instance Group ID
+        infrastructureId:
+          type: number
+          description: Infrastructure ID
+        changeId:
+          type: number
+          description: Operation ID
+          nullable: true
+        label:
+          type: number
+          description: Interface label
+        createdTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group Interface creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group Interface update.
+        operation:
+          type: object
+          description: Operation object for the VM Instance Group.
+      example:
+        infrastructureId: 4.965218492984954
+        serviceStatus: active
+        groupId: 1.1730742509559433
+        createdTimestamp: createdTimestamp
+        networkId: 6.84685269835264
+        interfaceIndex: 7.457744773683766
+        id: 1.4894159098541704
+        changeId: 5.025004791520295
+        label: 9.965781217890562
+        updatedTimestamp: updatedTimestamp
+        operation: {}
+    VMInstanceGroupGUISettingsDto:
+      required:
+      - columnIndex
+      - randomInstanceID
+      - rowIndex
+      - showWidgetChildren
+      - userAgent
+      type: object
+      properties:
+        rowIndex:
+          type: number
+          description: Row index of the VM Instance Group.
+        columnIndex:
+          type: number
+          description: Column index of the VM Instance Group.
+        showWidgetChildren:
+          type: boolean
+          description: Whether to show the VM Instance Group children in the GUI.
+        randomInstanceID:
+          type: string
+          description: Random instance ID.
+        userAgent:
+          type: string
+          description: User agent.
+      example:
+        rowIndex: 9.369310271410669
+        columnIndex: 6.683562403749608
+        userAgent: userAgent
+        randomInstanceID: randomInstanceID
+        showWidgetChildren: true
+    VMInstanceGroup:
+      required:
+      - changeId
+      - createdTimestamp
+      - diskSizeGB
+      - id
+      - infrastructureId
+      - instanceCount
+      - label
+      - links
+      - operation
+      - serviceStatus
+      - tags
+      - updatedTimestamp
+      - vmInstance
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the VM Instance Group.
+        infrastructureId:
+          type: number
+          description: Id of the Infrastructure.
+        serviceStatus:
+          type: string
+          description: Status of the VM Instance Group.
+          enum:
+          - active
+          - ordered
+          - suspended
+          - stopped
+          - deleted
+        changeId:
+          type: number
+          description: Id of the VM Instance Group change object.
+        label:
+          type: string
+          description: Name of the VM Instance Group.
+        instanceCount:
+          type: number
+          description: Number of VM instances in the VM Instance Group.
+          example: 1
+        createdTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group creation.
+        updatedTimestamp:
+          type: string
+          description: Timestamp of the VM Instance Group update.
+        operation:
+          type: object
+          description: Operation object for the VM Instance Group.
+        vmInstance:
+          type: array
+          description: Array of VM instances in the VM Instance Group.
+          items:
+            $ref: '#/components/schemas/VMInstance'
+        tags:
+          type: array
+          description: Tags for the VM Instance Group.
+          items:
+            type: string
+        diskSizeGB:
+          type: number
+          description: Disk size in GB for each VM Instance in the VM Instance Group.
+        volumeTemplateId:
+          type: number
+          description: Id of the template used by the VM Instance Group.
+          nullable: true
+        vmInstanceGroupInterfaces:
+          type: array
+          description: Interfaces for the VM Instance Group
+          items:
+            $ref: '#/components/schemas/VMInstanceGroupInterface'
+        networkIdToNetworkProfileId:
+          type: object
+          description: Network Id to Network Profile Id for the VM Instance Group.
+            This is a JSON object.
+        customVariables:
+          type: object
+          description: Custom variables for the VM Instance.
+          nullable: true
+        guiSettings:
+          $ref: '#/components/schemas/VMInstanceGroupGUISettingsDto'
+        links:
+          type: object
+      example:
+        vmInstance:
+        - vmId: 7.061401241503109
+          groupId: 5.637376656633329
+          createdTimestamp: createdTimestamp
+          label: label
+          changeId: 3.616076749251911
+          vmPoolId: 7.386281948385884
+          templateIdOrigin: 4.145608029883936
+          updatedTimestamp: updatedTimestamp
+          customVariables: {}
+          tags:
+          - tags
+          - tags
+          infrastructureId: 2.3021358869347655
+          serviceStatus: active
+          typeId: 9.301444243932576
+          links: {}
+          id: 5.962133916683182
+          operation: {}
+          diskSizeGB: 2.027123023002322
+        - vmId: 7.061401241503109
+          groupId: 5.637376656633329
+          createdTimestamp: createdTimestamp
+          label: label
+          changeId: 3.616076749251911
+          vmPoolId: 7.386281948385884
+          templateIdOrigin: 4.145608029883936
+          updatedTimestamp: updatedTimestamp
+          customVariables: {}
+          tags:
+          - tags
+          - tags
+          infrastructureId: 2.3021358869347655
+          serviceStatus: active
+          typeId: 9.301444243932576
+          links: {}
+          id: 5.962133916683182
+          operation: {}
+          diskSizeGB: 2.027123023002322
+        createdTimestamp: createdTimestamp
+        changeId: 1.4658129805029452
+        label: label
+        vmInstanceGroupInterfaces:
+        - infrastructureId: 4.965218492984954
+          serviceStatus: active
+          groupId: 1.1730742509559433
+          createdTimestamp: createdTimestamp
+          networkId: 6.84685269835264
+          interfaceIndex: 7.457744773683766
+          id: 1.4894159098541704
+          changeId: 5.025004791520295
+          label: 9.965781217890562
+          updatedTimestamp: updatedTimestamp
+          operation: {}
+        - infrastructureId: 4.965218492984954
+          serviceStatus: active
+          groupId: 1.1730742509559433
+          createdTimestamp: createdTimestamp
+          networkId: 6.84685269835264
+          interfaceIndex: 7.457744773683766
+          id: 1.4894159098541704
+          changeId: 5.025004791520295
+          label: 9.965781217890562
+          updatedTimestamp: updatedTimestamp
+          operation: {}
+        updatedTimestamp: updatedTimestamp
+        customVariables: {}
+        tags:
+        - tags
+        - tags
+        infrastructureId: 6.027456183070403
+        volumeTemplateId: 1.0246457001441578
+        serviceStatus: active
+        instanceCount: 1
         links: {}
         id: 0.8008281904610115
         operation: {}
-        diskSizeGB: 7.061401241503109
+        guiSettings:
+          rowIndex: 9.369310271410669
+          columnIndex: 6.683562403749608
+          userAgent: userAgent
+          randomInstanceID: randomInstanceID
+          showWidgetChildren: true
+        diskSizeGB: 1.2315135367772556
+        networkIdToNetworkProfileId: {}
     UpdateVMInstanceGroupInterface:
       required:
       - id
