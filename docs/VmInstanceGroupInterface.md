@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **GroupId** | **float64** | VM Instance Group ID | [default to null]
 **InfrastructureId** | **float64** | Infrastructure ID | [default to null]
 **ChangeId** | **float64** | Operation ID | [default to null]
-**Label** | **float64** | Interface label | [default to null]
+**Label** | **string** | Interface label | [default to null]
 **CreatedTimestamp** | **string** | Timestamp of the VM Instance Group Interface creation. | [default to null]
 **UpdatedTimestamp** | **string** | Timestamp of the VM Instance Group Interface update. | [default to null]
 **Operation** | [***interface{}**](interface{}.md) | Operation object for the VM Instance Group. | [default to null]

@@ -8417,7 +8417,7 @@ components:
           description: Operation ID
           nullable: true
         label:
-          type: number
+          type: string
           description: Interface label
         createdTimestamp:
           type: string
@@ -8437,7 +8437,7 @@ components:
         interfaceIndex: 7.457744773683766
         id: 1.4894159098541704
         changeId: 5.025004791520295
-        label: 9.965781217890562
+        label: label
         updatedTimestamp: updatedTimestamp
         operation: {}
     VMInstanceGroupGUISettingsDto:
@@ -8465,8 +8465,8 @@ components:
           type: string
           description: User agent.
       example:
-        rowIndex: 9.369310271410669
-        columnIndex: 6.683562403749608
+        rowIndex: 9.965781217890562
+        columnIndex: 9.369310271410669
         userAgent: userAgent
         randomInstanceID: randomInstanceID
         showWidgetChildren: true
@@ -8607,7 +8607,7 @@ components:
           interfaceIndex: 7.457744773683766
           id: 1.4894159098541704
           changeId: 5.025004791520295
-          label: 9.965781217890562
+          label: label
           updatedTimestamp: updatedTimestamp
           operation: {}
         - infrastructureId: 4.965218492984954
@@ -8618,7 +8618,7 @@ components:
           interfaceIndex: 7.457744773683766
           id: 1.4894159098541704
           changeId: 5.025004791520295
-          label: 9.965781217890562
+          label: label
           updatedTimestamp: updatedTimestamp
           operation: {}
         updatedTimestamp: updatedTimestamp
@@ -8634,8 +8634,8 @@ components:
         id: 0.8008281904610115
         operation: {}
         guiSettings:
-          rowIndex: 9.369310271410669
-          columnIndex: 6.683562403749608
+          rowIndex: 9.965781217890562
+          columnIndex: 9.369310271410669
           userAgent: userAgent
           randomInstanceID: randomInstanceID
           showWidgetChildren: true
