@@ -272,16 +272,16 @@ ExtensionInstanceApiService Get extension instances list
 Returns list of extension instances
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ExtensionInstanceApiGetExtensionInstancesOpts - Optional Parameters:
-     * @param "Page" (optional.Float64) -  Page number used in pagination, starts with &#x60;0&#x60;
-     * @param "Limit" (optional.Float64) -  Number of items per page, default value &#x60;20&#x60;
+     * @param "Page" (optional.Int32) -  Page number used in pagination, starts with &#x60;0&#x60;
+     * @param "Limit" (optional.Int32) -  Number of items per page, default value &#x60;20&#x60;
      * @param "SortBy" (optional.String) -  Sort by field and direction, example: &#x60;id:ASC&#x60;
      * @param "Filter" (optional.Interface of interface{}) -  Filter expression for a field, see [nestjs paginate documentation](https://github.com/ppetzold/nestjs-paginate#filters).&lt;br /&gt; &lt;br /&gt; Use &#x60;\&quot;filter.*\&quot;&#x60; as a way to specify the field to filter on, see the example bellow: &lt;br /&gt; &lt;br /&gt; 
 @return ExtensionInstanceListDto
 */
 
 type ExtensionInstanceApiGetExtensionInstancesOpts struct {
-    Page optional.Float64
-    Limit optional.Float64
+    Page optional.Int32
+    Limit optional.Int32
     SortBy optional.String
     Filter optional.Interface
 }

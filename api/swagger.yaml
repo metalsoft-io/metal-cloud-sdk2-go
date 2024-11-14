@@ -4796,9 +4796,10 @@ paths:
           maximum: 10000
           exclusiveMaximum: true
           minimum: 0
-          exclusiveMinimum: true
-          type: number
+          exclusiveMinimum: false
+          type: integer
           format: int32
+          default: 0
       - name: limit
         in: query
         description: "Number of items per page, default value `20`"
@@ -4808,10 +4809,10 @@ paths:
         schema:
           title: Limit
           maximum: 100
-          exclusiveMaximum: true
+          exclusiveMaximum: false
           minimum: 1
-          exclusiveMinimum: true
-          type: number
+          exclusiveMinimum: false
+          type: integer
           format: int32
       - name: sortBy
         in: query
@@ -9538,6 +9539,549 @@ components:
           type: boolean
         persistData:
           type: boolean
+    ExtensionDependency:
+      required:
+      - controllerVersion
+      - osTemplates
+      type: object
+      properties:
+        controllerVersion:
+          type: string
+          description: Metalsoft Controller version required by the extension.
+        osTemplates:
+          type: array
+          description: List of OS templates required by the extension.
+          items:
+            type: string
+      example:
+        controllerVersion: controllerVersion
+        osTemplates:
+        - osTemplates
+        - osTemplates
+    ExtensionInput:
+      required:
+      - inputType
+      - label
+      - name
+      - options
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the input.
+        name:
+          type: string
+          description: Name of the input.
+        inputType:
+          type: string
+          description: Type of the input.
+          enum:
+          - ExtensionInputString
+          - ExtensionInputInteger
+          - ExtensionInputServerType
+          - ExtensionInputOsTemplate
+          - ExtensionInputBoolean
+        options:
+          description: Input options.
+          oneOf:
+          - $ref: '#/components/schemas/ExtensionInputString'
+          - $ref: '#/components/schemas/ExtensionInputInteger'
+          - $ref: '#/components/schemas/ExtensionInputServerType'
+          - $ref: '#/components/schemas/ExtensionInputOsTemplate'
+          - $ref: '#/components/schemas/ExtensionInputBoolean'
+      example:
+        name: name
+        options: ""
+        inputType: ExtensionInputString
+        label: label
+    ExtensionOutput:
+      required:
+      - label
+      - name
+      - outputType
+      - template
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the output.
+        name:
+          type: string
+          description: Name of the output.
+        outputType:
+          type: string
+          description: Type of the output.
+        template:
+          type: string
+          description: Template of the output.
+      example:
+        template: template
+        name: name
+        outputType: outputType
+        label: label
+    CustomVariable:
+      required:
+      - name
+      - value
+      type: object
+      properties:
+        name:
+          type: string
+          description: Custom variable name.
+        value:
+          type: string
+          description: Custom variable value.
+      example:
+        name: name
+        value: value
+    ExtensionInstanceArray:
+      required:
+      - instanceCount
+      - label
+      - osTemplate
+      - serverType
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the instance array.
+        instanceCount:
+          type: string
+          description: Instance count value or reference to variable.
+        serverType:
+          type: string
+          description: Server type variable reference.
+        osTemplate:
+          type: string
+          description: OS template variable reference.
+        connectedSharedDrives:
+          type: array
+          description: Connected shared drive arrays.
+          items:
+            type: string
+        customVariables:
+          type: array
+          description: Custom variables. The value may be a reference to an input
+            variable.
+          items:
+            $ref: '#/components/schemas/CustomVariable'
+        dependencies:
+          type: array
+          description: Labels of instance arrays this one depends on.
+          items:
+            type: string
+      example:
+        connectedSharedDrives:
+        - connectedSharedDrives
+        - connectedSharedDrives
+        osTemplate: osTemplate
+        instanceCount: instanceCount
+        serverType: serverType
+        label: label
+        customVariables:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        dependencies:
+        - dependencies
+        - dependencies
+    ExtensionSharedDrive:
+      required:
+      - label
+      - sizeGb
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the shared drive array.
+        sizeGb:
+          type: number
+          description: Size of the shared drive array in GB..
+          example: 10
+      example:
+        sizeGb: 10
+        label: label
+    ExtensionInfrastructure:
+      type: object
+      properties:
+        instanceArrays:
+          type: array
+          description: Instance array details for the infrastructure requirement.
+          items:
+            $ref: '#/components/schemas/ExtensionInstanceArray'
+        sharedDrives:
+          type: array
+          description: Shared drive details for the infrastructure requirement.
+          items:
+            $ref: '#/components/schemas/ExtensionSharedDrive'
+      example:
+        instanceArrays:
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+        sharedDrives:
+        - sizeGb: 10
+          label: label
+        - sizeGb: 10
+          label: label
+    ExtensionAsset:
+      required:
+      - assetType
+      - label
+      - name
+      - url
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the asset.
+        name:
+          type: string
+          description: Name of the asset.
+        assetType:
+          type: string
+          description: Type of the asset.
+        url:
+          type: string
+          description: URL of the asset.
+        requiredAssets:
+          type: array
+          description: Required assets by this asset.
+          items:
+            type: string
+      example:
+        name: name
+        label: label
+        requiredAssets:
+        - requiredAssets
+        - requiredAssets
+        url: url
+        assetType: assetType
+    ExtensionTask:
+      required:
+      - label
+      - options
+      - taskType
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the task.
+        taskType:
+          type: string
+          description: Type of the task.
+          enum:
+          - ExtensionTaskAnsible
+          - ExtensionTaskWebhook
+        options:
+          description: Task options.
+          oneOf:
+          - $ref: '#/components/schemas/ExtensionTaskAnsible'
+          - $ref: '#/components/schemas/ExtensionTaskWebhook'
+      example:
+        taskType: ExtensionTaskAnsible
+        options: ""
+        label: label
+    ExtensionActions:
+      type: object
+      properties:
+        preDeploy:
+          type: array
+          description: Pre-deploy tasks.
+          items:
+            $ref: '#/components/schemas/ExtensionTask'
+        postDeploy:
+          type: array
+          description: Post-deploy tasks.
+          items:
+            $ref: '#/components/schemas/ExtensionTask'
+      example:
+        preDeploy:
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        postDeploy:
+        - null
+        - null
+    ExtensionDefinitionDto:
+      required:
+      - assets
+      - dependencies
+      - extensionType
+      - extensionVersion
+      - icon
+      - infrastructure
+      - inputs
+      - kind
+      - name
+      - outputs
+      - schemaVersion
+      - vendor
+      type: object
+      properties:
+        kind:
+          type: string
+          description: The kind of extension.
+        schemaVersion:
+          type: string
+          description: Schema version of the extension.
+        name:
+          maxLength: 255
+          type: string
+          description: Name of the extension.
+        label:
+          maxLength: 63
+          type: string
+          description: Label of the extension.
+        extensionType:
+          type: string
+          description: Type of the extension.
+        vendor:
+          type: string
+          description: Vendor of the extension.
+        extensionVersion:
+          type: string
+          description: Version of the extension.
+        description:
+          maxLength: 255
+          type: string
+          description: Description of the extension.
+        icon:
+          type: string
+          description: Icon of the extension.
+        dependencies:
+          $ref: '#/components/schemas/ExtensionDependency'
+        inputs:
+          type: array
+          description: List of inputs for the platform service.
+          items:
+            $ref: '#/components/schemas/ExtensionInput'
+        outputs:
+          type: array
+          description: List of outputs for the platform service.
+          items:
+            $ref: '#/components/schemas/ExtensionOutput'
+        infrastructure:
+          $ref: '#/components/schemas/ExtensionInfrastructure'
+        assets:
+          type: array
+          description: List of assets for the platform service.
+          items:
+            $ref: '#/components/schemas/ExtensionAsset'
+        onCreate:
+          $ref: '#/components/schemas/ExtensionActions'
+        onEdit:
+          $ref: '#/components/schemas/ExtensionActions'
+        onDelete:
+          $ref: '#/components/schemas/ExtensionActions'
+      example:
+        outputs:
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        onCreate:
+          preDeploy:
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          postDeploy:
+          - null
+          - null
+        schemaVersion: schemaVersion
+        kind: kind
+        inputs:
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        icon: icon
+        description: description
+        label: label
+        dependencies:
+          controllerVersion: controllerVersion
+          osTemplates:
+          - osTemplates
+          - osTemplates
+        onEdit: null
+        onDelete: null
+        assets:
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        vendor: vendor
+        infrastructure:
+          instanceArrays:
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+          sharedDrives:
+          - sizeGb: 10
+            label: label
+          - sizeGb: 10
+            label: label
+        extensionType: extensionType
+        name: name
+        extensionVersion: extensionVersion
+    ExtensionInputString:
+      type: object
+      properties:
+        validationRegEx:
+          type: string
+          description: Validation regex pattern for the input.
+    ExtensionInputInteger:
+      type: object
+      properties:
+        minValue:
+          type: integer
+          description: Minimum allowed value.
+        maxValue:
+          type: integer
+          description: Maximum allowed value.
+        deniedValues:
+          type: array
+          description: Denied values.
+          items:
+            type: integer
+        defaultValue:
+          type: integer
+          description: Default value.
+    ExtensionInputServerType:
+      type: object
+      properties:
+        minCpu:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          description: Minimum CPU cores.
+        minRamGb:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          description: Minimum RAM GBs.
+        vendor:
+          type: string
+          description: Server vendor.
+    ExtensionInputOsTemplate:
+      type: object
+      properties:
+        osFamily:
+          type: string
+          description: OS family type.
+    ExtensionInputBoolean:
+      type: object
+      properties: {}
+    ExtensionTaskAnsible:
+      type: object
+      properties:
+        asset:
+          type: string
+          description: Asset for the Ansible task.
+        playbook:
+          type: string
+          description: Playbook for the Ansible task.
+        executionTimeout:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          description: Execution Timeout.
+        executionTimeoutTick:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          description: Execution Timeout Tick.
+        version:
+          type: string
+          description: Version.
+    ExtensionTaskWebhook:
+      type: object
+      properties:
+        endpoint:
+          type: string
+          description: Webhook task endpoint.
+        requestTemplate:
+          type: string
+          description: Webhook task request body template.
     ExtensionInfoDto:
       type: object
       properties:
@@ -9638,12 +10182,108 @@ components:
           description: Extension status
           example: draft
         definition:
-          type: object
-          description: Extension definition (JSON)
+          $ref: '#/components/schemas/ExtensionDefinitionDto'
       example:
         name: My App
         description: My App Description
-        definition: {}
+        definition:
+          outputs:
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          onCreate:
+            preDeploy:
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            postDeploy:
+            - null
+            - null
+          schemaVersion: schemaVersion
+          kind: kind
+          inputs:
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          icon: icon
+          description: description
+          label: label
+          dependencies:
+            controllerVersion: controllerVersion
+            osTemplates:
+            - osTemplates
+            - osTemplates
+          onEdit: null
+          onDelete: null
+          assets:
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          vendor: vendor
+          infrastructure:
+            instanceArrays:
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+            sharedDrives:
+            - sizeGb: 10
+              label: label
+            - sizeGb: 10
+              label: label
+          extensionType: extensionType
+          name: name
+          extensionVersion: extensionVersion
         id: 10
         label: incus_6x
         slug: my-app
@@ -9672,8 +10312,7 @@ components:
           description: The extension description
           example: My App Description
         definition:
-          type: object
-          description: Extension definition (JSON)
+          $ref: '#/components/schemas/ExtensionDefinitionDto'
     UpdateExtensionDto:
       type: object
       properties:
@@ -9694,8 +10333,7 @@ components:
           description: The extension description
           example: My App Description
         definition:
-          type: object
-          description: Extension definition (JSON)
+          $ref: '#/components/schemas/ExtensionDefinitionDto'
     ExtensionVariable:
       required:
       - label

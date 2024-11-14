@@ -112,8 +112,8 @@ Name | Type | Description  | Notes
 Optional parameters are passed through a pointer to a ExtensionInstanceApiGetExtensionInstancesOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **optional.Float64**| Page number used in pagination, starts with &#x60;0&#x60; | 
- **limit** | **optional.Float64**| Number of items per page, default value &#x60;20&#x60; | 
+ **page** | **optional.Int32**| Page number used in pagination, starts with &#x60;0&#x60; | [default to 0]
+ **limit** | **optional.Int32**| Number of items per page, default value &#x60;20&#x60; | 
  **sortBy** | **optional.String**| Sort by field and direction, example: &#x60;id:ASC&#x60; | 
  **filter** | [**optional.Interface of interface{}**](.md)| Filter expression for a field, see [nestjs paginate documentation](https://github.com/ppetzold/nestjs-paginate#filters).&lt;br /&gt; &lt;br /&gt; Use &#x60;\&quot;filter.*\&quot;&#x60; as a way to specify the field to filter on, see the example bellow: &lt;br /&gt; &lt;br /&gt;  | 
 

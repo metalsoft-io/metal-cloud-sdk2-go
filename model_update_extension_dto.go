@@ -16,6 +16,5 @@ type UpdateExtensionDto struct {
 	Label string `json:"label,omitempty" yaml:"label,omitempty"`
 	// The extension description
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
-	// Extension definition (JSON)
-	Definition *interface{} `json:"definition,omitempty" yaml:"definition,omitempty"`
+	Definition *ExtensionDefinitionDto `json:"definition,omitempty" yaml:"definition,omitempty"`
 }

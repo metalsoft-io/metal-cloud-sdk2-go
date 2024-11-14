@@ -22,6 +22,5 @@ type ExtensionDto struct {
 	Description string `json:"description" yaml:"description"`
 	// Extension status
 	Status string `json:"status" yaml:"status"`
-	// Extension definition (JSON)
-	Definition *interface{} `json:"definition" yaml:"definition"`
+	Definition *ExtensionDefinitionDto `json:"definition" yaml:"definition"`
 }
