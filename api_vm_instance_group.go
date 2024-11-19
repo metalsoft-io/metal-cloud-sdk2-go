@@ -455,15 +455,15 @@ Returns the VM Instances of VM Instance Group
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param infrastructureId
  * @param vmInstanceGroupId
-@return []VmInstance
+@return map[string]VmInstance
 */
-func (a *VMInstanceGroupApiService) GetVMInstanceGroupVMInstances(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) ([]VmInstance, *http.Response, error) {
+func (a *VMInstanceGroupApiService) GetVMInstanceGroupVMInstances(ctx context.Context, infrastructureId float64, vmInstanceGroupId float64) (map[string]VmInstance, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []VmInstance
+		localVarReturnValue map[string]VmInstance
 	)
 
 	// create path and map variables
@@ -522,7 +522,7 @@ func (a *VMInstanceGroupApiService) GetVMInstanceGroupVMInstances(ctx context.Co
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []VmInstance
+			var v map[string]VmInstance
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

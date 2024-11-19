@@ -76,6 +76,7 @@ Class | Method | HTTP request | Description
 *NetworkDevicesApi* | [**GetNetworkDevicePorts**](docs/NetworkDevicesApi.md#getnetworkdeviceports) | **Get** /api/v2/network-devices/{networkDeviceId}/ports | Get all ports for network device
 *NetworkDevicesApi* | [**ResetNetworkDevice**](docs/NetworkDevicesApi.md#resetnetworkdevice) | **Post** /api/v2/network-devices/{networkDeviceId}/actions/reset | Resets a network device to default state
 *NetworkDevicesApi* | [**SetNetworkDevicePortStatus**](docs/NetworkDevicesApi.md#setnetworkdeviceportstatus) | **Post** /api/v2/network-devices/{networkDeviceId}/actions/set-port-status | Set port status
+*NetworkEquipmentApi* | [**ReProvisionNetworkEquipment**](docs/NetworkEquipmentApi.md#reprovisionnetworkequipment) | **Post** /api/v2/network-equipment/re-provision | Re-provision network equipment
 *ResourcePoolsApi* | [**AddResourcePoolUser**](docs/ResourcePoolsApi.md#addresourcepooluser) | **Post** /api/v2/resource-pools/user/{userId}/pool/{resourcePoolId} | Add a user to a Resource Pool
 *ResourcePoolsApi* | [**AddServerToResourcePool**](docs/ResourcePoolsApi.md#addservertoresourcepool) | **Put** /api/v2/resource-pools/{resourcePoolId}/server/{serverId} | Add a server to a Resource Pool
 *ResourcePoolsApi* | [**AddSubnetPoolToResourcePool**](docs/ResourcePoolsApi.md#addsubnetpooltoresourcepool) | **Put** /api/v2/resource-pools/{resourcePoolId}/subnet-pool/{subnetPoolId} | Add a subnet pool to a resource pool
@@ -231,6 +232,8 @@ Class | Method | HTTP request | Description
  - [Network](docs/Network.md)
  - [NetworkDevicePortStatusDto](docs/NetworkDevicePortStatusDto.md)
  - [NetworkDeviceStatusDto](docs/NetworkDeviceStatusDto.md)
+ - [NetworkEquipmentReProvisionOptions](docs/NetworkEquipmentReProvisionOptions.md)
+ - [NetworkEquipmentReProvisionResponse](docs/NetworkEquipmentReProvisionResponse.md)
  - [OneOfExtensionInputOptions](docs/OneOfExtensionInputOptions.md)
  - [OneOfExtensionTaskOptions](docs/OneOfExtensionTaskOptions.md)
  - [PatchStorage](docs/PatchStorage.md)

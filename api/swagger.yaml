@@ -2164,6 +2164,45 @@ paths:
       security:
       - JWT: []
       - apiKey: []
+  /api/v2/network-equipment/re-provision:
+    post:
+      tags:
+      - Network Equipment
+      summary: Re-provision network equipment
+      description: Re-provision network equipment
+      operationId: reProvisionNetworkEquipment
+      parameters: []
+      requestBody:
+        description: The network equipment re-provision options
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkEquipmentReProvisionOptions'
+        required: true
+      responses:
+        "200":
+          description: Network equipment re-provision initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkEquipmentReProvisionResponse'
+        "202":
+          description: Network equipment re-provision accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkEquipmentReProvisionResponse'
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal server error
+      security:
+      - JWT: []
+      - apiKey: []
   /api/v2/storages:
     get:
       tags:
@@ -2526,8 +2565,8 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
+                type: object
+                additionalProperties:
                   $ref: '#/components/schemas/VMInstance'
                 x-content-type: application/json
         "400":
@@ -7866,6 +7905,28 @@ components:
           username: username
         meta: {}
         links: {}
+    NetworkEquipmentReProvisionOptions:
+      required:
+      - networkEquipmentId
+      - reprovisionType
+      type: object
+      properties:
+        networkEquipmentId:
+          type: number
+        reprovisionType:
+          type: string
+          enum:
+          - full
+          - overlay-network
+    NetworkEquipmentReProvisionResponse:
+      type: object
+      properties:
+        jobInfo:
+          $ref: '#/components/schemas/AfcJobInfo'
+      example:
+        jobInfo:
+          afcGroupId: 1.4658129805029452
+          afcId: 6.027456183070403
     Storage:
       required:
       - drivePriority
@@ -8485,7 +8546,7 @@ components:
       - serviceStatus
       - tags
       - updatedTimestamp
-      - vmInstance
+      - vmInstances
       type: object
       properties:
         id:
@@ -8522,7 +8583,7 @@ components:
         operation:
           type: object
           description: Operation object for the VM Instance Group.
-        vmInstance:
+        vmInstances:
           type: array
           description: Array of VM instances in the VM Instance Group.
           items:
@@ -8557,45 +8618,6 @@ components:
         links:
           type: object
       example:
-        vmInstance:
-        - vmId: 7.061401241503109
-          groupId: 5.637376656633329
-          createdTimestamp: createdTimestamp
-          label: label
-          changeId: 3.616076749251911
-          vmPoolId: 7.386281948385884
-          templateIdOrigin: 4.145608029883936
-          updatedTimestamp: updatedTimestamp
-          customVariables: {}
-          tags:
-          - tags
-          - tags
-          infrastructureId: 2.3021358869347655
-          serviceStatus: active
-          typeId: 9.301444243932576
-          links: {}
-          id: 5.962133916683182
-          operation: {}
-          diskSizeGB: 2.027123023002322
-        - vmId: 7.061401241503109
-          groupId: 5.637376656633329
-          createdTimestamp: createdTimestamp
-          label: label
-          changeId: 3.616076749251911
-          vmPoolId: 7.386281948385884
-          templateIdOrigin: 4.145608029883936
-          updatedTimestamp: updatedTimestamp
-          customVariables: {}
-          tags:
-          - tags
-          - tags
-          infrastructureId: 2.3021358869347655
-          serviceStatus: active
-          typeId: 9.301444243932576
-          links: {}
-          id: 5.962133916683182
-          operation: {}
-          diskSizeGB: 2.027123023002322
         createdTimestamp: createdTimestamp
         changeId: 1.4658129805029452
         label: label
@@ -8631,6 +8653,45 @@ components:
         volumeTemplateId: 1.0246457001441578
         serviceStatus: active
         instanceCount: 1
+        vmInstances:
+        - vmId: 7.061401241503109
+          groupId: 5.637376656633329
+          createdTimestamp: createdTimestamp
+          label: label
+          changeId: 3.616076749251911
+          vmPoolId: 7.386281948385884
+          templateIdOrigin: 4.145608029883936
+          updatedTimestamp: updatedTimestamp
+          customVariables: {}
+          tags:
+          - tags
+          - tags
+          infrastructureId: 2.3021358869347655
+          serviceStatus: active
+          typeId: 9.301444243932576
+          links: {}
+          id: 5.962133916683182
+          operation: {}
+          diskSizeGB: 2.027123023002322
+        - vmId: 7.061401241503109
+          groupId: 5.637376656633329
+          createdTimestamp: createdTimestamp
+          label: label
+          changeId: 3.616076749251911
+          vmPoolId: 7.386281948385884
+          templateIdOrigin: 4.145608029883936
+          updatedTimestamp: updatedTimestamp
+          customVariables: {}
+          tags:
+          - tags
+          - tags
+          infrastructureId: 2.3021358869347655
+          serviceStatus: active
+          typeId: 9.301444243932576
+          links: {}
+          id: 5.962133916683182
+          operation: {}
+          diskSizeGB: 2.027123023002322
         links: {}
         id: 0.8008281904610115
         operation: {}
@@ -10083,6 +10144,8 @@ components:
           type: string
           description: Webhook task request body template.
     ExtensionInfoDto:
+      required:
+      - icon
       type: object
       properties:
         id:
@@ -10103,7 +10166,7 @@ components:
           pattern: "^(?!.*-$)[a-z]{1}[a-z0-9-]{0,62}$"
           type: string
           description: The extension unique label
-          example: incus_6x
+          example: incus-6x
         description:
           maxLength: 255
           type: string
@@ -10113,11 +10176,15 @@ components:
           type: string
           description: Extension status
           example: draft
+        icon:
+          type: string
+          description: Icon of the extension.
       example:
         name: My App
+        icon: icon
         description: My App Description
         id: 10
-        label: incus_6x
+        label: incus-6x
         slug: my-app
         status: draft
     ExtensionListDto:
@@ -10133,15 +10200,17 @@ components:
       example:
         extensions:
         - name: My App
+          icon: icon
           description: My App Description
           id: 10
-          label: incus_6x
+          label: incus-6x
           slug: my-app
           status: draft
         - name: My App
+          icon: icon
           description: My App Description
           id: 10
-          label: incus_6x
+          label: incus-6x
           slug: my-app
           status: draft
     ExtensionDto:
@@ -10171,7 +10240,7 @@ components:
           pattern: "^(?!.*-$)[a-z]{1}[a-z0-9-]{0,62}$"
           type: string
           description: The extension unique label
-          example: incus_6x
+          example: incus-6x
         description:
           maxLength: 255
           type: string
@@ -10285,7 +10354,7 @@ components:
           name: name
           extensionVersion: extensionVersion
         id: 10
-        label: incus_6x
+        label: incus-6x
         slug: my-app
         status: draft
     CreateExtensionDto:
@@ -10305,7 +10374,7 @@ components:
           pattern: "^(?!.*-$)[a-z]{1}[a-z0-9-]{0,62}$"
           type: string
           description: The extension unique label
-          example: incus_6x
+          example: incus-6x
         description:
           maxLength: 255
           type: string
@@ -10326,7 +10395,7 @@ components:
           pattern: "^(?!.*-$)[a-z]{1}[a-z0-9-]{0,62}$"
           type: string
           description: The extension unique label
-          example: incus_6x
+          example: incus-6x
         description:
           maxLength: 255
           type: string

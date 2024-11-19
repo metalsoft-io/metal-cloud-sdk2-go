@@ -29,7 +29,7 @@ type VmInstanceGroup struct {
 	// Operation object for the VM Instance Group.
 	Operation *interface{} `json:"operation" yaml:"operation"`
 	// Array of VM instances in the VM Instance Group.
-	VmInstance []VmInstance `json:"vmInstance" yaml:"vmInstance"`
+	VmInstances []VmInstance `json:"vmInstances" yaml:"vmInstances"`
 	// Tags for the VM Instance Group.
 	Tags []string `json:"tags" yaml:"tags"`
 	// Disk size in GB for each VM Instance in the VM Instance Group.

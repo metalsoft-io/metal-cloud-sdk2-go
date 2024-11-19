@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetVMInstanceGroupVMInstances**
-> []VmInstance GetVMInstanceGroupVMInstances(ctx, infrastructureId, vmInstanceGroupId)
+> map[string]VmInstance GetVMInstanceGroupVMInstances(ctx, infrastructureId, vmInstanceGroupId)
 Get the VM Instances of VM Instance Group
 
 Returns the VM Instances of VM Instance Group
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]VmInstance**](VMInstance.md)
+[**map[string]VmInstance**](VMInstance.md)
 
 ### Authorization
 
