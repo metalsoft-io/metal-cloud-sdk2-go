@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Kind** | **string** | The kind of extension. | [default to null]
 **SchemaVersion** | **string** | Schema version of the extension. | [default to null]
 **Name** | **string** | Name of the extension. | [default to null]
-**Label** | **string** | Label of the extension. | [optional] [default to null]
+**Label** | **string** | Label of the extension. | [default to null]
 **ExtensionType** | **string** | Type of the extension. | [default to null]
 **Vendor** | **string** | Vendor of the extension. | [default to null]
 **ExtensionVersion** | **string** | Version of the extension. | [default to null]

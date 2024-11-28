@@ -38,7 +38,7 @@ type FileShare struct {
 	NetworkVlanId float64 `json:"networkVlanId,omitempty" yaml:"networkVlanId,omitempty"`
 	GuiSettings *GenericGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 	// Endpoint of the File Share.
-	Endpoint string `json:"endpoint,omitempty" yaml:"endpoint,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty" yaml:"endpoint,omitempty"`
 	// Operation object of the File Share.
 	Operation string `json:"operation,omitempty" yaml:"operation,omitempty"`
 	Links *interface{} `json:"links" yaml:"links"`

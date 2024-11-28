@@ -12,7 +12,7 @@ package sdk2
 type OneOfExtensionInputOptions struct {
     ExtensionInputString `yaml:",inline"`
     ExtensionInputInteger `yaml:",inline"`
+    ExtensionInputBoolean `yaml:",inline"`
     ExtensionInputServerType `yaml:",inline"`
     ExtensionInputOsTemplate `yaml:",inline"`
-    ExtensionInputBoolean `yaml:",inline"`
 }

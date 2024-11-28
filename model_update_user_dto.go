@@ -44,5 +44,5 @@ type UpdateUserDto struct {
 	// Whether the user account is a test one.
 	IsTestAccount bool `json:"isTestAccount,omitempty" yaml:"isTestAccount,omitempty"`
 	// Whether the user account is billable.
-	IsBillable bool `json:"isBillable,omitempty" yaml:"isBillable,omitempty"`
+	IsBillable *bool `json:"isBillable,omitempty" yaml:"isBillable,omitempty"`
 }

@@ -39,8 +39,8 @@ type VmInstance struct {
 	// Disk size in GB of the VM Instance.
 	DiskSizeGB float64 `json:"diskSizeGB" yaml:"diskSizeGB"`
 	// Id of the template used by the VM Instance.
-	TemplateIdOrigin float64 `json:"templateIdOrigin,omitempty" yaml:"templateIdOrigin,omitempty"`
+	TemplateIdOrigin *float64 `json:"templateIdOrigin,omitempty" yaml:"templateIdOrigin,omitempty"`
 	// Id of the VM Pool.
-	VmPoolId float64 `json:"vmPoolId,omitempty" yaml:"vmPoolId,omitempty"`
+	VmPoolId *float64 `json:"vmPoolId,omitempty" yaml:"vmPoolId,omitempty"`
 	Links *interface{} `json:"links" yaml:"links"`
 }

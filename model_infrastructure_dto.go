@@ -17,7 +17,7 @@ type InfrastructureDto struct {
 	// Name of the datacenter
 	DatacenterName string `json:"datacenterName" yaml:"datacenterName"`
 	// Owner of the infrastructure
-	UserIdOwner float64 `json:"userIdOwner,omitempty" yaml:"userIdOwner,omitempty"`
+	UserIdOwner *float64 `json:"userIdOwner,omitempty" yaml:"userIdOwner,omitempty"`
 	// Status of the infrastructure
 	InfrastructureServiceStatus string `json:"infrastructureServiceStatus" yaml:"infrastructureServiceStatus"`
 	// Operation object of the infrastructure

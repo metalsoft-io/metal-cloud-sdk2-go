@@ -11,5 +11,5 @@ package sdk2
 
 type CreateVmInstanceGroupInterface struct {
 	// Network ID for the interface. Can be null if the interface is not connected to any network
-	NetworkId float64 `json:"networkId,omitempty" yaml:"networkId,omitempty"`
+	NetworkId *float64 `json:"networkId,omitempty" yaml:"networkId,omitempty"`
 }

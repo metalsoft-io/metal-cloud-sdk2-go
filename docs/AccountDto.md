@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **float64** | Account ID | [default to null]
+**Id** | **string** | Account ID | [default to null]
 **ParentAccountId** | **float64** | The ID of the parent account | [optional] [default to null]
 **Name** | **string** | The name of the account | [default to null]
 **Code** | **string** | The code of the account | [optional] [default to null]

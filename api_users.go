@@ -30,10 +30,10 @@ type UsersApiService service
 UsersApiService Archive user
 Archives a user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param userId
+ * @param userId The user id
 @return UserDto
 */
-func (a *UsersApiService) ArchiveUser(ctx context.Context, userId float64) (UserDto, *http.Response, error) {
+func (a *UsersApiService) ArchiveUser(ctx context.Context, userId string) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -116,10 +116,10 @@ UsersApiService Change account for user
 Changes account for user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The new account id
- * @param userId
+ * @param userId The user id
 @return UserDto
 */
-func (a *UsersApiService) ChangeUserAccount(ctx context.Context, body ChangeUserAccountDto, userId float64) (UserDto, *http.Response, error) {
+func (a *UsersApiService) ChangeUserAccount(ctx context.Context, body ChangeUserAccountDto, userId string) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -289,7 +289,7 @@ func (a *UsersApiService) CreateUser(ctx context.Context, body CreateUserDto) (U
 UsersApiService Get user
 Returns a user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param userId
+ * @param userId The user id
  * @param optional nil or *UsersApiGetUserOpts - Optional Parameters:
      * @param "Recursion" (optional.Float64) -  The recursion level of the displayed details. Default is 0.
 @return UserDto
@@ -299,7 +299,7 @@ type UsersApiGetUserOpts struct {
     Recursion optional.Float64
 }
 
-func (a *UsersApiService) GetUser(ctx context.Context, userId float64, localVarOptionals *UsersApiGetUserOpts) (UserDto, *http.Response, error) {
+func (a *UsersApiService) GetUser(ctx context.Context, userId string, localVarOptionals *UsersApiGetUserOpts) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -384,10 +384,10 @@ func (a *UsersApiService) GetUser(ctx context.Context, userId float64, localVarO
 UsersApiService Get user limits
 Returns the limits of a user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param userId
+ * @param userId The user id
 @return UserLimitsDto
 */
-func (a *UsersApiService) GetUserLimits(ctx context.Context, userId float64) (UserLimitsDto, *http.Response, error) {
+func (a *UsersApiService) GetUserLimits(ctx context.Context, userId string) (UserLimitsDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -552,10 +552,10 @@ func (a *UsersApiService) GetUsers(ctx context.Context) ([]UserDto, *http.Respon
 UsersApiService Unarchive user
 Unarchives a user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param userId
+ * @param userId The user id
 @return UserDto
 */
-func (a *UsersApiService) UnarchiveUser(ctx context.Context, userId float64) (UserDto, *http.Response, error) {
+func (a *UsersApiService) UnarchiveUser(ctx context.Context, userId string) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -638,10 +638,10 @@ UsersApiService Update user
 Updates a user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The user updates
- * @param userId
+ * @param userId The user id
 @return UserDto
 */
-func (a *UsersApiService) UpdateUser(ctx context.Context, body UpdateUserDto, userId float64) (UserDto, *http.Response, error) {
+func (a *UsersApiService) UpdateUser(ctx context.Context, body UpdateUserDto, userId string) (UserDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -726,10 +726,10 @@ UsersApiService Update user limits
 Updates the limits of a user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The new limits
- * @param userId
+ * @param userId The user id
 @return UserLimitsDto
 */
-func (a *UsersApiService) UpdateUserLimits(ctx context.Context, body UserLimitsDto, userId float64) (UserLimitsDto, *http.Response, error) {
+func (a *UsersApiService) UpdateUserLimits(ctx context.Context, body UserLimitsDto, userId string) (UserLimitsDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}

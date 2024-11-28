@@ -21,7 +21,7 @@ type VmPool struct {
 	// Name of the VM Pool
 	Name string `json:"name" yaml:"name"`
 	// Description of the VM Pool
-	Description string `json:"description" yaml:"description"`
+	Description *string `json:"description" yaml:"description"`
 	// Type of the VM Pool
 	Type_ string `json:"type" yaml:"type"`
 	// Certificate of the VM Pool

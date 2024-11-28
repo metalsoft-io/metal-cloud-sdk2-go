@@ -23,7 +23,7 @@ type VmInstanceGroupInterface struct {
 	// Infrastructure ID
 	InfrastructureId float64 `json:"infrastructureId" yaml:"infrastructureId"`
 	// Operation ID
-	ChangeId float64 `json:"changeId" yaml:"changeId"`
+	ChangeId *float64 `json:"changeId" yaml:"changeId"`
 	// Interface label
 	Label string `json:"label" yaml:"label"`
 	// Timestamp of the VM Instance Group Interface creation.

@@ -81,7 +81,7 @@ Returns an account by id
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **accountId** | **float64**|  | 
+  **accountId** | **string**| The account id | 
  **optional** | ***AccountsApiGetAccountOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

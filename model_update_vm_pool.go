@@ -11,7 +11,7 @@ package sdk2
 
 type UpdateVmPool struct {
 	// Datacenter of the VM Pool
-	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+	Description *string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Host of the VM Pool
 	ManagementHost string `json:"managementHost,omitempty" yaml:"managementHost,omitempty"`
 	// Port of the VM Pool
