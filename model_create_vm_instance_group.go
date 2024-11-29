@@ -17,7 +17,7 @@ type CreateVmInstanceGroup struct {
 	// Disk size in GB for each VM Instance in the VM Instance Group.
 	DiskSizeGB float64 `json:"diskSizeGB" yaml:"diskSizeGB"`
 	// Id of the VM Volume Template.
-	VolumeTemplateId float64 `json:"volumeTemplateId" yaml:"volumeTemplateId"`
+	VolumeTemplateId *float64 `json:"volumeTemplateId" yaml:"volumeTemplateId"`
 	// Tags for the VM Instance Group.
 	Tags []string `json:"tags,omitempty" yaml:"tags,omitempty"`
 }

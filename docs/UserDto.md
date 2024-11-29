@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **float64** | User ID | [default to null]
+**Id** | **string** | User ID | [default to null]
 **Franchise** | **string** | The franchise of the user | [default to null]
 **DisplayName** | **string** | The display name of the user | [default to null]
 **Email** | **string** | The email address of the user | [default to null]
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 **IsDatastorePublisher** | **float64** | Whether the user is a datastore publisher | [default to null]
 **Provider** | **string** | The provider of the user | [default to default]
 **Archived** | **float64** | Whether the user is a archived | [default to null]
-**AccountId** | **float64** | The account ID of the user | [default to null]
+**AccountId** | **string** | The account ID of the user | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -19,15 +19,15 @@ type Vm struct {
 	// Datacenter of the VM
 	DatacenterName string `json:"datacenterName" yaml:"datacenterName"`
 	// ID of the infrastructure where this VM is deployed
-	InfrastructureId float64 `json:"infrastructureId" yaml:"infrastructureId"`
+	InfrastructureId *float64 `json:"infrastructureId" yaml:"infrastructureId"`
 	// ID of the user that owns this VM
-	UserId float64 `json:"userId" yaml:"userId"`
+	UserId *float64 `json:"userId" yaml:"userId"`
 	// Email of the user that owns this VM
-	UserEmail string `json:"userEmail" yaml:"userEmail"`
+	UserEmail *string `json:"userEmail" yaml:"userEmail"`
 	// ID of the instance where this VM is deployed
-	InstanceId float64 `json:"instanceId" yaml:"instanceId"`
+	InstanceId *float64 `json:"instanceId" yaml:"instanceId"`
 	// ID of the VM instance where this VM is deployed
-	VmInstanceId float64 `json:"vmInstanceId" yaml:"vmInstanceId"`
+	VmInstanceId *float64 `json:"vmInstanceId" yaml:"vmInstanceId"`
 	// Name of the host
 	Host string `json:"host" yaml:"host"`
 	// List of hosts
@@ -45,7 +45,7 @@ type Vm struct {
 	// The administration state of the VM.
 	AdministrationState *interface{} `json:"administrationState" yaml:"administrationState"`
 	// VM comments.
-	Comments float64 `json:"comments" yaml:"comments"`
+	Comments *float64 `json:"comments" yaml:"comments"`
 	// The power state of the VM.
 	PowerState *interface{} `json:"powerState" yaml:"powerState"`
 	// Timestamp when the VM power state was last updated.
@@ -57,9 +57,9 @@ type Vm struct {
 	// Tags for the VM.
 	Tags []string `json:"tags" yaml:"tags"`
 	// The port number for the VNC server.
-	VncPort float64 `json:"vncPort" yaml:"vncPort"`
+	VncPort *float64 `json:"vncPort" yaml:"vncPort"`
 	// The password for the VNC server.
-	VncPassword string `json:"vncPassword" yaml:"vncPassword"`
+	VncPassword *string `json:"vncPassword" yaml:"vncPassword"`
 	// The disks of the VM.
 	Disks []VmDisk `json:"disks" yaml:"disks"`
 }

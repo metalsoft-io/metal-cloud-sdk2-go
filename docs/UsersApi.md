@@ -25,7 +25,7 @@ Archives a user
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **userId** | **float64**|  | 
+  **userId** | **string**| The user id | 
 
 ### Return type
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**ChangeUserAccountDto**](ChangeUserAccountDto.md)| The new account id | 
-  **userId** | **float64**|  | 
+  **userId** | **string**| The user id | 
 
 ### Return type
 
@@ -110,7 +110,7 @@ Returns a user
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **userId** | **float64**|  | 
+  **userId** | **string**| The user id | 
  **optional** | ***UsersApiGetUserOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -146,7 +146,7 @@ Returns the limits of a user
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **userId** | **float64**|  | 
+  **userId** | **string**| The user id | 
 
 ### Return type
 
@@ -198,7 +198,7 @@ Unarchives a user
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **userId** | **float64**|  | 
+  **userId** | **string**| The user id | 
 
 ### Return type
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**UpdateUserDto**](UpdateUserDto.md)| The user updates | 
-  **userId** | **float64**|  | 
+  **userId** | **string**| The user id | 
 
 ### Return type
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**UserLimitsDto**](UserLimitsDto.md)| The new limits | 
-  **userId** | **float64**|  | 
+  **userId** | **string**| The user id | 
 
 ### Return type
 

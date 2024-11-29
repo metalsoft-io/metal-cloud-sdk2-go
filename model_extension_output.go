@@ -17,5 +17,5 @@ type ExtensionOutput struct {
 	// Type of the output.
 	OutputType string `json:"outputType" yaml:"outputType"`
 	// Template of the output.
-	Template string `json:"template" yaml:"template"`
+	Template string `json:"template,omitempty" yaml:"template,omitempty"`
 }

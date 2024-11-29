@@ -38,11 +38,11 @@ type Bucket struct {
 	NetworkVlanId float64 `json:"networkVlanId,omitempty" yaml:"networkVlanId,omitempty"`
 	GuiSettings *GenericGuiSettings `json:"guiSettings,omitempty" yaml:"guiSettings,omitempty"`
 	// Endpoint of the Bucket.
-	Endpoint string `json:"endpoint,omitempty" yaml:"endpoint,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty" yaml:"endpoint,omitempty"`
 	// Endpoint of the Bucket.
-	AccessKeyId string `json:"accessKeyId,omitempty" yaml:"accessKeyId,omitempty"`
+	AccessKeyId *string `json:"accessKeyId,omitempty" yaml:"accessKeyId,omitempty"`
 	// Endpoint of the Bucket.
-	SecretKey string `json:"secretKey,omitempty" yaml:"secretKey,omitempty"`
+	SecretKey *string `json:"secretKey,omitempty" yaml:"secretKey,omitempty"`
 	// Operation object of the Bucket.
 	Operation string `json:"operation,omitempty" yaml:"operation,omitempty"`
 	Links *interface{} `json:"links" yaml:"links"`

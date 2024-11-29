@@ -19,7 +19,7 @@ type CreateVmPool struct {
 	// Name of the VM Pool
 	Name string `json:"name,omitempty" yaml:"name,omitempty"`
 	// Description of the VM Pool
-	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+	Description *string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Type of the VM Pool
 	Type_ string `json:"type,omitempty" yaml:"type,omitempty"`
 	// Certificate of the VM Pool

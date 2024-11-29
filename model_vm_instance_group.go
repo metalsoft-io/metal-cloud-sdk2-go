@@ -35,7 +35,7 @@ type VmInstanceGroup struct {
 	// Disk size in GB for each VM Instance in the VM Instance Group.
 	DiskSizeGB float64 `json:"diskSizeGB" yaml:"diskSizeGB"`
 	// Id of the template used by the VM Instance Group.
-	VolumeTemplateId float64 `json:"volumeTemplateId,omitempty" yaml:"volumeTemplateId,omitempty"`
+	VolumeTemplateId *float64 `json:"volumeTemplateId,omitempty" yaml:"volumeTemplateId,omitempty"`
 	// Interfaces for the VM Instance Group
 	VmInstanceGroupInterfaces []VmInstanceGroupInterface `json:"vmInstanceGroupInterfaces,omitempty" yaml:"vmInstanceGroupInterfaces,omitempty"`
 	// Network Id to Network Profile Id for the VM Instance Group. This is a JSON object.

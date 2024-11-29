@@ -17,7 +17,7 @@ type ExtensionDefinitionDto struct {
 	// Name of the extension.
 	Name string `json:"name" yaml:"name"`
 	// Label of the extension.
-	Label string `json:"label,omitempty" yaml:"label,omitempty"`
+	Label string `json:"label" yaml:"label"`
 	// Type of the extension.
 	ExtensionType string `json:"extensionType" yaml:"extensionType"`
 	// Vendor of the extension.

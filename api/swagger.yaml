@@ -125,11 +125,12 @@ paths:
       parameters:
       - name: accountId
         in: path
+        description: The account id
         required: true
         style: simple
         explode: false
         schema:
-          type: number
+          type: string
       - name: recursion
         in: query
         description: The recursion level of the displayed details. Default is 0.
@@ -432,11 +433,12 @@ paths:
       parameters:
       - name: userId
         in: path
+        description: The user id
         required: true
         style: simple
         explode: false
         schema:
-          type: number
+          type: string
       - name: recursion
         in: query
         description: The recursion level of the displayed details. Default is 0.
@@ -470,11 +472,12 @@ paths:
       parameters:
       - name: userId
         in: path
+        description: The user id
         required: true
         style: simple
         explode: false
         schema:
-          type: number
+          type: string
       requestBody:
         description: The user updates
         content:
@@ -510,11 +513,12 @@ paths:
       parameters:
       - name: userId
         in: path
+        description: The user id
         required: true
         style: simple
         explode: false
         schema:
-          type: number
+          type: string
       requestBody:
         description: The new account id
         content:
@@ -550,11 +554,12 @@ paths:
       parameters:
       - name: userId
         in: path
+        description: The user id
         required: true
         style: simple
         explode: false
         schema:
-          type: number
+          type: string
       responses:
         "200":
           description: User successfully archived
@@ -581,11 +586,12 @@ paths:
       parameters:
       - name: userId
         in: path
+        description: The user id
         required: true
         style: simple
         explode: false
         schema:
-          type: number
+          type: string
       responses:
         "200":
           description: User successfully unarchived
@@ -612,11 +618,12 @@ paths:
       parameters:
       - name: userId
         in: path
+        description: The user id
         required: true
         style: simple
         explode: false
         schema:
-          type: number
+          type: string
       responses:
         "200":
           description: Returns the limits of a user
@@ -642,11 +649,12 @@ paths:
       parameters:
       - name: userId
         in: path
+        description: The user id
         required: true
         style: simple
         explode: false
         schema:
-          type: number
+          type: string
       requestBody:
         description: The new limits
         content:
@@ -5091,9 +5099,9 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: string
           description: Account ID
-          example: 1
+          example: "1"
         parentAccountId:
           type: number
           description: The ID of the parent account
@@ -5131,7 +5139,7 @@ components:
           state: state
         secondaryContactId: 1.4658129805029452
         name: name
-        id: 1
+        id: "1"
         fiscalNumber: fiscalNumber
         limits:
           user_resource_server_type_name_to_max_count: {}
@@ -5451,91 +5459,91 @@ components:
           type: object
       example:
         allow_network_profiles: true
-        wan_subnet_ipv4_max_count: 0.2025324113236393
+        wan_subnet_ipv4_max_count: 4.078845849666752
         infrastructure_container_cluster_spark_array_allowed: true
         allowed_network_profiles: {}
         infrastructure_container_cluster_zookeeper_allowed: true
-        infrastructure_container_platform_max_count: 9.369310271410669
+        infrastructure_container_platform_max_count: 9.965781217890562
         show_diagram_app_cluster_type_mapr: true
         show_diagram_app_cluster_type_cloudera: true
-        infrastructure_vm_instance_group_max_count: 6.704019297950036
+        infrastructure_vm_instance_group_max_count: 5.944895607614016
         show_diagram_app_cluster_type_datameer: true
         infrastructure_container_cluster_postgresql_allowed: true
-        drive_array_drives_max_count: 1.4894159098541704
-        infrastructure_inactive_max_count: 6.438423552598547
-        file_share_max_size_gb: 8.969578798196912
-        vm_instance_group_vm_instances_max_count: 3.353193347011243
+        drive_array_drives_max_count: 1.0246457001441578
+        infrastructure_inactive_max_count: 9.018348186070783
+        file_share_max_size_gb: 4.652396432933246
+        vm_instance_group_vm_instances_max_count: 6.704019297950036
         show_stack_trace: true
-        bucket_max_size_gb: 3.0576100241049344
-        infrastructure_active_max_count: 4.965218492984954
+        bucket_max_size_gb: 3.0205796992916243
+        infrastructure_active_max_count: 1.1730742509559433
         show_diagram_app_cluster_type_datastax: true
         infrastructure_container_cluster_sparksql_allowed: true
-        infrastructure_bucket_max_count: 7.740351818741173
+        infrastructure_bucket_max_count: 8.969578798196912
         enable_custom_subnets: true
-        infrastructure_file_share_max_count: 0.10263654006109402
-        user_resource_servers_max_count: 3.2588565619047607
-        infrastructure_cluster_max_count: 5.025004791520295
+        infrastructure_file_share_max_count: 6.519180951018382
+        user_resource_servers_max_count: 5.533258397034986
+        infrastructure_cluster_max_count: 4.965218492984954
         infrastructure_container_cluster_kafka_allowed: true
         show_operating_system_images_tab: true
-        drive_array_drives_min_count: 6.84685269835264
-        infrastructure_shared_drive_max_count: 2.8841621266687802
+        drive_array_drives_min_count: 1.4894159098541704
+        infrastructure_shared_drive_max_count: 1.284659006116532
         enable_custom_raid_configuration: true
         show_diagram_app_cluster_type_splunk: true
         show_diagram_app_cluster_type_couchbase: true
         show_diagram_vm_instance_groups: true
         infrastructure_container_cluster_zoomdata_allowed: true
-        infrastructure_wan_max_count: 6.778324963048013
-        infrastructure_instance_array_max_count: 3.5571952270680973
+        infrastructure_wan_max_count: 2.8841621266687802
+        infrastructure_instance_array_max_count: 6.438423552598547
         show_diagram_app_cluster_type_vmware_vsphere: true
         show_diagram_app_cluster_type_exasol: true
         show_diagram_app_cluster_type_elasticsearch: true
         infrastructure_container_cluster_streamsets_allowed: true
-        infrastructure_san_max_count: 1.284659006116532
-        file_share_min_size_gb: 4.652396432933246
-        shared_drive_max_size_mbytes: 7.058770351582356
+        infrastructure_san_max_count: 6.965117697638846
+        file_share_min_size_gb: 0.10263654006109402
+        shared_drive_max_size_mbytes: 0.8851374739011653
         show_legacy_pages: true
         infrastructure_volume_template_experimental_allowed: true
         infrastructure_cluster_mysql_allowed: true
-        infrastructure_container_cluster_max_count: 9.965781217890562
+        infrastructure_container_cluster_max_count: 5.025004791520295
         allow_vlan_overrides: true
         show_diagram_app_cluster_type_mesos: true
-        vm_instance_max_disk_size_mbytes: 3.0937452626664474
-        wan_subnet_ipv6_max_count: 6.628464275087742
-        bucket_min_size_gb: 3.0205796992916243
-        container_array_containers_max_count: 3.616076749251911
-        drive_max_size_mbytes: 7.457744773683766
-        infrastructure_drive_array_max_count: 9.018348186070783
+        vm_instance_max_disk_size_mbytes: 3.353193347011243
+        wan_subnet_ipv6_max_count: 0.2025324113236393
+        bucket_min_size_gb: 7.740351818741173
+        container_array_containers_max_count: 9.301444243932576
+        drive_max_size_mbytes: 6.84685269835264
+        infrastructure_drive_array_max_count: 8.762042012749001
         show_diagram_app_cluster_type_hortonworks: true
-        container_array_secrets_max_count: 1.2315135367772556
+        container_array_secrets_max_count: 7.386281948385884
         show_diagram_app_cluster_type_kubernetes_eksa: true
         infrastructure_data_lake_enabled: true
-        infrastructure_lan_max_count: 6.965117697638846
-        server_type_reservation_max_quantity: 0.8851374739011653
+        infrastructure_lan_max_count: 3.5571952270680973
+        server_type_reservation_max_quantity: 7.143538047012306
         show_template_assets_view: true
-        instance_array_instances_min_count: 5.944895607614016
+        instance_array_instances_min_count: 6.878052220127876
         show_diagram_app_cluster_type_mysql_percona: true
         user_resource_server_type_name_to_max_count: {}
-        instance_array_instances_max_count: 6.878052220127876
+        instance_array_instances_max_count: 6.778324963048013
         show_experimental_pages: true
-        container_array_containers_min_count: 2.027123023002322
-        server_type_reservation_max_count: 7.143538047012306
-        drive_min_size_mbytes: 1.1730742509559433
+        container_array_containers_min_count: 3.616076749251911
+        server_type_reservation_max_count: 3.0937452626664474
+        drive_min_size_mbytes: 7.457744773683766
         show_eli_chat_bot: true
-        user_ssh_keys_count_max: 4.078845849666752
+        user_ssh_keys_count_max: 3.2588565619047607
         show_diagram_app_cluster_type_kubernetes: true
         wan_subnet_prefix_size_to_max_count: {}
-        container_array_drive_arrays_max_count: 4.145608029883936
-        container_platform_container_array_max_count: 1.0246457001441578
-        threshold_max_count: 7.04836565559697
-        container_array_drive_arrays_min_count: 7.386281948385884
-        infrastructure_data_lake_max_count: 6.683562403749608
-        infrastructure_deleted_max_count: 8.762042012749001
+        container_array_drive_arrays_max_count: 2.027123023002322
+        container_platform_container_array_max_count: 1.2315135367772556
+        threshold_max_count: 3.0576100241049344
+        container_array_drive_arrays_min_count: 4.145608029883936
+        infrastructure_data_lake_max_count: 9.369310271410669
+        infrastructure_deleted_max_count: 6.683562403749608
         owner_is_billable: true
         show_diagram_app_cluster_type_vmware_vcf: true
         storage_types: {}
-        user_resource_iscsi_storage_space_max_gbytes: 5.533258397034986
+        user_resource_iscsi_storage_space_max_gbytes: 7.04836565559697
         show_diagram_apps_global: true
-        shared_drive_min_size_mbytes: 6.519180951018382
+        shared_drive_min_size_mbytes: 7.058770351582356
     UserDto:
       required:
       - accessLevel
@@ -5574,7 +5582,7 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: string
           description: User ID
         franchise:
           type: string
@@ -5675,127 +5683,127 @@ components:
           type: number
           description: Whether the user is a archived
         accountId:
-          type: number
+          type: string
           description: The account ID of the user
       example:
         authenticatorCreatedTimestamp: authenticatorCreatedTimestamp
-        isTestingMode: 2.3021358869347655
+        isTestingMode: 5.637376656633329
         franchise: franchise
-        passwordChangeRequired: 5.962133916683182
+        passwordChangeRequired: 1.4658129805029452
         promotionTags: {}
         displayName: displayName
         customPrices: {}
         language: language
-        infrastructureIdDefault: 9.301444243932576
-        authenticatorMustChange: 6.027456183070403
-        isTestAccount: 1.041444916118296
-        archived: 9.132027271330688
-        blocked: 1.4658129805029452
+        infrastructureIdDefault: 7.061401241503109
+        authenticatorMustChange: 0.8008281904610115
+        isTestAccount: 4.258773108174356
+        archived: 7.260521264802104
+        blocked: 6.027456183070403
         provider: default
         permissions: {}
-        isBrandManager: 4.678947989005849
-        id: 0.8008281904610115
-        isDatastorePublisher: 7.260521264802104
+        isBrandManager: 1.041444916118296
+        id: id
+        isDatastorePublisher: 4.678947989005849
         brand: default
         email: email
         limits:
           allow_network_profiles: true
-          wan_subnet_ipv4_max_count: 0.2025324113236393
+          wan_subnet_ipv4_max_count: 4.078845849666752
           infrastructure_container_cluster_spark_array_allowed: true
           allowed_network_profiles: {}
           infrastructure_container_cluster_zookeeper_allowed: true
-          infrastructure_container_platform_max_count: 9.369310271410669
+          infrastructure_container_platform_max_count: 9.965781217890562
           show_diagram_app_cluster_type_mapr: true
           show_diagram_app_cluster_type_cloudera: true
-          infrastructure_vm_instance_group_max_count: 6.704019297950036
+          infrastructure_vm_instance_group_max_count: 5.944895607614016
           show_diagram_app_cluster_type_datameer: true
           infrastructure_container_cluster_postgresql_allowed: true
-          drive_array_drives_max_count: 1.4894159098541704
-          infrastructure_inactive_max_count: 6.438423552598547
-          file_share_max_size_gb: 8.969578798196912
-          vm_instance_group_vm_instances_max_count: 3.353193347011243
+          drive_array_drives_max_count: 1.0246457001441578
+          infrastructure_inactive_max_count: 9.018348186070783
+          file_share_max_size_gb: 4.652396432933246
+          vm_instance_group_vm_instances_max_count: 6.704019297950036
           show_stack_trace: true
-          bucket_max_size_gb: 3.0576100241049344
-          infrastructure_active_max_count: 4.965218492984954
+          bucket_max_size_gb: 3.0205796992916243
+          infrastructure_active_max_count: 1.1730742509559433
           show_diagram_app_cluster_type_datastax: true
           infrastructure_container_cluster_sparksql_allowed: true
-          infrastructure_bucket_max_count: 7.740351818741173
+          infrastructure_bucket_max_count: 8.969578798196912
           enable_custom_subnets: true
-          infrastructure_file_share_max_count: 0.10263654006109402
-          user_resource_servers_max_count: 3.2588565619047607
-          infrastructure_cluster_max_count: 5.025004791520295
+          infrastructure_file_share_max_count: 6.519180951018382
+          user_resource_servers_max_count: 5.533258397034986
+          infrastructure_cluster_max_count: 4.965218492984954
           infrastructure_container_cluster_kafka_allowed: true
           show_operating_system_images_tab: true
-          drive_array_drives_min_count: 6.84685269835264
-          infrastructure_shared_drive_max_count: 2.8841621266687802
+          drive_array_drives_min_count: 1.4894159098541704
+          infrastructure_shared_drive_max_count: 1.284659006116532
           enable_custom_raid_configuration: true
           show_diagram_app_cluster_type_splunk: true
           show_diagram_app_cluster_type_couchbase: true
           show_diagram_vm_instance_groups: true
           infrastructure_container_cluster_zoomdata_allowed: true
-          infrastructure_wan_max_count: 6.778324963048013
-          infrastructure_instance_array_max_count: 3.5571952270680973
+          infrastructure_wan_max_count: 2.8841621266687802
+          infrastructure_instance_array_max_count: 6.438423552598547
           show_diagram_app_cluster_type_vmware_vsphere: true
           show_diagram_app_cluster_type_exasol: true
           show_diagram_app_cluster_type_elasticsearch: true
           infrastructure_container_cluster_streamsets_allowed: true
-          infrastructure_san_max_count: 1.284659006116532
-          file_share_min_size_gb: 4.652396432933246
-          shared_drive_max_size_mbytes: 7.058770351582356
+          infrastructure_san_max_count: 6.965117697638846
+          file_share_min_size_gb: 0.10263654006109402
+          shared_drive_max_size_mbytes: 0.8851374739011653
           show_legacy_pages: true
           infrastructure_volume_template_experimental_allowed: true
           infrastructure_cluster_mysql_allowed: true
-          infrastructure_container_cluster_max_count: 9.965781217890562
+          infrastructure_container_cluster_max_count: 5.025004791520295
           allow_vlan_overrides: true
           show_diagram_app_cluster_type_mesos: true
-          vm_instance_max_disk_size_mbytes: 3.0937452626664474
-          wan_subnet_ipv6_max_count: 6.628464275087742
-          bucket_min_size_gb: 3.0205796992916243
-          container_array_containers_max_count: 3.616076749251911
-          drive_max_size_mbytes: 7.457744773683766
-          infrastructure_drive_array_max_count: 9.018348186070783
+          vm_instance_max_disk_size_mbytes: 3.353193347011243
+          wan_subnet_ipv6_max_count: 0.2025324113236393
+          bucket_min_size_gb: 7.740351818741173
+          container_array_containers_max_count: 9.301444243932576
+          drive_max_size_mbytes: 6.84685269835264
+          infrastructure_drive_array_max_count: 8.762042012749001
           show_diagram_app_cluster_type_hortonworks: true
-          container_array_secrets_max_count: 1.2315135367772556
+          container_array_secrets_max_count: 7.386281948385884
           show_diagram_app_cluster_type_kubernetes_eksa: true
           infrastructure_data_lake_enabled: true
-          infrastructure_lan_max_count: 6.965117697638846
-          server_type_reservation_max_quantity: 0.8851374739011653
+          infrastructure_lan_max_count: 3.5571952270680973
+          server_type_reservation_max_quantity: 7.143538047012306
           show_template_assets_view: true
-          instance_array_instances_min_count: 5.944895607614016
+          instance_array_instances_min_count: 6.878052220127876
           show_diagram_app_cluster_type_mysql_percona: true
           user_resource_server_type_name_to_max_count: {}
-          instance_array_instances_max_count: 6.878052220127876
+          instance_array_instances_max_count: 6.778324963048013
           show_experimental_pages: true
-          container_array_containers_min_count: 2.027123023002322
-          server_type_reservation_max_count: 7.143538047012306
-          drive_min_size_mbytes: 1.1730742509559433
+          container_array_containers_min_count: 3.616076749251911
+          server_type_reservation_max_count: 3.0937452626664474
+          drive_min_size_mbytes: 7.457744773683766
           show_eli_chat_bot: true
-          user_ssh_keys_count_max: 4.078845849666752
+          user_ssh_keys_count_max: 3.2588565619047607
           show_diagram_app_cluster_type_kubernetes: true
           wan_subnet_prefix_size_to_max_count: {}
-          container_array_drive_arrays_max_count: 4.145608029883936
-          container_platform_container_array_max_count: 1.0246457001441578
-          threshold_max_count: 7.04836565559697
-          container_array_drive_arrays_min_count: 7.386281948385884
-          infrastructure_data_lake_max_count: 6.683562403749608
-          infrastructure_deleted_max_count: 8.762042012749001
+          container_array_drive_arrays_max_count: 2.027123023002322
+          container_platform_container_array_max_count: 1.2315135367772556
+          threshold_max_count: 3.0576100241049344
+          container_array_drive_arrays_min_count: 4.145608029883936
+          infrastructure_data_lake_max_count: 9.369310271410669
+          infrastructure_deleted_max_count: 6.683562403749608
           owner_is_billable: true
           show_diagram_app_cluster_type_vmware_vcf: true
           storage_types: {}
-          user_resource_iscsi_storage_space_max_gbytes: 5.533258397034986
+          user_resource_iscsi_storage_space_max_gbytes: 7.04836565559697
           show_diagram_apps_global: true
-          shared_drive_min_size_mbytes: 6.519180951018382
+          shared_drive_min_size_mbytes: 7.058770351582356
         lastLoginType: lastLoginType
         experimentalTags: {}
-        isSuspended: 7.061401241503109
+        isSuspended: 2.3021358869347655
         planType: vanilla
         accessLevel: accessLevel
         createdTimestamp: createdTimestamp
         externalIds: {}
-        isBillable: 5.637376656633329
+        isBillable: 5.962133916683182
         lastLoginTimestamp: lastLoginTimestamp
-        excludeFromReports: 4.258773108174356
-        accountId: 0.8774076871421566
+        excludeFromReports: 6.628464275087742
+        accountId: accountId
         emailStatus: emailStatus
         guiSettings: {}
     CreateUserDto:
@@ -5978,6 +5986,7 @@ components:
         isBillable:
           type: boolean
           description: Whether the user account is billable.
+          nullable: true
     ChangeUserAccountDto:
       required:
       - newAccountId
@@ -9607,16 +9616,27 @@ components:
       type: object
       properties:
         controllerVersion:
+          maxLength: 32
           type: string
           description: Metalsoft Controller version required by the extension.
         osTemplates:
+          maxItems: 12
           type: array
           description: List of OS templates required by the extension.
           items:
+            maxLength: 64
             type: string
       example:
         controllerVersion: controllerVersion
         osTemplates:
+        - osTemplates
+        - osTemplates
+        - osTemplates
+        - osTemplates
+        - osTemplates
+        - osTemplates
+        - osTemplates
+        - osTemplates
         - osTemplates
         - osTemplates
     ExtensionInput:
@@ -9628,9 +9648,11 @@ components:
       type: object
       properties:
         label:
+          maxLength: 63
           type: string
           description: Label of the input.
         name:
+          maxLength: 64
           type: string
           description: Name of the input.
         inputType:
@@ -9639,17 +9661,17 @@ components:
           enum:
           - ExtensionInputString
           - ExtensionInputInteger
+          - ExtensionInputBoolean
           - ExtensionInputServerType
           - ExtensionInputOsTemplate
-          - ExtensionInputBoolean
         options:
           description: Input options.
           oneOf:
           - $ref: '#/components/schemas/ExtensionInputString'
           - $ref: '#/components/schemas/ExtensionInputInteger'
+          - $ref: '#/components/schemas/ExtensionInputBoolean'
           - $ref: '#/components/schemas/ExtensionInputServerType'
           - $ref: '#/components/schemas/ExtensionInputOsTemplate'
-          - $ref: '#/components/schemas/ExtensionInputBoolean'
       example:
         name: name
         options: ""
@@ -9660,19 +9682,22 @@ components:
       - label
       - name
       - outputType
-      - template
       type: object
       properties:
         label:
+          maxLength: 63
           type: string
           description: Label of the output.
         name:
+          maxLength: 64
           type: string
           description: Name of the output.
         outputType:
+          maxLength: 32
           type: string
           description: Type of the output.
         template:
+          maxLength: 128
           type: string
           description: Template of the output.
       example:
@@ -9687,9 +9712,11 @@ components:
       type: object
       properties:
         name:
+          maxLength: 64
           type: string
           description: Custom variable name.
         value:
+          maxLength: 128
           type: string
           description: Custom variable value.
       example:
@@ -9704,35 +9731,52 @@ components:
       type: object
       properties:
         label:
+          maxLength: 63
           type: string
           description: Label of the instance array.
         instanceCount:
+          maxLength: 128
           type: string
           description: Instance count value or reference to variable.
         serverType:
+          maxLength: 128
           type: string
           description: Server type variable reference.
         osTemplate:
+          maxLength: 128
           type: string
           description: OS template variable reference.
         connectedSharedDrives:
+          maxItems: 12
           type: array
           description: Connected shared drive arrays.
           items:
+            maxLength: 128
             type: string
         customVariables:
+          maxItems: 12
           type: array
           description: Custom variables. The value may be a reference to an input
             variable.
           items:
             $ref: '#/components/schemas/CustomVariable'
         dependencies:
+          maxItems: 12
           type: array
           description: Labels of instance arrays this one depends on.
           items:
+            maxLength: 63
             type: string
       example:
         connectedSharedDrives:
+        - connectedSharedDrives
+        - connectedSharedDrives
+        - connectedSharedDrives
+        - connectedSharedDrives
+        - connectedSharedDrives
+        - connectedSharedDrives
+        - connectedSharedDrives
+        - connectedSharedDrives
         - connectedSharedDrives
         - connectedSharedDrives
         osTemplate: osTemplate
@@ -9744,7 +9788,31 @@ components:
           value: value
         - name: name
           value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
         dependencies:
+        - dependencies
+        - dependencies
+        - dependencies
+        - dependencies
+        - dependencies
+        - dependencies
+        - dependencies
+        - dependencies
         - dependencies
         - dependencies
     ExtensionSharedDrive:
@@ -9754,6 +9822,7 @@ components:
       type: object
       properties:
         label:
+          maxLength: 63
           type: string
           description: Label of the shared drive array.
         sizeGb:
@@ -9767,11 +9836,13 @@ components:
       type: object
       properties:
         instanceArrays:
+          maxItems: 12
           type: array
           description: Instance array details for the infrastructure requirement.
           items:
             $ref: '#/components/schemas/ExtensionInstanceArray'
         sharedDrives:
+          maxItems: 12
           type: array
           description: Shared drive details for the infrastructure requirement.
           items:
@@ -9781,6 +9852,14 @@ components:
         - connectedSharedDrives:
           - connectedSharedDrives
           - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
           osTemplate: osTemplate
           instanceCount: instanceCount
           serverType: serverType
@@ -9790,12 +9869,44 @@ components:
             value: value
           - name: name
             value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
           dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
           - dependencies
           - dependencies
         - connectedSharedDrives:
           - connectedSharedDrives
           - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
           osTemplate: osTemplate
           instanceCount: instanceCount
           serverType: serverType
@@ -9805,10 +9916,426 @@ components:
             value: value
           - name: name
             value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
           dependencies:
           - dependencies
           - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+        - connectedSharedDrives:
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          - connectedSharedDrives
+          osTemplate: osTemplate
+          instanceCount: instanceCount
+          serverType: serverType
+          label: label
+          customVariables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          - name: name
+            value: value
+          dependencies:
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
+          - dependencies
         sharedDrives:
+        - sizeGb: 10
+          label: label
+        - sizeGb: 10
+          label: label
+        - sizeGb: 10
+          label: label
+        - sizeGb: 10
+          label: label
+        - sizeGb: 10
+          label: label
+        - sizeGb: 10
+          label: label
+        - sizeGb: 10
+          label: label
+        - sizeGb: 10
+          label: label
         - sizeGb: 10
           label: label
         - sizeGb: 10
@@ -9822,26 +10349,40 @@ components:
       type: object
       properties:
         label:
+          maxLength: 63
           type: string
           description: Label of the asset.
         name:
+          maxLength: 64
           type: string
           description: Name of the asset.
         assetType:
+          maxLength: 32
           type: string
           description: Type of the asset.
         url:
+          maxLength: 128
           type: string
           description: URL of the asset.
         requiredAssets:
+          maxItems: 12
           type: array
           description: Required assets by this asset.
           items:
+            maxLength: 63
             type: string
       example:
         name: name
         label: label
         requiredAssets:
+        - requiredAssets
+        - requiredAssets
+        - requiredAssets
+        - requiredAssets
+        - requiredAssets
+        - requiredAssets
+        - requiredAssets
+        - requiredAssets
         - requiredAssets
         - requiredAssets
         url: url
@@ -9854,6 +10395,7 @@ components:
       type: object
       properties:
         label:
+          maxLength: 63
           type: string
           description: Label of the task.
         taskType:
@@ -9875,11 +10417,13 @@ components:
       type: object
       properties:
         preDeploy:
+          maxItems: 12
           type: array
           description: Pre-deploy tasks.
           items:
             $ref: '#/components/schemas/ExtensionTask'
         postDeploy:
+          maxItems: 12
           type: array
           description: Post-deploy tasks.
           items:
@@ -9892,7 +10436,39 @@ components:
         - taskType: ExtensionTaskAnsible
           options: ""
           label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
+        - taskType: ExtensionTaskAnsible
+          options: ""
+          label: label
         postDeploy:
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
         - null
         - null
     ExtensionDefinitionDto:
@@ -9905,6 +10481,7 @@ components:
       - infrastructure
       - inputs
       - kind
+      - label
       - name
       - outputs
       - schemaVersion
@@ -9912,9 +10489,11 @@ components:
       type: object
       properties:
         kind:
+          maxLength: 32
           type: string
           description: The kind of extension.
         schemaVersion:
+          maxLength: 12
           type: string
           description: Schema version of the extension.
         name:
@@ -9926,12 +10505,15 @@ components:
           type: string
           description: Label of the extension.
         extensionType:
+          maxLength: 32
           type: string
           description: Type of the extension.
         vendor:
+          maxLength: 64
           type: string
           description: Vendor of the extension.
         extensionVersion:
+          maxLength: 12
           type: string
           description: Version of the extension.
         description:
@@ -9944,11 +10526,13 @@ components:
         dependencies:
           $ref: '#/components/schemas/ExtensionDependency'
         inputs:
+          maxItems: 12
           type: array
           description: List of inputs for the platform service.
           items:
             $ref: '#/components/schemas/ExtensionInput'
         outputs:
+          maxItems: 12
           type: array
           description: List of outputs for the platform service.
           items:
@@ -9956,6 +10540,7 @@ components:
         infrastructure:
           $ref: '#/components/schemas/ExtensionInfrastructure'
         assets:
+          maxItems: 12
           type: array
           description: List of assets for the platform service.
           items:
@@ -9976,8 +10561,64 @@ components:
           name: name
           outputType: outputType
           label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
+        - template: template
+          name: name
+          outputType: outputType
+          label: label
         onCreate:
           preDeploy:
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
+          - taskType: ExtensionTaskAnsible
+            options: ""
+            label: label
           - taskType: ExtensionTaskAnsible
             options: ""
             label: label
@@ -9987,9 +10628,49 @@ components:
           postDeploy:
           - null
           - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
         schemaVersion: schemaVersion
         kind: kind
         inputs:
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
+        - name: name
+          options: ""
+          inputType: ExtensionInputString
+          label: label
         - name: name
           options: ""
           inputType: ExtensionInputString
@@ -10006,6 +10687,14 @@ components:
           osTemplates:
           - osTemplates
           - osTemplates
+          - osTemplates
+          - osTemplates
+          - osTemplates
+          - osTemplates
+          - osTemplates
+          - osTemplates
+          - osTemplates
+          - osTemplates
         onEdit: null
         onDelete: null
         assets:
@@ -10014,11 +10703,147 @@ components:
           requiredAssets:
           - requiredAssets
           - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
           url: url
           assetType: assetType
         - name: name
           label: label
           requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          url: url
+          assetType: assetType
+        - name: name
+          label: label
+          requiredAssets:
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
+          - requiredAssets
           - requiredAssets
           - requiredAssets
           url: url
@@ -10029,6 +10854,14 @@ components:
           - connectedSharedDrives:
             - connectedSharedDrives
             - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
             osTemplate: osTemplate
             instanceCount: instanceCount
             serverType: serverType
@@ -10038,12 +10871,44 @@ components:
               value: value
             - name: name
               value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
             dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
             - dependencies
             - dependencies
           - connectedSharedDrives:
             - connectedSharedDrives
             - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
             osTemplate: osTemplate
             instanceCount: instanceCount
             serverType: serverType
@@ -10053,10 +10918,426 @@ components:
               value: value
             - name: name
               value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
             dependencies:
             - dependencies
             - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+          - connectedSharedDrives:
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            - connectedSharedDrives
+            osTemplate: osTemplate
+            instanceCount: instanceCount
+            serverType: serverType
+            label: label
+            customVariables:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            - name: name
+              value: value
+            dependencies:
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
+            - dependencies
           sharedDrives:
+          - sizeGb: 10
+            label: label
+          - sizeGb: 10
+            label: label
+          - sizeGb: 10
+            label: label
+          - sizeGb: 10
+            label: label
+          - sizeGb: 10
+            label: label
+          - sizeGb: 10
+            label: label
+          - sizeGb: 10
+            label: label
+          - sizeGb: 10
+            label: label
           - sizeGb: 10
             label: label
           - sizeGb: 10
@@ -10068,6 +11349,7 @@ components:
       type: object
       properties:
         validationRegEx:
+          maxLength: 64
           type: string
           description: Validation regex pattern for the input.
     ExtensionInputInteger:
@@ -10080,6 +11362,7 @@ components:
           type: integer
           description: Maximum allowed value.
         deniedValues:
+          maxItems: 12
           type: array
           description: Denied values.
           items:
@@ -10101,12 +11384,14 @@ components:
           type: integer
           description: Minimum RAM GBs.
         vendor:
+          maxLength: 64
           type: string
           description: Server vendor.
     ExtensionInputOsTemplate:
       type: object
       properties:
         osFamily:
+          maxLength: 64
           type: string
           description: OS family type.
     ExtensionInputBoolean:
@@ -10116,9 +11401,11 @@ components:
       type: object
       properties:
         asset:
+          maxLength: 63
           type: string
           description: Asset for the Ansible task.
         playbook:
+          maxLength: 32
           type: string
           description: Playbook for the Ansible task.
         executionTimeout:
@@ -10132,20 +11419,20 @@ components:
           type: integer
           description: Execution Timeout Tick.
         version:
+          maxLength: 32
           type: string
           description: Version.
     ExtensionTaskWebhook:
       type: object
       properties:
         endpoint:
+          maxLength: 128
           type: string
           description: Webhook task endpoint.
         requestTemplate:
           type: string
           description: Webhook task request body template.
     ExtensionInfoDto:
-      required:
-      - icon
       type: object
       properties:
         id:
@@ -10176,6 +11463,10 @@ components:
           type: string
           description: Extension status
           example: draft
+          enum:
+          - draft
+          - active
+          - archived
         icon:
           type: string
           description: Icon of the extension.
@@ -10250,6 +11541,10 @@ components:
           type: string
           description: Extension status
           example: draft
+          enum:
+          - draft
+          - active
+          - archived
         definition:
           $ref: '#/components/schemas/ExtensionDefinitionDto'
       example:
@@ -10257,6 +11552,38 @@ components:
         description: My App Description
         definition:
           outputs:
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
+          - template: template
+            name: name
+            outputType: outputType
+            label: label
           - template: template
             name: name
             outputType: outputType
@@ -10273,12 +11600,76 @@ components:
             - taskType: ExtensionTaskAnsible
               options: ""
               label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
+            - taskType: ExtensionTaskAnsible
+              options: ""
+              label: label
             postDeploy:
+            - null
+            - null
+            - null
+            - null
+            - null
+            - null
+            - null
+            - null
             - null
             - null
           schemaVersion: schemaVersion
           kind: kind
           inputs:
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
+          - name: name
+            options: ""
+            inputType: ExtensionInputString
+            label: label
           - name: name
             options: ""
             inputType: ExtensionInputString
@@ -10295,6 +11686,14 @@ components:
             osTemplates:
             - osTemplates
             - osTemplates
+            - osTemplates
+            - osTemplates
+            - osTemplates
+            - osTemplates
+            - osTemplates
+            - osTemplates
+            - osTemplates
+            - osTemplates
           onEdit: null
           onDelete: null
           assets:
@@ -10303,11 +11702,147 @@ components:
             requiredAssets:
             - requiredAssets
             - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
             url: url
             assetType: assetType
           - name: name
             label: label
             requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            url: url
+            assetType: assetType
+          - name: name
+            label: label
+            requiredAssets:
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
+            - requiredAssets
             - requiredAssets
             - requiredAssets
             url: url
@@ -10318,6 +11853,14 @@ components:
             - connectedSharedDrives:
               - connectedSharedDrives
               - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
               osTemplate: osTemplate
               instanceCount: instanceCount
               serverType: serverType
@@ -10327,12 +11870,44 @@ components:
                 value: value
               - name: name
                 value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
               dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
               - dependencies
               - dependencies
             - connectedSharedDrives:
               - connectedSharedDrives
               - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
               osTemplate: osTemplate
               instanceCount: instanceCount
               serverType: serverType
@@ -10342,10 +11917,426 @@ components:
                 value: value
               - name: name
                 value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
               dependencies:
               - dependencies
               - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+            - connectedSharedDrives:
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              - connectedSharedDrives
+              osTemplate: osTemplate
+              instanceCount: instanceCount
+              serverType: serverType
+              label: label
+              customVariables:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              - name: name
+                value: value
+              dependencies:
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
+              - dependencies
             sharedDrives:
+            - sizeGb: 10
+              label: label
+            - sizeGb: 10
+              label: label
+            - sizeGb: 10
+              label: label
+            - sizeGb: 10
+              label: label
+            - sizeGb: 10
+              label: label
+            - sizeGb: 10
+              label: label
+            - sizeGb: 10
+              label: label
+            - sizeGb: 10
+              label: label
             - sizeGb: 10
               label: label
             - sizeGb: 10

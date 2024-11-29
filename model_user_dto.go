@@ -11,7 +11,7 @@ package sdk2
 
 type UserDto struct {
 	// User ID
-	Id float64 `json:"id" yaml:"id"`
+	Id string `json:"id" yaml:"id"`
 	// The franchise of the user
 	Franchise string `json:"franchise" yaml:"franchise"`
 	// The display name of the user
@@ -76,5 +76,5 @@ type UserDto struct {
 	// Whether the user is a archived
 	Archived float64 `json:"archived" yaml:"archived"`
 	// The account ID of the user
-	AccountId float64 `json:"accountId" yaml:"accountId"`
+	AccountId string `json:"accountId" yaml:"accountId"`
 }

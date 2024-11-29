@@ -201,7 +201,7 @@ func (a *AccountsApiService) CreateAccount(ctx context.Context, body CreateAccou
 AccountsApiService Get account by id
 Returns an account by id
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param accountId
+ * @param accountId The account id
  * @param optional nil or *AccountsApiGetAccountOpts - Optional Parameters:
      * @param "Recursion" (optional.Float64) -  The recursion level of the displayed details. Default is 0.
 @return AccountDto
@@ -211,7 +211,7 @@ type AccountsApiGetAccountOpts struct {
     Recursion optional.Float64
 }
 
-func (a *AccountsApiService) GetAccount(ctx context.Context, accountId float64, localVarOptionals *AccountsApiGetAccountOpts) (AccountDto, *http.Response, error) {
+func (a *AccountsApiService) GetAccount(ctx context.Context, accountId string, localVarOptionals *AccountsApiGetAccountOpts) (AccountDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}

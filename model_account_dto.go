@@ -11,7 +11,7 @@ package sdk2
 
 type AccountDto struct {
 	// Account ID
-	Id float64 `json:"id" yaml:"id"`
+	Id string `json:"id" yaml:"id"`
 	// The ID of the parent account
 	ParentAccountId float64 `json:"parentAccountId,omitempty" yaml:"parentAccountId,omitempty"`
 	// The name of the account
